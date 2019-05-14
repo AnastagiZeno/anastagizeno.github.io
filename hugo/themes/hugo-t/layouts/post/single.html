@@ -15,7 +15,7 @@
       </ul>
       {{ end }}
       <p class="post-copyright">
-        {{ if .Site.Copyright }}{{ .Site.Copyright }}{{ end }}{{ if gt (div (sub now.Unix .Lastmod.Unix) 86400) 100 }}This post was published <strong>{{ div (sub now.Unix .Lastmod.Unix) 86400 }}</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.{{ end }}
+        {{ if .Site.Copyright }}{{ .Site.Copyright }}{{ end }}
       </p>
     </footer>
     {{ if ne .Params.comments false }}

@@ -8,7 +8,7 @@
   transition: all $easing $speed;
 
   &:hover {
-    transform: rotate(180deg);
+    transform: rotate(270deg);
   }
 
   @media screen and (max-width: $tablet) {
@@ -36,6 +36,7 @@
 .subtitle {
   margin-bottom: 3rem;
   opacity: 0.7;
+  font-style: italic;
 }
 
 .menu-toggle {
