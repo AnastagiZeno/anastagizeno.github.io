@@ -1,11 +1,11 @@
 baseURL = "https://anastagizeno.github.io/"
 languageCode = "en-us"
 title = "az1453"
-theme = "hugo-nuo"
+theme = "hugo-t"
 enableRobotsTXT = true
 PygmentsCodeFences = true
 canonifyurls = true
-publishDir = "anastagizeno.github.io"
+publishDir = "../anastagizeno.github.io"
 
 # Disqus Username
 disqusShortname = "disqus_shortname"
@@ -14,7 +14,7 @@ disqusShortname = "disqus_shortname"
 googleAnalytics = "UA-XXXXXXXX-X"
 
 # Copyright of your post
-copyright = "© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce."
+copyright = "Copyright © 2019, Bingxing Kang. All rights reserved."
 
 # Initial site menu, you can extend menu with content.
 [[menu.main]]
@@ -37,27 +37,25 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
 
 # Add your own params here
 [params]
-  author = "__az1453"
+  author = "Ted"
   bg = "images/grey-prism.svg"
   avatar = "images/avatar.png"
   seotitle = "az1453"
-  subtitle = ""
+  subtitle = "la más alta ocasión que vieron los siglos pasados, los presentes, ni esperan ver los venideros."
   description = ""
   paginate = 10
 
   # Choose your social networks
-  email = "name@domain.com"
-  github = "github_username"
-  twitter = "twitter_username"
+  email = "anastagizeno@gmail.com"
+  github = "AnastagiZeno"
+  twitter = "__az1453"
   # linkedin = "linkedin_username"
-  # weibo = "weibo_username"
-  # wechat= "images/qrcode.jpg"  # Replace with your wechat qrcode image
   # facebook = "facebook_username"
   # google = "googlplus_id_number"
   # instagram = "instagram_username"
-  youtube = "youtube_username"
+  youtube = "UC6PSQm207cNt5fL99Z4ZguQ"
   # vimeo = "vimeo_username"
-  medium = "medium_username"
+  medium = "anastagizeno"
   quora = "quora_username"
   # pinterest = "pinterest_username"
   # dribbble = "dribbble_username"
@@ -67,7 +65,7 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   # zhihu = "zhihu_username"
   # douban = "douban_username"
   # bilibili = "bilibili_id_number"
-  stackoverflow = "douban_username"
+  stackoverflow = "9152610"
   # codesandbox = ""
   # npm = ""
   # reddit = ""
@@ -75,11 +73,6 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   # Overrid theme styles in this file
   # customStyle = "styles/custom.scss"
 
-  # Changyan Comments (China Only)
-  #changyan = false
-  #changyanId = ""
-  #changyanConf = ""
-
   # Google Webmaster
   # https://www.google.com/webmasters/
-  googleSiteVerification = "_moDmnnBNVLBN1rzNxyGUGdPHE20YgbmrtzLIbxaWFc"
+  googleSiteVerification = ""
