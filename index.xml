@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2019, Bingxing Kang. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 01 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Jun 2019 14:18:57 +0800</lastBuildDate>
     
 	<atom:link href="https://anastagizeno.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -30,6 +30,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Engage Prepare</title>
+      <link>https://anastagizeno.github.io/post/engage-prepare/</link>
+      <pubDate>Mon, 10 Jun 2019 14:18:57 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/engage-prepare/</guid>
+      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
     </item>
     
     <item>
