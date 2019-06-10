@@ -1,0 +1,78 @@
+baseURL = "https://anastagizeno.github.io/"
+languageCode = "en-us"
+title = "az1453"
+theme = "hugo-t"
+enableRobotsTXT = true
+PygmentsCodeFences = true
+canonifyurls = true
+publishDir = "../anastagizeno.github.io"
+
+# Disqus Username
+disqusShortname = "bingxingkang"
+
+# Google Analytics UA number
+googleAnalytics = "UA-XXXXXXXX-X"
+
+# Copyright of your post
+copyright = "Copyright © 2019, Bingxing Kang. All rights reserved."
+
+# Initial site menu, you can extend menu with content.
+[[menu.main]]
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+
+[[menu.main]]
+  name = "Archives"
+  weight = 20
+  identifier = "archives"
+  url = "/archives/"
+
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+
+# Add your own params here
+[params]
+  author = "Ted"
+  bg = "images/grey-prism.svg"
+  avatar = "images/avatar.png"
+  seotitle = "az1453"
+  subtitle = "la más alta ocasión que vieron los siglos pasados, los presentes, ni esperan ver los venideros."
+  description = ""
+  paginate = 10
+
+  # Choose your social networks
+  email = "anastagizeno@gmail.com"
+  github = "AnastagiZeno"
+  twitter = "__az1453"
+  # linkedin = "linkedin_username"
+  # facebook = "facebook_username"
+  # google = "googlplus_id_number"
+  # instagram = "instagram_username"
+  youtube = "UC6PSQm207cNt5fL99Z4ZguQ"
+  # vimeo = "vimeo_username"
+  medium = "anastagizeno"
+  quora = "quora_username"
+  # pinterest = "pinterest_username"
+  # dribbble = "dribbble_username"
+  # behance = "behance_username"
+  # jsfiddle = "jsfiddle_username"
+  # codepen = "codepen_username"
+  # zhihu = "zhihu_username"
+  # douban = "douban_username"
+  # bilibili = "bilibili_id_number"
+  stackoverflow = "9152610"
+  # codesandbox = ""
+  # npm = ""
+  # reddit = ""
+
+  # Overrid theme styles in this file
+  # customStyle = "styles/custom.scss"
+
+  # Google Webmaster
+  # https://www.google.com/webmasters/
+  googleSiteVerification = ""
