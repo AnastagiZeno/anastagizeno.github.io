@@ -38,29 +38,10 @@ It makes use of a variety of open source projects including:
       <pubDate>Mon, 10 Jun 2019 14:18:57 +0800</pubDate>
       
       <guid>https://anastagizeno.github.io/post/engage-prepare/</guid>
-      <description>&lt;p&gt;Cut out summary from your post content here.
-dasdddddddddasdasd
-das
-dasdasdasdasdasdasd&lt;/p&gt;
-
-&lt;p&gt;dasdasdasdasdasdasd
-Cut out summary from your post content here.
-dasdddddddddasdasd
-das
-dasdasdasdasdasdasd&lt;/p&gt;
-
-&lt;p&gt;dasdasdasdasdasdasd
-dasdasdasdasdasd&lt;/p&gt;
-
-&lt;p&gt;Cut out summary from your post content here.
-dasdddddddddasdasd
-das
-dasdasdasdasdasdasd&lt;/p&gt;
-
-&lt;p&gt;dasdasdasdasdasdasd
-dasdasdasdasdasd&lt;/p&gt;
-
-&lt;p&gt;dasdasdasdasdasd&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;To smoke someone&amp;rdquo; means &amp;ldquo;to thoroughly beat someone in a contest&amp;rdquo; or &amp;ldquo;to kill someone&amp;rdquo;.
+&amp;ldquo;hands down&amp;rdquo; means &amp;ldquo;easily and decisively&amp;rdquo;.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
@@ -78,8 +59,9 @@ dasdasdasdasdasd&lt;/p&gt;
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>https://anastagizeno.github.io/post/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+      <description>1.
+Indeed I live in the dark ages! A guileless word is an absurdity. A smooth forehead betokens A hard heart. He who laughs Has not yet heard The terrible tidings.
+Ah, what an age it is When to speak of trees is almost a crime For it is a kind of silence about injustice! And he who walks calmly across the street, Is he not out of reach of his friends In trouble?</description>
     </item>
     
   </channel>
