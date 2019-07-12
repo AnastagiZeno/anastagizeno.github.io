@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2019, Bingxing Kang. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 20 Jun 2019 15:12:41 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jul 2019 14:06:39 +0800</lastBuildDate>
     
 	<atom:link href="https://anastagizeno.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -33,20 +33,90 @@ It makes use of a variety of open source projects including:
     </item>
     
     <item>
+      <title>Haha</title>
+      <link>https://anastagizeno.github.io/post/2019/07/haha/</link>
+      <pubDate>Tue, 02 Jul 2019 14:06:39 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/07/haha/</guid>
+      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Notes for Using Asyncio in Py3</title>
+      <link>https://anastagizeno.github.io/post/2019/06/notes-for-using-asyncio-in-py3/</link>
+      <pubDate>Mon, 24 Jun 2019 10:41:55 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/06/notes-for-using-asyncio-in-py3/</guid>
+      <description>&lt;p&gt;Async Generators: yield Inside async def Functions
+Async generators answer the question, “What happens if you use yield inside a native async def coroutine function?” This concept might be confusing if you have some experience with using generators as if they were coroutines, such as with the Twisted framework, or the Tornado framework, or even with yield from in Python 3.4’s asyncio.&lt;/p&gt;
+
+&lt;p&gt;Therefore, before we continue in this section, it is best if you can convince yourself that:&lt;/p&gt;
+
+&lt;p&gt;Coroutines and generators are completely different concepts.&lt;/p&gt;
+
+&lt;p&gt;Async generators behave much like ordinary generators.&lt;/p&gt;
+
+&lt;p&gt;For iteration, you use async for for async generators, instead of ordinary for for ordinary generators.&lt;/p&gt;
+
+&lt;p&gt;The example used in the previous section to demonstrate an async iterator for interaction with Redis turns out to be much simpler if we set it up as an async generator:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Read List</title>
+      <link>https://anastagizeno.github.io/post/2019/06/read-list/</link>
+      <pubDate>Fri, 21 Jun 2019 14:14:29 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/06/read-list/</guid>
+      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Watch List Before Tokyo </title>
+      <link>https://anastagizeno.github.io/post/2019/06/watch-list-before-tokyo/</link>
+      <pubDate>Thu, 20 Jun 2019 17:39:14 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/06/watch-list-before-tokyo/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Noing, just a video watch list to finish before 2020 Tokyo Olympic Game Opening ceremony&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You only need to know about seven functions to use asyncio [for everyday use].&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; &lt;cite&gt;Yury Selivanov, author of PEP 492&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Asyncio in Python3</title>
+      <link>https://anastagizeno.github.io/post/2019/06/using-asyncio-in-python3/</link>
+      <pubDate>Thu, 20 Jun 2019 17:21:03 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/06/using-asyncio-in-python3/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://learning.oreilly.com/library/view/using-asyncio-in/9781491999691/&#34;&gt;Using Asyncio in Python 3&lt;/a&gt; &lt;code&gt;by Caleb Hattingh Publisher: O&#39;Reilly Media, Inc. ISBN: 9781491999684&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;My story is a lot like yours, only more interesting ’cause it involves robots.&lt;/p&gt;
+
+&lt;p&gt;Bender, Futurama episode “30% Iron Chef”&lt;/p&gt;
+
+&lt;p&gt;The most common question I receive about Asyncio in Python 3 is this: “What is it, and what do I do with it?” The following story provides a backdrop for answering these questions. The central focus of Asyncio is about how to best perform multiple concurrent tasks at the same time. And not just any sort of tasks, but specifically tasks that involve waiting periods. The key insight required with this style of programming is that while you wait for this task to complete, work on other tasks can be performed.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Asyncio in Py3</title>
-      <link>https://anastagizeno.github.io/post/asyncio-in-py3/</link>
+      <link>https://anastagizeno.github.io/post/2019/06/asyncio-in-py3/</link>
       <pubDate>Thu, 20 Jun 2019 15:12:41 +0800</pubDate>
       
-      <guid>https://anastagizeno.github.io/post/asyncio-in-py3/</guid>
+      <guid>https://anastagizeno.github.io/post/2019/06/asyncio-in-py3/</guid>
       <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Engage Prepare</title>
-      <link>https://anastagizeno.github.io/post/engage-prepare/</link>
+      <link>https://anastagizeno.github.io/post/2019/06/engage-prepare/</link>
       <pubDate>Mon, 10 Jun 2019 14:18:57 +0800</pubDate>
       
-      <guid>https://anastagizeno.github.io/post/engage-prepare/</guid>
+      <guid>https://anastagizeno.github.io/post/2019/06/engage-prepare/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;To smoke someone&amp;rdquo; means &amp;ldquo;to thoroughly beat someone in a contest&amp;rdquo; or &amp;ldquo;to kill someone&amp;rdquo;.
 &amp;ldquo;hands down&amp;rdquo; means &amp;ldquo;easily and decisively&amp;rdquo;.&lt;/p&gt;
@@ -64,10 +134,10 @@ It makes use of a variety of open source projects including:
     
     <item>
       <title>Creating a New Theme</title>
-      <link>https://anastagizeno.github.io/post/creating-a-new-theme/</link>
+      <link>https://anastagizeno.github.io/post/2014/09/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://anastagizeno.github.io/post/creating-a-new-theme/</guid>
+      <guid>https://anastagizeno.github.io/post/2014/09/creating-a-new-theme/</guid>
       <description>1.
 Indeed I live in the dark ages! A guileless word is an absurdity. A smooth forehead betokens A hard heart. He who laughs Has not yet heard The terrible tidings.
 Ah, what an age it is When to speak of trees is almost a crime For it is a kind of silence about injustice! And he who walks calmly across the street, Is he not out of reach of his friends In trouble?</description>
