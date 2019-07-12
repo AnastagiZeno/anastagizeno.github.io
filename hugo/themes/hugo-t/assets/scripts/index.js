@@ -66,7 +66,7 @@ window.addEventListener('scroll', function() {
 });
 
 // Smooth Scroll to top when click toTopBtn
-var scroll = new SmoothScroll('a[href*="#"]');
+var scroll = new SmoothScroll('a[href*="#"]', {'speed': 10});
 toTopBtn &&
   toTopBtn.addEventListener('click', function() {
     scroll.animateScroll(0);

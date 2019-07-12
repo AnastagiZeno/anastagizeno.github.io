@@ -8,7 +8,7 @@ canonifyurls = true
 publishDir = "../anastagizeno.github.io"
 
 # Disqus Username
-disqusShortname = "disqus_shortname"
+disqusShortname = "bingxingkang"
 
 # Google Analytics UA number
 googleAnalytics = "UA-XXXXXXXX-X"
@@ -76,3 +76,12 @@ copyright = "Copyright © 2019, Bingxing Kang. All rights reserved."
   # Google Webmaster
   # https://www.google.com/webmasters/
   googleSiteVerification = ""
+
+[taxonomies]
+year = "year"
+month = "month"
+
+[permalinks]
+post = "/post/:year/:month/:slug/"
+year = "/post/:slug/"
+month = "/post/:slug/"
