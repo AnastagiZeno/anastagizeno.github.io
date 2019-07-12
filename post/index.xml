@@ -7,18 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2019, Bingxing Kang. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 02 Jul 2019 14:06:39 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 18:10:56 +0800</lastBuildDate>
     
 	<atom:link href="https://anastagizeno.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Haha</title>
-      <link>https://anastagizeno.github.io/post/2019/07/haha/</link>
-      <pubDate>Tue, 02 Jul 2019 14:06:39 +0800</pubDate>
+      <title>Test</title>
+      <link>https://anastagizeno.github.io/post/2019/07/test/</link>
+      <pubDate>Fri, 12 Jul 2019 18:10:56 +0800</pubDate>
       
-      <guid>https://anastagizeno.github.io/post/2019/07/haha/</guid>
-      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
+      <guid>https://anastagizeno.github.io/post/2019/07/test/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -83,15 +83,6 @@ Async generators answer the question, “What happens if you use yield inside a 
     </item>
     
     <item>
-      <title>Asyncio in Py3</title>
-      <link>https://anastagizeno.github.io/post/2019/06/asyncio-in-py3/</link>
-      <pubDate>Thu, 20 Jun 2019 15:12:41 +0800</pubDate>
-      
-      <guid>https://anastagizeno.github.io/post/2019/06/asyncio-in-py3/</guid>
-      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Engage Prepare</title>
       <link>https://anastagizeno.github.io/post/2019/06/engage-prepare/</link>
       <pubDate>Mon, 10 Jun 2019 14:18:57 +0800</pubDate>
@@ -101,17 +92,6 @@ Async generators answer the question, “What happens if you use yield inside a 
 &lt;p&gt;&amp;ldquo;To smoke someone&amp;rdquo; means &amp;ldquo;to thoroughly beat someone in a contest&amp;rdquo; or &amp;ldquo;to kill someone&amp;rdquo;.
 &amp;ldquo;hands down&amp;rdquo; means &amp;ldquo;easily and decisively&amp;rdquo;.&lt;/p&gt;
 &lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>Creating a New Theme</title>
-      <link>https://anastagizeno.github.io/post/2014/09/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://anastagizeno.github.io/post/2014/09/creating-a-new-theme/</guid>
-      <description>1.
-Indeed I live in the dark ages! A guileless word is an absurdity. A smooth forehead betokens A hard heart. He who laughs Has not yet heard The terrible tidings.
-Ah, what an age it is When to speak of trees is almost a crime For it is a kind of silence about injustice! And he who walks calmly across the street, Is he not out of reach of his friends In trouble?</description>
     </item>
     
   </channel>
