@@ -7,15 +7,60 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2019, Bingxing Kang. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 20 Jun 2019 15:12:41 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 18:10:56 +0800</lastBuildDate>
     
 	<atom:link href="https://anastagizeno.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>X</title>
+      <link>https://anastagizeno.github.io/tags/x/</link>
+      <pubDate>Fri, 12 Jul 2019 18:10:56 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/tags/x/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Y</title>
+      <link>https://anastagizeno.github.io/tags/y/</link>
+      <pubDate>Fri, 12 Jul 2019 18:10:56 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/tags/y/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Asyncid</title>
+      <link>https://anastagizeno.github.io/tags/asyncid/</link>
+      <pubDate>Mon, 24 Jun 2019 10:41:55 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/tags/asyncid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notes</title>
+      <link>https://anastagizeno.github.io/tags/notes/</link>
+      <pubDate>Mon, 24 Jun 2019 10:41:55 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/tags/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://anastagizeno.github.io/tags/python/</link>
+      <pubDate>Mon, 24 Jun 2019 10:41:55 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>tagA</title>
       <link>https://anastagizeno.github.io/tags/taga/</link>
-      <pubDate>Thu, 20 Jun 2019 15:12:41 +0800</pubDate>
+      <pubDate>Fri, 21 Jun 2019 14:14:29 +0800</pubDate>
       
       <guid>https://anastagizeno.github.io/tags/taga/</guid>
       <description></description>
@@ -24,9 +69,27 @@
     <item>
       <title>tagB</title>
       <link>https://anastagizeno.github.io/tags/tagb/</link>
-      <pubDate>Thu, 20 Jun 2019 15:12:41 +0800</pubDate>
+      <pubDate>Fri, 21 Jun 2019 14:14:29 +0800</pubDate>
       
       <guid>https://anastagizeno.github.io/tags/tagb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Asyncio</title>
+      <link>https://anastagizeno.github.io/tags/asyncio/</link>
+      <pubDate>Thu, 20 Jun 2019 17:21:03 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/tags/asyncio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Concurrency</title>
+      <link>https://anastagizeno.github.io/tags/concurrency/</link>
+      <pubDate>Thu, 20 Jun 2019 17:21:03 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/tags/concurrency/</guid>
       <description></description>
     </item>
     
@@ -45,15 +108,6 @@
       <pubDate>Mon, 10 Jun 2019 14:18:57 +0800</pubDate>
       
       <guid>https://anastagizeno.github.io/tags/distributed-systems/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cheatsheet</title>
-      <link>https://anastagizeno.github.io/tags/cheatsheet/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://anastagizeno.github.io/tags/cheatsheet/</guid>
       <description></description>
     </item>
     

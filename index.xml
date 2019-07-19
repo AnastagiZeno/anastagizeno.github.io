@@ -123,5 +123,14 @@ Async generators answer the question, “What happens if you use yield inside a 
       <description>This is my resume.</description>
     </item>
     
+    <item>
+      <title>Archive page</title>
+      <link>https://anastagizeno.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://anastagizeno.github.io/archives/</guid>
+      <description>Blog archives</description>
+    </item>
+    
   </channel>
 </rss>

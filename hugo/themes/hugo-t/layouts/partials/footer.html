@@ -4,7 +4,7 @@
 <!-- Site Footer -->
 <footer class="site-footer">
   <p>© {{ if eq now.Year 2017 }}2017{{ else }}2017-{{ now.Year }}{{ end }} {{ .Site.Title }}</p>
-  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a></p>
   {{ if and (isset .Site.Params "icp") (ne .Site.Params.ICP "") }}
     <p><a href="http://www.miitbeian.gov.cn" title="Check ICP info" target="_blank" rel="noopener">{{ .Site.Params.ICP }}</a></p>
   {{ end }}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Y on az1453</title>
+    <link>https://anastagizeno.github.io/tags/y/</link>
+    <description>Recent content in Y on az1453</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2019, Bingxing Kang. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 12 Jul 2019 18:10:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://anastagizeno.github.io/tags/y/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test</title>
+      <link>https://anastagizeno.github.io/post/2019/07/test/</link>
+      <pubDate>Fri, 12 Jul 2019 18:10:56 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/07/test/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -7,18 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2019, Bingxing Kang. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 20 Jun 2019 15:12:41 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Jun 2019 14:14:29 +0800</lastBuildDate>
     
 	<atom:link href="https://anastagizeno.github.io/tags/taga/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Asyncio in Py3</title>
-      <link>https://anastagizeno.github.io/post/asyncio-in-py3/</link>
-      <pubDate>Thu, 20 Jun 2019 15:12:41 +0800</pubDate>
+      <title>Read List</title>
+      <link>https://anastagizeno.github.io/post/2019/06/read-list/</link>
+      <pubDate>Fri, 21 Jun 2019 14:14:29 +0800</pubDate>
       
-      <guid>https://anastagizeno.github.io/post/asyncio-in-py3/</guid>
+      <guid>https://anastagizeno.github.io/post/2019/06/read-list/</guid>
       <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Watch List Before Tokyo </title>
+      <link>https://anastagizeno.github.io/post/2019/06/watch-list-before-tokyo/</link>
+      <pubDate>Thu, 20 Jun 2019 17:39:14 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/06/watch-list-before-tokyo/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Noing, just a video watch list to finish before 2020 Tokyo Olympic Game Opening ceremony&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You only need to know about seven functions to use asyncio [for everyday use].&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; &lt;cite&gt;Yury Selivanov, author of PEP 492&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
   </channel>

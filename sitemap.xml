@@ -19,8 +19,26 @@
   </url>
   
   <url>
+    <loc>https://anastagizeno.github.io/tags/</loc>
+    <lastmod>2019-07-12T18:10:56+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anastagizeno.github.io/post/2019/07/test/</loc>
     <lastmod>2019-07-12T18:10:56+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/x/</loc>
+    <lastmod>2019-07-12T18:10:56+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/y/</loc>
+    <lastmod>2019-07-12T18:10:56+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -30,8 +48,26 @@
   </url>
   
   <url>
+    <loc>https://anastagizeno.github.io/tags/asyncid/</loc>
+    <lastmod>2019-06-24T10:41:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/notes/</loc>
+    <lastmod>2019-06-24T10:41:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anastagizeno.github.io/post/2019/06/notes-for-using-asyncio-in-py3/</loc>
     <lastmod>2019-06-24T10:41:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/python/</loc>
+    <lastmod>2019-06-24T10:41:55+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -40,13 +76,49 @@
   </url>
   
   <url>
+    <loc>https://anastagizeno.github.io/tags/taga/</loc>
+    <lastmod>2019-06-21T14:14:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/tagb/</loc>
+    <lastmod>2019-06-21T14:14:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anastagizeno.github.io/post/2019/06/watch-list-before-tokyo/</loc>
     <lastmod>2019-06-20T17:39:14+08:00</lastmod>
   </url>
   
   <url>
+    <loc>https://anastagizeno.github.io/tags/asyncio/</loc>
+    <lastmod>2019-06-20T17:21:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/concurrency/</loc>
+    <lastmod>2019-06-20T17:21:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://anastagizeno.github.io/post/2019/06/using-asyncio-in-python3/</loc>
     <lastmod>2019-06-20T17:21:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/big-data/</loc>
+    <lastmod>2019-06-10T14:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/distributed-systems/</loc>
+    <lastmod>2019-06-10T14:18:57+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -57,6 +129,15 @@
   <url>
     <loc>https://anastagizeno.github.io/resume/</loc>
     <lastmod>2017-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/archives/</loc>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/categories/</loc>
+    <priority>0</priority>
   </url>
   
   <url>

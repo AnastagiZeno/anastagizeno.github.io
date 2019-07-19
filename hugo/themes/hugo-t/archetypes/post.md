@@ -1,14 +1,12 @@
 ---
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
-author: "Author Name"
-cover: "/images/cover.jpg"
-tags: ["tagA", "tagB"]
+author: "Ted"
+cover: "/static/images/default-cover.jpg"
+tags: ["X", "Y"]
 date: {{ .Date }}
-draft: true
+draft: false
 ---
 
-Cut out summary from your post content here.
 
 <!--more-->
 
-The remaining content of your post.
