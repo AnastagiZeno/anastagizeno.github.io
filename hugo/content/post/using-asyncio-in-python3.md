@@ -1,7 +1,7 @@
 ---
 title: "Using Asyncio in Python3"
 author: "Ted"
-cover: "/images/cover.jpg"
+cover: "/static/images/default-cover.jpg"
 tags: ["Asyncio", "Concurrency", "Python"]
 date: 2019-06-20T17:21:03+08:00
 draft: false

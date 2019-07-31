@@ -1,7 +1,7 @@
 ---
 title: "Read List"
 author: "Author Name"
-cover: "/images/cover.jpg"
+cover: "/static/images/default-cover.jpg"
 tags: ["tagA", "tagB"]
 date: 2019-06-21T14:14:29+08:00
 draft: false

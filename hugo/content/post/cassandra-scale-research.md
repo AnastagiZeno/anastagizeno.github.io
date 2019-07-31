@@ -1,7 +1,7 @@
 ---
 title: "Cassandra Scale Research"
 author: "Author Name"
-cover: "/images/cover.jpg"
+cover: "/static/images/default-cover.jpg"
 tags: ["tagA", "tagB"]
 date: 2019-06-17T16:48:37+08:00
 draft: true

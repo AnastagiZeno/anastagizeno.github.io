@@ -1,7 +1,7 @@
 ---
 title: "Notes for Using Asyncio in Py3"
 author: "Ted"
-cover: "/images/cover.jpg"
+cover: "/static/images/default-cover.jpg"
 tags: ["Notes", "Asyncid", "Python"]
 date: 2019-06-24T10:41:55+08:00
 draft: false

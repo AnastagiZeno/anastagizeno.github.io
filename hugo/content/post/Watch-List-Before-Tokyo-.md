@@ -1,12 +1,12 @@
 ---
 title: "Watch List Before Tokyo "
 author: "Author Name"
-cover: "/images/cover.jpg"
+cover: "/static/images/default-cover.jpg"
 tags: ["tagA", "tagB"]
 date: 2019-06-20T17:39:14+08:00
 draft: false
 ---
-*Noing, just a video watch list to finish before 2020 Tokyo Olympic Game Opening ceremony*
+*Nothing but just a video watch list to finish before 2020 Tokyo Olympic Game Opening ceremony*
 
 > You only need to know about seven functions to use asyncio [for everyday use].
 >
