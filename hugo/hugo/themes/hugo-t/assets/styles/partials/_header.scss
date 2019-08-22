@@ -23,7 +23,7 @@
 }
 
 .title {
-  font-size: $size-4;
+  font-size: $size-3;
   font-family: $family-lobster;
   font-weight: $weight-bold;
   margin: 1rem auto;
@@ -45,7 +45,7 @@
   outline: none;
   width: 2rem;
   height: 2rem;
-  font-size: $size-4;
+  font-size: $size-5;
   background-color: transparent;
   transition: all $easing $speed;
 
@@ -67,6 +67,7 @@
 
   & .menu-item {
     padding: 1rem 0;
+    font-size: $size-6;
 
     & a {
       display: inline-block;
