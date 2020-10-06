@@ -1,11 +1,8 @@
-{{ define "title" }}Page not found{{ end }}
-
-{{ define "main" }}
-  {{ $script := resources.Get "scripts/index.js" | resources.Minify }}
-  <div class="not-found">
-    <h1 class="error-emoji"></h1>
-    <p class="error-text">Houston, we have a problem.</p>
-    <p class="error-link"><a href="/">?</a></p>
-  </div>
-  <script src="{{ $script.RelPermalink }}"></script>
+{{ define "title" }}Page not found{{ end }} {{ define "main" }} {{ $script := resources.Get "scripts/index.js" | resources.Minify }}
+<div class="not-found">
+  <h1 class="error-emoji"></h1>
+  <p class="error-text">Houston, we have a problem.</p>
+  <p class="error-link"><a href="/">?</a></p>
+</div>
+<script src="{{ $script.RelPermalink }}"></script>
 {{ end }}

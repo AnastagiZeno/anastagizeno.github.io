@@ -11,3 +11,11 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 *.idea
+
+.DS_Store
+npm-debug.log*
+yarn-error.log
+yarn.lock
+package-lock.json
+/.vscode
+/node_modules

@@ -6,8 +6,8 @@
     <description>Recent content on az1453</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright © 2019, Bingxing Kang. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 21 Jun 2019 14:14:29 +0800</lastBuildDate>
+    <copyright>Copyright © 2020, Bingxing Kang. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://anastagizeno.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,21 +15,26 @@
     <item>
       <title>People</title>
       <link>https://anastagizeno.github.io/links/</link>
-      <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://anastagizeno.github.io/links/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>About</title>
+      <title>ME</title>
       <link>https://anastagizeno.github.io/about/</link>
-      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://anastagizeno.github.io/about/</guid>
-      <description>Bingxing Kang
- junior backend developer
- </description>
+      <description>flow st=&amp;gt;start: 开始 op=&amp;gt;operation: My Operation cond=&amp;gt;condition: Yes or No? e=&amp;gt;end st-&amp;gt;op-&amp;gt;cond cond(yes)-&amp;gt;e cond(no)-&amp;gt;op &amp;amp;
+ 1988 - 2007 上大学之前一直在沈阳，主要在沈北皇姑活动，印象里甚至都没去过浑河以南。
+ 2007 - 2011 Xidian University，挺傻逼的。
+ 2011 - 2013 瞎几把晃，上了一年班，主要在华南地区出差，继续瞎几把晃，在辽大老校区阶梯教室学了几个月英语。
+ 2014 - 2016 UNSW, 还不错，主要在maroubra一带活动。
+ 2017 - 2020 Beijing，Junior backend developer，真痛苦
+ 2020 - ？ 想回沈阳。
+  </description>
     </item>
     
     <item>
@@ -38,24 +43,8 @@
       <pubDate>Fri, 21 Jun 2019 14:14:29 +0800</pubDate>
       
       <guid>https://anastagizeno.github.io/post/2019/06/read-list-before-tokyo-2020/</guid>
-      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Using Asyncio in Python3</title>
-      <link>https://anastagizeno.github.io/post/2019/06/using-asyncio-in-python3/</link>
-      <pubDate>Thu, 20 Jun 2019 17:21:03 +0800</pubDate>
-      
-      <guid>https://anastagizeno.github.io/post/2019/06/using-asyncio-in-python3/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://learning.oreilly.com/library/view/using-asyncio-in/9781491999691/&#34;&gt;Using Asyncio in Python 3&lt;/a&gt; &lt;code&gt;by Caleb Hattingh Publisher: O&#39;Reilly Media, Inc. ISBN: 9781491999684&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;My story is a lot like yours, only more interesting ’cause it involves robots.&lt;/p&gt;
-
-&lt;p&gt;Bender, Futurama episode “30% Iron Chef”&lt;/p&gt;
-
-&lt;p&gt;The most common question I receive about Asyncio in Python 3 is this: “What is it, and what do I do with it?” The following story provides a backdrop for answering these questions. The central focus of Asyncio is about how to best perform multiple concurrent tasks at the same time. And not just any sort of tasks, but specifically tasks that involve waiting periods. The key insight required with this style of programming is that while you wait for this task to complete, work on other tasks can be performed.&lt;/p&gt;</description>
+      <description> Pages/Articles http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html
+Books </description>
     </item>
     
     <item>

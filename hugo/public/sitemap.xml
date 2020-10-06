@@ -4,12 +4,18 @@
   
   <url>
     <loc>https://anastagizeno.github.io/links/</loc>
-    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://anastagizeno.github.io/about/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -21,41 +27,6 @@
   <url>
     <loc>https://anastagizeno.github.io/post/2019/06/read-list-before-tokyo-2020/</loc>
     <lastmod>2019-06-21T14:14:29+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://anastagizeno.github.io/</loc>
-    <lastmod>2019-06-21T14:14:29+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anastagizeno.github.io/tags/asyncio/</loc>
-    <lastmod>2019-06-20T17:21:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anastagizeno.github.io/tags/concurrency/</loc>
-    <lastmod>2019-06-20T17:21:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anastagizeno.github.io/tags/python/</loc>
-    <lastmod>2019-06-20T17:21:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anastagizeno.github.io/tags/</loc>
-    <lastmod>2019-06-20T17:21:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://anastagizeno.github.io/post/2019/06/using-asyncio-in-python3/</loc>
-    <lastmod>2019-06-20T17:21:03+08:00</lastmod>
   </url>
   
   <url>
@@ -74,6 +45,11 @@
   
   <url>
     <loc>https://anastagizeno.github.io/month/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://anastagizeno.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
