@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>az1453</title>
+    <link>https://anastagizeno.github.io/</link>
+    <description>Recent content on az1453</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2020, Bingxing Kang. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://anastagizeno.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>People</title>
+      <link>https://anastagizeno.github.io/links/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://anastagizeno.github.io/links/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ME</title>
+      <link>https://anastagizeno.github.io/about/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://anastagizeno.github.io/about/</guid>
+      <description>flow st=&amp;gt;start: 开始 op=&amp;gt;operation: My Operation cond=&amp;gt;condition: Yes or No? e=&amp;gt;end st-&amp;gt;op-&amp;gt;cond cond(yes)-&amp;gt;e cond(no)-&amp;gt;op &amp;amp;
+ 1988 - 2007 上大学之前一直在沈阳，主要在沈北皇姑活动，印象里甚至都没去过浑河以南。
+ 2007 - 2011 Xidian University，挺傻逼的。
+ 2011 - 2013 瞎几把晃，上了一年班，主要在华南地区出差，继续瞎几把晃，在辽大老校区阶梯教室学了几个月英语。
+ 2014 - 2016 UNSW, 还不错，主要在maroubra一带活动。
+ 2017 - 2020 Beijing，Junior backend developer，真痛苦
+ 2020 - ？ 想回沈阳。
+  </description>
+    </item>
+    
+    <item>
+      <title>Read List Before Tokyo 2020</title>
+      <link>https://anastagizeno.github.io/post/2019/06/read-list-before-tokyo-2020/</link>
+      <pubDate>Fri, 21 Jun 2019 14:14:29 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/06/read-list-before-tokyo-2020/</guid>
+      <description> Pages/Articles http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html
+Books </description>
+    </item>
+    
+    <item>
+      <title>Watch List Before Tokyo </title>
+      <link>https://anastagizeno.github.io/post/2019/06/watch-list-before-tokyo/</link>
+      <pubDate>Wed, 12 Jun 2019 17:39:14 +0800</pubDate>
+      
+      <guid>https://anastagizeno.github.io/post/2019/06/watch-list-before-tokyo/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Nothing but just a video watch list to finish before 2020 Tokyo Olympic Game Opening ceremony&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You only need to know about seven functions to use asyncio [for everyday use].&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; &lt;cite&gt;Yury Selivanov, author of PEP 492&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Archive page</title>
+      <link>https://anastagizeno.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://anastagizeno.github.io/archives/</guid>
+      <description>Blog archives</description>
+    </item>
+    
+  </channel>
+</rss>

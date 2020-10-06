@@ -1,0 +1,55 @@
+baseURL = "https://anastagizeno.github.io/"
+languageCode = "en-us"
+title = "az1453"
+theme = "hugo-t"
+enableRobotsTXT = true
+PygmentsCodeFences = true
+canonifyurls = true
+
+copyright = "Copyright © 2020, Bingxing Kang. All rights reserved."
+
+[[menu.main]]
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+
+[[menu.main]]
+  name = "Archives"
+  weight = 20
+  identifier = "archives"
+  url = "/archives/"
+
+[params]
+  author = "Ted"
+  bg = "images/grey-prism.svg"
+  avatar = "images/avatar.png"
+  seotitle = "az1453"
+  subtitle = "\u00a0 \u00a0 \u00a0 Tuitio Fidei et Obsequium Pauperum \u00a0 \u00a0 \u00a0 \u00a0 守卫信仰, 拯救苦难"
+  description = ""
+  paginate = 10
+
+  email = "anastagizeno@gmail.com"
+  github = "AnastagiZeno"
+  twitter = "__az1453"
+  youtube = "UCJFBJTbWkqBN-1dqgUCUdnA"
+  medium = "anastagizeno"
+  bilibili = "496740944"
+  stackoverflow = "9152610"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+year = "year"
+month = "month"
+
+[permalinks]
+post = "/post/:year/:month/:slug/"
+year = "/post/:slug/"
+month = "/post/:slug/"
