@@ -108,11 +108,11 @@ url = "https://gohugo.io"
 
 # See https://giscus.app/
 [params.giscus]
-enable = true
-repo = "roninro/hugo-theme-puppet"
-repo_id = "R_kgDOHuvyhw"
+enable = false
+repo = ""
+repo_id = ""
 category = "General"
-category_id = "DIC_kwDOHuvyh84CQjDo"
+category_id = ""
 input_position = "top"
 theme = "light_tritanopia"
 lang = "en"
