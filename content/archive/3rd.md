@@ -1,6 +1,6 @@
 +++
 title = "3rd"
-date = 2023-10-19T17:24:36+08:00
+date = 2023-10-19T19:06:22+08:00
 draft = false
 description = ""
 subtitle = ""

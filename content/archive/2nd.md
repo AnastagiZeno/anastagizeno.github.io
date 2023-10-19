@@ -1,13 +1,13 @@
 +++
 title = "2nd"
-date = 2023-10-19T17:24:36+08:00
+date = 2023-10-19T19:04:46+08:00
 draft = false
 description = ""
 subtitle = ""
 header_img = ""
 short = false
 toc = true
-tags = ["散文"]
+tags = []
 categories = []
 series = []
 comment = false
