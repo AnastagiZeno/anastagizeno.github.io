@@ -63,7 +63,7 @@ weight = 50
 [[menu.main]]
 identifier = "github"
 name = "Github"
-url = "https://github.com/roninro/hugo-theme-puppet/"
+url = "https://github.com/AnastagiZeno"
 weight = 100
 
 
@@ -72,7 +72,7 @@ author = "BX"
 description = "守卫信仰，拯救苦难"
 keywords = "personal"
 img_home = "img/home-bg.jpg"
-img_404 = "img/404-bg.jpg"
+img_404 = "img/404-bg.png"
 
 useFaviconGenerator = true
 
@@ -89,11 +89,9 @@ bio = "a personal website"
 [params.social]
 twitter = "anastagizeno"
 facebook = "anastagizeno"
-# zhihu = "johndoe"
-# weibo = "johndoe"
-github = "johndoe"
-gitlab = "johndoe"
-linkedin = "johndoe"
+github = "anastagizeno"
+gitlab = "anastagizeno"
+linkedin = "anastagizeno"
 rss = true
 [params.social.mastodon]
 weight = 56
@@ -102,8 +100,20 @@ format = "https://mastodon.social/%v"
 id = "johndoe"
 url = ""
 
-[[params.friends]]
-name = "Nobody"
+[[params.azeroth]]
+name = "Kharanos"
+url = "https://gohugo.io"
+
+[[params.azeroth]]
+name = "Iron Forge"
+url = "https://gohugo.io"
+
+[[params.azeroth]]
+name = "Stormwind City"
+url = "https://gohugo.io"
+
+[[params.azeroth]]
+name = "Booty Bay"
 url = "https://gohugo.io"
 
 # See https://giscus.app/
