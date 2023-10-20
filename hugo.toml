@@ -72,7 +72,7 @@ author = "BX"
 description = "守卫信仰，拯救苦难"
 keywords = "personal"
 img_home = "img/home-bg.jpg"
-img_404 = "img/404-bg.png"
+img_404 = "img/404-bg.jpg"
 
 useFaviconGenerator = true
 
