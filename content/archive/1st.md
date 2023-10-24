@@ -1,5 +1,5 @@
 +++
-title = "1st"
+title = "藤野先生"
 date = 2023-10-19T17:24:36+08:00
 draft = false
 description = ""
