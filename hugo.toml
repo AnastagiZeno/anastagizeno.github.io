@@ -51,20 +51,21 @@ name = "Archive"
 url = "/archive/"
 weight = 10
 [[menu.main]]
-identifier = "guide"
-name = "Guide"
-url = "/series/themes-guide/"
+identifier = "series"
+name = "Series"
+url = "/series/"
 weight = 20
+[[menu.main]]
+identifier = "category"
+name = "Category"
+url = "/categories/"
+weight = 30
 [[menu.main]]
 identifier = "about"
 name = "About"
 url = "/about/"
-weight = 50
-[[menu.main]]
-identifier = "github"
-name = "Github"
-url = "https://github.com/AnastagiZeno"
-weight = 100
+weight = 40
+
 
 
 [params]
@@ -102,19 +103,15 @@ url = ""
 
 [[params.azeroth]]
 name = "Kharanos"
-url = "https://gohugo.io"
+url = "/404.html"
 
 [[params.azeroth]]
 name = "Iron Forge"
-url = "https://gohugo.io"
-
-[[params.azeroth]]
-name = "Stormwind City"
-url = "https://gohugo.io"
+url = "/404.html"
 
 [[params.azeroth]]
 name = "Booty Bay"
-url = "https://gohugo.io"
+url = "/wow/bootybay/"
 
 # See https://giscus.app/
 [params.giscus]
