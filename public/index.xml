@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 20 Dec 2023 15:34:59 +0800</lastBuildDate><atom:link href="https://anastagizeno1453.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Dec 2023 10:14:09 +0800</lastBuildDate><atom:link href="https://anastagizeno1453.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>希望不是一种策略</title>
+      <link>https://anastagizeno1453.com/archive/20231221/</link>
+      <pubDate>Thu, 21 Dec 2023 10:14:09 +0800</pubDate>
+      
+      <guid>https://anastagizeno1453.com/archive/20231221/</guid>
+      <description>依靠redis有续集合实现一个不那么严格的分布式注册中心 基于Redis有序集合（ZSet）实现一个简单的分布式注册中心的关键是利用其数据存储</description>
+    </item>
+    
     <item>
       <title>藏宝海湾永远阳光灿烂</title>
       <link>https://anastagizeno1453.com/archive/20231220/</link>
