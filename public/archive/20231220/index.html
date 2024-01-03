@@ -25,7 +25,6 @@
 <meta property="article:modified_time" content="2023-12-20T15:34:59+08:00" />
 
 
-
   <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
   
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
@@ -50,7 +49,43 @@
 <body ontouchstart="">
   
   
-  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
   <div class="container-fluid">
     
     <div class="navbar-header page-scroll">
@@ -133,6 +168,7 @@
     __HuxNav__.close();
   });
 </script>
+
   
 <div class="search-page">
   <div class="search-icon-close-container">
@@ -260,9 +296,9 @@
           
           
           <li class="next">
-            <a href="/archive/chelsea/" data-toggle="tooltip" data-placement="top" title="低挂的果实">
+            <a href="/archive/20231222/" data-toggle="tooltip" data-placement="top" title="系统正常">
               ⇨<br>
-              <span>低挂的果实</span>
+              <span>系统正常</span>
             </a>
           </li>
           
@@ -309,7 +345,7 @@
     
     <a href="/tags/gpt4/">GPT4</a>
     
-    <a href="/tags/%E7%9F%AD%E7%AF%87/">短篇</a>
+    <a href="/tags/%E5%8D%9A%E5%B0%94%E8%B5%AB%E6%96%AF/">博尔赫斯</a>
     
   </div>
 </section>
@@ -335,41 +371,7 @@
 
 
 
-  <script type="text/javascript"
-        async
-        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[\[','\]\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-});
-
-MathJax.Hub.Queue(function() {
-    
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<style>
-code.has-jax {
-    font: inherit;
-    font-size: 100%;
-    background: inherit;
-    border: inherit;
-    color: #515151;
-}
-</style>
+  
 
 
 <footer>

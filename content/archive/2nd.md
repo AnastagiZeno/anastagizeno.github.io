@@ -7,9 +7,9 @@ subtitle = ""
 header_img = ""
 short = false
 toc = true
-tags = ["短篇"]
+tags = ["博尔赫斯"]
 categories = []
-series = ["博尔赫斯"]
+series = ["短篇"]
 comment = false
 +++
 

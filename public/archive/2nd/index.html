@@ -50,7 +50,43 @@
 <body ontouchstart="">
   
   
-  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
   <div class="container-fluid">
     
     <div class="navbar-header page-scroll">
@@ -133,6 +169,7 @@
     __HuxNav__.close();
   });
 </script>
+
   
 <div class="search-page">
   <div class="search-icon-close-container">
@@ -172,7 +209,7 @@
         <div class="post-heading">
           <div class="tags">
             
-            <a class="tag" href="/tags/%E7%9F%AD%E7%AF%87/" title="短篇">短篇</a>
+            <a class="tag" href="/tags/%E5%8D%9A%E5%B0%94%E8%B5%AB%E6%96%AF/" title="博尔赫斯">博尔赫斯</a>
             
           </div>
           <h1>小径分岔的花园</h1>
@@ -295,7 +332,7 @@
     
     <a href="/tags/gpt4/">GPT4</a>
     
-    <a href="/tags/%E7%9F%AD%E7%AF%87/">短篇</a>
+    <a href="/tags/%E5%8D%9A%E5%B0%94%E8%B5%AB%E6%96%AF/">博尔赫斯</a>
     
   </div>
 </section>
@@ -321,41 +358,7 @@
 
 
 
-  <script type="text/javascript"
-        async
-        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[\[','\]\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-});
-
-MathJax.Hub.Queue(function() {
-    
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<style>
-code.has-jax {
-    font: inherit;
-    font-size: 100%;
-    background: inherit;
-    border: inherit;
-    color: #515151;
-}
-</style>
+  
 
 
 <footer>

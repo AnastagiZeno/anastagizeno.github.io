@@ -1,28 +1,21 @@
 +++
 title = "低挂的果实"
-date = 2023-12-21T20:11:54+08:00
+date = 2024-01-01T00:00:00+08:00
 draft = false
-description = ""
+description = "2024读书清单"
 subtitle = ""
 header_img = ""
 short = false
 toc = true
 tags = []
 categories = []
-series = []
+series = ["2024"]
 comment = false
-
 +++
 
-$E=mc^2$
+### &laquo;SRE Google运维解密&raquo;
 
-&laquo;SRE Google运维解密&raquo;
-
-&laquo;罗马故事-五贤帝&raquo;
+### &laquo;罗马故事&raquo;
 
 
-
-2024/01
-
-《哈德良回忆录》
 
