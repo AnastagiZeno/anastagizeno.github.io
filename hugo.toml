@@ -1,7 +1,7 @@
 baseURL = "https://anastagizeno1453.com"
 title = "Shahrazad"
 
-theme = "puppetme"
+theme = ""
 
 copyright = ""
 paginate = 4
@@ -72,8 +72,8 @@ weight = 40
 author = "BX"
 description = "守卫信仰，拯救苦难"
 keywords = "personal"
-img_home = "img/home-bg.jpg"
-img_404 = "img/404-bg.jpg"
+img_home = "default/home.jpg"
+img_404 = "default/404.jpg"
 
 useFaviconGenerator = true
 
@@ -84,7 +84,7 @@ custom_css = [] # ["css/custom.css"]  Add your file to assets folder  [assets/cs
 enable = false
 gravatarEmail = ""
 # Overwritten by your gravatar image if `gravatarEmail` is filled
-avatar = "img/home-bg.jpg"
+avatar = "default/home-bg.jpg"
 bio = "a personal website"
 
 [params.social]

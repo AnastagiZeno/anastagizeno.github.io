@@ -1,7 +1,7 @@
 +++
 title = "{{ replace .Name "-" " " | title }}"
 date = {{ .Date }}
-draft = false
+draft = true
 description = ""
 subtitle = ""
 header_img = ""
