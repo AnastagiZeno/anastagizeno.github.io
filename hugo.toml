@@ -71,7 +71,7 @@ weight = 40
 author = "BX"
 description = "守卫信仰，拯救苦难"
 keywords = "personal"
-img_home = "default/home.jpg"
+img_home = "default/home.jpeg"
 img_404 = "default/404.jpg"
 
 useFaviconGenerator = true
@@ -83,7 +83,7 @@ custom_css = [] # ["css/custom.css"]  Add your file to assets folder  [assets/cs
 enable = false
 gravatarEmail = ""
 # Overwritten by your gravatar image if `gravatarEmail` is filled
-avatar = "default/home-bg.jpg"
+avatar = "default/home.jpeg"
 bio = "a personal website"
 
 [params.social]
