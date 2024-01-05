@@ -110,7 +110,7 @@ url = "/404.html"
 
 [[params.azeroth]]
 name = "Booty Bay"
-url = "/wow/bootybay/"
+url = "/404.html"
 
 # See https://giscus.app/
 [params.giscus]
