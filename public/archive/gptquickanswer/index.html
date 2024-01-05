@@ -237,7 +237,9 @@ code.has-jax {
               col-lg-8 col-lg-offset-2
               col-md-10 col-md-offset-1
               post-container">
-        <h3 id="gpt4太善解人意了">GPT4太善解人意了<a class="anchorjs-link" href="#gpt4%e5%a4%aa%e5%96%84%e8%a7%a3%e4%ba%ba%e6%84%8f%e4%ba%86"></a></h3><blockquote>
+        <p>GPT4太善解人意了</p>
+<hr>
+<blockquote>
 <p>google内部使用mysql吗, spanner是替代吗</p>
 </blockquote>
 <p>Google 内部使用了多种数据库技术来支持其广泛的产品和服务，其中包括 MySQL 在内的关系数据库，以及专为特定场景设计的非关系数据库和分布式数据库系统。</p>
@@ -255,13 +257,15 @@ code.has-jax {
 <p>mysql的分布式能力，强一致性</p>
 </blockquote>
 <p>MySQL 是一个流行的开源关系数据库管理系统（RDBMS），它是为单节点设计的，最初不是为分布式计算或强一致性跨多个数据中心的部署而构建的。但是，随着技术的发展，有一些解决方案和扩展可以让 MySQL 支持分布式能力和在一定程度上实现强一致性。</p>
-<h3 id="mysql的分布式能力">MySQL的分布式能力<a class="anchorjs-link" href="#mysql%e7%9a%84%e5%88%86%e5%b8%83%e5%bc%8f%e8%83%bd%e5%8a%9b"></a></h3><p>对于分布式环境，MySQL 有几种不同的部署方案，它们支持不同程度的数据分布和可用性需求：</p>
+<p><strong>MySQL的分布式能力</strong></p>
+<p>对于分布式环境，MySQL 有几种不同的部署方案，它们支持不同程度的数据分布和可用性需求：</p>
 <ol>
 <li><strong>主从复制（Master-Slave Replication）</strong>： MySQL 的主从复制允许数据从一个主服务器同步到一个或多个从服务器。这种方法通常用于提高读取能力和数据冗余，但主从复制是异步的，不能保证强一致性。</li>
 <li><strong>主主复制（Master-Master Replication）</strong>： 在主主复制中，两个数据库服务器都可以处理读写操作，并且互相同步数据。这提供了某种程度的高可用性和冗余，但如果不小心处理，可能会导致数据冲突和一致性问题。</li>
 <li><strong>集群（如MySQL Cluster）</strong>： MySQL Cluster 是一个基于共享无关架构的技术，提供了一定程度的数据分布和高可用性。它使用 NDB 存储引擎，并可以实现近实时的复制和自动故障切换。</li>
 </ol>
-<h3 id="mysql的强一致性">MySQL的强一致性<a class="anchorjs-link" href="#mysql%e7%9a%84%e5%bc%ba%e4%b8%80%e8%87%b4%e6%80%a7"></a></h3><p>在分布式系统中，强一致性指一个操作完成后，所有节点上的数据都是同步的，这对于分布式数据库来说是一个挑战。对于MySQL来说，实现强一致性通常需要第三方解决方案或其他技术，例如：</p>
+<p><strong>MySQL的强一致性</strong></p>
+<p>在分布式系统中，强一致性指一个操作完成后，所有节点上的数据都是同步的，这对于分布式数据库来说是一个挑战。对于MySQL来说，实现强一致性通常需要第三方解决方案或其他技术，例如：</p>
 <ol>
 <li><strong>Galera Cluster</strong>： Galera Cluster 是一个同步多主复制插件，它扩展了MySQL/MariaDB，提供了跨多个节点的强一致性，节点之间的复制是同步进行的。</li>
 <li><strong>Percona XtraDB Cluster</strong>： Percona XtraDB Cluster 是另一个基于Galera Cluster的高可用性解决方案，它也提供了同步复制和强一致性。</li>
@@ -348,7 +352,7 @@ code.has-jax {
         
         
 
-<hr>
+
 <ul class="list-inline">
   
   <li><a href="/404.html" target="_blank">Kharanos</a></li>
