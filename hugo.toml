@@ -71,8 +71,9 @@ weight = 40
 author = "BX"
 description = "守卫信仰，拯救苦难"
 keywords = "personal"
+notFoundPageTitle = "You lost"
 img_home = "default/home.jpeg"
-img_404 = "default/404.jpg"
+img_404 = "default/hadrian_trip.png"
 
 useFaviconGenerator = true
 

@@ -47,7 +47,11 @@
         {{ else }}
         <div class="site-heading">
         {{ end }}
+          {{ if eq .Title "404 Page not found" }}
+          <h1>{{ .Site.Params.notFoundPageTitle }}</h1>
+          {{ else }}
           <h1>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</h1>
+          {{ end }}
           {{ $description := .Description }}
           {{ if .IsHome }}
           {{ $description = .Site.Params.description }}

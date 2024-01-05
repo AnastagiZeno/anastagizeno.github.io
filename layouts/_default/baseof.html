@@ -7,9 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   {{ $title := .Title }}
-  {{- if not .IsHome }}
+  {{ if not .IsHome }}
     {{ $title = printf "%s | %s" .Title .Site.Title }}
-  {{ end -}}
+  {{ end }}
+
 
   <title>{{ $title }}</title>
 
