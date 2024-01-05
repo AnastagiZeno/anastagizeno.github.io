@@ -1,7 +1,7 @@
 baseURL = "https://anastagizeno1453.com"
 title = "Shahrazad"
 
-theme = ""
+# theme = ""
 
 copyright = ""
 paginate = 4
@@ -67,7 +67,6 @@ url = "/about/"
 weight = 40
 
 
-
 [params]
 author = "BX"
 description = "守卫信仰，拯救苦难"
@@ -98,7 +97,7 @@ rss = true
 weight = 56
 icon = "fab fa-mastodon"
 format = "https://mastodon.social/%v"
-id = "johndoe"
+id = ""
 url = ""
 
 [[params.azeroth]]
