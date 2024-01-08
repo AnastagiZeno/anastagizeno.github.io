@@ -4,3 +4,5 @@ if [ $# -gt 0 ]; then
 else
     hugo new content archive/$(date +%Y%m%d).md
 fi
+
+# hugo --cleanDestinationDir 
