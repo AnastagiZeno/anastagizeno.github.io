@@ -11,14 +11,19 @@ tags = []
 categories = []
 series = ["2024"]
 comment = false
-+++
 
-## X
++++
 
 ### SRE Google运维解密
 
+### 服务端开发：技术、方法与实用解决方案
+
+---
+
 ### 罗马的故事
 
-## Y
+---
 
-### google style guides - go
+### golang-google-style-guide
+
+> https://github.com/google/styleguide/tree/gh-pages
