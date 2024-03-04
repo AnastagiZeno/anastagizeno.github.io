@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shahrazad</title>
+    <title>低垂的果实 on Shahrazad</title>
     <link>https://anastagizeno1453.com/about/</link>
-    <description>Recent content on Shahrazad</description>
+    <description>Recent content in 低垂的果实 on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://anastagizeno1453.com/about/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://anastagizeno1453.com/about/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
