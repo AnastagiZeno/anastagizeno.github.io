@@ -1,13 +1,13 @@
 +++
 title = "Antimangliuzi"
 date = 2024-03-05T09:56:03+08:00
-draft = true
+draft = false
 description = ""
 subtitle = ""
 header_img = ""
 short = false
 toc = true
-tags = []
+tags = ["操作系统"]
 categories = ["笔记"]
 series = []
 comment = false
