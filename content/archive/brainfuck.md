@@ -1,5 +1,5 @@
 +++
-title = "BFS"
+title = "Brain Fuck"
 date = 2024-03-05T21:53:35+08:00
 draft = false
 description = ""
@@ -8,7 +8,7 @@ header_img = ""
 short = false
 toc = true
 tags = []
-categories = []
+categories = ["编程思想"]
 series = []
 comment = false
 +++

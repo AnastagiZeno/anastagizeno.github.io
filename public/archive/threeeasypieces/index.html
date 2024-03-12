@@ -14,17 +14,17 @@
 
   <title>Antimangliuzi | Shahrazad</title>
   <meta name="author" content="BX">
-  <meta name="description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化CPU虚拟化ch7我们介绍了调度">
+  <meta name="description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化 CPU虚拟化ch7我们介绍了调度">
   <meta name="keywords" content="personal">
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Antimangliuzi"/>
-<meta name="twitter:description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化CPU虚拟化ch7我们介绍了调度"/>
+<meta name="twitter:description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化 CPU虚拟化ch7我们介绍了调度"/>
 
   <meta property="og:title" content="Antimangliuzi" />
-<meta property="og:description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化CPU虚拟化ch7我们介绍了调度" />
+<meta property="og:description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化 CPU虚拟化ch7我们介绍了调度" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://anastagizeno1453.com/archive/antimangliuzi/" /><meta property="article:section" content="archive" />
+<meta property="og:url" content="https://anastagizeno1453.com/archive/threeeasypieces/" /><meta property="article:section" content="archive" />
 <meta property="article:published_time" content="2024-03-05T09:56:03+08:00" />
 <meta property="article:modified_time" content="2024-03-05T09:56:03+08:00" />
 
@@ -114,7 +114,7 @@ code.has-jax {
           
           <li><a href="/categories/" title="Category">Category</a></li>
           
-          <li><a href="/about/" title="About">About</a></li>
+          <li><a href="/about/" title="甲辰">甲辰</a></li>
           
 
           <li class="search-icon">
@@ -244,7 +244,13 @@ code.has-jax {
         <h1 id="operating-systems-three-easy-pieceshttpspagescswisceduremziostep"><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank">Operating Systems: Three Easy Pieces</a><a class="anchorjs-link" href="#operating-systems-three-easy-pieceshttpspagescswisceduremziostep"></a></h1><blockquote>
 <p>如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。</p>
 </blockquote>
-<h2 id="part-i-虚拟化">Part I 虚拟化<a class="anchorjs-link" href="#part-i-%e8%99%9a%e6%8b%9f%e5%8c%96"></a></h2><h3 id="cpu虚拟化">CPU虚拟化<a class="anchorjs-link" href="#cpu%e8%99%9a%e6%8b%9f%e5%8c%96"></a></h3><h5 id="ch7">ch7<a class="anchorjs-link" href="#ch7"></a></h5><p>我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所有工作，从而优化响应时间。但很难做到“鱼与熊掌兼得”，这是系统中常见的、固有的折中。我们也看到了如何将I／O结合到场景中，但仍未解决操作系统根本无法看到未来的问题。稍后，我们将看到如何通过构建一个调度程序，利用最近的历史预测未来，从而解决这个问题。这个调度程序称为多级反馈队列，是第8章的主题。</p>
+<h2 id="part-i-虚拟化">Part I 虚拟化<a class="anchorjs-link" href="#part-i-%e8%99%9a%e6%8b%9f%e5%8c%96"></a></h2><p><figure>
+  <a class="paragraph-image">
+    <img data-src="/image/2024/image-20240311144957400.png" data-action="zoom" alt="image-20240311144957400"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="cpu虚拟化">CPU虚拟化<a class="anchorjs-link" href="#cpu%e8%99%9a%e6%8b%9f%e5%8c%96"></a></h3><h5 id="ch7">ch7<a class="anchorjs-link" href="#ch7"></a></h5><p>我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所有工作，从而优化响应时间。但很难做到“鱼与熊掌兼得”，这是系统中常见的、固有的折中。我们也看到了如何将I／O结合到场景中，但仍未解决操作系统根本无法看到未来的问题。稍后，我们将看到如何通过构建一个调度程序，利用最近的历史预测未来，从而解决这个问题。这个调度程序称为多级反馈队列，是第8章的主题。</p>
 <h5 id="ch8">ch8<a class="anchorjs-link" href="#ch8"></a></h5><p>本章介绍了一种调度方式，名为多级反馈队列（MLFQ）。你应该已经知道它为什么叫这个名字—它有多级队列，并利用反馈信息决定某个工作的优先级。以史为鉴：关注进程的一贯表现，然后区别对待。
 本章包含了一组优化的MLFQ规则。为了方便查阅，我们重新列在这里。</p>
 <ul>
@@ -257,8 +263,15 @@ code.has-jax {
 <p>MLFQ有趣的原因是：它不需要对工作的运行方式有先验知识，而是通过观察工作的运行来给出对应的优先级。通过这种方式，MLFQ可以同时满足各种工作的需求：对于短时间运行的交互型工作，获得类似于SJF／STCF的很好的全局性能，同时对长时间运行的CPU密集型负载也可以公平地、不断地稳步向前。因此，许多系统使用某种类型的MLFQ作为自己的基础调度程序，包括类BSD UNIX系统［LM＋89，B86］、Solaris［M06］以及Windows NT和其后的Window系 列操作系统。</p>
 <h5 id="ch9">ch9<a class="anchorjs-link" href="#ch9"></a></h5><p>本章介绍了比例份额调度的概念，并简单讨论了两种实现：彩票调度和步长调度。彩票调度通过随机值，聪明地做到了按比例分配。步长调度算法能够确定的获得需要的比例。虽然两者都很有趣，但由于一些原因，并没有作为CPU调度程序被广泛使用。一个原因是这两种方式都不能很好地适合I／O［AC97］；另一个原因是其中最难的票数分配问题并没有确定的解决方式，例如，如何知道浏览器进程应该拥有多少票数？通用调度程序（像前面讨论的MLFQ及其他类似的Linux调度程序）做得更好，因此得到了广泛的应用。</p>
 <p>结果，比例份额调度程序只有在这些问题可以相对容易解决的领域更有用（例如容易确定份额比例）。例如在虚拟（virtualized）数据中心中，你可能会希望分配1／4的CPU周期给Windows虚拟机，剩余的给Linux系统，比例分配的方式可以更简单高效。详细信息请参考Waldspurger［W02］，该文介绍了VMWare的ESX系统如何用比例分配的方式来共享内存。</p>
-<h5 id="ch10-oh">ch10 OH<a class="anchorjs-link" href="#ch10-oh"></a></h5><p>本章介绍了多处理器调度的不同方法。其中单队列的方式（SQMS）比较容易构建，负载均衡较好，但在扩展性和缓存亲和度方面有着固有的缺陷。多队列的方式（MQMS）有很好的扩展性和缓存亲和度，但实现负载均衡却很困难，也更复杂。无论采用哪种方式，都没有简单的答案：构建一个通用的调度程序仍是一项令人生畏的任务，因为即使很小的代码变动，也有可能导致巨大的行为差异。除非很清楚自己在做什么，或者有人付你很多钱，否则别干这种事。</p>
-<h5 id="ch11">ch11<a class="anchorjs-link" href="#ch11"></a></h5>
+<h5 id="ch10">ch10<a class="anchorjs-link" href="#ch10"></a></h5><p>本章介绍了多处理器调度的不同方法。其中单队列的方式（SQMS）比较容易构建，负载均衡较好，但在扩展性和缓存亲和度方面有着固有的缺陷。多队列的方式（MQMS）有很好的扩展性和缓存亲和度，但实现负载均衡却很困难，也更复杂。无论采用哪种方式，都没有简单的答案：构建一个通用的调度程序仍是一项令人生畏的任务，因为即使很小的代码变动，也有可能导致巨大的行为差异。除非很清楚自己在做什么，或者有人付你很多钱，否则别干这种事。</p>
+<h5 id="ch15">ch15<a class="anchorjs-link" href="#ch15"></a></h5><p>本章通过虚拟内存使用的一种特殊机制，即地址转换（address translation） ，扩展了受限直接访问的概念。利用地址转换，操作系统可以控制进程的所有内存访问，确保访问在地址空间的界限内。这个技术高效的关键是硬件支持，硬件快速地将所有内存访问操作中的虚拟地址（进程自己看到的内存位置）转换为物理地址（实际位置） 。所有的这一切对进程来说都是透明的，进程并不知道自己使用的内存引用已经被重定位，制造了美妙的假象。</p>
+<p>我们还看到了一种特殊的虚拟化方式，称为基址加界限的动态重定位。基址加界限的虚拟化方式非常高效，因为只需要很少的硬件逻辑，就可以将虚拟地址和基址寄存器加起来，并检查进程产生的地址没有越界。基址加界限也提供了保护，操作系统和硬件的协作，确保没有进程能够访问其地址空间之外的内容。保护肯定是操作系统最重要的目标之一。没有保护，操作系统不可能控制机器（如果进程可以随意修改内存，它们就可以轻松地做出可怕的事情，比如重写陷阱表并完全接管系统） 。</p>
+<p>遗憾的是，这个简单的动态重定位技术有效率低下的问题。例如，从图15.2中可以看到，重定位的进程使用了从32KB到48KB的物理内存，但由于该进程的栈区和堆区并不很大，导致这块内存区域中大量的空间被浪费。这种浪费通常称为内部碎片（internal fragmentation） ，指的是已经分配的内存单元内部有未使用的空间（即碎片） ，造成了浪费。在我们当前的方式中，即使有足够的物理内存容纳更多进程，但我们目前要求将地址空间放在固定大小的槽块中，因此会出现内部碎片[2]。所以，我们需要更复杂的机制，以便更好地利用物理内存，避免内部碎片。第一次尝试是将基址加界限的概念稍稍泛化，得到分段（segmentation）的概念，我们接下来将讨论。</p>
+<h5 id="ch16">ch16<a class="anchorjs-link" href="#ch16"></a></h5><p>分段解决了一些问题，帮助我们实现了更高效的虚拟内存。不只是动态重定位，通过避免地址空间的逻辑段之间的大量潜在的内存浪费，分段能更好地支持稀疏地址空间。它还很快，因为分段要求的算法很容易，很适合硬件完成，地址转换的开销极小。分段还有一个附加的好处：代码共享。如果代码放在独立的段中，这样的段就可能被多个运行的程序共享。</p>
+<p>但我们已经知道，在内存中分配不同大小的段会导致一些问题，我们希望克服。首先，是我们上面讨论的外部碎片。由于段的大小不同，空闲内存被割裂成各种奇怪的大小，因此满足内存分配请求可能会很难。用户可以尝试采用聪明的算法［W＋95］，或定期紧凑内存，但问题很根本，难以避免。</p>
+<p>第二个问题也许更重要，分段还是不足以支持更一般化的稀疏地址空间。例如，如果有一个很大但是稀疏的堆，都在一个逻辑段中，整个堆仍然必须完整地加载到内存中。换言之，如果使用地址空间的方式不能很好地匹配底层分段的设计目标，分段就不能很好地工作。因此我们需要找到新的解决方案。你准备好了吗？</p>
+<h5 id="ch17">ch17<a class="anchorjs-link" href="#ch17"></a></h5><p>在本章中，我们讨论了最基本的内存分配程序形式。这样的分配程序存在于所有地方，与你编写的每个C程序链接，也和管理其自身数据结构的内存的底层操作系统链接。与许多系统一样，在构建这样一个系统时需要做许多折中。对分配程序提供的确切工作负载了解得越多，就越能调整它以更好地处理这种工作负载。在现代计算机系统中，构建一个适用于各种工作负载、快速、空间高效、可扩展的分配程序仍然是一个持续的挑战。</p>
+
 
         <hr style="visibility: hidden;" />
         <ul class="pager">
@@ -272,9 +285,9 @@ code.has-jax {
           
           
           <li class="next">
-            <a href="/archive/brainfuck/" data-toggle="tooltip" data-placement="top" title="BFS">
+            <a href="/archive/brainfuck/" data-toggle="tooltip" data-placement="top" title="Brain Fuck">
               ⇨<br>
-              <span>BFS</span>
+              <span>Brain Fuck</span>
             </a>
           </li>
           

@@ -62,7 +62,7 @@ url = "/categories/"
 weight = 30
 [[menu.main]]
 identifier = "about"
-name = "About"
+name = "甲辰"
 url = "/about/"
 weight = 40
 
