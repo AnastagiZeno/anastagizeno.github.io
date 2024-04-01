@@ -13,3 +13,6 @@ series = []
 comment = false
 +++
 
+
+> "Transaction Processing:Concepts and Techniques" Jim Gray and Andreas Reuter<br>
+> 中译本《事务处理：概念与技术》由电子工业出版社出版

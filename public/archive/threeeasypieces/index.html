@@ -12,17 +12,17 @@
   
 
 
-  <title>朱见深 | Shahrazad</title>
+  <title>Do I dare to eat a peach | Shahrazad</title>
   <meta name="author" content="BX">
-  <meta name="description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化 CPU虚拟化ch7我们介绍了调度">
+  <meta name="description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 I 虚拟化 CPU虚拟化ch7我们介绍了调度的">
   <meta name="keywords" content="personal">
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="朱见深"/>
-<meta name="twitter:description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化 CPU虚拟化ch7我们介绍了调度"/>
+<meta name="twitter:title" content="Do I dare to eat a peach"/>
+<meta name="twitter:description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 I 虚拟化 CPU虚拟化ch7我们介绍了调度的"/>
 
-  <meta property="og:title" content="朱见深" />
-<meta property="og:description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 Part I 虚拟化 CPU虚拟化ch7我们介绍了调度" />
+  <meta property="og:title" content="Do I dare to eat a peach" />
+<meta property="og:description" content="Operating Systems: Three Easy Pieces 如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。 I 虚拟化 CPU虚拟化ch7我们介绍了调度的" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://anastagizeno1453.com/archive/threeeasypieces/" /><meta property="article:section" content="archive" />
 <meta property="article:published_time" content="2024-03-05T09:56:03+08:00" />
@@ -114,7 +114,7 @@ code.has-jax {
           
           <li><a href="/categories/" title="Category">Category</a></li>
           
-          <li><a href="/about/" title="甲辰">甲辰</a></li>
+          <li><a href="/about/" title="2024">2024</a></li>
           
 
           <li class="search-icon">
@@ -215,7 +215,7 @@ code.has-jax {
             <a class="tag" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="操作系统">操作系统</a>
             
           </div>
-          <h1>朱见深</h1>
+          <h1>Do I dare to eat a peach</h1>
           <h2 class="subheading"></h2>
           <span class="meta">
             Posted by  BX 
@@ -244,7 +244,7 @@ code.has-jax {
         <h1 id="operating-systems-three-easy-pieceshttpspagescswisceduremziostep"><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank">Operating Systems: Three Easy Pieces</a><a class="anchorjs-link" href="#operating-systems-three-easy-pieceshttpspagescswisceduremziostep"></a></h1><blockquote>
 <p>如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。</p>
 </blockquote>
-<h2 id="part-i-虚拟化">Part I 虚拟化<a class="anchorjs-link" href="#part-i-%e8%99%9a%e6%8b%9f%e5%8c%96"></a></h2><p><figure>
+<h2 id="i-虚拟化">I 虚拟化<a class="anchorjs-link" href="#i-%e8%99%9a%e6%8b%9f%e5%8c%96"></a></h2><p><figure>
   <a class="paragraph-image">
     <img data-src="/image/2024/image-20240311144957400.png" data-action="zoom" alt="image-20240311144957400"  class="lazyload">
   </a>
@@ -264,7 +264,7 @@ code.has-jax {
 <h5 id="ch9">ch9<a class="anchorjs-link" href="#ch9"></a></h5><p>本章介绍了比例份额调度的概念，并简单讨论了两种实现：彩票调度和步长调度。彩票调度通过随机值，聪明地做到了按比例分配。步长调度算法能够确定的获得需要的比例。虽然两者都很有趣，但由于一些原因，并没有作为CPU调度程序被广泛使用。一个原因是这两种方式都不能很好地适合I／O［AC97］；另一个原因是其中最难的票数分配问题并没有确定的解决方式，例如，如何知道浏览器进程应该拥有多少票数？通用调度程序（像前面讨论的MLFQ及其他类似的Linux调度程序）做得更好，因此得到了广泛的应用。</p>
 <p>结果，比例份额调度程序只有在这些问题可以相对容易解决的领域更有用（例如容易确定份额比例）。例如在虚拟（virtualized）数据中心中，你可能会希望分配1／4的CPU周期给Windows虚拟机，剩余的给Linux系统，比例分配的方式可以更简单高效。详细信息请参考Waldspurger［W02］，该文介绍了VMWare的ESX系统如何用比例分配的方式来共享内存。</p>
 <h5 id="ch10">ch10<a class="anchorjs-link" href="#ch10"></a></h5><p>本章介绍了多处理器调度的不同方法。其中单队列的方式（SQMS）比较容易构建，负载均衡较好，但在扩展性和缓存亲和度方面有着固有的缺陷。多队列的方式（MQMS）有很好的扩展性和缓存亲和度，但实现负载均衡却很困难，也更复杂。无论采用哪种方式，都没有简单的答案：构建一个通用的调度程序仍是一项令人生畏的任务，因为即使很小的代码变动，也有可能导致巨大的行为差异。除非很清楚自己在做什么，或者有人付你很多钱，否则别干这种事。</p>
-<h5 id="ch15">ch15<a class="anchorjs-link" href="#ch15"></a></h5><p>本章通过虚拟内存使用的一种特殊机制，即地址转换（address translation） ，扩展了受限直接访问的概念。利用地址转换，操作系统可以控制进程的所有内存访问，确保访问在地址空间的界限内。这个技术高效的关键是硬件支持，硬件快速地将所有内存访问操作中的虚拟地址（进程自己看到的内存位置）转换为物理地址（实际位置） 。所有的这一切对进程来说都是透明的，进程并不知道自己使用的内存引用已经被重定位，制造了美妙的假象。</p>
+<h3 id="内存虚拟化">内存虚拟化<a class="anchorjs-link" href="#%e5%86%85%e5%ad%98%e8%99%9a%e6%8b%9f%e5%8c%96"></a></h3><h5 id="ch15">ch15<a class="anchorjs-link" href="#ch15"></a></h5><p>本章通过虚拟内存使用的一种特殊机制，即地址转换（address translation） ，扩展了受限直接访问的概念。利用地址转换，操作系统可以控制进程的所有内存访问，确保访问在地址空间的界限内。这个技术高效的关键是硬件支持，硬件快速地将所有内存访问操作中的虚拟地址（进程自己看到的内存位置）转换为物理地址（实际位置） 。所有的这一切对进程来说都是透明的，进程并不知道自己使用的内存引用已经被重定位，制造了美妙的假象。</p>
 <p>我们还看到了一种特殊的虚拟化方式，称为基址加界限的动态重定位。基址加界限的虚拟化方式非常高效，因为只需要很少的硬件逻辑，就可以将虚拟地址和基址寄存器加起来，并检查进程产生的地址没有越界。基址加界限也提供了保护，操作系统和硬件的协作，确保没有进程能够访问其地址空间之外的内容。保护肯定是操作系统最重要的目标之一。没有保护，操作系统不可能控制机器（如果进程可以随意修改内存，它们就可以轻松地做出可怕的事情，比如重写陷阱表并完全接管系统） 。</p>
 <p>遗憾的是，这个简单的动态重定位技术有效率低下的问题。例如，从图15.2中可以看到，重定位的进程使用了从32KB到48KB的物理内存，但由于该进程的栈区和堆区并不很大，导致这块内存区域中大量的空间被浪费。这种浪费通常称为内部碎片（internal fragmentation） ，指的是已经分配的内存单元内部有未使用的空间（即碎片） ，造成了浪费。在我们当前的方式中，即使有足够的物理内存容纳更多进程，但我们目前要求将地址空间放在固定大小的槽块中，因此会出现内部碎片[2]。所以，我们需要更复杂的机制，以便更好地利用物理内存，避免内部碎片。第一次尝试是将基址加界限的概念稍稍泛化，得到分段（segmentation）的概念，我们接下来将讨论。</p>
 <h5 id="ch16">ch16<a class="anchorjs-link" href="#ch16"></a></h5><p>分段解决了一些问题，帮助我们实现了更高效的虚拟内存。不只是动态重定位，通过避免地址空间的逻辑段之间的大量潜在的内存浪费，分段能更好地支持稀疏地址空间。它还很快，因为分段要求的算法很容易，很适合硬件完成，地址转换的开销极小。分段还有一个附加的好处：代码共享。如果代码放在独立的段中，这样的段就可能被多个运行的程序共享。</p>
@@ -280,6 +280,24 @@ code.has-jax {
 <p>在一个内存受限的系统中（像很多旧系统一样），小结构是有意义的。在具有较多内存，并且工作负载主动使用大量内存页的系统中，用更大的页表来加速TLB未命中处理，可能是正确的选择。有了软件管理的TLB，数据结构的整个世界开放给了喜悦的操作系统创新者（提示：就是你）。你能想出什么样的新结构？它们解决了什么问题？当你入睡时想想这些问题，做一个只有操作系统开发人员才能做的大梦。</p>
 <h5 id="ch21">ch21<a class="anchorjs-link" href="#ch21"></a></h5><p>在这个简短的一章中，我们介绍了访问超出物理内存大小时的一些概念。要做到这一点，在页表结构中需要添加额外信息，比如增加一个存在位（present bit，或者其他类似机制），告诉我们页是不是在内存中。如果不存在，则操作系统页错误处理程序（page—fault handler）会运行以处理页错误（page fault），从而将需要的页从硬盘读取到内存，可能还需要先换出内存中的一些页，为即将换入的页腾出空间。</p>
 <p>回想一下，很重要的是（并且令人惊讶的是），这些行为对进程都是透明的。对进程而言，它只是访问自己私有的、连续的虚拟内存。在后台，物理页被放置在物理内存中的任意（非连续）位置，有时它们甚至不在内存中，需要从硬盘取回。虽然我们希望在一般情况下内存访问速度很快，但在某些情况下，它需要多个硬盘操作的时间。像执行单条指令这样简单的事情，在最坏的情况下，可能需要很多毫秒才能完成。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/image/2024/image-20240325113528796.png" data-action="zoom" alt="image-20240325113528796"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h2 id="ii-并发">II 并发<a class="anchorjs-link" href="#ii-%e5%b9%b6%e5%8f%91"></a></h2><h5 id="ch26">ch26<a class="anchorjs-link" href="#ch26"></a></h5><p>在结束之前，你可能会有一个问题：为什么我们要在OS类中研究并发？一个词：“历史”。操作系统是第一个并发程序，许多技术都是在操作系统内部使用的。后来，在多线程的进程中，应用程序员也必须考虑这些事情。</p>
+<p>例如，设想有两个进程在运行。假设它们都调用write（）来写入文件，并且都希望将数据追加到文件中（即将数据添加到文件的末尾，从而增加文件的长度）。为此，这两个进程都必须分配一个新块，记录在该块所在文件的inode中，并更改文件的大小以反映新的、增加的大小（插一句，在本书的第3部分，我们将更多地了解文件）。因为中断可能随时发生，所以更新这些共享结构的代码（例如，分配的位图或文件的inode）是临界区。因此，从引入中断的一开始，OS设计人员就不得不担心操作系统如何更新内部结构。不合时宜的中断会导致上述所有问题。毫不奇怪，页表、进程列表、文件系统结构以及几乎每个内核数据结构都必须小心地访问，并使用正确的同步原语才能正常工作。</p>
+<h5 id="ch27-ch28">ch27 ch28<a class="anchorjs-link" href="#ch27-ch28"></a></h5><p><figure>
+  <a class="paragraph-image">
+    <img data-src="/image/2024/image-20240329170359270.png" data-action="zoom" alt="image-20240329170359270"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>一些硬件支持（更加强大的指令）和一些操作系统支持（例如Solaris的park（）和unpark（）原语，Linux的futex（））。当然，细节有所不同，执行这些锁操作的代码通常是高度优化的。读者可以查看Solaris或者Linux的代码以了解更多信息［L09，S09］。David等人关于现代多处理器的锁策略的对比也值得一看。</p>
+<h5 id="ch29">ch29<a class="anchorjs-link" href="#ch29"></a></h5><p>我们已经介绍了一些并发数据结构，从计数器到链表队列，最后到大量使用的散列表。同时，我们也学习到：控制流变化时注意获取锁和释放锁；增加并发不一定能提高性能；有性能问题的时候再做优化。关于最后一点，避免不成熟的优化（premature optimization），对于所有关心性能的开发者都有用。我们让整个应用的某一小部分变快，却没有提高整体性能，其实没有价值。</p>
+<p>当然，我们只触及了高性能数据结构的皮毛。Moir和Shavit的调查提供了更多信息，包括指向其他来源的链接［MS04］。特别是，你可能会对其他结构感兴趣（比如B树），那么数据库课程会是一个不错的选择。你也可能对根本不用传统锁的技术感兴趣。这种非阻塞数据结构是有意义的，在常见并发问题的章节中，我们会稍稍涉及。但老实说这是一个广泛领域的知识，远非本书所能覆盖。感兴趣的读者可以自行研究。</p>
+<h5 id="ch30">ch30<a class="anchorjs-link" href="#ch30"></a></h5><p>我们看到了引入锁之外的另一个重要同步原语：条件变量。当某些程序状态不符合要求时，通过允许线程进入休眠状态，条件变量使我们能够漂亮地解决许多重要的同步问题，包括著名的（仍然重要的）生产者／消费者问题，以及覆盖条件。</p>
 
 
         <hr style="visibility: hidden;" />
