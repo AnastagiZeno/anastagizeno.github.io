@@ -20,10 +20,12 @@ header_img = "/image/2024/persia.jpeg"
 
 ---
 
-**《Introduction to computing systems from bits and gates to C and beyond》（计算机系统概论）**  *2024/03/04 -*
-
-**《Operating Systems: Three Easy Pieces》（操作系统导论）**
+**《Operating Systems: Three Easy Pieces》（操作系统导论）**  *2024/03/04 - 2024/04/11*
 > 十年前就该看，想起了马鲁布拉的娴静时光，阳光明媚，雨水充沛，还不热。
+
+---
+
+**《把时间当做朋友》** *2024/04/09 -*
 
 ---
 
