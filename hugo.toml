@@ -73,7 +73,7 @@ description = "守卫信仰，拯救苦难"
 keywords = "personal"
 notFoundPageTitle = "You lost"
 img_home = "default/home.jpeg"
-img_404 = "default/hadrian_trip.png"
+img_404 = "default/hadrian_trip.jpg"
 
 useFaviconGenerator = true
 
