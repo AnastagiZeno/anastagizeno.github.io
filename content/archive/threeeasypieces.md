@@ -4,7 +4,7 @@ date = 2024-03-05T09:56:03+08:00
 draft = false
 description = ""
 subtitle = ""
-header_img = ""
+header_img = "/image/2024/3pieces.jpeg"
 short = false
 toc = true
 tags = ["操作系统"]
@@ -14,9 +14,8 @@ comment = false
 
 +++
 
-# [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/)
+**[Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/)**
 
->如今我们在应用层见到的一切方法、思想，在很多年前的操作系统层面都出现过了，没有任何例外。
 
 ## I 虚拟化
 
