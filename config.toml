@@ -1,4 +1,4 @@
-baseURL = "https://anastagizeno1453.com"
+baseURL = "https://shahrazad.fun"
 title = "Shahrazad"
 copyright = ""
 paginate = 4
@@ -107,4 +107,3 @@ input_position = "top"
 theme = "light_tritanopia"
 lang = "en"
 
-publishDir="../blog/"
