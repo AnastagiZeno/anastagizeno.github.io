@@ -1,4 +1,2 @@
 #!/bin/bash
-hugo --gc
-hugo --cleanDestinationDir 
-hugo -d public
+hugo --gc;hugo --cleanDestinationDir;hugo -d public
