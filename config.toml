@@ -1,27 +1,19 @@
 baseURL = "https://anastagizeno1453.com"
 title = "Shahrazad"
-
-# theme = ""
-
 copyright = ""
 paginate = 4
 languageCode = "en"
 defaultContentLanguage = "en"
-
 hasCJKLanguage = true
 enableInlineShortcodes = true
 enableEmoji = true
-# prevent build failures when using Hugo's Instagram shortcode due to deprecated Instagram API.
-# See https://github.com/gohugoio/hugo/issues/7228#issuecomment-714490456
 ignoreErrors = ["error-remote-getjson"]
-
 disqusShortname = ""
 googleAnalytics = ""
 
 [outputs]
 home = ["HTML", "JSON", "RSS"]
 
-# prevent build failures when using Hugo's template _internal/opengraph.html
 [taxonomies]
 category = "categories"
 tag = "tags"
@@ -76,14 +68,12 @@ img_home = "default/home.jpeg"
 img_404 = "default/hadrian_trip.jpg"
 
 useFaviconGenerator = true
-
 custom_js = []
 custom_css = [] # ["css/custom.css"]  Add your file to assets folder  [assets/css/custom.css]
 
 [params.sidebar]
 enable = false
 gravatarEmail = ""
-# Overwritten by your gravatar image if `gravatarEmail` is filled
 avatar = "default/home.jpeg"
 bio = "a personal website"
 
@@ -94,12 +84,6 @@ github = "anastagizeno"
 gitlab = "anastagizeno"
 linkedin = "anastagizeno"
 rss = true
-[params.social.mastodon]
-weight = 56
-icon = "fab fa-mastodon"
-format = "https://mastodon.social/%v"
-id = ""
-url = ""
 
 [[params.azeroth]]
 name = "Kharanos"
@@ -113,7 +97,6 @@ url = "/404.html"
 name = "Booty Bay"
 url = "/404.html"
 
-# See https://giscus.app/
 [params.giscus]
 enable = false
 repo = ""
@@ -123,3 +106,5 @@ category_id = ""
 input_position = "top"
 theme = "light_tritanopia"
 lang = "en"
+
+publishDir="../blog/"
