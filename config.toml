@@ -87,15 +87,15 @@ rss = true
 
 [[params.azeroth]]
 name = "Kharanos"
-url = "/404.html"
+url = "/backdoor/baktun/list"
 
 [[params.azeroth]]
 name = "Iron Forge"
-url = "/404.html"
+url = "/backdoor/baktun/list"
 
 [[params.azeroth]]
 name = "Booty Bay"
-url = "/404.html"
+url = "/backdoor/baktun/list"
 
 [params.giscus]
 enable = false
