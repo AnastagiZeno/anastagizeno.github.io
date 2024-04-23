@@ -87,10 +87,18 @@ rss = true
 
 [[params.azeroth]]
 name = "Kharanos"
-url = "/dogdoor/baktun/codice"
+url = "/dogdoor/shahrazad/postreceive"
 
 [[params.azeroth]]
 name = "Iron Forge"
+url = "/dogdoor/baktun/postreceive"
+
+[[params.azeroth]]
+name = "Booty Bay"
+url = "/dogdoor/baktun/codice"
+
+[[params.azeroth]]
+name = "The Green Hills of Stranglethorn"
 url = "/dogdoor/baktun/word"
 
 [params.giscus]
