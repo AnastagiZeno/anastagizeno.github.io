@@ -1,8 +1,8 @@
 +++
-title = "3 easy pieces"
+title = "OSTEP"
 date = 2024-03-05T09:56:03+08:00
 draft = false
-description = ""
+description = "Operating Systems: Three Easy Pieces"
 subtitle = ""
 header_img = "/image/2024/3pieces.jpeg"
 short = false
