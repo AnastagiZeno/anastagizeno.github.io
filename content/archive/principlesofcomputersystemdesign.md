@@ -1,5 +1,5 @@
 +++
-title = "Principlesofcomputersystemdesign"
+title = "6033"
 date = 2024-04-23T11:25:40+08:00
 draft = false
 description = "Principles Of Computer System Design: An Introduction"
