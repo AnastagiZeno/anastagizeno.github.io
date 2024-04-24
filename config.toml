@@ -91,15 +91,15 @@ url = "/dogdoor/shahrazad/postreceive"
 
 [[params.azeroth]]
 name = "Iron Forge"
-url = "/dogdoor/baktun/postreceive"
+url = "/dogdoor/katun/postreceive"
 
 [[params.azeroth]]
 name = "Booty Bay"
-url = "/dogdoor/baktun/codice"
+url = "/dogdoor/katun/codice"
 
 [[params.azeroth]]
 name = "The Green Hills of Stranglethorn"
-url = "/dogdoor/baktun/word"
+url = "/dogdoor/katun/word"
 
 [params.giscus]
 enable = false
