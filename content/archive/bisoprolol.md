@@ -33,3 +33,5 @@ document.body.appendChild(cover);
 ```
 
 [latex语法表](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)
+
+[正则手册](https://tool.oschina.net/uploads/apidocs/jquery/regexp.html)
