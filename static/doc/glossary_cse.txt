@@ -1,0 +1,3 @@
+duplicate suppression 去重
+idempotent 幂等
+packet network 分组网络

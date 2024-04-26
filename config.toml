@@ -98,8 +98,12 @@ name = "Booty Bay"
 url = "/dogdoor/katun/codice"
 
 [[params.azeroth]]
-name = "The Green Hills of Stranglethorn"
+name = "Stonefire Tavern"
 url = "/dogdoor/katun/word"
+
+[[params.azeroth]]
+name = "Thunderbrew Distillery"
+url = "/dogdoor/katun/note"
 
 [params.giscus]
 enable = false
