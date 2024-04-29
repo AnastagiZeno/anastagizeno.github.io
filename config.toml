@@ -1,15 +1,13 @@
 baseURL = "https://shahrazad.fun"
 title = "Shahrazad"
 copyright = ""
-paginate = 4
+paginate = 6
 languageCode = "en"
 defaultContentLanguage = "en"
 hasCJKLanguage = true
 enableInlineShortcodes = true
 enableEmoji = true
 ignoreErrors = ["error-remote-getjson"]
-disqusShortname = ""
-googleAnalytics = ""
 
 [outputs]
 home = ["HTML", "JSON", "RSS"]
@@ -36,27 +34,27 @@ unsafe = true
 identifier = "home"
 name = "Home"
 url = "/"
-weight = -100
+weight = -1
 [[menu.main]]
 identifier = "archive"
 name = "Archive"
 url = "/archive/"
-weight = 10
+weight = 1
 [[menu.main]]
 identifier = "series"
 name = "Series"
 url = "/series/"
-weight = 20
+weight = 2
 [[menu.main]]
 identifier = "category"
 name = "Category"
 url = "/categories/"
-weight = 30
+weight = 3
 [[menu.main]]
 identifier = "about"
 name = "2024"
 url = "/about/"
-weight = 40
+weight = 42
 
 
 [params]
@@ -66,20 +64,15 @@ keywords = "personal"
 notFoundPageTitle = "You lost"
 img_home = "default/home.jpeg"
 img_404 = "default/hadrian_trip.jpg"
-
 useFaviconGenerator = true
-custom_js = []
-custom_css = [] # ["css/custom.css"]  Add your file to assets folder  [assets/css/custom.css]
 
 [params.sidebar]
-enable = false
-gravatarEmail = ""
+enable = true
 avatar = "default/home.jpeg"
 bio = "a personal website"
 
 [params.social]
 twitter = "anastagizeno"
-facebook = "anastagizeno"
 github = "anastagizeno"
 gitlab = "anastagizeno"
 linkedin = "anastagizeno"
@@ -107,11 +100,3 @@ url = "/dogdoor/katun/note"
 
 [params.giscus]
 enable = false
-repo = ""
-repo_id = ""
-category = "General"
-category_id = ""
-input_position = "top"
-theme = "light_tritanopia"
-lang = "en"
-
