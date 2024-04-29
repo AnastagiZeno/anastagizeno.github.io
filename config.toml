@@ -53,7 +53,7 @@ weight = 3
 [[menu.main]]
 identifier = "about"
 name = "2024"
-url = "/about/"
+url = "/about/2024"
 weight = 42
 
 
@@ -61,9 +61,9 @@ weight = 42
 author = "BX"
 description = "守卫信仰，拯救苦难"
 keywords = "personal"
-notFoundPageTitle = "You lost"
+notFoundPageTitle = "Where I am"
 img_home = "default/home.jpeg"
-img_404 = "default/hadrian_trip.jpg"
+img_404 = "default/404.webp"
 useFaviconGenerator = true
 
 [params.sidebar]
