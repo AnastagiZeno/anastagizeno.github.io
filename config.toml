@@ -51,17 +51,17 @@ name = "Category"
 url = "/categories/"
 weight = 3
 [[menu.main]]
-identifier = "about"
+identifier = "read"
 name = "2024"
-url = "/about/2024"
-weight = 42
+url = "/read/2024/"
+weight = 2024
 
 
 [params]
 author = "BX"
 description = "守卫信仰，拯救苦难"
 keywords = "personal"
-notFoundPageTitle = "Where I am"
+notFoundPageTitle = "Dove è questo?"
 img_home = "default/home.jpeg"
 img_404 = "default/404.webp"
 useFaviconGenerator = true
