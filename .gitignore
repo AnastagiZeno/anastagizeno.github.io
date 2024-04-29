@@ -253,5 +253,7 @@ fabric.properties
 
 
 .idea/
+# python virtual environment
+venv
 
 launch.sh
