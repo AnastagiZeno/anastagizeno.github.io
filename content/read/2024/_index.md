@@ -3,10 +3,8 @@ title = "低垂的果实"
 date = 2024-01-01T00:00:00+08:00
 description = "2024读书清单"
 header_img = "/image/2024/persia.jpeg"
-
+hidden_sidebar = true
 +++
-
-#### [很久之前 - 不久之前](/read/_before)
 
 *2023/11/30 - 2024/01/24* **《SRE Google运维解密》**
 
@@ -56,3 +54,5 @@ header_img = "/image/2024/persia.jpeg"
 > 另外看他的百科她还出过一本关于勒班陀海战的书。暂时还不太想看。
 
 ---
+
+#### [再次之前](/read/_before)

@@ -8,6 +8,7 @@ hasCJKLanguage = true
 enableInlineShortcodes = true
 enableEmoji = true
 ignoreErrors = ["error-remote-getjson"]
+disableHugoGeneratorInject = true
 
 [outputs]
 home = ["HTML", "JSON", "RSS"]
@@ -28,6 +29,10 @@ style = "dracula"
 
 [markup.goldmark.renderer]
 unsafe = true
+
+[services]
+[services.rss]
+limit = 24
 
 [menu]
 [[menu.main]]

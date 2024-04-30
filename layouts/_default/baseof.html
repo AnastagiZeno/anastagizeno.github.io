@@ -100,7 +100,7 @@
   <!-- Main Content -->
   <div class="container">
     <div class="row">
-      {{ if eq .Site.Params.sidebar.enable false }}
+      {{ if or ( eq .Site.Params.sidebar.enable false ) ( eq (.Param "hidden_sidebar") true ) }}
 
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
       postlist-container">
