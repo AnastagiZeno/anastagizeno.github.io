@@ -62,7 +62,7 @@ author = "BX"
 description = "守卫信仰，拯救苦难"
 keywords = "personal"
 notFoundPageTitle = "Dove è questo?"
-img_home = "default/home.jpeg"
+img_home = "default/home.jpg"
 img_404 = "default/404.webp"
 useFaviconGenerator = true
 
