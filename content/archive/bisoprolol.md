@@ -14,8 +14,18 @@ comment = false
 +++
 
 
-在console中执行代码改变Chrome PDF浏览器的背景色
-```js
+#### cheatsheet
+
+[emoji](https://gohugo.io/quick-reference/emojis/)
+
+[latex语法表](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)
+
+[正则手册](https://tool.oschina.net/uploads/apidocs/jquery/regexp.html)
+
+
+```javascript
+// 在console中执行代码改变Chrome PDF浏览器的背景色
+
 var cover = document.createElement("div");
 let css = `
     position: fixed;
@@ -32,6 +42,5 @@ cover.setAttribute("style", css);
 document.body.appendChild(cover);
 ```
 
-[latex语法表](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)
 
-[正则手册](https://tool.oschina.net/uploads/apidocs/jquery/regexp.html)
+
