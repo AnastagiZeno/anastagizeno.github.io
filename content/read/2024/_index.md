@@ -20,18 +20,18 @@ hidden_sidebar = true
 
 ---
 
-*2024/03/04 - 2024/04/11* **《Operating Systems: Three Easy Pieces》（操作系统导论）**
+*2024/03/04 - 2024/04/11* **《Operating Systems: Three Easy Pieces》（操作系统导论）** :1st_place_medal:
 > 十年前就该看，想起了马鲁布拉的娴静时光，阳光明媚，雨水充沛，还不热。
 
-*2024/04/23 -* **《Principles of Computer System Design： An Introduction》**
+*2024/04/23 -* **《Principles of Computer System Design： An Introduction》** :2nd_place_medal:
 
 ---
 
-*2024/04/12 - 2024/04/17*  **《走出戈壁》**
+*2024/04/12 - 2024/04/17*  **《走出戈壁》** :1st_place_medal:
 
 > 好看！ 
 
-*2024/04/18 - 2024/04/26* **《金钱博弈》**
+*2024/04/18 - 2024/04/26* **《金钱博弈》** :3rd_place_medal:
 
 > 好看！但是没有《走出戈壁》好看！但仍然十分期待下一本关于深发展的那本。单伟建的文字功底真的强大，行文流畅，精炼，讲故事的本领绝对超一流的。
 
