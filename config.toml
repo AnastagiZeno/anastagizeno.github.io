@@ -68,7 +68,7 @@ useFaviconGenerator = true
 
 [params.sidebar]
 enable = true
-avatar = "default/home.jpeg"
+avatar = "default/soloman.jpeg"
 bio = "a personal website"
 
 [params.social]
