@@ -85,7 +85,7 @@ rss = true
 
 [[params.azeroth]]
 name = "Kharanos"
-url = "/dogdoor/shahrazad/postreceive"
+url = "https://www.lizhinb.com/"
 
 [[params.azeroth]]
 name = "Iron Forge"
