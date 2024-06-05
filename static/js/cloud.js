@@ -4,11 +4,12 @@ function wordCloud(selector) {
 
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
-        .attr("width", 500)
-        .attr("height", 500)
-        .append("g")
-        .attr("transform", "translate(250,250)");
-
+    .attr("width", "100%")     // SVG宽度设置为100%，使其宽度等于父元素的宽度
+    .attr("height", 600)       // 高度可以设置为固定值或者百分比
+    .attr("viewBox", "0 0 600 600") // viewBox定义了SVG内部坐标系统所见的区域
+    .attr("preserveAspectRatio", "xMidYMid meet") // 控制SVG内部元素的保持比例和位置
+    .append("g")
+    .attr("transform", "translate(300,300)"); // 设定内部g元素的位置
 
     //Draw the word cloud
     function draw(words) {
@@ -55,8 +56,8 @@ function wordCloud(selector) {
         update: function(words) {
             d3.layout.cloud().size([500, 500])
                 .words(words)
-                .padding(5)
-                .rotate(function() { return ~~(Math.random() * 2) * 90; })
+                .padding(2)
+                .rotate(function() { return ~~(Math.random() * 2) * 60; })
                 .font("Impact")
                 .fontSize(function(d) { return d.size; })
                 .on("end", draw)
@@ -68,9 +69,7 @@ function wordCloud(selector) {
 
 //Some sample data - http://en.wikiquote.org/wiki/Opening_lines
 var words = [
-    "Starts the layout algorithm. This initialises various attributes on the word objects, and attempts to place each word, starting with the largest word. Starting with the centre of the rectangular area, each word is tested for collisions with all previously-placed words. If a collision is found, it tries to place the word in a new position along the spiral.",
-    "Internally, the layout uses setInterval to avoid locking up the browser’s event loop. If specified, time is the maximum amount of time that can be spent during the current timestep. If not specified, returns the current maximum time interval, which defaults to Infinity.",
-    "If specified, sets the fontWeight accessor function, which indicates the font weight for each word. If not specified, returns the current fontWeight accessor function, which defaults to. A constant may be specified instead of a function."
+    "The Christian fleet consisted of 206 galleys and six galleasses (large new galleys with substantial artillery, developed by the Venetians). John of Austria, half-brother of Philip II of Spain, was named by Pope Pius V as overall commander of the fleet and led the centre division, with his principal deputies and counselors being the Roman Marcantonio Colonna and the Venetian Sebastiano Venier; the wings were commanded by the Venetian Agostino Barbarigo and the Genoese Gianandrea Doria.[25][26] The Republic of Venice contributed 109 galleys and six galleasses, 49 galleys came from the Spanish Empire (including 26 from the Kingdom of Naples, the Kingdom of Sicily, and other Italian territories), 27 galleys of the Genoese fleet, seven galleys from the Papal States, five galleys from the Order of Saint Stephen and the Grand Duchy of Tuscany, three galleys each from the Duchy of Savoy and the Knights of Malta, and some privately owned galleys in Spanish service. This fleet of the Christian alliance was manned by 40,000 sailors and oarsmen. In addition, it carried approximately 30,000[27][28] fighting troops: 7,000 Spanish Empire regular infantry of excellent quality,[29] (4,000 of the Spanish Empire's troops were drawn from the Kingdom of Naples, mostly Calabria),[30] 7,000 Germans,[31] 6,000 Italian mercenaries in Spanish pay, all good troops,[31] in addition to 5,000 professional Venetian soldiers.[32] A significant number of Greeks also participated in the conflict on the side of the Holy League with three Venetian galleys commanded by Greek captains.[33] The historian George Finlay estimated that over 25,000 Greeks fought on the side of the Holy League during the battle (both as soldiers and sailors/oarsmen) and stated that their numbers far exceeded that of the combatants of any other nation engaged.[34]Oarsmen were mainly drawn from local Greek populations, who were experienced in maritime affairs,[33] although there were some Venetian oarsmen as well.[35] Free oarsmen were generally acknowledged to be superior to enslaved or imprisoned oarsmen, but the former were gradually replaced in all galley fleets (including those of Venice from 1549) during the 16th century by cheaper slaves, convicts, and prisoners-of-war owing to rapidly rising costs.[36] The Venetian oarsmen were mainly free citizens and able to bear arms, adding to the fighting power of their ships, whereas convicts were used to row many of the galleys in other Holy League squadrons.[35]"
     ]
 
 //Prepare one of the sample sentences by removing punctuation,
@@ -80,7 +79,7 @@ function getWords(i) {
             .replace(/[!\.,:;\?]/g, '')
             .split(' ')
             .map(function(d) {
-                return {text: d, size: 10 + Math.random() * 60};
+                return {text: d, size: 10 + Math.random() * 45};
             })
 }
 
@@ -91,11 +90,11 @@ function showNewWords(vis, i) {
     i = i || 0;
 
     vis.update(getWords(i ++ % words.length))
-    setTimeout(function() { showNewWords(vis, i + 1)}, 2000)
+    setTimeout(function() { showNewWords(vis, i + 1)}, 2500)
 }
 
 //Create a new instance of the word cloud visualisation.
-var myWordCloud = wordCloud('body');
+var myWordCloud = wordCloud('.post-container');
 
 //Start cycling through the demo data
 showNewWords(myWordCloud);
