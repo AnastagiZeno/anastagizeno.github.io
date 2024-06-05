@@ -89,7 +89,7 @@ url = "https://www.lizhinb.com/"
 
 [[params.azeroth]]
 name = "Iron Forge"
-url = "/dogdoor/katun/cloud"
+url = ""
 
 [[params.azeroth]]
 name = "Booty Bay"
