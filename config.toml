@@ -73,8 +73,8 @@ useFaviconGenerator = true
 
 [params.sidebar]
 enable = true
-avatar = "default/soloman.jpeg"
-bio = "a personal website"
+avatar = "default/hakim.png"
+bio = ""
 
 [params.social]
 twitter = "anastagizeno"
