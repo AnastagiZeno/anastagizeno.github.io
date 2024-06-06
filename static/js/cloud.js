@@ -85,12 +85,12 @@ function getWords(i) {
     var cals = words[i].replace(/[!\,:;\?]/g, '').split('+')
     var frequency = calculateFrequency(cals);
     return cals.map(function(d) {
-                var base = 6 + Math.random() * 60;
+                var base = 9 + Math.random() * 45;
                 var normalizedWord = d.toLowerCase();
                 var count = (frequency[normalizedWord] + 1 > 10) ? 10 : frequency[normalizedWord] + 1;
                 var acc = 1 + (count - 1) / (10 - 1);
                 if (d.match(/^\d{4}$/)) {
-                    acc += 0.35;
+                    acc += 0.3;
                 }
                 return {text: d, size: base * acc };
             })
