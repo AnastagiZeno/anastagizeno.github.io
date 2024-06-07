@@ -2,7 +2,117 @@ import nltk
 import re
 import sys
 import random
+from jsmin import jsmin
 
+word_cloud_js_template = '''
+var words = {FILLIN}
+
+function wordCloud(selector) {{
+    var fill = d3.scale.category20();
+    var svg = d3.select(selector).append("svg")
+    .attr("width", 1000)
+    .attr("height", "auto")
+    .attr("max-height", "100%")
+    .attr("viewBox", "0 0 1000 600")
+    .attr("preserveAspectRatio", "xMidYMid meet")
+    .append("g")
+    .attr("transform", "translate(500,300)");
+
+    function draw(words) {{
+        var cloud = svg.selectAll("g text")
+        .data(words, function(d) {{ return d.text; }})
+
+        //Entering words
+        cloud.enter()
+            .append("text")
+            .style("font-family", "Impact")
+            .style("fill", function(d, i) {{ return fill(i); }})
+            .attr("text-anchor", "middle")
+            .attr('font-size', 1)
+            .text(function(d) {{ return d.text; }});
+
+        cloud
+            .transition()
+                .duration(600)
+                .style("font-size", function(d) {{ return d.size + "px"; }})
+                .attr("transform", function(d) {{
+                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                }})
+                .style("fill-opacity", 1);
+
+        cloud.exit()
+            .transition()
+                .duration(200)
+                .style('fill-opacity', 1e-6)
+                .attr('font-size', 1)
+                .remove();
+    }}
+
+    return {{
+
+        //Recompute the word cloud for a new set of words. This method will
+        // asycnhronously call draw when the layout has been computed.
+        //The outside world will need to call this function, so make it part
+        // of the wordCloud return value.
+        update: function(words) {{
+            d3.layout.cloud().size([1000, 600])
+                .words(words)
+                .padding(1)
+                .spiral("archimedean")
+                .rotate(function() {{ return ~~(Math.random() * 2) * 60; }})
+                .font("Impact")
+                .fontSize(function(d) {{ return d.size; }})
+                .on("end", draw)
+                .start();
+        }}
+    }}
+
+}}
+
+function calculateFrequency(arr) {{
+    return arr.reduce(function(countMap, word) {{
+        word = word.toLowerCase(); // 可以忽略大小写
+        countMap[word] = (countMap[word] || 0) + 1;
+        return countMap;
+    }}, {{}});
+}}
+
+function getWords(i) {{
+    var cals = words[i].replace(/[!\,:;\?]/g, '').split('+')
+    var frequency = calculateFrequency(cals);
+    return cals.map(function(d) {{
+                var r = Math.random()
+                var base = 6 + r * 54; // 6-60, 6 - 150
+                var normalizedWord = d.toLowerCase();
+                var count = (frequency[normalizedWord] + 1 > 12) ? 12 : frequency[normalizedWord] + 1;
+                var acc = 1 + (count - 1) / (12 - 1);
+                if (d.match(/^\d{{4}}$/)) {{
+                    acc += 0.2;
+                }}
+                if (/\s/.test(d) && d.length < 20) {{
+                    acc += 0.3
+                }}
+                var size = base * acc;
+                if size > 90 {{
+                    size -= (size - 90) * r
+                }}
+                if size < 20 {{
+                    size += r * 0.5 * (90 - size)
+                }}
+                return {{text: d, size: base * acc }};
+            }})
+}}
+
+function showNewWords(vis, i) {{
+    i = i || 0;
+    vis.update(getWords(i ++ % words.length))
+    setTimeout(function() {{ showNewWords(vis, i)}}, 2000)
+}}
+
+var myWordCloud = wordCloud('.about-page');
+
+showNewWords(myWordCloud);
+'''
 
 
 def nouns(text):
@@ -63,13 +173,38 @@ def read_text(filename):
         print(f"读取文件时发生错误: {e}")
 
 
+def fill_js_template(content_list):
+
+    fillin = "["
+    for content in content_list:
+        fillin += '"' + content + '",'
+    fillin = fillin[:-1] + "]"
+
+    js = word_cloud_js_template.format(FILLIN=fillin)
+    return jsmin(js)
+
+
+
+
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print("请提供一个文件名作为参数。")
         print("用法: python script.py <filename>")
     else:
-        filename = sys.argv[1]
-        text = read_text(filename)
-        entities = entity(text)
-        random.shuffle(entities)
-        print("+".join(entities))
+        content_list = []
+
+        filenames = sys.argv[1:]
+        for filename in filenames:
+            print("处理文件: ", filename)
+            text = read_text(filename)
+            entities = entity(text)
+            random.shuffle(entities)
+            content_list.append("+".join(entities))
+
+        js = fill_js_template(content_list)
+
+        print('\n' + js + '\n')
+
+
+
+
