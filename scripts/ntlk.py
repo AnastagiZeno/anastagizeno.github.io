@@ -59,7 +59,7 @@ function wordCloud(selector) {{
                 .words(words)
                 .padding(1)
                 .spiral("archimedean")
-                .rotate(function() {{ return ~~(Math.random() * 2) * 60; }})
+                .rotate(function() {{ return (~~(Math.random() * 4) - 2) * 30; }})
                 .font("Impact")
                 .fontSize(function(d) {{ return d.size; }})
                 .on("end", draw)
