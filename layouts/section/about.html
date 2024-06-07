@@ -1,10 +1,10 @@
-{{ define "container" }}
+{{ define "main" }}
 
-<div class="post-container">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.7/d3.layout.cloud.js"></script>
-<script src="/js/cloud.js"></script>
-  {{ .Content }}
+<div class="about-page" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.7/d3.layout.cloud.js"></script>
+  <script src="/js/cloud.js"></script>
+{{ .Content }}
 </div>
 
 {{ end }}

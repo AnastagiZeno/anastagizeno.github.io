@@ -4,12 +4,13 @@ function wordCloud(selector) {
 
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
-    .attr("width", "100%")     // SVG宽度设置为100%，使其宽度等于父元素的宽度
-    .attr("height", 600)       // 高度可以设置为固定值或者百分比
-    .attr("viewBox", "0 0 600 600") // viewBox定义了SVG内部坐标系统所见的区域
-    .attr("preserveAspectRatio", "xMidYMid meet") // 控制SVG内部元素的保持比例和位置
+    .attr("width", 1000)
+    .attr("height", "auto")
+    .attr("max-height", "100%")
+    .attr("viewBox", "0 0 1000 600")
+    .attr("preserveAspectRatio", "xMidYMid meet")
     .append("g")
-    .attr("transform", "translate(300,300)"); // 设定内部g元素的位置
+    .attr("transform", "translate(500,300)");
 
     //Draw the word cloud
     function draw(words) {
@@ -54,9 +55,9 @@ function wordCloud(selector) {
         //The outside world will need to call this function, so make it part
         // of the wordCloud return value.
         update: function(words) {
-            d3.layout.cloud().size([500, 500])
+            d3.layout.cloud().size([1000, 600])
                 .words(words)
-                .padding(2)
+                .padding(1)
                 .rotate(function() { return ~~(Math.random() * 2) * 60; })
                 .font("Impact")
                 .fontSize(function(d) { return d.size; })
@@ -87,8 +88,8 @@ function getWords(i) {
     return cals.map(function(d) {
                 var base = 9 + Math.random() * 45;
                 var normalizedWord = d.toLowerCase();
-                var count = (frequency[normalizedWord] + 1 > 10) ? 10 : frequency[normalizedWord] + 1;
-                var acc = 1 + (count - 1) / (10 - 1);
+                var count = (frequency[normalizedWord] + 1 > 12) ? 12 : frequency[normalizedWord] + 1;
+                var acc = 1 + (count - 1) / (12 - 1);
                 if (d.match(/^\d{4}$/)) {
                     acc += 0.3;
                 }
@@ -103,7 +104,7 @@ function showNewWords(vis, i) {
 }
 
 //Create a new instance of the word cloud visualisation.
-var myWordCloud = wordCloud('.post-container');
+var myWordCloud = wordCloud('.about-page');
 
 //Start cycling through the demo data
 showNewWords(myWordCloud);
