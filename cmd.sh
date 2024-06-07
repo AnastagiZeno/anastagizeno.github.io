@@ -1,9 +1,5 @@
 #!/bin/bash
 
-function launch() {
-    hugo --gc; hugo --cleanDestinationDir; hugo -d public
-}
-
 function new_post() {
     if [ -n "$1" ]; then
         hugo new content/archive/"$1".md
@@ -13,6 +9,10 @@ function new_post() {
 }
 
 function deploy() {
+    hugo --gc; hugo --cleanDestinationDir; hugo -d public
+}
+
+function launch() {
     git status; sleep 0.8; git add .; git commit -m "tick-tock"; sleep 0.5; git push
     cd public/ || exit; git status; sleep 0.8; git add .; git commit -m "tick-tock"; sleep 0.5; git push
     cd ..
@@ -23,7 +23,7 @@ function deploy() {
 if [ $# -eq 0 ]; then
     echo "Usage: $0 [-n [post-name]] [-l] [-d]"
     echo "-n [post-name]: Create a new post. If no post name is given, the current date is used."
-    echo "-d: Deploy the site."
+    echo "-d: Deploy the site locally."
     echo "-l: Launch the site."
 
     echo "are we clear?"
