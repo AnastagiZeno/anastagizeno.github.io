@@ -81,32 +81,32 @@ function getWords(i) {{
     var cals = words[i].replace(/[!\,:;\?]/g, '').split('+')
     var frequency = calculateFrequency(cals);
     return cals.map(function(d) {{
-                var r = Math.random()
-                var base = 6 + r * 54; // 6-60, 6 - 150
+                var base = Math.random() * 60; // 0 - 120 (60 * 2.5 * 0.8)
                 var normalizedWord = d.toLowerCase();
-                var count = (frequency[normalizedWord] + 1 > 12) ? 12 : frequency[normalizedWord] + 1;
-                var acc = 1 + (count - 1) / (12 - 1);
+                var count = (frequency[normalizedWord] + 1 > 10) ? 10 : frequency[normalizedWord] + 1;
+                var acc = 1 + (count - 1) / (10 - 1);
                 if (d.match(/^\d{{4}}$/)) {{
-                    acc += 0.2;
+                    acc += 0.15;
                 }}
                 if (/\s/.test(d) && d.length < 20) {{
-                    acc += 0.3
+                    acc += 0.35
                 }}
-                var size = base * acc;
-                if size > 90 {{
-                    size -= (size - 90) * r
+                var size = base * acc * 0.8;
+                var r = Math.random();
+                if (size > 80) {{
+                    size -= (size - 60) * r
                 }}
-                if size < 20 {{
-                    size += r * 0.5 * (90 - size)
+                if (size < 40) {{
+                    size += r * (60 - size)
                 }}
-                return {{text: d, size: base * acc }};
+                return {{text: d, size: size }};
             }})
 }}
 
 function showNewWords(vis, i) {{
     i = i || 0;
     vis.update(getWords(i ++ % words.length))
-    setTimeout(function() {{ showNewWords(vis, i)}}, 2000)
+    setTimeout(function() {{ showNewWords(vis, i)}}, 1800)
 }}
 
 var myWordCloud = wordCloud('.about-page');
