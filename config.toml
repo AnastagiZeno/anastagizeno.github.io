@@ -74,7 +74,7 @@ useFaviconGenerator = true
 [params.sidebar]
 enable = true
 avatar = "default/hakim.png"
-bio = ""
+bio = "الصبر مفتاح الفرج"
 
 [params.social]
 twitter = "anastagizeno"
