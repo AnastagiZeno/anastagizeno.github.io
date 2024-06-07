@@ -23,8 +23,10 @@ function deploy() {
 if [ $# -eq 0 ]; then
     echo "Usage: $0 [-n [post-name]] [-l] [-d]"
     echo "-n [post-name]: Create a new post. If no post name is given, the current date is used."
-    echo "-l: Launch the site."
     echo "-d: Deploy the site."
+    echo "-l: Launch the site."
+
+    echo "are we clear?"
     exit 1
 fi
 
