@@ -13,7 +13,7 @@
     {{ if $sidebar.gravatarEmail }}
     <img src="https://s.gravatar.com/avatar/{{ md5 $sidebar.gravatarEmail }}?s=200" alt="About me" />
     {{ else if $sidebar.avatar }}
-    <img src="{{ $sidebar.avatar | relURL }}" alt="About me" style="transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" />
+    <img src="{{ $sidebar.avatar | relURL }}" alt="About me" style="margin:auto; transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" />
     {{ end }}
     </a>
     {{ with $sidebar.bio }}
