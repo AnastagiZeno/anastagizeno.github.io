@@ -32,6 +32,7 @@ hidden_sidebar = true
 
 *2024/06/19 -* **《软件架构：架构模式、特征及实践指南》** *Mark Richards*
 > 英文原版为《Software Architecture: The Hard Parts》
+> 基于“星巴克不使用两阶段提交”作者的观察，现实世界中大部分场景都不是事务性的。
 
 ---
 
