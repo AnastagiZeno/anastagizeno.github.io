@@ -22,7 +22,7 @@ comment = false
 
 [正则手册](https://tool.oschina.net/uploads/apidocs/jquery/regexp.html)
 
-①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
+①②③④⑤⑥⑦⑧⑨
 
 
 ```javascript
