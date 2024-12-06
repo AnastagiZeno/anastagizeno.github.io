@@ -22,6 +22,8 @@ comment = false
 
 [正则手册](https://tool.oschina.net/uploads/apidocs/jquery/regexp.html)
 
+①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
+
 
 ```javascript
 // 在console中执行代码改变Chrome PDF浏览器的背景色
@@ -42,7 +44,6 @@ cover.setAttribute("style", css);
 document.body.appendChild(cover);
 ```
 
-①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
 
 > 在产品设计和开发设计领域，ADR通常是"Architecture Decision Record"的缩写。Architecture Decision Record 是一种记录架构决策的文档，详细描述了在系统、项目或组件设计过程中所做的关键架构选择，包括决策的背景、考虑的选项、权衡取舍和最终选择。
 > 使用ADR的主要目的是提供透明度和可追溯性，使团队成员和利益相关者能够理解为什么某个架构决策是如此做出的。这有助于未来在遇到类似问题时有一个参考框架，同时也为新加入的团队成员提供了背景信息，帮助他们快速上手项目。
