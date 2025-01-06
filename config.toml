@@ -64,8 +64,8 @@ weight = 2024
 
 [params]
 author = "BX"
-description = "守卫信仰，拯救苦难"
-keywords = "personal"
+description = "别不好意思，别浪费时间"
+keywords = "oversocialization"
 notFoundPageTitle = "Dove è questo?"
 img_home = "default/home.jpg"
 img_404 = "default/404.webp"
