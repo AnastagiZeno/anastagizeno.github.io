@@ -57,9 +57,9 @@ url = "/categories/"
 weight = 3
 [[menu.main]]
 identifier = "read"
-name = "2024"
-url = "/read/2024/"
-weight = 2024
+name = "2025"
+url = "/read/2025/"
+weight = 2025
 
 
 [params]

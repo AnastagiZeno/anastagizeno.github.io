@@ -77,7 +77,7 @@ hidden_sidebar = true
 > ④从被科学反复验证到临床医生（G7国家）开始普及给普通患者，这个时间是20年。
 
 *2024/12/06 - 2024/12/09* **《政治的人生》** *王沪宁*
-> 王教授的日记，挺好玩的，他真的是看了不少书啊
+> 王教授的日记，还行，挺好玩，务实的左派，孤独的人。他是真的没少看书。
 
 *2024/12/20 - 2024/12/31* **《工业社会及其未来》** *泰德·考辛斯基【美】*
 
@@ -104,4 +104,8 @@ hidden_sidebar = true
 
 ---
 
-##### [在此之前](/read/_before)
+
+<div style="display: flex; justify-content: space-between;">
+    <div><a href="/read/_before">在此之前</a></div>
+    <div style="text-align: right;"><a href="/read/2025">2025</a></div>
+</div>
