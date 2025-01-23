@@ -21,16 +21,17 @@ function launch() {
 
 # Show usage if no arguments are passed.
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 [-n [post-name]] [-l] [-d]"
+    echo "Usage: $0 [-n [post-name]] [-l] [-d] [-x]"
     echo "-n [post-name]: Create a new post. If no post name is given, the current date is used."
     echo "-d: Deploy the site locally."
     echo "-l: Launch the site."
+    echo "-x: Launch after deploy the site files."
 
     echo "are we clear?"
     exit 1
 fi
 
-while getopts ":n:ld" opt; do
+while getopts ":n:ldx" opt; do
     case ${opt} in
         n )
             new_post "$OPTARG"
@@ -40,6 +41,11 @@ while getopts ":n:ld" opt; do
             ;;
         d )
             deploy
+            ;;
+        x )
+            deploy
+            sleep 1
+            launch
             ;;
         \? )
             echo "Invalid option: -$OPTARG" >&2
