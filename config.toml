@@ -66,7 +66,7 @@ weight = 2025
 author = "BX"
 description = "别不好意思，别浪费时间"
 keywords = "oversocialization"
-notFoundPageTitle = "Dove è questo?"
+notFoundPageTitle = "WE LOST"
 img_home = "default/home.jpg"
 img_404 = "default/404.webp"
 useFaviconGenerator = true
@@ -85,23 +85,15 @@ rss = true
 
 [[params.azeroth]]
 name = "Kharanos"
-url = "https://www.lizhinb.com/"
+url = "/dogdoor/ahau"
 
 [[params.azeroth]]
 name = "Iron Forge"
-url = "/dogdoor/404"
+url = "/dogdoor/vuh"
 
 [[params.azeroth]]
 name = "Booty Bay"
-url = "/dogdoor/katun/ahau"
-
-[[params.azeroth]]
-name = "Stonefire Tavern"
-url = "/dogdoor/katun/vuh"
-
-[[params.azeroth]]
-name = "Thunderbrew Distillery"
-url = "/dogdoor/katun/idontknow"
+url = "https://www.lizhinb.com/"
 
 [params.giscus]
 enable = false
