@@ -93,15 +93,15 @@ url = "/dogdoor/404"
 
 [[params.azeroth]]
 name = "Booty Bay"
-url = "/dogdoor/katun/codice"
+url = "/dogdoor/katun/ahau"
 
 [[params.azeroth]]
 name = "Stonefire Tavern"
-url = "/dogdoor/katun/word"
+url = "/dogdoor/katun/vuh"
 
 [[params.azeroth]]
 name = "Thunderbrew Distillery"
-url = "/dogdoor/katun/note"
+url = "/dogdoor/katun/idontknow"
 
 [params.giscus]
 enable = false
