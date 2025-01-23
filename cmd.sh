@@ -13,6 +13,7 @@ function deploy() {
 }
 
 function launch() {
+    echo "\nlaunch site files to remote"
     git status; sleep 0.8; git add .; git commit -m "tick-tock"; sleep 0.5; git push
     cd public/ || exit; git status; sleep 0.8; git add .; git commit -m "tick-tock"; sleep 0.5; git push
     cd ..
