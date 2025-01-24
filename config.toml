@@ -85,11 +85,11 @@ rss = true
 
 [[params.azeroth]]
 name = "Kharanos"
-url = "/katun/ahau"
+url = "/ahau"
 
 [[params.azeroth]]
 name = "Iron Forge"
-url = "/katun/vuh"
+url = "/vuh"
 
 [[params.azeroth]]
 name = "Booty Bay"
