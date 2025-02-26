@@ -92,8 +92,12 @@ name = "Iron Forge"
 url = "/dogdoor/vuh"
 
 [[params.azeroth]]
-name = "WOW"
+name = "Epictetus"
 url = "/dogdoor/epictetus"
+
+[[params.azeroth]]
+name = "Seneca"
+url = "/dogdoor/seneca"
 
 [[params.azeroth]]
 name = "Booty Bay"
