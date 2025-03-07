@@ -1,7 +1,6 @@
 # hugo pubished files
 public/
 
-
 .DS_Store
 .hugo_build.lock
 # If you prefer the allow list template instead of the deny list, see community template:
