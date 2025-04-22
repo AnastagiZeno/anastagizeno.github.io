@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>读书笔记 on Shahrazad</title>
+    <link>https://shahrazad.fun/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 读书笔记 on Shahrazad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Mar 2024 09:56:03 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>三件事</title>
+      <link>https://shahrazad.fun/archive/threeeasypieces/</link>
+      <pubDate>Tue, 05 Mar 2024 09:56:03 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/threeeasypieces/</guid>
+      <description>Operating Systems: Three Easy Pieces I 虚拟化 CPU虚拟化ch7我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所</description>
+    </item>
+    
+  </channel>
+</rss>
