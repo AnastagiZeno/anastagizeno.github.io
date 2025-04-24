@@ -92,6 +92,10 @@ name = "Iron Forge"
 url = "/dogdoor/vuh"
 
 [[params.azeroth]]
+name = "Booty Bay"
+url = "https://www.lizhinb.com/"
+
+[[params.azeroth]]
 name = "Epictetus"
 url = "/dogdoor/epictetus"
 
@@ -100,8 +104,8 @@ name = "Seneca"
 url = "/dogdoor/seneca"
 
 [[params.azeroth]]
-name = "Booty Bay"
-url = "https://www.lizhinb.com/"
+name = "Aurelius"
+url = "/dogdoor/janus"
 
 [params.giscus]
 enable = false
