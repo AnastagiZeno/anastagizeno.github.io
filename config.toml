@@ -39,45 +39,46 @@ limit = 24
 identifier = "home"
 name = "Home"
 url = "/"
-weight = -1
+weight = 1
 
 [[menu.main]]
 identifier = "archive"
 name = "Archive"
 url = "/archive/"
-weight = 1
+weight = 2
 
 [[menu.main]]
 identifier = "series"
 name = "Series"
 url = "/series/"
-weight = 2
+weight = 3
 
 [[menu.main]]
 identifier = "category"
 name = "Category"
 url = "/categories/"
-weight = 3
+weight = 4
 
 [[menu.main]]
 identifier = "year"
 name = "Year"
 url = "#"
-weight = 2023
-
-[[menu.main]]
-parent = "year"
-identifier = "2024"
-name = "2024"
-url = "/read/2024/"
-weight = 2024
+weight = 5
 
 [[menu.main]]
 parent = "year"
 identifier = "2025"
 name = "2025"
 url = "/read/2025/"
-weight = 2025
+weight = 1
+
+[[menu.main]]
+parent = "year"
+identifier = "2024"
+name = "2024"
+url = "/read/2024/"
+weight = 2
+
 
 
 [params]
