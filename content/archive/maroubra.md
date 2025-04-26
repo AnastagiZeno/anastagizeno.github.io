@@ -14,9 +14,23 @@ comment = false
 
 +++
 
-
 > 冷静观察，沉着应付，稳住阵脚，埋头实干。
 > <p align="right">- 邓小平</p>
+
+[emoji](https://gohugo.io/quick-reference/emojis/)
+
+[latex语法表](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)
+
+[正则手册](https://tool.oschina.net/uploads/apidocs/jquery/regexp.html)
+
+①②③④⑤⑥⑦⑧⑨
+
+> ADR：
+- 标题（Title）：简要描述决策的内容。
+- 背景（Context）：描述决策的背景和需要解决的问题。
+- 决策（Decision）：详细列出所选择的解决方案。
+- 权衡（Rationale）：解释为什么做出这个决策，包括考虑过的其他选项及其优缺点。
+- 后果（Consequences）：描述此决策的预期影响和可能的后续步骤。
 
 > "Transaction Processing:Concepts and Techniques" Jim Gray and Andreas Reuter<br>
 > 中译本《事务处理：概念与技术》由电子工业出版社出版

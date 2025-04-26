@@ -1,5 +1,5 @@
 +++
-title = "三件事"
+title = "操作系统：三件事"
 date = 2024-03-05T09:56:03+08:00
 draft = false
 description = "Operating Systems: Three Easy Pieces"
@@ -8,8 +8,8 @@ header_img = "/image/2024/mayan-calakmul-pyramid.jpeg"
 short = false
 toc = true
 tags = ["操作系统"]
-categories = ["读书笔记"]
-series = []
+categories = ["计算机"]
+series = ["吃饭的家伙事儿"]
 comment = false
 summary = ""
 

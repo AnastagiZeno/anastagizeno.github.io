@@ -2,8 +2,9 @@
 title = "万物皆流"
 date = 2025-01-01T00:00:00+08:00
 description = "2025读书清单"
-header_img = "/image/2025/secondpunicwar.png"
+header_img = "/image/2025/marcus-aurelius.jpg"
 hidden_sidebar = true
+tags = ["权力过程"]
 +++
 
 

@@ -8,8 +8,8 @@ header_img = ""
 short = false
 toc = false
 tags = ["博尔赫斯"]
-categories = []
-series = ["短篇"]
+categories = ["思想"]
+series = []
 comment = false
 
 +++
