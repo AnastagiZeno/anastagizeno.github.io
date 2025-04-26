@@ -1,9 +1,9 @@
 +++
 title = "7日刷题"
-date = 2025-04-26T13:02:12+08:00
+date = 2025-04-25T13:02:12+08:00
 draft = false
 description = ""
-subtitle = "星期二：基础数据结构"
+subtitle = "星期二：字符串、双指针、二分、滑动窗口等题型总结"
 header_img = ""
 short = false
 toc = true
@@ -14,283 +14,426 @@ comment = false
 summary = ""
 +++
 
-## 🌳 一、树（Tree）相关题型与模板
+## ✂️ 字符串（String）
 
 ### 🧩 核心概念：
-- 树是一个无环、连通的图结构
-- 二叉树是最常见的树类型
-- 遍历方式：前序、中序、后序、层序
-- 应用：递归、DFS、分治、BST 特性
+- 字符串是字符序列，常用于模式匹配、计数、翻转等
+- 常见操作：滑动窗口、前缀和、哈希表、KMP
+- 字符串不可变，需注意操作效率
 
 ### 🔍 常见题型：
 
-#### 1. 二叉树的最大深度（LeetCode 104）
-> 给定一个二叉树，找出其最大深度。
+#### 1. 无重复字符的最长子串（LeetCode 3）
+> 给定一个字符串，找出其中不含重复字符的最长子串长度。
 ```python
-def maxDepth(root):
-    if not root:
-        return 0
-    return 1 + max(maxDepth(root.left), maxDepth(root.right))
-```
-✅ 技巧：递归地计算左右子树深度，取较大值 +1。
-
-#### 2. 从前序与中序遍历序列构造二叉树（LeetCode 105）
-> 给定前序和中序遍历构造唯一的二叉树。
-```python
-def buildTree(preorder, inorder):
-    if not preorder:
-        return None
-    root = TreeNode(preorder[0])
-    idx = inorder.index(preorder[0])
-    root.left = buildTree(preorder[1:1+idx], inorder[:idx])
-    root.right = buildTree(preorder[1+idx:], inorder[idx+1:])
-    return root
-```
-✅ 技巧：前序首位是根节点，中序将其分为左右子树。
-
-#### 3. 二叉搜索树的最近公共祖先（LeetCode 235）
-> 给定一棵 BST，找出两个节点的最近公共祖先。
-```python
-def lowestCommonAncestor(root, p, q):
-    if p.val < root.val and q.val < root.val:
-        return lowestCommonAncestor(root.left, p, q)
-    if p.val > root.val and q.val > root.val:
-        return lowestCommonAncestor(root.right, p, q)
-    return root
-```
-✅ 技巧：利用 BST 性质，往左或往右找。
-
-
-## 🔗 二、链表（Linked List）相关题型与模板
-
-### 🧩 核心概念：
-- 单向链表/双向链表，重要的是节点引用操作
-- 常用技巧：快慢指针、虚拟头节点、反转
-
-### 🔍 常见题型：
-
-#### 1. 反转链表（LeetCode 206）
-> 将单向链表反转
-```python
-def reverseList(head):
-    prev = None
-    curr = head
-    while curr:
-        tmp = curr.next
-        curr.next = prev
-        prev = curr
-        curr = tmp
-    return prev
-```
-✅ 技巧：迭代中不断调整当前节点指向。
-
-#### 2. 环形链表（LeetCode 141）
-> 判断链表中是否有环
-```python
-def hasCycle(head):
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-        if slow == fast:
-            return True
-    return False
-```
-✅ 技巧：快慢指针相遇说明有环。
-
-#### 3. 合并两个有序链表（LeetCode 21）
-> 合并两个升序链表为一个新的升序链表
-```python
-def mergeTwoLists(l1, l2):
-    dummy = ListNode(0)
-    curr = dummy
-    while l1 and l2:
-        if l1.val < l2.val:
-            curr.next = l1
-            l1 = l1.next
-        else:
-            curr.next = l2
-            l2 = l2.next
-        curr = curr.next
-    curr.next = l1 or l2
-    return dummy.next
-```
-✅ 技巧：归并思想，构造 dummy 节点避免边界问题。
-
-
-## 📚 三、栈（Stack）相关题型与模板
-
-### 🧩 核心概念：
-- LIFO（后进先出）结构
-- 常用于：括号匹配、单调栈、前缀中缀后缀表达式
-
-### 🔍 常见题型：
-
-#### 1. 有效的括号（LeetCode 20）
-> 判断字符串中括号是否成对匹配。
-```python
-def isValid(s):
-    stack = []
-    mapping = {')': '(', ']': '[', '}': '{'}
-    for c in s:
-        if c in mapping:
-            if not stack or stack.pop() != mapping[c]:
-                return False
-        else:
-            stack.append(c)
-    return not stack
-```
-✅ 技巧：遇到右括号出栈匹配，最后栈需为空。
-
-#### 2. 每日温度（LeetCode 739）
-> 给定每日气温，返回几天后会升温。
-```python
-def dailyTemperatures(temperatures):
-    res = [0] * len(temperatures)
-    stack = []
-    for i, temp in enumerate(temperatures):
-        while stack and temp > temperatures[stack[-1]]:
-            idx = stack.pop()
-            res[idx] = i - idx
-        stack.append(i)
+def lengthOfLongestSubstring(s):
+    window = set()
+    left = res = 0
+    for right in range(len(s)):
+        while s[right] in window:
+            window.remove(s[left])
+            left += 1
+        window.add(s[right])
+        res = max(res, right - left + 1)
     return res
 ```
-✅ 技巧：单调递减栈，栈里放的是下标。
+✅ 技巧：滑动窗口 + 哈希集合判断重复。
 
-#### 3. 最小栈（LeetCode 155）
-> 实现一个支持获取最小值的栈
+#### 2. 最长回文子串（LeetCode 5）
+> 找出给定字符串中的最长回文子串。
 ```python
-class MinStack:
-    def __init__(self):
-        self.stack = []
-        self.min_stack = []
+def longestPalindrome(s):
+    res = ""
+    for i in range(len(s)):
+        tmp1 = expand(s, i, i)
+        tmp2 = expand(s, i, i+1)
+        res = max(res, tmp1, tmp2, key=len)
+    return res
 
-    def push(self, val):
-        self.stack.append(val)
-        if not self.min_stack or val <= self.min_stack[-1]:
-            self.min_stack.append(val)
-
-    def pop(self):
-        if self.stack.pop() == self.min_stack[-1]:
-            self.min_stack.pop()
-
-    def top(self):
-        return self.stack[-1]
-
-    def getMin(self):
-        return self.min_stack[-1]
+def expand(s, l, r):
+    while l >= 0 and r < len(s) and s[l] == s[r]:
+        l -= 1
+        r += 1
+    return s[l+1:r]
 ```
-✅ 技巧：辅助栈存当前最小值。
+✅ 技巧：中心扩展法，枚举中心点。
 
 
-
-## 📥 四、队列（Queue）相关题型与模板
+## 🩵 双指针（Two Pointers）
 
 ### 🧩 核心概念：
-- FIFO（先进先出）结构
-- 常用于：BFS、滑动窗口、单调队列等
+- 两个指针用于扫描数组，方向可能相同或相反
+- 常用于排序数组的合并、滑动窗口、快慢指针
 
 ### 🔍 常见题型：
 
-#### 1. 滑动窗口最大值（LeetCode 239）
-> 给定一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到最右侧，返回窗口中的最大值。
+#### 1. 盛水最多的容器（LeetCode 11）
+> 给定数组，找出能盛最多水的两条线。
 ```python
-# 单调队列：队头始终是窗口内最大值的索引
-from collections import deque
-
-def maxSlidingWindow(nums, k):
-    q = deque()
-    res = []
-    for i in range(len(nums)):
-        while q and nums[q[-1]] < nums[i]:
-            q.pop()
-        q.append(i)
-        if q[0] <= i - k:
-            q.popleft()
-        if i >= k - 1:
-            res.append(nums[q[0]])
+def maxArea(height):
+    l, r = 0, len(height) - 1
+    res = 0
+    while l < r:
+        res = max(res, (r - l) * min(height[l], height[r]))
+        if height[l] < height[r]:
+            l += 1
+        else:
+            r -= 1
     return res
 ```
-✅ 技巧：用双端队列维护一个**单调递减队列（下标）**，保证窗口最大值总在队首。
+✅ 技巧：左右指针逼近，贪心尝试更大容积。
 
-#### 2. 打开转盘锁（LeetCode 752）
-> 给定一个初始为 "0000" 的锁，通过旋转任意一位可以变成邻近数字，返回最少多少步能到达目标组合。
+#### 2. 移除元素（LeetCode 27）
+> 原地移除数组中所有等于 val 的元素，返回新长度。
 ```python
-# BFS 最短路径
-from collections import deque
+def removeElement(nums, val):
+    slow = 0
+    for fast in range(len(nums)):
+        if nums[fast] != val:
+            nums[slow] = nums[fast]
+            slow += 1
+    return slow
+```
+✅ 技巧：快慢指针，慢指针指向合法区域。
 
-def openLock(deadends, target):
-    dead = set(deadends)
-    visited = set('0000')
-    q = deque([('0000', 0)])
-    while q:
-        node, step = q.popleft()
-        if node in dead:
-            continue
-        if node == target:
-            return step
-        for i in range(4):
-            for d in (-1, 1):
-                n = node[:i] + str((int(node[i]) + d) % 10) + node[i+1:]
-                if n not in visited:
-                    visited.add(n)
-                    q.append((n, step + 1))
+
+## 🎯 二分查找（Binary Search）
+
+### 🧩 核心概念：
+- 有序数组中查找目标值，时间复杂度 O(log n)
+- 模板分为标准二分、左边界/右边界二分
+
+### 🔍 常见题型：
+
+#### 1. 二分查找（LeetCode 704）
+> 给定有序数组和目标值，返回目标值索引或 -1。
+```python
+def search(nums, target):
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
     return -1
 ```
-✅ 技巧：标准 BFS 模板，状态压缩可视为图搜索，防止重复访问用 visited 集合。
+✅ 技巧：模板基础版，注意边界条件。
+
+#### 2. 寻找左侧边界（LeetCode 34）
+```python
+def left_bound(nums, target):
+    left, right = 0, len(nums)
+    while left < right:
+        mid = (left + right) // 2
+        if nums[mid] >= target:
+            right = mid
+        else:
+            left = mid + 1
+    return left
+```
+✅ 技巧：用于查找插入位置、左边界。
 
 
-## 🏔️ 五、堆（Heap）相关题型与模板
+## 💎 贪心算法（Greedy）
 
 ### 🧩 核心概念：
-- 最小堆 / 最大堆：可快速获取最小（或最大）元素
-- Python 中使用 `heapq` 默认是最小堆
-- 常用于：Top K 问题、合并多个有序流、优先队列
+- 每一步都选局部最优解，期望推导出全局最优
+- 常与排序、堆、双指针结合
 
 ### 🔍 常见题型：
 
-#### 1. 数组中的第 K 个最大元素（LeetCode 215）
-> 给定一个无序数组，找出其中第 k 个最大的元素。
+#### 1. 跳跃游戏（LeetCode 55）
+> 判断是否可以从起点跳到终点。
 ```python
-import heapq
-
-def findKthLargest(nums, k):
-    return heapq.nlargest(k, nums)[-1]  # 或者手动维护一个最小堆
+def canJump(nums):
+    farthest = 0
+    for i in range(len(nums)):
+        if i > farthest:
+            return False
+        farthest = max(farthest, i + nums[i])
+    return True
 ```
-✅ 技巧：使用 `heapq.nlargest(k, nums)` 直接返回前 K 大元素列表。
+✅ 技巧：维护能到达的最远位置。
 
-#### 2. 合并 K 个升序链表（LeetCode 23）
-> 将 k 个升序链表合并为一个升序链表，返回合并后的链表。
+#### 2. 分发饼干（LeetCode 455）
+> 分发最少数量的饼干使最多的孩子满足。
 ```python
-import heapq
-
-class Solution:
-    def mergeKLists(self, lists):
-        heap = []
-        for i, l in enumerate(lists):
-            if l:
-                heapq.heappush(heap, (l.val, i, l))
-
-        dummy = ListNode(0)
-        curr = dummy
-        while heap:
-            val, i, node = heapq.heappop(heap)
-            curr.next = node
-            curr = curr.next
-            if node.next:
-                heapq.heappush(heap, (node.next.val, i, node.next))
-        return dummy.next
+def findContentChildren(g, s):
+    g.sort()
+    s.sort()
+    i = j = 0
+    while i < len(g) and j < len(s):
+        if s[j] >= g[i]:
+            i += 1
+        j += 1
+    return i
 ```
-✅ 技巧：堆中维护每个链表当前节点，利用 Python 最小堆自动排序。加上索引避免值相等时报错。
+✅ 技巧：排序 + 贪心匹配最小可满足。
 
-#### 3. 前 K 个高频元素（LeetCode 347）
-> 给定一个非空数组，返回出现频率前 k 高的元素。
+#### 3. 用最少数量的箭引爆气球（LeetCode 452）
+> 给定气球的范围，用最少的箭把它们全射爆。
+```python
+def findMinArrowShots(points):
+    points.sort(key=lambda x: x[1])
+    arrows = 0
+    end = float('-inf')
+    for p in points:
+        if p[0] > end:
+            arrows += 1
+            end = p[1]
+    return arrows
+```
+✅ 技巧：区间贪心，按右端排序后贪心选最早的非重叠。
+
+## 🚪 滑动窗口（Sliding Window）
+
+### ✨ 核心概念
+- 对于序列/字符串，定长/可变长的子段调整
+- 通常配合 HashMap / HashSet 使用
+- 常见算法：双指针、总和算法
+
+### 🔍 常见题型
+
+#### 1. 最小子串包含所有字符 (LeetCode 76)
+> 给定 s 和 t，找 s 中最短包含 t 全部字符的子串
+
 ```python
 from collections import Counter
-import heapq
 
-def topKFrequent(nums, k):
-    counter = Counter(nums)
-    return [item for item, freq in heapq.nlargest(k, counter.items(), key=lambda x: x[1])]
+def minWindow(s, t):
+    need = Counter(t)
+    window = {}
+    left = right = 0
+    valid = 0
+    start = 0
+    length = float('inf')
+
+    while right < len(s):
+        c = s[right]
+        right += 1
+        if c in need:
+            window[c] = window.get(c, 0) + 1
+            if window[c] == need[c]:
+                valid += 1
+        while valid == len(need):
+            if right - left < length:
+                start = left
+                length = right - left
+            d = s[left]
+            left += 1
+            if d in need:
+                if window[d] == need[d]:
+                    valid -= 1
+                window[d] -= 1
+    return "" if length == float('inf') else s[start:start+length]
 ```
-✅ 技巧：Counter 统计频率 + `heapq.nlargest` 快速找出 Top K。
+
+✅ 技巧：结合 HashMap，出现 valid == len(need) 时尽量缩小左边界。
+
+#### 2. 查找字符串所有的排列 (LeetCode 567)
+> s1 是 s2 的排列子串？
+
+```python
+from collections import Counter
+
+def checkInclusion(s1, s2):
+    need = Counter(s1)
+    window = {}
+    left = right = 0
+    valid = 0
+
+    while right < len(s2):
+        c = s2[right]
+        right += 1
+        if c in need:
+            window[c] = window.get(c, 0) + 1
+            if window[c] == need[c]:
+                valid += 1
+
+        while right - left >= len(s1):
+            if valid == len(need):
+                return True
+            d = s2[left]
+            left += 1
+            if d in need:
+                if window[d] == need[d]:
+                    valid -= 1
+                window[d] -= 1
+    return False
+```
+
+✅ 技巧：控制窗口长度，精确匹配。
+
+#### 3. 最长子串至多包含 K 个不同字符（LeetCode 340）
+> 返回最长子串，最多包含 K 个不同字符。
+
+```python
+from collections import defaultdict
+
+def lengthOfLongestSubstringKDistinct(s, k):
+    left = 0
+    counter = defaultdict(int)
+    res = 0
+
+    for right in range(len(s)):
+        counter[s[right]] += 1
+        while len(counter) > k:
+            counter[s[left]] -= 1
+            if counter[s[left]] == 0:
+                del counter[s[left]]
+            left += 1
+        res = max(res, right - left + 1)
+    return res
+```
+
+✅ 技巧：维护一个固定条件的窗口，每次调整保证满足条件。
+
+### 📅 模板套路
+
+```python
+def sliding_window(s):
+    left = right = 0
+    window = {}
+
+    while right < len(s):
+        c = s[right]
+        right += 1
+        # 窗口内操作
+
+        while (满足条件):
+            # 窗口缩小
+            d = s[left]
+            left += 1
+```
+
+## 🔒 状态压缩 (State Compression)
+
+### ✨ 核心概念
+- 用 bitmask 表示多个状态（如选中某个节点）
+- 常配 DFS 或 DP
+- 复杂度 O(2^n)，适用于 n 较小的情况
+
+### 🔍 常见题型
+
+#### 1. 最短路径打怪 (LeetCode 847)
+> 图中每个点都必须经过，最短路径长度
+
+```python
+from collections import deque
+
+def shortestPathLength(graph):
+    n = len(graph)
+    queue = deque()
+    visited = set()
+
+    for i in range(n):
+        queue.append((i, 1 << i, 0))
+        visited.add((i, 1 << i))
+
+    while queue:
+        node, mask, dist = queue.popleft()
+        if mask == (1 << n) - 1:
+            return dist
+        for nei in graph[node]:
+            next_mask = mask | (1 << nei)
+            if (nei, next_mask) not in visited:
+                visited.add((nei, next_mask))
+                queue.append((nei, next_mask, dist + 1))
+```
+
+✅ 技巧：状态 = (当前节点 + 已经过节点的 mask)，完成 mask = (1<<n)-1。
+
+#### 2. 最大跳跃形转 (LeetCode 1345)
+> 每步可以前跳、跳到相同值、后跳，求最少步数到终点
+
+```python
+from collections import deque, defaultdict
+
+def minJumps(arr):
+    n = len(arr)
+    if n <= 1:
+        return 0
+    graph = defaultdict(list)
+    for i, v in enumerate(arr):
+        graph[v].append(i)
+
+    queue = deque([0])
+    visited = {0}
+    step = 0
+
+    while queue:
+        for _ in range(len(queue)):
+            i = queue.popleft()
+            if i == n - 1:
+                return step
+            for j in graph[arr[i]]:
+                if j not in visited:
+                    visited.add(j)
+                    queue.append(j)
+            graph[arr[i]].clear()
+            if i + 1 < n and i + 1 not in visited:
+                visited.add(i + 1)
+                queue.append(i + 1)
+            if i - 1 >= 0 and i - 1 not in visited:
+                visited.add(i - 1)
+                queue.append(i - 1)
+        step += 1
+```
+
+✅ 技巧：同值跳只做一次清空，避免超时。
+
+#### 3. 旅行商问题最小路径（TSP，LeetCode 943）
+> 给定字符串数组，找拼接成一个超串的最短路径（包含所有字符串）
+
+```python
+from functools import lru_cache
+
+def shortestSuperstring(words):
+    n = len(words)
+
+    overlap = [[0]*n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                for k in range(min(len(words[i]), len(words[j])), 0, -1):
+                    if words[i].endswith(words[j][:k]):
+                        overlap[i][j] = k
+                        break
+
+    @lru_cache(None)
+    def dp(mask, last):
+        if mask == (1 << n) - 1:
+            return 0
+        res = float('inf')
+        for j in range(n):
+            if not mask & (1 << j):
+                res = min(res, dp(mask | (1 << j), j) + len(words[j]) - overlap[last][j])
+        return res
+
+    min_len = float('inf')
+    for i in range(n):
+        min_len = min(min_len, dp(1 << i, i) + len(words[i]))
+    return min_len  # 如果想恢复路径，可加入路径记录
+```
+
+✅ 技巧：状态 = (已选字符串集合 + 上一个字符串)，用 LRU 缓存记忆搜索。
+
+### 📅 状压模板套路
+
+```python
+# 状态压缩 DFS/DP
+state = 0  # 使用 bitmask 表示选中情况
+
+def dfs(state):
+    if (符合结束条件):
+        return
+    for 可选项:
+        if (此选项未选中):
+            dfs(新状态)
+```
+
+
+

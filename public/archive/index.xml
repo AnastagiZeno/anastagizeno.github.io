@@ -9,20 +9,29 @@
     <lastBuildDate>Sat, 26 Apr 2025 13:02:12 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>7日刷题</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview/</link>
+      <link>https://shahrazad.fun/archive/prepareforinterview_a_1/</link>
       <pubDate>Sat, 26 Apr 2025 13:02:12 +0800</pubDate>
       
-      <guid>https://shahrazad.fun/archive/prepareforinterview/</guid>
+      <guid>https://shahrazad.fun/archive/prepareforinterview_a_1/</guid>
+      <description>🌳 一、树（Tree）相关题型与模板🧩 核心概念： 树是一个无环、连通的图结构 二叉树是最常见的树类型 遍历方式：前序、中序、后序、层序 应用：递归、D</description>
+    </item>
+    
+    <item>
+      <title>7日刷题</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_a_3/</link>
+      <pubDate>Sat, 26 Apr 2025 13:02:12 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_a_3/</guid>
       <description>开始一、动态规划 vs 回溯的核心区别 项目 动态规划（DP） 回溯（Backtracking） 解决问题类型 最值、计数问题（如最短路径、最大和） 组合、排</description>
     </item>
     
     <item>
       <title>7日刷题</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_a_2/</link>
-      <pubDate>Sat, 26 Apr 2025 13:02:12 +0800</pubDate>
+      <pubDate>Fri, 25 Apr 2025 13:02:12 +0800</pubDate>
       
       <guid>https://shahrazad.fun/archive/prepareforinterview_a_2/</guid>
-      <description>🌳 一、树（Tree）相关题型与模板🧩 核心概念： 树是一个无环、连通的图结构 二叉树是最常见的树类型 遍历方式：前序、中序、后序、层序 应用：递归、D</description>
+      <description>✂️ 字符串（String）🧩 核心概念： 字符串是字符序列，常用于模式匹配、计数、翻转等 常见操作：滑动窗口、前缀和、哈希表、KMP 字符串不可变，</description>
     </item>
     
     <item>
