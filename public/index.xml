@@ -9,6 +9,15 @@
     <lastBuildDate>Sat, 26 Apr 2025 13:02:12 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>7日刷题</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview/</link>
+      <pubDate>Sat, 26 Apr 2025 13:02:12 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview/</guid>
+      <description>开始一、动态规划 vs 回溯的核心区别 项目 动态规划（DP） 回溯（Backtracking） 解决问题类型 最值、计数问题（如最短路径、最大和） 组合、排</description>
+    </item>
+    
+    <item>
+      <title>7日刷题</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_a_2/</link>
       <pubDate>Sat, 26 Apr 2025 13:02:12 +0800</pubDate>
       
