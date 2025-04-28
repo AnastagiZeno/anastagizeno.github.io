@@ -183,3 +183,53 @@ def removeDuplicates(self, nums):
         ha[n] = True
     return ret
 ```
+
+#### 72.编辑距离
+`动态规划` `真恶心`
+```python
+def minDistance(word1, word2):
+    # dp[i][j] 表示从word1的前i个字符 -> word2的j个字符
+    # dp数组不是笛卡尔坐标系，第一项索引i是行，构造和遍历的时候是外层循环
+    l1, l2 = len(word1), len(word2)
+    dp = [[0]*(l2+1) for _ in range(l1+1)]
+
+    for i in range(1, l1+1):
+        dp[i][0] = i
+    for j in range(1, l2+1):
+        dp[0][j] = j
+    for i in range(1, l1+1):
+        for j in range (1, l2+1):
+            # 这块一定要-1，word数组和dp数组的索引含义不要混淆
+            if word1[i-1] == word2[j-1]: 
+                dp[i][j] = dp[i-1][j-1]
+            else:
+                dp[i][j] = min(
+                    dp[i-1][j-1],
+                    dp[i-1][j],
+                    dp[i][j-1],
+                ) + 1
+    return dp[l1][l2]
+```
+
+#### 718.最长重复子数组
+`动态规划`
+
+求最值、有子问题模型，动态规划无脑上。核心还是动态转移方程怎么确定的。主要索引下标别搞错。
+```python
+def findLength(self, nums1, nums2):
+    
+    # dp[i][j] 表示nums1[i:]和nums2[j:]的最长公共子数组长度
+
+    n1, n2 = len(nums1), len(nums2)
+    dp = [[0] * (n2 + 1) for _ in range(n1 + 1)]
+
+    res = 0
+    for i in range(1, n1 + 1):
+        for j in range (1, n2 + 1):
+            if nums1[i-1] == nums2[j-1]: # 第i个nums1数字与第j个nums2数字
+                dp[i][j] = dp[i-1][j-1] + 1
+            else:
+                dp[i][j] = 0
+            res = max(dp[i][j], res)
+    return res
+```
