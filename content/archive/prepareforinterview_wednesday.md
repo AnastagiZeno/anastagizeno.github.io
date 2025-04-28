@@ -7,9 +7,9 @@ subtitle = "星期三：动态规划与回溯"
 header_img = ""
 short = false
 toc = true
-tags = ["面试"]
+tags = []
 categories = ["计算机"]
-series = ["吃饭的家伙事儿"]
+series = ["面试"]
 comment = false
 summary = ""
 +++

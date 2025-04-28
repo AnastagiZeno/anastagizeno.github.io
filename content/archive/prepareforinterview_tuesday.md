@@ -7,9 +7,9 @@ subtitle = "星期二：字符串、双指针、二分、滑动窗口等题型�
 header_img = ""
 short = false
 toc = true
-tags = ["面试"]
+tags = []
 categories = ["计算机"]
-series = ["吃饭的家伙事儿"]
+series = ["面试"]
 comment = false
 summary = ""
 +++
@@ -62,7 +62,7 @@ def expand(s, l, r):
 ## 🩵 双指针（Two Pointers）
 
 ### 🧩 核心概念：
-- 两个指针用于扫描数组，方向可能相同或相反
+- 两个指针用于扫描数组或链表，方向可能相同（快慢指针）或相反（左右指针）
 - 常用于排序数组的合并、滑动窗口、快慢指针
 
 ### 🔍 常见题型：

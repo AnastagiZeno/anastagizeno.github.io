@@ -8,7 +8,7 @@ from datetime import datetime
 '''
 
 
-image_pattern = re.compile(r'/image/2024/([a-zA-Z0-9_-]+\.(?:png|jpg|jpeg))')
+image_pattern = re.compile(r'/image/2025/([a-zA-Z0-9_-]+\.(?:png|jpg|jpeg))')
 
 def find_images_in_file(file_path):
     try:
@@ -54,7 +54,7 @@ def delete_images(image_folder, image_names):
 # 根文件夹路径
 root_folder = '../content'
 # 图片储存路径
-image_folder = '../static/image/2024'
+image_folder = '../static/image/2025'
 
 # 获取所有图片文件名
 all_images = traverse_directory(root_folder)
