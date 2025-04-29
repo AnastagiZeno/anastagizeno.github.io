@@ -2,8 +2,8 @@
 title = "7日刷题"
 date = 2025-04-28T10:03:45+08:00
 draft = false
-description = "额外一天：记录"
-subtitle = ""
+description = ""
+subtitle = "额外一天：记录"
 header_img = ""
 short = false
 toc = true
