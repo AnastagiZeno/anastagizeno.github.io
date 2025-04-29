@@ -1,5 +1,5 @@
 +++
-title = "Prepareforinterview_5_redis"
+title = "5天八股"
 date = 2025-04-29T20:23:03+08:00
 draft = false
 description = ""
