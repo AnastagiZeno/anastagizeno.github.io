@@ -477,6 +477,37 @@ SHOW ENGINE INNODB STATUS\G
 31. Mysql 集群如何保证主从可用性
 32. Mysql 读写分离有哪些解决办法
 
+# 附录1 Explain
+#### EXPLAIN各字段详解
+
+| 字段 | 含义 | 典型关注点 |
+|:---|:---|:---|
+| id | 查询序列号，标识子查询或联合查询中各部分 | id越大越先执行（嵌套查询时） |
+| select_type | 查询类型（SIMPLE/PRIMARY/SUBQUERY/DERIVED等） | 识别普通查询、子查询、派生表 |
+| table | 正在访问的表名或子查询结果 | 当前行对应的表或临时表别名 |
+| partitions | 访问哪些分区（分区表时出现） | 仅分区表关注 |
+| type | 访问类型（访问粒度） | 性能影响最大，ALL最差，const/best |
+| possible_keys | 可能使用的索引 | 是否有可用索引？ |
+| key | 实际使用的索引 | 确认是否选对索引 |
+| key_len | 索引使用长度（字节数） | 是否利用了全部索引列？ |
+| ref | 索引匹配的列或常数 | 用于索引查找的条件列 |
+| rows | 估算扫描的行数 | 行数大=潜在慢查询风险 |
+| filtered | 过滤率（百分比） | 最后留存记录比例，越低越差 |
+| Extra | 补充信息，如Using index、Using where、Using filesort | 核心，反映执行细节 |
+
+#### 常见执行类型（type）及优化建议
+
+| type | 说明 | 优化建议 |
+|:---|:---|:---|
+| ALL | 全表扫描 | 加索引，优化WHERE子句 |
+| index | 全索引扫描（覆盖索引） | 覆盖索引但仍需注意rows量 |
+| range | 索引范围扫描 | 合理利用范围条件（BETWEEN, LIKE 'xxx%'） |
+| ref | 非唯一索引扫描，返回多行 | 确保索引选择性好 |
+| eq_ref | 唯一索引等值查询，每次返回1行 | 非常好，通常用于主键或唯一索引查询 |
+| const/system | 单行查询（常量），系统表访问 | 最优 |
+| NULL | 不访问任何表（直接返回结果） | 特殊情况 |
+
+✅ **性能排序（从好到差）：NULL > const > eq_ref > ref > range > index > ALL**
 
 
 
