@@ -444,10 +444,10 @@ SHOW ENGINE INNODB STATUS\G
 
 ## 🔁 1. Redo Log（重做日志）
 
-### 作用：保证已提交事务即使宕机也不会丢失（WAL思想）
+### 作用：保证已提交事务即使宕机也不会丢失（WAL思想即Write-Ahead Logging）
 
 ### 特点：
-- 位于 InnoDB 层，物理日志，记录对页的物理更改（按LSN顺序）
+- 位于 InnoDB 层，物理日志，记录对页的物理更改（按LSN顺序）  
 - 与磁盘页写入解耦，提高性能
 - 使用固定大小的 circular log buffer + log file group
 
