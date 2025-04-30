@@ -431,6 +431,131 @@ SHOW ENGINE INNODB STATUS\G
 | 如何排查死锁？                      | SHOW ENGINE INNODB STATUS，分析等待链与冲突资源。 |
 # V.MySQL 日志
 
+## 📌 概览：MySQL 中常见的日志类型
+
+| 日志类型 | 属于哪一层 | 主要作用 |
+|:---|:---|:---|
+| Redo Log | InnoDB 引擎层 | 保证事务的**持久性（D）**，崩溃后可恢复已提交数据 |
+| Undo Log | InnoDB 引擎层 | 实现事务的**原子性/一致性（A/C）**，用于回滚和 MVCC |
+| Binlog（Binary Log） | Server 层 | 用于**数据复制**、**主从同步**、**增量备份** |
+| Error Log | Server 层 | 记录服务启动、崩溃、严重错误等信息 |
+| Slow Query Log | Server 层 | 记录执行慢的 SQL 查询，辅助性能调优 |
+| General Log | Server 层 | 记录所有客户端连接与执行的 SQL 语句（调试用） |
+
+## 🔁 1. Redo Log（重做日志）
+
+### 作用：保证已提交事务即使宕机也不会丢失（WAL思想）
+
+### 特点：
+- 位于 InnoDB 层，物理日志，记录对页的物理更改（按LSN顺序）
+- 与磁盘页写入解耦，提高性能
+- 使用固定大小的 circular log buffer + log file group
+
+### 工作流程（WAL机制）：
+1. 事务修改内存页（Buffer Pool）
+2. 写入 Redo Log Buffer
+3. **先刷Redo Log**（由 `innodb_flush_log_at_trx_commit` 控制）
+4. 延迟刷脏页（Dirty Page）到磁盘
+
+### 关键参数：
+- `innodb_log_file_size`：每个 redo 文件大小
+- `innodb_log_files_in_group`：文件组数量（默认2）
+- `innodb_flush_log_at_trx_commit`：控制刷盘策略（0/1/2）
+
+## ↩️ 2. Undo Log（回滚日志）
+
+### 作用：
+- 支持事务回滚（原子性）
+- 实现 MVCC 的历史版本（快照读）
+
+### 特点：
+- 属于 InnoDB 引擎层，逻辑日志
+- 记录的是旧值（修改前的行版本）
+- 自动清理（由 purge 线程协调）
+
+### 应用场景：
+- 事务失败回滚
+- 构建一致性视图（ReadView）
+
+## 📦 3. Binlog（二进制日志）
+
+### 作用：
+- Server 层逻辑日志
+- 用于主从复制、增量备份、灾难恢复
+
+### 特点：
+- 按事务粒度记录所有 DML 的逻辑变化
+- 位于 Server 层，不依赖存储引擎
+- 为追加写入，不复用，支持持久存档
+
+### 三种格式：
+| 格式类型 | 描述 |
+|:---|:---|
+| STATEMENT | 记录原始 SQL（体积小，但不一定幂等） |
+| ROW | 记录行级变更（强一致性，数据量大） |
+| MIXED | 自动切换两者，兼顾一致性与体积 |
+
+### Binlog 同步方式：
+- `sync_binlog = 0`：由系统决定何时刷盘（性能高，安全差）
+- `sync_binlog = 1`：每次事务提交后立即刷盘（最安全，性能最低）
+- `sync_binlog = N`：每 N 个事务后刷盘一次，性能与可靠性折中
+
+## ⚠️ 4. Error Log
+
+- 记录 mysqld 启动、关闭、崩溃、警告等信息
+- 常用于排查 MySQL 启动失败或运行异常
+
+## 🐢 5. Slow Query Log（慢查询日志）
+
+- 记录执行超过阈值的 SQL，帮助发现性能瓶颈
+- 可配置输出格式与记录范围
+
+相关参数：
+- `slow_query_log = ON`
+- `long_query_time = 1`
+- `log_queries_not_using_indexes = ON`
+
+## 📜 6. General Log（通用日志）
+
+- 记录所有连接和所有SQL语句
+- 影响性能较大，一般用于开发或临时排查问题
+
+配置：
+- `general_log = ON`
+- `general_log_file = 'xxx.log'`
+
+## 🔄 Redo + Binlog 两阶段提交机制
+
+为保证崩溃恢复时 binlog 与 redo 的一致性，MySQL 使用如下两阶段提交流程：
+
+1. InnoDB 写入 Redo Log 的 prepare 记录（redo buffer，持久化前状态）
+2. MySQL Server 层写入 Binlog（逻辑日志）
+3. InnoDB 再写入 Redo Log 的 commit 标志并刷盘
+
+如果崩溃发生在步骤2之后但步骤3之前：恢复时 binlog 存在但事务未标记 commit，MySQL 将进行一致性判断并决定是否丢弃。
+
+## 🧠 Redo + Undo + Binlog 协同恢复机制
+
+事务执行过程中涉及多个日志子系统共同协作：
+
+| 阶段 | Undo Log | Redo Log | Binlog |
+|:---|:---|:---|:---|
+| 开始事务 | 分配事务ID | - | - |
+| 修改数据 | 写 Undo Log（旧值） | 修改 Buffer Pool（脏页） | - |
+| 提交 prepare | - | Redo Log prepare 记录 | - |
+| 写 Binlog | - | - | 追加逻辑日志 |
+| 提交 commit | - | Redo Log commit 标志刷盘 | - |
+
+恢复流程：
+- 遇到崩溃重启时：
+  - 查看 Redo Log 中是否 commit 完成
+  - Binlog 中是否存在匹配记录
+  - Undo Log 中记录哪些事务未完成，进行回滚
+
+## ✅ 总结一句话
+
+> InnoDB 的 Redo / Undo 保证事务原子性与持久性，Server 层 Binlog 支持复制与恢复，三者配合通过两阶段提交协调一致性，是 MySQL 高可靠性的根基。
+
 # VI.主从复制与高可用
 
 # VII.常见面试问题
