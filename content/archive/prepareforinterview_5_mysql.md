@@ -596,8 +596,7 @@ SHOW ENGINE INNODB STATUS\G
 31. Mysql 集群如何保证主从可用性
 32. Mysql 读写分离有哪些解决办法
 
-# XI.附录1 Explain
-#### EXPLAIN各字段详解
+# XI.有点东西之Explain详解
 
 | 字段            | 含义 | 典型关注点 |
 |:--------------|:---|:---|
