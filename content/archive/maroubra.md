@@ -25,6 +25,8 @@ comment = false
 
 ①②③④⑤⑥⑦⑧⑨
 
+I-II-III-IV-V-VI-VII-VIII-IX-X-XI-XII-XIII-XIV-XV-XVI-XVII-XVIII-XIX-XX
+
 > ADR：
 - 标题（Title）：简要描述决策的内容。
 - 背景（Context）：描述决策的背景和需要解决的问题。
