@@ -251,3 +251,137 @@ rv.FieldByName("Name").SetString("Bob")
 - ✅ Go 工程化（测试、性能、模块化）
 - ✅ Go 在系统设计中的最佳实践
 
+# 二、并发模型
+# Go 并发模型面试复习（GMP调度、channel、select、sync等）
+
+## 1. GMP 调度模型（核心原理）
+
+- G：Goroutine（协程）
+- M：OS Thread（内核线程）
+- P：Processor，调度上下文（控制运行队列、缓存、调度）
+
+### 流程概览：
+1. Goroutine 创建后加入 P 的本地队列（无锁）
+2. P 分配给 M，执行本地队列任务
+3. 工作窃取（work stealing）机制：P 执行完自己队列后，可窃取其他 P 的任务
+4. 当 goroutine 阻塞（如 syscall），M 会解绑，P 会重新找空闲 M 执行其他 goroutine
+
+## 2. channel（通信机制）
+
+- channel 是 goroutine 之间的通信管道（CSP 模型）
+- 两种类型：有缓冲（buffered）、无缓冲（unbuffered）
+- 发送/接收行为：
+  - 无缓冲：发送阻塞直到接收方就绪
+  - 有缓冲：缓冲满时阻塞发送方
+
+### 特性：
+- 可用于信号通知、任务投递、并发限流
+- close 后接收不会 panic，发送会 panic
+
+## 3. select（事件多路复用）
+
+- 用于等待多个 channel 操作
+- 非阻塞写法：结合 `default`
+- 支持超时控制：使用 `time.After`
+
+```go
+select {
+case val := <-ch1:
+    fmt.Println(val)
+case ch2 <- val:
+    fmt.Println("sent")
+default:
+    fmt.Println("no ready channel")
+}
+```
+
+## 4. sync 包（并发控制）
+
+### 4.1 sync.WaitGroup
+- 用于等待一组 goroutine 完成
+```go
+wg.Add(1)
+go func() {
+    defer wg.Done()
+    work()
+}()
+wg.Wait()
+```
+
+### 4.2 sync.Mutex / RWMutex
+- Mutex：互斥锁，确保某段代码同一时间只能被一个 goroutine 执行
+- RWMutex：读写锁，多个读可以并行，写独占
+
+### 4.3 sync.Once
+- 只执行一次（单例模式）
+
+### 4.4 sync.Cond
+- 条件变量，适合复杂的协程协调（生产者/消费者）
+
+## ✅ 面试重点总结
+
+| 主题                  | 面试重要性 | 推荐掌握深度 |
+|-----------------------|------------|----------------|
+| GMP 调度原理           | ⭐⭐⭐⭐     | 原理 + 图示 + 阻塞恢复 |
+| channel 行为与陷阱     | ⭐⭐⭐⭐     | nil、关闭、阻塞分析     |
+| select 与超时控制      | ⭐⭐⭐      | 使用技巧               |
+| sync.WaitGroup         | ⭐⭐⭐⭐     | 必备基础               |
+| sync.Mutex/RWMutex 使用 | ⭐⭐⭐⭐     | 避免死锁               |
+
+
+## 🎯 典型代码片段示例
+
+```go
+package main
+
+import (
+    "fmt"
+    "sync"
+    "time"
+)
+
+func main() {
+    var wg sync.WaitGroup
+    var mu sync.Mutex
+    ch := make(chan int, 2)
+
+    // 启动多个 worker
+    for i := 0; i < 3; i++ {
+        wg.Add(1)
+        go func(id int) {
+            defer wg.Done()
+            mu.Lock()
+            fmt.Printf("Worker %d locked\n", id)
+            mu.Unlock()
+
+            time.Sleep(time.Duration(id) * time.Second)
+            ch <- id // send to channel
+        }(i)
+    }
+
+    // 监听 channel 返回结果
+    go func() {
+        for {
+            select {
+            case v := <-ch:
+                fmt.Println("Received from channel:", v)
+            case <-time.After(2 * time.Second):
+                fmt.Println("Timeout, no value received")
+                return
+            }
+        }
+    }()
+
+    wg.Wait()
+    close(ch)
+    time.Sleep(1 * time.Second) // 等待 select goroutine 输出
+}
+```
+
+该代码涵盖：
+- goroutine 启动与参数传递
+- sync.WaitGroup 用于等待
+- sync.Mutex 控制访问
+- buffered channel
+- select 多路复用 + 超时
+
