@@ -3,13 +3,13 @@ title = "5天八股"
 date = 2025-05-01T14:07:32+08:00
 draft = false
 description = ""
-subtitle = "之Go篇"
+subtitle = "之GO篇"
 header_img = ""
 short = false
 toc = true
 tags = []
-categories = []
-series = []
+categories = ["计算机"]
+series = ["面试"]
 comment = false
 summary = ""
 +++
