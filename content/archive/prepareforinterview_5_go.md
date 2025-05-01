@@ -253,17 +253,29 @@ rv.FieldByName("Name").SetString("Bob")
 
 # 二、并发模型（GMP调度、channel、select、sync等）
 
-## 1. GMP 调度模型（核心原理）
+## 1. GMP 调度模型（重点）
 
-- G：Goroutine（协程）
-- M：OS Thread（内核线程）
-- P：Processor，调度上下文（控制运行队列、缓存、调度）
+Go 使用 M:N 调度模型，将 N 个 goroutine 映射到 M 个系统线程上，核心结构是 GMP：
 
-### 流程概览：
-1. Goroutine 创建后加入 P 的本地队列（无锁）
-2. P 分配给 M，执行本地队列任务
-3. 工作窃取（work stealing）机制：P 执行完自己队列后，可窃取其他 P 的任务
-4. 当 goroutine 阻塞（如 syscall），M 会解绑，P 会重新找空闲 M 执行其他 goroutine
+- **G（Goroutine）**：用户级线程，运行单元。
+- **M（Machine）**：操作系统线程。
+- **P（Processor）**：调度器上下文，维护运行队列、缓存等，决定哪个 G 在哪个 M 上执行。
+
+### 调度过程简述：
+1. 每个 `P` 维护自己的就绪队列（G 队列），调度无需锁。
+2. 当 `P` 上没有就绪 G，会从其他 `P` 窃取任务（Work Stealing）。
+3. `M` 被阻塞（如 syscall）时，P 会解绑并寻找新的 M 执行其他任务，避免调度阻塞。
+4. `G` 在创建时会尝试绑定在当前 `P` 上，如果失败则进入全局队列。
+
+### 调度机制特点：
+- 每个 P 至多绑定一个 M；系统最大可并行运行 G 的数量为 P 的数量。
+- 初始默认 P 数等于 `GOMAXPROCS`（默认为 CPU 核数，可调）。
+- M 会从 P 拉取 G 执行，P 没有就绪任务就抢任务或休眠。
+
+### 常见调度行为：
+- 系统调用阻塞 M，不会阻塞整个调度器（P 可切走）；
+- 调度器周期性触发 GC 检查点，保证 G 可以安全被抢占切换（Go 1.14 起支持异步抢占）；
+- 通过 `runtime.Gosched()` 或 IO、channel、锁等触发调度点。
 
 ## 2. channel（通信机制）
 
