@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 May 2025 14:07:32 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 May 2025 17:03:45 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5天八股</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_5_os/</link>
+      <pubDate>Thu, 01 May 2025 17:03:45 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_5_os/</guid>
+      <description>加锁保护的是什么？变量？线程？内存？1. 加锁本质是什么？锁保护的到底是啥？ ✅ 锁本质上是对某段内存操作行为的互斥访问保证， 它保护的不是“线程”</description>
+    </item>
+    
     <item>
       <title>5天八股</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_5_go/</link>
