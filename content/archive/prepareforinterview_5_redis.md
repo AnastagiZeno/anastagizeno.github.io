@@ -109,8 +109,9 @@ summary = ""
 1. redis的`List`为何不直接使用链表，却要把ziplist加入进去，ziplist本质是数组，插入删除是O(n)，同时redis的list也不支持按照索引获取数据（实际支持，但是不推荐用，因为链表O(n)）
 > Redis没采用纯链表实现List，是因为链表占用内存高、CPU缓存不友好(因为链表是分散的，不像数组是连续开辟内存)。为了提高内存效率和访问性能，Redis 用 ziplist 存多个元素，再用链表连接多个 ziplist，这种结构称为 quicklist。它兼顾了插入删除效率与空间利用，是 List 的默认实现方式。
 > 多说一点，5.0之后，Redis开始弃用ziplist改用listpack（再次优化后的ziplist）
-2.数据结构选型问题，关于跳表
->
+
+2. 数据结构选型问题，关于跳表
+
 >**sortedList 选择跳表+Hash作为底层数据结构，排序、范围查询主要依赖跳表，那么选择跳表不选择红黑树的原因是？**
 >
 >| 比较点       | 跳表（SkipList）                        | 红黑树（Red-Black Tree）               |
