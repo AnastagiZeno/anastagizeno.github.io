@@ -251,8 +251,7 @@ rv.FieldByName("Name").SetString("Bob")
 - ✅ Go 工程化（测试、性能、模块化）
 - ✅ Go 在系统设计中的最佳实践
 
-# 二、并发模型
-# Go 并发模型面试复习（GMP调度、channel、select、sync等）
+# 二、并发模型（GMP调度、channel、select、sync等）
 
 ## 1. GMP 调度模型（核心原理）
 
@@ -385,3 +384,130 @@ func main() {
 - buffered channel
 - select 多路复用 + 超时
 
+
+
+
+# 三、内存管理与垃圾回收（GC）面试复习
+
+## 1. 内存分配与逃逸分析
+
+Go 使用自研内存分配器，针对不同大小的对象有不同分配路径：小对象（<=32KB）通过固定 size class 的 mcache 分配；大对象（>32KB）直接走 heap 分配。栈内存初始为 2KB，支持动态扩容，分配快速；逃逸到堆上的变量由 GC 管理，性能更低。
+
+逃逸分析发生在编译阶段，决定变量是分配在栈上还是堆上。逃逸的常见场景包括：返回局部变量指针、闭包中捕获变量等。
+
+```go
+func f() *int {
+    x := 10
+    return &x // 逃逸到堆
+}
+```
+
+使用如下命令查看逃逸信息：
+```bash
+go build -gcflags='-m' main.go
+```
+
+## 2. Go GC 的三色标记清除流程（重点）
+
+Go 使用并发三色标记清除算法进行垃圾回收。GC 时所有对象初始为白色，表示“待回收”。根对象首先标记为灰色，表示“待扫描”，当扫描其引用后，将其标记为黑色，并将其引用对象加入灰色队列。最终所有仍为白色的对象将被回收。
+
+### 写屏障机制详解
+在并发标记阶段，为避免程序中新写入的新引用对象未被 GC 追踪而被误回收，Go 引入写屏障（Write Barrier）。写屏障的核心逻辑是：**当某个对象 obj 的字段 p 被赋值一个指向新对象 q 的引用时**，需要进行如下检查：
+
+- 如果 obj 是黑色（已扫描过），而 q 是白色（未标记），则说明 GC 不知道 q 的存在，有被回收的风险。
+- 为避免该情况，Go 使用 **插入屏障（Dijkstra write barrier）**，即在写入引用之前，先将目标对象 q 标记为灰色，加入待扫描队列。
+
+伪代码如下：
+```go
+if isBlack(obj) && isWhite(q) {
+    markGray(q)
+    enqueue(q)
+}
+obj.p = q
+```
+这样保证所有在并发标记阶段新创建或新引用的对象不会被漏标。
+
+### GC 的基本流程：
+1. 初始 STW，GC 设置所有对象为白色，构造根集合为灰色。
+2. 并发标记：GC 和 mutator 并发执行，GC 扫描灰色对象，mutator 写引用触发写屏障。
+3. 并发清扫：移除所有未被标记的白色对象。
+4. 最后一次 STW 做收尾工作，重新启动用户程序。
+
+整个过程中只有起始和结束两个短暂 STW，大部分时间 GC 与程序并发运行。
+
+## 3. sync.Pool 的原理与使用
+
+sync.Pool 是 Go 提供的轻量级对象池，用于缓存临时对象以降低 GC 压力，特别适合短期使用、生命周期明确的对象。
+
+### 使用方式：
+```go
+var bufPool = sync.Pool{
+    New: func() interface{} {
+        return make([]byte, 1024)
+    },
+}
+
+buf := bufPool.Get().([]byte)
+// 使用 buf ...
+bufPool.Put(buf)
+```
+
+### 原理概览：
+- 每个 P（Processor）维护一个私有池，避免加锁开销。
+- 若本地池为空，则尝试从其他 P 的共享池偷取对象。
+- GC 时会清空所有 pool 内容（防止长期引用），下一轮重新填充。
+
+### 面试考点：
+- sync.Pool 适用于临时对象缓存，不适合做连接池（如 DB pool）。
+- GC 会清空 sync.Pool，不能用于长生命周期的重用。
+
+## 🎯 示例：强制逃逸 + GC 日志观察
+
+```go
+package main
+
+import (
+    "fmt"
+    "runtime"
+)
+
+func createData() *[]int {
+    data := make([]int, 10000) // 大对象
+    return &data // 逃逸到堆
+}
+
+func main() {
+    runtime.GC() // 手动触发 GC
+    _ = createData()
+    fmt.Println("Triggered GC")
+}
+```
+
+编译并观察逃逸与 GC：
+```bash
+go build -gcflags='-m' main.go
+GODEBUG=gctrace=1 ./main
+```
+
+## 🎯 示例：pprof 火焰图实战案例
+
+### 案例 1：CPU 热点分析
+```go
+import _ "net/http/pprof"
+go http.ListenAndServe(":6060", nil) // 注册默认路由
+```
+访问 http://localhost:6060/debug/pprof/profile?seconds=30 导出 CPU profile
+```bash
+go tool pprof -http=:8080 ./app cpu.prof
+```
+
+### 案例 2：内存泄漏定位
+```go
+import _ "net/http/pprof"
+```
+访问 http://localhost:6060/debug/pprof/heap 导出堆内存
+```bash
+go tool pprof -http=:8081 ./app heap.prof
+```
+
+使用浏览器查看火焰图，快速定位热点和泄漏根因。
