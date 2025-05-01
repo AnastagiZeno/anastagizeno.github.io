@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Apr 2025 20:23:03 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 May 2025 14:07:32 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5天八股</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_5_go/</link>
+      <pubDate>Thu, 01 May 2025 14:07:32 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_5_go/</guid>
+      <description>RoadMap （资深开发工程师）1. 语言基础与高级特性 值类型 vs 引用类型（slice、map、channel 的底层结构与共享语义） interface 和 type assertion empty interface 本质 interface 的动态</description>
+    </item>
+    
     <item>
       <title>5天八股</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_5_redis/</link>
