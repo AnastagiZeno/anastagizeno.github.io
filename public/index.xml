@@ -13,7 +13,7 @@
       <pubDate>Tue, 29 Apr 2025 20:23:03 +0800</pubDate>
       
       <guid>https://shahrazad.fun/archive/prepareforinterview_5_redis/</guid>
-      <description>redis 的底层数据结构有哪些 redis 中的 SDS 和 C 语言中的字符串有什么区别，优点是什么 redis 中的字典是如何实现的，如何解决冲突和扩容 redis 的跳表的使用场景是什么，可</description>
+      <description>Redis 核心数据结构与高性能原理一、Redis 为什么快？ 单线程模型：避免多线程加锁和上下文切换，基于事件循环 + epoll。 纯内存存储：数据全部在内</description>
     </item>
     
     <item>
