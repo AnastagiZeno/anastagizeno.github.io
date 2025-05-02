@@ -3,8 +3,7 @@
 {{ $image := .Get 2 | default "default.jpg" }}
 {{ $scale := .Get 3 | default "16" }}
 
-{{ $currentYear := now.Format "2006" }}
-{{ $imagePath := printf "/image/%s/%s" $currentYear $image | relURL }}
+{{ $imagePath := printf "%s" $image | relURL }}
 
 <div style="display: flex; align-items: flex-start; margin-bottom: 30px;">
     <div style="flex: 0 0 {{ $scale }}%; max-width: {{ $scale }}%; text-align: center; margin-right: 40px;">
