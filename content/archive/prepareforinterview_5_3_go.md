@@ -9,7 +9,7 @@ short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试"]
+series = ["面试", "八股文"]
 comment = false
 summary = ""
 +++

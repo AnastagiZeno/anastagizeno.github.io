@@ -1,15 +1,15 @@
 +++
-title = "7日刷题"
+title = "7日刷题第三天"
 date = 2025-04-26T13:02:12+08:00
 draft = false
 description = ""
-subtitle = "星期三：动态规划与回溯"
+subtitle = "之动态规划题型总结"
 header_img = ""
 short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试"]
+series = ["面试", "算法题"]
 comment = false
 summary = ""
 +++

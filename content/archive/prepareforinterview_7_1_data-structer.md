@@ -1,15 +1,15 @@
 +++
-title = "7日刷题"
+title = "7日刷题第一天"
 date = 2025-04-24T13:02:12+08:00
 draft = false
 description = ""
-subtitle = "星期一：基础数据结构"
+subtitle = "之基础数据结构：树、链表、栈、堆等基础操作"
 header_img = "/image/2025/valter-brani-sarajevo-ogimage.jpg"
 short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试"]
+series = ["面试", "算法题"]
 comment = false
 summary = ""
 +++

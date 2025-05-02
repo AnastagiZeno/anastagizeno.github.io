@@ -3,13 +3,13 @@ title = "5天八股"
 date = 2025-04-29T08:57:36+08:00
 draft = false
 description = ""
-subtitle = "之Mysql篇"
+subtitle = "之Mysql"
 header_img = "/image/2025/fallofconstantinople.png"
 short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试"]
+series = ["面试", "八股文"]
 comment = false
 summary = ""
 +++

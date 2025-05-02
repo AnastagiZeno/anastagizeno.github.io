@@ -3,13 +3,13 @@ title = "5天八股"
 date = 2025-05-01T17:03:45+08:00
 draft = false
 description = ""
-subtitle = "之OS篇"
+subtitle = "之OS、Network篇"
 header_img = "/image/2025/siegeofmalta.png"
 short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试"]
+series = ["面试", "八股文"]
 comment = false
 summary = ""
 +++
