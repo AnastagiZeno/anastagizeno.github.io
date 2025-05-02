@@ -15,7 +15,7 @@ summary = ""
 +++
 # 双指针与滑动窗口技巧指南
 
-[哈哈](/janus/2025/two_pointer.py)
+[哈哈](dogdoor/janus/2025/two_pointer.py)
 
 ## 1. 特点与识别
 
