@@ -85,16 +85,16 @@
       <pubDate>Fri, 25 Apr 2025 13:02:12 +0800</pubDate>
       
       <guid>https://shahrazad.fun/archive/prepareforinterview_7_2_two-pointers/</guid>
-      <description>双指针与滑动窗口技巧指南1. 特点与识别 对撞/配对：有序数组，从两端逼近解决两数之和 三数之和 盛水容器等。 快慢指针：链表环检测、中点查找、删除倒</description>
+      <description>双指针与滑动窗口技巧指南哈哈 1. 特点与识别 对撞/配对：有序数组，从两端逼近解决两数之和 三数之和 盛水容器等。 快慢指针：链表环检测、中点查找、删除</description>
     </item>
     
     <item>
       <title>7日刷题第一天</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_7_1_data-structer/</link>
+      <link>https://shahrazad.fun/archive/prepareforinterview_7_1_roadmap-and-data-structer/</link>
       <pubDate>Thu, 24 Apr 2025 13:02:12 +0800</pubDate>
       
-      <guid>https://shahrazad.fun/archive/prepareforinterview_7_1_data-structer/</guid>
-      <description>🌳 一、树（Tree）相关题型与模板🧩 核心概念： 树是一个无环、连通的图结构 二叉树是最常见的树类型 遍历方式：前序、中序、后序、层序 应用：递归、D</description>
+      <guid>https://shahrazad.fun/archive/prepareforinterview_7_1_roadmap-and-data-structer/</guid>
+      <description>7天RoadMap 题型分类与专属模版 数据结构题（链表、树、栈、队列、图） 双指针与滑动窗口 二分查找 BFS/DFS 动态规划 回溯／状态压缩 贪心算法 数学与位运算</description>
     </item>
     
     <item>
