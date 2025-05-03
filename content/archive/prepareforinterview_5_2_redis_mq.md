@@ -67,12 +67,11 @@ summary = ""
 3. `Hash`就是`字典`。但实际上用两个`字典`维护，渐进式扩容（key比桶数量多了肯定就碰撞多了），字典2（更多的痛）迁移完了跟字典1引用对调一下就行了。
 4. `SortedSet`用字典存节点，为了O(1)拿内容。范围是靠多级链表即`跳表`优化查找效率，连续扫描是靠最下层数据的`链表`实现的。
 
-*5.0之后，ziplist开始被listpack逐渐取代*
+*5.0之后，`ziplist`开始被`listpack`逐渐取代，这个`ziplist`很有意思，它本质上是优化后的数组，但是在Redis对各种数据结构里充当非常多的角色:*
 
-- 这个ziplist/listpack很有意思，它本质上是优化后的数组，但是在Redis对各种数据结构里充当非常多的角色。
-- 比如Hash里如果元素数量太少，就用ziplist代替dict；
-- 比如List，如果元素太少就用ziplist代替quicklist（真正的链表结构），甚至quicklist内的元素本身不是一个，是多个元素，也就是局部用的还是ziplist；
-- 比如SortedSet，如果元素太少的话跳表+字典都不用了，直接上ziplist。
+- 比如`Hash` 如果元素数量太少，就用ziplist代替dict；
+- 比如`List` 如果元素太少就用ziplist代替quicklist（真正的链表结构），甚至quicklist内的元素本身不是一个，是多个元素，也就是局部用的还是ziplist；
+- 比如`SortedSet` 如果元素太少的话跳表+字典都不用了，直接上ziplist。
 - 究其本质原因，体现了Redis的设计哲学：
 > **用紧凑线性结构（ziplist/listpack）优化小数据，提升内存利用率和 CPU 缓存局部性**
 
