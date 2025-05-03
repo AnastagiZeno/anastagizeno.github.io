@@ -70,7 +70,7 @@ summary = ""
 *5.0之后，`ziplist` 开始被 `listpack` 逐渐取代，这个哥俩很有意思，他们本质上是优化后的数组，但是在Redis对各种数据结构里充当非常多的角色:*
 
 - 比如 `Hash` 如果元素数量太少，就用ziplist代替dict；
-- 比如 `List` 如果元素太少就用ziplist代替quicklist（真正的链表结构），甚至quicklist内的元素本身不是一个，是多个元素，也就是局部用的还是ziplist；
+- 比如 `List` 如果元素太少就用ziplist代替quicklist（真正的链表结构），甚至quicklist内的元素本身不是一个，是多个元素组成的数组，也就是局部用的还是ziplist；
 - 比如 `SortedSet` 如果元素太少的话跳表+字典都不用了，直接上ziplist。
 - 究其本质原因，体现了Redis的设计哲学：
 > **用紧凑线性结构（ziplist/listpack）优化小数据，提升内存利用率和 CPU 缓存局部性**
