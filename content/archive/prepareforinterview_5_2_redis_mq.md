@@ -73,8 +73,8 @@ summary = ""
 - 比如 `List` 如果元素太少就用ziplist代替quicklist（真正的链表结构），甚至quicklist内的元素本身不是一个，是多个元素组成的数组，也就是局部用的还是ziplist；
 - 比如 `SortedSet` 如果元素太少的话跳表+字典都不用了，直接上ziplist。
 
-究其本质原因，体现了Redis的设计哲学：
-> **用紧凑线性结构（ziplist/listpack）优化小数据，提升内存利用率和 CPU 缓存局部性**
+究其本质原因，体现了Redis的设计哲学（也是redis为什么快的其中一个原因）
+> **用紧凑线性结构（ziplist/listpack）优化小数据，提升 `内存利用率` 和 `CPU缓存局部性`**
 
 ## 四、常见缓存一致性问题
 
