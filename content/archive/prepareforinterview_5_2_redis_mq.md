@@ -50,24 +50,29 @@ summary = ""
 
 ## 三、对象编码机制（redisObject）
 
-| 数据结构 | 编码方式 | 触发条件                                 |
-|----------|----------|--------------------------------------|
-| String   | int / embstr / raw | embstr：短字符串（<= 39 字节）                |
-| List     | ziplist / quicklist | 元素较少时使用 ziplist                      |
-| Hash     | ziplist / hashtable | 字段少且短时使用 ziplist                     |
-| Set      | intset / hashtable | 小整数集合用 intset                        |
-| SortedSet| ziplist / skiplist | 数据量小时 ziplist, 正常是skiplist + ziplist |
-| Stream   | listpack / radix tree | 高效压缩消息块存储                            |
+| 数据结构 | 编码方式 | 触发条件                              |
+|----------|----------|-----------------------------------|
+| String   | int / embstr / raw | embstr：短字符串（<= 39 字节）             |
+| List     | ziplist / quicklist | 元素较少时使用 ziplist                   |
+| Hash     | ziplist / hashtable | 字段少且短时使用 ziplist                  |
+| Set      | intset / hashtable | 小整数集合用 intset                     |
+| SortedSet| ziplist / skiplist | 数据量小时 ziplist, 正常是skiplist + dict |
+| Stream   | listpack / radix tree | 高效压缩消息块存储                         |
 
 关键点说明下：
 1. 底层`sds`就是优化后的`字符串`。
 2. 底层`ziplist/listpack(5.0之后)`实际就是优化后的`链表`。
 3. 底层`skiplist`实际就是`多级链表`组成的冗余结构，提高查找效率。
-3. `List`实际上就是`链表`。
-3. `Hash`用两个`字典`维护，渐进式扩容（key比桶数量多了，肯定碰撞不上了），字典2迁移完了跟字典1引用对调一下就行了。
+3. `List`就是`链表`。但实际上更复杂，外层是大链表，每个链表项又是一个优化后的数组（zipList/listPack），为了内存连续，减少内存碎片。
+3. `Hash`就是`字典`。但实际上用两个`字典`维护，渐进式扩容（key比桶数量多了肯定就碰撞多了），字典2（更多的痛）迁移完了跟字典1引用对调一下就行了。
 4. `SortedSet`用字典存节点，为了O(1)拿内容。范围是靠多级链表即`跳表`优化查找效率，连续扫描是靠最下层数据的`链表`实现的。
-**5.0之后，ziplist开始被listpack逐渐取代**
 
+**5.0之后，ziplist开始被listpack逐渐取代**
+**这个ziplist/listpack很有意思，它本质上是优化后的数组，但是在Redis对各种数据结构里充当非常多的角色。
+比如Hash里如果元素数量太少，就用ziplist代替dict；比如List，如果元素太少就用ziplist代替quicklist（真正的链表结构），
+甚至quicklist内的元素本身不是一个，是多个元素，也就是局部用的还是ziplist；比如SortedSet，如果元素太少的话跳表+字典都不用了，直接上ziplist。
+究其本质原因，体现了Redis的设计哲学：**
+> 用紧凑线性结构（ziplist/listpack）优化小数据，提升内存利用率和 CPU 缓存局部性
 
 ## 四、常见缓存一致性问题
 
