@@ -29,17 +29,17 @@ summary = ""
 
 ## 二、常见数据结构与底层实现
 
-| 数据类型 | 应用场景 | 底层实现 |
-|----------|----------|----------|
-| String   | 计数器、Token、锁 | SDS（简单动态字符串） |
-| List     | 消息队列、时间轴 | quicklist（ziplist + 链表） |
-| Hash     | 用户信息、配置表 | ziplist / hashtable |
-| Set      | 标签、去重集合 | intset / hashtable |
-| SortedSet| 排行榜、延时队列 | skiplist + hashtable |
-| Bitmap   | 用户打卡、签到 | 位数组 |
+| 数据类型      | 应用场景 | 底层实现 |
+|-----------|----------|----------|
+| String    | 计数器、Token、锁 | SDS（简单动态字符串） |
+| List      | 消息队列、时间轴 | quicklist（ziplist + 链表） |
+| Hash      | 用户信息、配置表 | ziplist / hashtable |
+| Set       | 标签、去重集合 | intset / hashtable |
+| SortedSet | 排行榜、延时队列 | skiplist + hashtable |
+| Bitmap    | 用户打卡、签到 | 位数组 |
 | HyperLogLog | UV 统计 | 概率数据结构（误差约 0.81%） |
-| Geo      | LBS 应用 | SortedSet 实现 |
-| Stream   | 消息队列、日志系统 | 双端链表 + Radix Tree + listpack |
+| Geo       | LBS 应用 | SortedSet 实现 |
+| Stream    | 消息队列、日志系统 | 双端链表 + Radix Tree + listpack |
 
 我亲身经历的工作内容：
 1. **String** - `计数器`：业务上各种疲劳度计数、库存扣减；`缓存`：不用说了各种配置缓存（当持久化库用的），请求缓存，耗时查询结果缓存。**锁**：worker并发控制，兑换/购买流程请求防重防连击上锁，并发回源数据db保护上锁。
