@@ -49,7 +49,7 @@
       <pubDate>Thu, 01 May 2025 14:07:32 +0800</pubDate>
       
       <guid>https://shahrazad.fun/archive/prepareforinterview_5_3_go/</guid>
-      <description>RoadMap （资深开发工程师）1. 语言基础与高级特性 值类型 vs 引用类型（slice、map、channel 的底层结构与共享语义） interface 和 type assertion empty interface 本质 interface 的动态</description>
+      <description>Go 语言资深开发工程师）1. 语言基础与高级语义（掌握语言行为）✅ 必会核心 值类型 vs 引用类型（slice/map/channel 的共享语义） slice 底层</description>
     </item>
     
     <item>
