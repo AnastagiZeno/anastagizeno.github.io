@@ -15,27 +15,108 @@ summary = ""
 +++
 
 # Go 语言资深开发工程师）
+## 第一章总结：Go 语言语义与语言机制核心考点
 
-## 1. 语言基础与高级语义（掌握语言行为）
+### ✅ 类型系统与值/引用行为
 
-### ✅ 必会核心
+#### 📌 值类型 vs 引用类型
 
-* 值类型 vs 引用类型（slice/map/channel 的共享语义）
-* slice 底层结构与扩容行为（cap 扩张策略）
-* map 的桶结构、哈希冲突、扩容与 rehash 行为（Go 1.9+）
-* interface 底层结构：itab 表、动态类型和值分离机制
-* nil 接口陷阱：interface==nil 与 (value==nil && type!=nil) 情况
-* make/new 区别、逃逸行为影响
-* struct 对齐规则、struct{} 内存优化技巧
-* defer 与 return 的执行顺序（命名返回值与作用域）
-* 类型断言、类型 switch 原理
-* go mod 构建与包管理机制
+* 基本类型（int、float、struct）为值类型，传参会复制。
+* slice/map/channel 虽为引用语义，但本身是结构体，传参会复制 header，底层数据共用。
+* **易错点**：传 slice 进函数后 `append` 会触发底层数组复制，是否影响原 slice 取决于 cap 是否足够。
 
-### 💥 高频考点
+#### 📌 slice 行为细节
 
-* defer 与 return
-* interface nil 陷阱
-* map 扩容机制
+* slice 底层结构为：指针 + len + cap。
+* 截取（如 `s2 := s1[3:5]`）为浅拷贝，共享底层数组。
+* 修改 `s2[0]` 会影响 `s1[3]`。
+* **append 时是否影响原 slice** 取决于 cap 是否充足，触发扩容会复制新数组。
+
+#### 📌 map 特性
+
+* 引用类型，传参会共享底层数据。
+* map 扩容采用渐进式 rehash。
+* **Go map 非线程安全，禁止并发读写（即使都是读）**。
+* `range map` 顺序不固定，扩容期间遍历可能不安全。
+
+#### 📌 channel 特性
+
+* channel 是线程安全的，支持并发读写。
+* 关闭 channel 后仍可读取已有数据；读取空已关闭 channel 得到零值，不 panic；
+* **对 nil channel 的读写操作会永久阻塞，不 panic！**
+* `select` 会自动跳过 nil channel 分支，可用于动态控制逻辑。
+
+### ✅ interface 机制与 nil 陷阱
+
+#### 📌 interface 底层结构
+
+* interface 是“类型 + 值”的组合：type 不为 nil 即不为 nil。
+* 空接口 `interface{}`：eface；非空接口：iface（带方法表 itab）。
+
+#### 📌 interface == nil 陷阱
+
+* `var e *MyErr = nil; return e` → 转为 interface 后 type!=nil，整个值不为 nil。
+* 判断 interface 是否为 nil，必须：type == nil 且 value == nil。
+
+#### 📌 类型断言与 switch
+
+* 类型断言：`v := i.(T)`，若类型不匹配则 panic，推荐写成 `v, ok := i.(T)`。
+* 类型 switch 语法糖，自动匹配实际动态类型。
+* **对 nil interface 使用断言会 panic！**
+
+### ✅ defer 与 return 执行顺序
+
+#### 📌 return 实际执行步骤：
+
+1. 赋值返回值（命名返回值 r = ...）
+2. 执行 defer（可修改命名返回值）
+3. 真正 return
+
+#### 📌 命名 vs 匿名返回值
+
+* 命名返回值可被 defer 修改。
+* 匿名返回值 defer 改的是局部变量，对最终返回无影响。
+
+#### 📌 易错点
+
+* defer 捕获的参数值是值拷贝，注册时即确定。
+* defer 顺序为 **先进后出（LIFO）**
+
+### ✅ make / new / 内存行为
+
+| 关键点  | new                | make                       |
+| ---- | ------------------ | -------------------------- |
+| 返回类型 | 指针                 | 值本身（slice/map/channel）     |
+| 适用类型 | 任意类型               | 仅适用于内建引用类型                 |
+| 常见用法 | `new(int)` → \*int | `make([]int, 10)` → \[]int |
+
+#### 📌 逃逸行为
+
+* 返回指针通常逃逸到堆。
+* 可使用 `go build -gcflags=-m` 查看逃逸信息。
+
+### ✅ struct 对齐与优化
+
+#### 📌 字段对齐原则
+
+* 字段排列顺序会影响 struct 占用大小。
+* 应将小字段集中，减少 padding。
+
+#### 📌 struct{} 零成本结构体
+
+* 空结构体不占空间（大小为 0），常用于：
+
+  * map 占位
+  * channel 通知信号
+  * sync.Once 等内部结构
+
+### ✅ 高频陷阱题集合
+
+1. **interface != nil**：只要 type != nil，interface 就不等于 nil
+2. **defer 改返回值**：仅当返回值是命名变量时 defer 才能影响结果
+3. **map 并发读写**：不是线程安全的，读也不安全，可能 panic
+4. **关闭 channel 后可继续读取**，读取 nil channel 会阻塞，写入已关闭 channel panic
+5. **select 默认分支行为误解**：default 只有在其他 case 都不 ready 时才执行
 
 ## 二、GMP 调度模型与并发原语
 
