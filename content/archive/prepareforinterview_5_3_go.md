@@ -451,57 +451,388 @@ Go 使用非分代的 **三色并发标记清除（Tri-color Concurrent Mark & S
 
 * Go 使用混合写屏障机制：在黑对象写入新引用时，如果目标是白对象，仍会触发写屏障将其标记为灰色，保证三色不变式不被破坏。
 
-## 四、错误处理与标准库机制
+## Golang 并发原语总结（面向资深服务端工程师）
 
-### ✅ 必会核心
+> **模块覆盖**：sync 包（Mutex、RWMutex、Once、WaitGroup、Cond）、sync/atomic 模块（Value、Pointer、ABA 问题）、channel 实现与调度路径。
 
-* panic 与 recover 的作用域规则（只能捕获当前 goroutine）
-* goroutine 中异常捕获 best practice（SafeGo）
-* error 接口与哨兵错误（sentinel error）设计思想
-* 标准库 errors.Wrap 与 `%w` error chain 解构
-* context 传递机制：cancel、timeout、deadline 控制流
-* 标准库 sync/atomic/net/url/bufio 等底层实现亮点
+### ✅ 一、sync 包核心原语
 
-### 💥 高频考点
+#### 1. sync.Mutex
 
-* panic/recover 捕获范围
-* context 超时链
-* error 包装与传播
+* 非可重入锁，不可跨 goroutine 解锁。
+* 快路径：CAS 尝试加锁。
+* 慢路径：失败后尝试自旋、自旋失败后挂起（调用 runtime\_Semacquire）。
+* 解锁后：若 sendq 中有等待者，通过 `ready(g)` 唤醒一个 goroutine 加入 P 的 runq。
 
-## 五、Gin 框架核心原理与高频问题
+**高频面试问答：**
 
-### ✅ 必会核心
+* Q: Mutex 是公平锁吗？Go 如何避免饥饿？
 
-* Gin 的 Context 是如何实现的？封装了哪些内容？
-* 中间件链路执行机制（Next/Abort 流程控制）
-* 路由注册与参数解析机制（树形结构 + 动态参数）
-* 请求上下文如何与协程安全结合（Context 对象复用问题）
-* 如何安全地设置响应头与状态码？（中间件 vs 业务逻辑）
-* Gin 和标准库 net/http 的关系（Handler 封装与兼容性）
+  * A: 默认是非公平锁。但如果检测到长时间等待，会转为“饥饿模式”，采用 FIFO 唤醒策略避免 starvation。
 
-### 💥 高频考点
+#### 2. sync.RWMutex
 
-* 中间件机制（Next/Abort 流程）
-* Context 对象结构与生命周期
-* 路由匹配的前缀树实现机制
+* 支持多个读锁并发，写锁独占。
+* 写锁申请时需等待所有读锁释放。
+* 读锁计数使用原子操作（readerCount）。
+* 非可重入，读锁套写锁会死锁。
 
-## 六、经典手写代码考点（面试常见高频小题）
+**高频面试问答：**
 
-### ✅ 必会核心
+* Q: RWMutex 的优化体现在哪？
 
-* 手写 channel 超时控制（select + time.After）
-* 并发安全计数器（atomic vs mutex）
-* 实现 worker pool / goroutine 池模型
-* 实现 single flight（避免并发重复请求）
-* context 超时控制与 goroutine 泄漏防止
-* panic/recover 包装 SafeGo 实现
-* 用 sync.Once 实现懒加载初始化
-* 实现 map 并发安全封装（基于 RWMutex）
-* 模拟实现简单的限流器（令牌桶、滑动窗口）
+  * A: 读者之间不阻塞，通过原子增减计数器提高吞吐。
+* Q: 是否公平？
 
-### 💥 高频考点
+  * A: 非公平锁，读者可能长时间阻塞写者。
 
-* channel 超时控制
-* worker pool 实现
-* SafeGo 异常封装
+#### 3. sync.Once
 
+* 只执行一次函数。
+* 使用 CAS 将状态从 0 改为 1 控制唯一性。
+
+```go
+var once sync.Once
+once.Do(func() { initLogic() })
+```
+
+**简化实现：**
+
+```go
+type MyOnce struct { done uint32 }
+func (o *MyOnce) Do(f func()) {
+    if atomic.LoadUint32(&o.done) == 0 {
+        if atomic.CompareAndSwapUint32(&o.done, 0, 1) {
+            f()
+        }
+    }
+}
+```
+
+#### 4. sync.WaitGroup
+
+* 用于等待一组 goroutine 完成。
+* Add/Done 计数配合，Wait 会挂起当前 goroutine，最后一个 Done 的 goroutine 唤醒它。
+
+**注意：** Add 不建议多个 goroutine 并发调用，存在竞态。
+
+**高频面试问答：**
+
+* Q: Wait 被阻塞后由谁唤醒？
+
+  * A: 最后一个 Done 的 G 会执行 runtime 中的唤醒逻辑（ready g），将 Wait G 加入调度。
+
+#### 5. sync.Cond
+
+* 条件变量，Wait 会释放锁并挂起 goroutine。
+* 被 Signal 或 Broadcast 唤醒后，会自动重新加锁。
+* 必须配合 for 条件判断使用，防止虚假唤醒。
+
+```go
+mu.Lock()
+for !condition {
+    cond.Wait()
+}
+mu.Unlock()
+```
+
+**高频面试问答：**
+
+* Q: sync.Cond 和 channel 有什么区别？
+
+  * A: Cond 支持精确控制唤醒粒度；channel 无法控制唤醒顺序和粒度。
+
+### ✅ 二、sync/atomic 模块
+
+#### 1. 基本原子操作
+
+* `atomic.AddInt32` / `atomic.Load` / `atomic.Store` / `CompareAndSwap`
+* 用于数值的无锁同步操作。
+
+#### 2. atomic.Value
+
+* 支持存储任意类型，但类型必须一致。
+* 适合读多写少的热更新场景。
+
+#### 3. atomic.Pointer\[T]
+
+* Go 1.19+ 支持泛型原子指针。
+* 类型安全，适合结构体整体替换。
+* 可配合 version 字段规避 ABA 问题。
+
+**高频面试问答：**
+
+* Q: atomic.Value 和 Pointer\[T] 区别？
+
+  * A: Value 灵活但类型不安全；Pointer 更高性能、支持 CAS。
+
+#### 4. ABA 问题与组合原子策略
+
+* 问题：A → B → A，CAS 会误判“未变”。
+* 解决：value + version 一起做 CAS。
+
+**示例结构：**
+
+```go
+type VersionedX struct {
+    ptr     *X
+    version uint64
+}
+```
+
+### ✅ 三、Channel 模块
+
+#### 1. 底层结构（runtime.hchan）
+
+```go
+type hchan struct {
+    qcount   uint
+    dataqsiz uint
+    buf      unsafe.Pointer
+    sendx    uint
+    recvx    uint
+    closed   uint32
+    sendq    waitq // 等待 send 的 G
+    recvq    waitq // 等待 recv 的 G
+}
+```
+
+* 无缓冲 channel：send/recv 必须同时存在
+* 缓冲 channel：缓冲区未满即可 send，非空即可 recv
+
+#### 2. 调度机制
+
+* send/recv 无匹配时：G 被挂起（gopark），加入 sendq/recvq
+* 对方到来时：匹配成功，数据交换，唤醒（ready）
+* close channel：唤醒全部等待者
+
+#### 3. select 行为
+
+* 执行时 case 顺序随机洗牌
+* 多个 ready case：随机选一个执行
+* nil channel case：永不准备好，自动跳过
+* default：所有 case 不 ready 时执行，非阻塞
+
+#### 4. channel 关键行为
+
+* send on closed channel → panic
+* recv from closed channel → 返回零值 + ok = false
+* close(nil) → panic
+* 多次 close → panic
+* send/recv on nil → 永久阻塞
+
+### ✅ 高频面试题集（按模块归类）
+
+#### Mutex/RWMutex
+
+* Mutex 是否公平？如何避免饥饿？
+* RWMutex 是否可重入？读锁嵌套写锁会怎样？
+* 为什么 RWMutex 用原子操作计数读者？
+
+#### sync.Once / WaitGroup / Cond
+
+* sync.Once 的原理是什么？
+* WaitGroup 的 Wait 是如何唤醒的？
+* Cond 和 channel 有什么区别？为什么需要虚假唤醒保护？
+
+#### atomic 模块
+
+* atomic.Value 和 Pointer 有什么区别？
+* 什么是 ABA 问题？怎么避免？举个 lock-free 栈的例子
+* atomic.CompareAndSwap 要不要加 for retry？
+
+#### channel 模块
+
+* select 多 case 同时 ready 怎么选？
+* nil channel 的 select 会怎样？
+* 多生产者多消费者如何优雅退出？谁来 close？
+* 如何用 context 控制 goroutine 生命周期退出？
+
+## Golang `context` 模块深入总结（面向实战与工程设计）
+
+> 本文聚焦 `context` 模块的设计哲学、核心机制、链式传播、最佳实践与常见误区，适用于实际工程使用中的深入掌握。
+
+### ✅ 一、context 出现的背景：goroutine 无法控制退出
+
+传统方式：
+
+```go
+func main() {
+    go func() {
+        for {
+            doSomething()
+        }
+    }()
+    time.Sleep(10 * time.Second) // 然后退出，goroutine 却还在跑
+}
+```
+
+❌ 无法终止 goroutine
+❌ 没有退出信号传递机制
+❌ 各 goroutine 难以协调退出
+
+### ✅ 二、context 的设计目标
+
+* 跨 goroutine 控制生命周期（退出、取消、超时）
+* 跨模块传递只读信号与元数据
+* 提供统一的 `Done()` 信号机制，兼容 `select` 使用
+* 多级传播、链式 cancel
+
+### ✅ 三、context 接口定义
+
+```go
+type Context interface {
+    Deadline() (deadline time.Time, ok bool)
+    Done() <-chan struct{}
+    Err() error
+    Value(key any) any
+}
+```
+
+| 方法           | 含义                       |
+| ------------ | ------------------------ |
+| `Done()`     | 只读 channel，关闭即表示已取消      |
+| `Err()`      | 返回取消原因（Canceled/Timeout） |
+| `Value`      | 查询附带的上下文键值对              |
+| `Deadline()` | 返回设置的截止时间（若有）            |
+
+### ✅ 四、context 的四种构造函数
+
+```go
+context.Background()                 // 根节点
+context.WithCancel(parent)          // 手动取消
+context.WithTimeout(parent, dur)    // dur 后取消
+context.WithDeadline(parent, time)  // 到点取消
+context.WithValue(parent, key, val) // 附加值
+```
+
+* 所有构造函数返回新的 `Context` 和（有些会有）`cancel()` 函数
+* cancel 一定要手动调用 → 否则资源泄漏
+
+### ✅ 五、取消链与传播机制
+
+```go
+ctx1 := context.WithCancel(ctx0)
+ctx2 := context.WithTimeout(ctx1, 2s)
+ctx3 := context.WithValue(ctx2, key, val)
+```
+
+* cancel(ctx1) → 递归 cancel ctx2, ctx3
+* 所有子 context 的 `Done()` 会被关闭
+
+🔁 **context 是一个带取消能力的树形结构**
+
+### ✅ 六、Done + select 控制 goroutine
+
+```go
+func worker(ctx context.Context) {
+    for {
+        select {
+        case <-ctx.Done():
+            log.Println("退出：", ctx.Err())
+            return
+        case job := <-jobChan:
+            process(job)
+        }
+    }
+}
+```
+
+* `<-ctx.Done()` 是感知 cancel/timeout 的唯一标准方式
+* `Err()` 会返回原因：`context.Canceled` / `DeadlineExceeded`
+
+### ✅ 七、Value 的设计哲学与误用
+
+📌 context.Value 是为“元数据”设计的：
+
+✅ 推荐：request-id、trace-id、user-id（只读字段）
+❌ 反模式：传递业务逻辑参数，如订单、商品、数量
+
+示例：
+
+```go
+ctx := context.WithValue(parentCtx, "trace_id", "abc123")
+val := ctx.Value("trace_id")
+```
+
+⚠️ 不建议层层嵌套 Value，一旦 key 冲突或上下文混乱 → 难调试
+
+### ✅ 八、cancel() 的调用职责
+
+```go
+ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
+defer cancel()
+```
+
+* 谁调用 WithCancel / WithTimeout，谁负责 cancel
+* 不 cancel 会导致资源泄露（子 ctx 永远存在）
+* 即使你知道 2s 后会超时，仍应调用 cancel，避免引用悬挂
+
+---
+
+### ✅ 九、context 的底层实现细节
+
+* context 是一个接口，底层结构有多种：
+
+  * `emptyCtx`（Background, TODO）
+  * `cancelCtx`：带取消能力的上下文
+  * `timerCtx`：在 cancelCtx 基础上加定时器
+  * `valueCtx`：增加键值表链
+
+* cancelCtx 内部维护一个 child 列表，用于取消时遍历通知
+
+* cancel() 实质是：
+
+  * 关闭 `done` channel
+  * 设置 `err` 字段（Canceled）
+  * 递归取消所有子 context
+
+### ✅ 十、context 常见用法场景
+
+1. **HTTP 请求处理链控制退出**
+2. **数据库查询超时控制**
+3. **goroutine 池关闭**（如：worker 从 ctx.Done() 退出）
+4. **分布式追踪信息透传**（trace\_id）
+5. **复杂模块间状态同步**（如多个子任务依赖同一个上游任务）
+
+### ✅ 十一、最佳实践守则（工程级）
+
+1. 所有外部接口函数，第一参数应为 `ctx context.Context`
+2. `context.Background()` 只在主函数 / 初始化使用
+3. 创建了 cancel 一定要调用 cancel
+4. select 中应监听 `<-ctx.Done()`
+5. 不要用 context 传递所有参数，只用于少量关键值
+6. context 不可长期存入结构体 / 缓存
+
+### ✅ 十二、实际场景设计：控制子 goroutine 超时退出
+
+```go
+func main() {
+    ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+    defer cancel()
+
+    go func(ctx context.Context) {
+        for {
+            select {
+            case <-ctx.Done():
+                fmt.Println("goroutine 自动退出")
+                return
+            default:
+                fmt.Println("工作中...")
+                time.Sleep(1 * time.Second)
+            }
+        }
+    }(ctx)
+
+    time.Sleep(5 * time.Second)
+}
+```
+
+输出：
+
+```
+工作中...
+工作中...
+工作中...
+goroutine 自动退出
+```
