@@ -1,6 +1,6 @@
 +++
 title = "Go略有深度的实战面试训练"
-date = 2025-05-08T10:26:32+08:00
+date = 2025-05-02T10:26:32+08:00
 draft = false
 description = ""
 subtitle = ""
@@ -8,8 +8,8 @@ header_img = ""
 short = false
 toc = true
 tags = []
-categories = []
-series = []
+categories = ["计算机"]
+series = ["面试", "八股文"]
 comment = false
 summary = ""
 +++

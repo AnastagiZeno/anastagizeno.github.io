@@ -6,16 +6,7 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 08 May 2025 10:26:32 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Go略有深度的实战面试训练</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_5_3_2_go/</link>
-      <pubDate>Thu, 08 May 2025 10:26:32 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/prepareforinterview_5_3_2_go/</guid>
-      <description>ROUND-1机制类 题号 类型 面试点核心 1️⃣ 机制题 为什么 map 遍历是乱序的？请描述 Go map 内部的 bucket 和扩容机制，为什么选择 lazy deletion？ 2️⃣ 机</description>
-    </item>
-    
+    <lastBuildDate>Sun, 04 May 2025 12:38:52 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Raḥimahu Allāh</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_2_daysatamap/</link>
@@ -41,6 +32,15 @@
       
       <guid>https://shahrazad.fun/archive/prepareforinterview_5_5_systemdesign/</guid>
       <description>RoadMap：系统设计（资深后端开发岗位） 资深服务端开发，重点掌握系统设计逻辑与典型场景拆解，不深入运维与SRE方向 🧠 第一部分：系统设计核</description>
+    </item>
+    
+    <item>
+      <title>Go略有深度的实战面试训练</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_5_3_2_go/</link>
+      <pubDate>Fri, 02 May 2025 10:26:32 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_5_3_2_go/</guid>
+      <description>ROUND-1机制类 题号 类型 面试点核心 1️⃣ 机制题 为什么 map 遍历是乱序的？请描述 Go map 内部的 bucket 和扩容机制，为什么选择 lazy deletion？ 2️⃣ 机</description>
     </item>
     
     <item>
