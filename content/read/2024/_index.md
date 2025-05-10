@@ -5,6 +5,7 @@ description = "2024读书清单"
 header_img = "/image/2024/persia.jpeg"
 hidden_sidebar = true
 tags = ["权力过程"]
+series = ["年度读书"]
 +++
 
 *2023/11/30 - 2024/01/24* **《SRE Google运维解密》**

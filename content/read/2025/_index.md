@@ -5,6 +5,7 @@ description = "2025读书清单"
 header_img = "/image/2025/marcus-aurelius.jpg"
 hidden_sidebar = true
 tags = ["权力过程"]
+series = ["年度读书"]
 +++
 
 

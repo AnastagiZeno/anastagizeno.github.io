@@ -12,6 +12,7 @@ categories = ["计算机"]
 series = ["面试", "八股文"]
 comment = false
 summary = ""
+hidden = true
 +++
 
 > Richard Phillips Feynman：学习->教学->纠错学习->简化教学

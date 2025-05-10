@@ -9,7 +9,7 @@
         <section class="">
           <span class="fa listing-seperator">
             <span class="tag-text">{{ .Key }}</span></span>
-            {{ range where .Pages "Params.hidden" "ne" true }}
+            {{ range .Pages }}
             {{ .Render "li" }}
             {{ end }}
         </section>
@@ -19,5 +19,4 @@
     </div>
   </div>
 </div>
-
 {{ end }}
