@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 04 May 2025 12:38:52 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 May 2025 13:20:54 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prepareforinterview_3_1_distributed Transaction</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_3_1_distributed-transaction/</link>
+      <pubDate>Sat, 10 May 2025 13:20:54 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_3_1_distributed-transaction/</guid>
+      <description>本地消息表实现跨库事务的链式一致性范式总结核心观点1. 本地消息表方案的本质是“链路分层 + 层间消息传递 + 每层自闭环” 每个服务或节点： 保证本地业</description>
+    </item>
+    
     <item>
       <title>Raḥimahu Allāh</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_2_daysatamap/</link>
