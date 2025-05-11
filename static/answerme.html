@@ -44,8 +44,8 @@
       font-size: 2.4em;
       color: white;
       font-family: monospace;
-      text-shadow: 0 0 10px #ffd700;
-      border-bottom: 2px solid #ffd700;
+      text-shadow: 0 0 10px #fff;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.6); /* ✅ 更柔和下划线 */
       min-width: 1em;
       text-align: center;
       height: 1.4em;
@@ -98,14 +98,14 @@
     }
 
     .btn:hover {
-      background: rgba(255, 215, 0, 0.8);
-      border-color: #ffda44;
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #eee;
       transform: scale(1.1);
     }
 
     @keyframes pressEffect {
       0% { transform: scale(1); box-shadow: 0 0 0 transparent; }
-      50% { transform: scale(1.15); box-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+      50% { transform: scale(1.15); box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
       100% { transform: scale(1); box-shadow: 0 0 0 transparent; }
     }
 
@@ -181,7 +181,6 @@
         setTimeout(() => {
           const wrapper = document.getElementById("wrapper");
           if (inputCode === correctCode) {
-            // ✅ 移除 show，用 requestAnimationFrame 强制触发 fade-out
             wrapper.classList.remove("show");
             requestAnimationFrame(() => {
               wrapper.classList.add("fade-out");
@@ -232,6 +231,23 @@
         updateDisplay();
       };
     }
+
+    // ✅ 后退重置逻辑
+    window.addEventListener("pageshow", (e) => {
+      if (e.persisted) {
+        inputCode = "";
+        updateDisplay();
+        const wrapper = document.getElementById("wrapper");
+        const indicator = document.getElementById("display");
+        wrapper.classList.remove("show", "fade-out");
+        indicator.classList.remove("show");
+
+        requestAnimationFrame(() => {
+          wrapper.classList.add("show");
+          indicator.classList.add("show");
+        });
+      }
+    });
 
     preloadBackgroundAndStart();
   </script>
