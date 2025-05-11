@@ -174,7 +174,11 @@
         setTimeout(() => {
           if (inputCode === correctCode) {
             const wrapper = document.getElementById("wrapper");
-            wrapper.classList.add("fade-out");
+
+            // ✅ 正确触发退出动画，不移除 animation 属性
+            if (!wrapper.classList.contains("fade-out")) {
+              wrapper.classList.add("fade-out");
+            }
 
             const date = new Date();
             date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
@@ -210,12 +214,6 @@
       img.src = './theecstasyofgold.png';
       img.onload = () => {
         document.body.classList.add('bg-loaded');
-
-        const wrapper = document.getElementById("wrapper");
-        wrapper.addEventListener("animationend", () => {
-          wrapper.style.animation = "none";
-        });
-
         initNumpad();
         updateDisplay();
       };
