@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Launch Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <style>
     html, body {
       margin: 0;
@@ -11,6 +12,7 @@
       background-size: cover;
       font-family: sans-serif;
       overflow: hidden;
+      touch-action: manipulation;
     }
 
     .indicator {
@@ -18,6 +20,8 @@
       top: 4%;
       left: 50%;
       transform: translateX(-50%);
+      width: 100%;
+      text-align: center;
       color: white;
       font-size: 2.2em;
       letter-spacing: 0.3em;
@@ -68,18 +72,9 @@
     }
 
     @keyframes pressEffect {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 transparent;
-      }
-      50% {
-        transform: scale(1.15);
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 transparent;
-      }
+      0% { transform: scale(1); box-shadow: 0 0 0 transparent; }
+      50% { transform: scale(1.15); box-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+      100% { transform: scale(1); box-shadow: 0 0 0 transparent; }
     }
 
     .btn.pressed {
@@ -87,8 +82,8 @@
     }
 
     .grid-wrapper.fade-out {
-      opacity: 0;
-      transform: translateX(-50%) rotate(360deg) scale(0.5);
+      opacity: 0 !important;
+      transform: translateX(-50%) rotate(360deg) scale(0.5) !important;
       pointer-events: none;
       transition: transform 1.6s ease-out, opacity 1.6s ease-out;
     }
@@ -115,13 +110,28 @@
     }
 
     @keyframes fadeInText {
-      0% {
-        opacity: 0;
-        transform: translateY(-20px);
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0px); }
+    }
+
+    @media (max-width: 600px) {
+      .indicator {
+        font-size: 1.8em;
+        letter-spacing: 0.2em;
       }
-      100% {
-        opacity: 1;
-        transform: translateY(0px);
+
+      .grid-wrapper {
+        padding: 25px;
+      }
+
+      .grid {
+        gap: 20px;
+      }
+
+      .btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4em;
       }
     }
   </style>
@@ -154,7 +164,6 @@
     function handleClick(num, btn) {
       if (inputCode.length >= 4) return;
 
-      // 添加动画类名并延迟移除
       btn.classList.add("pressed");
       setTimeout(() => btn.classList.remove("pressed"), 250);
 
@@ -167,7 +176,6 @@
             const wrapper = document.getElementById("wrapper");
             wrapper.classList.add("fade-out");
 
-            // 设置1天有效期 Cookie
             const date = new Date();
             date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
             document.cookie = `access_granted=1; expires=${date.toUTCString()}; path=/;`;
@@ -202,6 +210,12 @@
       img.src = './theecstasyofgold.png';
       img.onload = () => {
         document.body.classList.add('bg-loaded');
+
+        const wrapper = document.getElementById("wrapper");
+        wrapper.addEventListener("animationend", () => {
+          wrapper.style.animation = "none";
+        });
+
         initNumpad();
         updateDisplay();
       };
