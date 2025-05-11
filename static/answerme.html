@@ -20,14 +20,21 @@
       top: 4%;
       left: 50%;
       transform: translateX(-50%);
-      width: 260px;
-      text-align: center;
-      font-family: monospace, sans-serif; /* ✅ 等宽字体 */
-      font-variant-numeric: tabular-nums; /* ✅ 等宽数字 */
-      font-size: 2.2em;
-      color: white;
-      text-shadow: 0 0 10px #ffd700;
+      display: flex;
+      gap: 0.6em;
+      justify-content: center;
+      align-items: center;
       opacity: 0;
+    }
+
+    .digit {
+      font-size: 2.4em;
+      color: white;
+      font-family: monospace;
+      text-shadow: 0 0 10px #ffd700;
+      border-bottom: 2px solid #ffd700;
+      min-width: 1em;
+      text-align: center;
     }
 
     .grid-wrapper {
@@ -116,9 +123,8 @@
     }
 
     @media (max-width: 600px) {
-      .indicator {
+      .digit {
         font-size: 1.8em;
-        width: 200px;
       }
 
       .grid-wrapper {
@@ -139,7 +145,12 @@
 </head>
 <body>
 
-  <div class="indicator" id="display">____</div>
+  <div class="indicator" id="display">
+    <span class="digit">_</span>
+    <span class="digit">_</span>
+    <span class="digit">_</span>
+    <span class="digit">_</span>
+  </div>
 
   <div class="grid-wrapper" id="wrapper">
     <div class="grid" id="numpad"></div>
@@ -158,8 +169,10 @@
     }
 
     function updateDisplay() {
-      const display = document.getElementById("display");
-      display.textContent = inputCode.padEnd(4, "_");
+      const digits = document.querySelectorAll(".digit");
+      for (let i = 0; i < 4; i++) {
+        digits[i].textContent = inputCode[i] || "_";
+      }
     }
 
     function handleClick(num, btn) {
@@ -175,6 +188,9 @@
         setTimeout(() => {
           if (inputCode === correctCode) {
             const wrapper = document.getElementById("wrapper");
+
+            // 💡 移除动画属性以防止 transform 被覆盖
+            wrapper.style.removeProperty("animation");
 
             if (!wrapper.classList.contains("fade-out")) {
               wrapper.classList.add("fade-out");
@@ -216,9 +232,8 @@
         document.body.classList.add('bg-loaded');
 
         const wrapper = document.getElementById("wrapper");
-        // ✅ 在动画结束后，移除 inline animation 样式，避免覆盖 fade-out
         wrapper.addEventListener("animationend", () => {
-          wrapper.style.removeProperty("animation");
+          wrapper.style.removeProperty("animation"); // ✅ 确保 fade-out 可执行
         });
 
         initNumpad();
