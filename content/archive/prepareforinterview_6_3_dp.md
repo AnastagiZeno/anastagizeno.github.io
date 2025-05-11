@@ -1,5 +1,5 @@
 +++
-title = "7日刷题之动态规划"
+title = "刷题之动态规划"
 date = 2025-05-02T10:02:12+08:00
 draft = false
 description = ""

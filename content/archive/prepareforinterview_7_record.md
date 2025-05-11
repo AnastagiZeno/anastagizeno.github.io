@@ -1,5 +1,5 @@
 +++
-title = "刷题额外记录"
+title = "刷题之额外记录"
 date = 2025-05-03T10:03:45+08:00
 draft = false
 description = ""
