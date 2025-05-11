@@ -1,5 +1,5 @@
 +++
-title = "服务端面试之GO（一）"
+title = "服务端面试之GO（一）基础篇"
 date = 2025-05-04T10:07:32+08:00
 draft = false
 description = ""

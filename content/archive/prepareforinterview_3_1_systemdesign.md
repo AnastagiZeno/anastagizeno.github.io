@@ -1,9 +1,9 @@
 +++
-title = "5天八股"
+title = "服务端面试之System Design汇总"
 date = 2025-05-05T12:23:42+08:00
 draft = false
 description = ""
-subtitle = "之System Design篇"
+subtitle = ""
 header_img = ""
 short = false
 toc = true
