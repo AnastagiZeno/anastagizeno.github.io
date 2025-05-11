@@ -1,31 +1,31 @@
 +++
-title = "7日刷题第一天"
-date = 2025-04-24T13:02:12+08:00
+title = "刷题之基础数据结构：树、链表、栈、堆"
+date = 2025-05-01T13:02:12+08:00
 draft = false
 description = ""
-subtitle = "之基础数据结构：树、链表、栈、堆等基础操作"
+subtitle = ""
 header_img = "/image/2025/valter-brani-sarajevo-ogimage.jpg"
 short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试", "算法题"]
+series = ["面试系列"]
 comment = false
 summary = ""
 hidden = true
 +++
 
-# 7天RoadMap
+# RoadMap
 * 题型分类与专属模版
 
   * 数据结构题（链表、树、栈、队列、图）
   * 双指针与滑动窗口
   * 二分查找
-  * BFS/DFS
   * 动态规划
+  * BFS/DFS
   * 回溯／状态压缩
-  * 贪心算法
-  * 数学与位运算
+  ~~* 贪心算法~~
+  ~~* 数学与位运算~~
   * 堆与优先队列
   * 并查集
 

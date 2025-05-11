@@ -1,9 +1,9 @@
 +++
-title = "Astaghfirullah"
+title = "阿斯塔格菲鲁拉"
 date = 2025-05-04T08:06:35+08:00
 draft = false
 description = ""
-subtitle = "阿斯塔格菲鲁拉，我不是真的懂"
+subtitle = "我不是真的懂"
 header_img = "/image/2025/astaghfirullah.png"
 short = false
 toc = true

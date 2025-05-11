@@ -1,5 +1,5 @@
 +++
-title = "Prepareforinterview_3_1_distributed Transaction"
+title = "系统设计之"
 date = 2025-05-10T13:20:54+08:00
 draft = false
 description = ""
@@ -9,7 +9,7 @@ short = false
 toc = true
 tags = []
 categories = []
-series = []
+series = ["面试系列"]
 comment = false
 summary = ""
 hidden = true

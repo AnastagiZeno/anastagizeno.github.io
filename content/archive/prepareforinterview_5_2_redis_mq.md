@@ -1,15 +1,15 @@
 +++
-title = "5天八股"
+title = "服务端面试之缓存、消息"
 date = 2025-04-29T20:23:03+08:00
 draft = false
-description = ""
-subtitle = "之Redis、MQ"
+description = "Redis、MQ"
+subtitle = ""
 header_img = ""
 short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试", "八股文"]
+series = ["面试系列"]
 comment = false
 summary = ""
 hidden = true

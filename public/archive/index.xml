@@ -8,12 +8,21 @@
     <language>en</language>
     <lastBuildDate>Sat, 10 May 2025 13:20:54 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Prepareforinterview_3_1_distributed Transaction</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_3_1_distributed-transaction/</link>
+      <title>系统设计之</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_3_2_distributed-transaction/</link>
       <pubDate>Sat, 10 May 2025 13:20:54 +0800</pubDate>
       
-      <guid>https://shahrazad.fun/archive/prepareforinterview_3_1_distributed-transaction/</guid>
+      <guid>https://shahrazad.fun/archive/prepareforinterview_3_2_distributed-transaction/</guid>
       <description>本地消息表实现跨库事务的链式一致性范式总结核心观点1. 本地消息表方案的本质是“链路分层 + 层间消息传递 + 每层自闭环” 每个服务或节点： 保证本地业</description>
+    </item>
+    
+    <item>
+      <title>刷题额外记录</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_7_record/</link>
+      <pubDate>Mon, 05 May 2025 10:03:45 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_7_record/</guid>
+      <description>线段张力Jerry.ai的面试题，leetcode上没这题，估计起码也得是个Medium，边界case多，调了老半天。 1线段是无限长的，初始</description>
     </item>
     
     <item>
@@ -26,7 +35,16 @@
     </item>
     
     <item>
-      <title>Astaghfirullah</title>
+      <title>刷题之回溯、DFS</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_6_4_backtrack_dfs/</link>
+      <pubDate>Sun, 04 May 2025 12:31:16 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_6_4_backtrack_dfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>阿斯塔格菲鲁拉</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_1_astaghfirullah/</link>
       <pubDate>Sun, 04 May 2025 08:06:35 +0800</pubDate>
       
@@ -35,34 +53,52 @@
     </item>
     
     <item>
+      <title>7日刷题之动态规划</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_6_3_dp/</link>
+      <pubDate>Sat, 03 May 2025 13:02:12 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_6_3_dp/</guid>
+      <description>开始一、动态规划 vs 回溯的核心区别 项目 动态规划（DP） 回溯（Backtracking） 解决问题类型 最值、计数问题（如最短路径、最大和） 组合、排</description>
+    </item>
+    
+    <item>
+      <title>刷题之双指针、滑动窗口</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_6_2_two-pointers-window/</link>
+      <pubDate>Fri, 02 May 2025 13:02:12 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_6_2_two-pointers-window/</guid>
+      <description>双指针与滑动窗口技巧指南刷题记录-简单-双指针和滑动窗口 刷题记录-中级-双指针和滑动窗口 刷题记录-高级-双指针和滑动窗口 1. 特点与识别 对撞/配</description>
+    </item>
+    
+    <item>
       <title>5天八股</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_5_5_systemdesign/</link>
+      <link>https://shahrazad.fun/archive/prepareforinterview_3_1_systemdesign/</link>
       <pubDate>Fri, 02 May 2025 12:23:42 +0800</pubDate>
       
-      <guid>https://shahrazad.fun/archive/prepareforinterview_5_5_systemdesign/</guid>
+      <guid>https://shahrazad.fun/archive/prepareforinterview_3_1_systemdesign/</guid>
       <description>RoadMap：系统设计（资深后端开发岗位） 资深服务端开发，重点掌握系统设计逻辑与典型场景拆解，不深入运维与SRE方向 🧠 第一部分：系统设计核</description>
     </item>
     
     <item>
-      <title>Go略有深度的实战面试训练</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_5_3_2_go/</link>
+      <title>服务端面试之GO（二）深度篇</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_5_4_go/</link>
       <pubDate>Fri, 02 May 2025 10:26:32 +0800</pubDate>
       
-      <guid>https://shahrazad.fun/archive/prepareforinterview_5_3_2_go/</guid>
+      <guid>https://shahrazad.fun/archive/prepareforinterview_5_4_go/</guid>
       <description>ROUND-1机制类 题号 类型 面试点核心 1️⃣ 机制题 为什么 map 遍历是乱序的？请描述 Go map 内部的 bucket 和扩容机制，为什么选择 lazy deletion？ 2️⃣ 机</description>
     </item>
     
     <item>
-      <title>5天八股</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_5_4_os_network/</link>
+      <title>服务端面试之OS、Network篇</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_5_5_os_network/</link>
       <pubDate>Thu, 01 May 2025 17:03:45 +0800</pubDate>
       
-      <guid>https://shahrazad.fun/archive/prepareforinterview_5_4_os_network/</guid>
+      <guid>https://shahrazad.fun/archive/prepareforinterview_5_5_os_network/</guid>
       <description>加锁保护的是什么？变量？线程？内存？1. 加锁本质是什么？锁保护的到底是啥？ ✅ 锁本质上是对某段内存操作行为的互斥访问保证， 它保护的不是“线程”</description>
     </item>
     
     <item>
-      <title>5天八股</title>
+      <title>服务端面试之GO（一）</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_5_3_go/</link>
       <pubDate>Thu, 01 May 2025 14:07:32 +0800</pubDate>
       
@@ -71,7 +107,16 @@
     </item>
     
     <item>
-      <title>5天八股</title>
+      <title>刷题之基础数据结构：树、链表、栈、堆</title>
+      <link>https://shahrazad.fun/archive/prepareforinterview_6_1_base-data-structer/</link>
+      <pubDate>Thu, 01 May 2025 13:02:12 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/prepareforinterview_6_1_base-data-structer/</guid>
+      <description>RoadMap 题型分类与专属模版 数据结构题（链表、树、栈、队列、图） 双指针与滑动窗口 二分查找 动态规划 BFS/DFS 回溯／状态压缩 * 贪心算法 * 数学与位运算 堆与优先队列</description>
+    </item>
+    
+    <item>
+      <title>服务端面试之缓存、消息</title>
       <link>https://shahrazad.fun/archive/prepareforinterview_5_2_redis_mq/</link>
       <pubDate>Tue, 29 Apr 2025 20:23:03 +0800</pubDate>
       
@@ -86,51 +131,6 @@
       
       <guid>https://shahrazad.fun/archive/prepareforinterview_5_1_mysql/</guid>
       <description>Richard Phillips Feynman：学习-&amp;gt;教学-&amp;gt;纠错学习-&amp;gt;简化教学 I.执行流程小目录 SQL生命周期概览 解析阶段（Parse） 查询重写</description>
-    </item>
-    
-    <item>
-      <title>7日刷题</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_7_sunday/</link>
-      <pubDate>Mon, 28 Apr 2025 10:03:45 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/prepareforinterview_7_sunday/</guid>
-      <description>线段张力Jerry.ai的面试题，leetcode上没这题，估计起码也得是个Medium，边界case多，调了老半天。 1线段是无限长的，初始</description>
-    </item>
-    
-    <item>
-      <title>7日刷题</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_7_7_bytedance/</link>
-      <pubDate>Sun, 27 Apr 2025 10:46:10 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/prepareforinterview_7_7_bytedance/</guid>
-      <description>字节题库42.接雨水 HARD3.无重复字符的最长子串滑动窗口, 双指针 1def lengthOfLongestSubstring(s): 2 &amp;#34;&amp;#34;&amp;#34; 3 :type s: str 4 :rtype: int 5 &amp;#34;&amp;#34;&amp;#34; 6 7 left = right = 0 8 ret = 0 9 h = {} 10 while right &amp;lt; len(s): 11 char =</description>
-    </item>
-    
-    <item>
-      <title>7日刷题第三天</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_7_3_dp/</link>
-      <pubDate>Sat, 26 Apr 2025 13:02:12 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/prepareforinterview_7_3_dp/</guid>
-      <description>开始一、动态规划 vs 回溯的核心区别 项目 动态规划（DP） 回溯（Backtracking） 解决问题类型 最值、计数问题（如最短路径、最大和） 组合、排</description>
-    </item>
-    
-    <item>
-      <title>7日刷题第二天</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_7_2_two-pointers/</link>
-      <pubDate>Fri, 25 Apr 2025 13:02:12 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/prepareforinterview_7_2_two-pointers/</guid>
-      <description>双指针与滑动窗口技巧指南刷题记录-简单-双指针和滑动窗口 刷题记录-中级-双指针和滑动窗口 刷题记录-高级-双指针和滑动窗口 1. 特点与识别 对撞/配</description>
-    </item>
-    
-    <item>
-      <title>7日刷题第一天</title>
-      <link>https://shahrazad.fun/archive/prepareforinterview_7_1_roadmap-and-data-structer/</link>
-      <pubDate>Thu, 24 Apr 2025 13:02:12 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/prepareforinterview_7_1_roadmap-and-data-structer/</guid>
-      <description>7天RoadMap 题型分类与专属模版 数据结构题（链表、树、栈、队列、图） 双指针与滑动窗口 二分查找 BFS/DFS 动态规划 回溯／状态压缩 贪心算法 数学与位运算</description>
     </item>
     
     <item>

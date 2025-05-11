@@ -1,5 +1,5 @@
 +++
-title = "Go略有深度的实战面试训练"
+title = "服务端面试之GO（二）深度篇"
 date = 2025-05-02T10:26:32+08:00
 draft = false
 description = ""
@@ -9,7 +9,7 @@ short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试", "八股文"]
+series = ["面试系列"]
 comment = false
 summary = ""
 hidden = true

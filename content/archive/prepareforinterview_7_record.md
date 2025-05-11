@@ -1,15 +1,15 @@
 +++
-title = "7日刷题"
-date = 2025-04-28T10:03:45+08:00
+title = "刷题额外记录"
+date = 2025-05-05T10:03:45+08:00
 draft = false
 description = ""
-subtitle = "额外一天：记录"
+subtitle = ""
 header_img = ""
 short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试", "算法题"]
+series = ["面试系列"]
 comment = false
 summary = ""
 hidden = true

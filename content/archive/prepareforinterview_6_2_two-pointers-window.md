@@ -1,6 +1,6 @@
 +++
-title = "7日刷题第二天"
-date = 2025-04-25T13:02:12+08:00
+title = "刷题之双指针、滑动窗口"
+date = 2025-05-02T13:02:12+08:00
 draft = false
 description = ""
 subtitle = "之双指针、滑动窗口、二分查找题型总结"
@@ -9,7 +9,7 @@ short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试", "算法题"]
+series = ["面试系列"]
 comment = false
 summary = ""
 hidden = true

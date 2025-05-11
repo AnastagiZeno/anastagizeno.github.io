@@ -1,5 +1,5 @@
 +++
-title = "5天八股"
+title = "服务端面试之OS、Network篇"
 date = 2025-05-01T17:03:45+08:00
 draft = false
 description = ""
@@ -9,7 +9,7 @@ short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试", "八股文"]
+series = ["面试系列"]
 comment = false
 summary = ""
 hidden = true

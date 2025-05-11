@@ -1,15 +1,15 @@
 +++
-title = "5天八股"
+title = "服务端面试之GO（一）"
 date = 2025-05-01T14:07:32+08:00
 draft = false
 description = ""
-subtitle = "之GO篇"
+subtitle = ""
 header_img = "/image/2025/battleoflepanto.png"
 short = false
 toc = true
 tags = []
 categories = ["计算机"]
-series = ["面试", "八股文"]
+series = ["面试系列"]
 comment = false
 summary = ""
 hidden = true
