@@ -18,7 +18,6 @@
       align-items: center;
     }
 
-    /* ✅ 父容器：垂直排列 indicator + grid */
     .login-container {
       display: flex;
       flex-direction: column;
@@ -32,6 +31,13 @@
       justify-content: center;
       align-items: center;
       opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .indicator.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .digit {
@@ -54,6 +60,21 @@
       align-items: center;
       justify-content: center;
       opacity: 0;
+      transform: scale(0.6) rotate(-180deg);
+      transition: transform 1.6s ease-out, opacity 1.6s ease-out;
+      pointer-events: none;
+    }
+
+    .grid-wrapper.show {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+      pointer-events: auto;
+    }
+
+    .grid-wrapper.fade-out {
+      opacity: 0;
+      transform: scale(0.5) rotate(360deg);
+      pointer-events: none;
     }
 
     .grid {
@@ -90,37 +111,6 @@
 
     .btn.pressed {
       animation: pressEffect 0.25s ease;
-    }
-
-    .grid-wrapper.fade-out {
-      opacity: 0 !important;
-      transform: rotate(360deg) scale(0.5) !important;
-      transition: transform 1.6s ease-out, opacity 1.6s ease-out;
-      pointer-events: none;
-    }
-
-    .grid-wrapper.animate-in {
-      animation: spinFadeIn 3.5s ease-out forwards;
-    }
-
-    .indicator.animate-in {
-      animation: fadeInText 2.5s ease-out forwards;
-    }
-
-    @keyframes spinFadeIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.6) rotate(-180deg);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
-    }
-
-    @keyframes fadeInText {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0px); }
     }
 
     @media (max-width: 600px) {
@@ -189,10 +179,10 @@
 
       if (inputCode.length === 4) {
         setTimeout(() => {
+          const wrapper = document.getElementById("wrapper");
           if (inputCode === correctCode) {
-            const wrapper = document.getElementById("wrapper");
-
-            wrapper.classList.remove("animate-in");
+            // ✅ 移除 show，用 requestAnimationFrame 强制触发 fade-out
+            wrapper.classList.remove("show");
             requestAnimationFrame(() => {
               wrapper.classList.add("fade-out");
             });
@@ -230,18 +220,13 @@
       const img = new Image();
       img.src = './theecstasyofgold.png';
       img.onload = () => {
-        document.body.classList.add('bg-loaded');
-
         const wrapper = document.getElementById("wrapper");
         const indicator = document.getElementById("display");
 
-        wrapper.classList.add("animate-in");
-        indicator.classList.add("animate-in");
-
-        // ✅ 解锁按钮点击
-        setTimeout(() => {
-          wrapper.style.pointerEvents = "auto";
-        }, 800);
+        requestAnimationFrame(() => {
+          wrapper.classList.add("show");
+          indicator.classList.add("show");
+        });
 
         initNumpad();
         updateDisplay();
