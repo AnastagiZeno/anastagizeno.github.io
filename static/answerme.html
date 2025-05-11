@@ -1,112 +1,132 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>准备发射 🚀</title>
+  <title>Access Portal</title>
   <style>
-    @keyframes launch {
-      0%   { transform: translateY(0); }
-      100% { transform: translateY(-800px); opacity: 0; }
-    }
-
-    body {
+    html, body {
       margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      height: 100%;
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80');
       background-size: cover;
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-family: 'Segoe UI', sans-serif;
+      justify-content: center;
+      font-family: "Segoe UI", sans-serif;
       overflow: hidden;
     }
 
-    .box {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 2em;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 20px;
+    }
+
+    .btn {
+      width: 100px;
+      height: 100px;
+      font-size: 2em;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      width: 320px;
-    }
-
-    h2 {
-      margin-bottom: 1em;
-      font-size: 1.5em;
-    }
-
-    input {
-      padding: 0.8em;
-      font-size: 1em;
-      width: 100%;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 1em;
-      outline: none;
-    }
-
-    input:focus {
-      border-color: #007BFF;
-    }
-
-    button {
-      padding: 0.6em 1.5em;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      background-color: #007BFF;
-      color: white;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.3s;
-      position: relative;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
     }
 
-    button:hover {
-      background-color: #0056b3;
-      transform: translateY(-2px);
+    .btn:hover {
+      background: rgba(0, 153, 255, 0.6);
+      transform: scale(1.05);
+      border-color: #00ccff;
+    }
+
+    .indicator {
+      position: absolute;
+      top: 5%;
+      color: white;
+      font-size: 2em;
+      letter-spacing: 0.3em;
+      text-shadow: 0 0 10px #0ff;
     }
 
     .rocket {
-      width: 60px;
       position: absolute;
-      bottom: -100px;
+      bottom: -120px;
       left: 50%;
+      width: 80px;
       transform: translateX(-50%);
-      transition: transform 1s ease-out;
+      transition: transform 1.2s ease-out;
     }
 
-    .rocket.launch {
-      animation: launch 1.2s forwards;
+    .launch {
+      transform: translate(-50%, -800px);
+      opacity: 0;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h2>你哪位？什么成分？</h2>
-    <input type="password" id="password" placeholder="随便说个数" />
-    <button onclick="checkPassword()">🚀 发射</button>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/SpaceX_Falcon_9.svg/120px-SpaceX_Falcon_9.svg.png" class="rocket" id="rocket" />
-  </div>
+
+  <div class="indicator" id="display">____</div>
+  <div class="grid" id="numpad"></div>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/SpaceX_Falcon_9.svg/120px-SpaceX_Falcon_9.svg.png" class="rocket" id="rocket" />
 
   <script>
-    function checkPassword() {
-      const correctPassword = "4";
-      const input = document.getElementById("password").value;
-      const rocket = document.getElementById("rocket");
+    const correctCode = "4286";
+    let inputCode = "";
 
-      if (input === correctPassword) {
-        rocket.classList.add("launch");
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function updateDisplay() {
+      const display = document.getElementById("display");
+      display.textContent = inputCode.padEnd(4, "_");
+    }
+
+    function handleClick(num) {
+      if (inputCode.length >= 4) return;
+      inputCode += num;
+      updateDisplay();
+      if (inputCode.length === 4) {
         setTimeout(() => {
-          const expires = new Date();
-          expires.setTime(expires.getTime() + 7 * 24 * 60 * 60 * 1000);
-          document.cookie = "access_granted=1; path=/; expires=" + expires.toUTCString();
-          window.location.href = "/";
-        }, 1300);
-      } else {
-        alert("这数不行 😅");
+          if (inputCode === correctCode) {
+            const rocket = document.getElementById("rocket");
+            rocket.classList.add("launch");
+            setTimeout(() => {
+              document.cookie = "access_granted=1; path=/;";
+              window.location.href = "/";
+            }, 1200);
+          } else {
+            alert("Wrong code. Try again.");
+            inputCode = "";
+            updateDisplay();
+          }
+        }, 300);
       }
     }
+
+    function initNumpad() {
+      const pad = document.getElementById("numpad");
+      pad.innerHTML = "";
+      let nums = shuffle([...Array(9)].map((_, i) => i + 1));
+      for (let n of nums) {
+        const btn = document.createElement("button");
+        btn.textContent = n;
+        btn.className = "btn";
+        btn.onclick = () => handleClick(n.toString());
+        pad.appendChild(btn);
+      }
+    }
+
+    initNumpad();
+    updateDisplay();
   </script>
 </body>
 </html>
