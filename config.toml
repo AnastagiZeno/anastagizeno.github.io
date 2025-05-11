@@ -1,7 +1,7 @@
 baseURL = "https://shahrazad.fun"
 title = "Shahrazad"
 copyright = ""
-paginate = 6
+paginate = 5
 languageCode = "en"
 defaultContentLanguage = "en"
 hasCJKLanguage = true
