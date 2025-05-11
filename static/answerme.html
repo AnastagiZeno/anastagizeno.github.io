@@ -9,24 +9,26 @@
       height: 100%;
       background: url('./theecstasyofgold.png') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       font-family: sans-serif;
       overflow: hidden;
     }
 
     .indicator {
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
       color: white;
       font-size: 2.2em;
       letter-spacing: 0.3em;
       text-shadow: 0 0 10px #ffd700;
-      margin-bottom: 60px;
     }
 
     .grid-wrapper {
-      transform: translateY(-60px); /* ✅ 仅向上移动数字盘 */
+      position: absolute;
+      top: 20%; /* ✅ 向页面上方偏移 */
+      left: 50%;
+      transform: translateX(-50%);
       padding: 40px;
       background: rgba(0, 0, 0, 0.05);
       border-radius: 50%;
@@ -34,6 +36,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 1.6s ease-out, opacity 1.6s ease-out;
     }
 
     @keyframes fadeIn {
@@ -48,11 +51,11 @@
       opacity: 0;
       animation: fadeIn 1s ease-out forwards;
       animation-delay: 0.2s;
-      transition: opacity 1s ease-out;
     }
 
-    .grid.fade-out {
+    .grid-wrapper.fade-out {
       opacity: 0;
+      transform: translateX(-50%) rotate(360deg) scale(0.5); /* ✅ 旋转 + 缩小 + 渐隐 */
       pointer-events: none;
     }
 
@@ -81,7 +84,7 @@
 
   <div class="indicator" id="display">____</div>
 
-  <div class="grid-wrapper">
+  <div class="grid-wrapper" id="wrapper">
     <div class="grid" id="numpad"></div>
   </div>
 
@@ -110,12 +113,12 @@
       if (inputCode.length === 4) {
         setTimeout(() => {
           if (inputCode === correctCode) {
-            const pad = document.getElementById("numpad");
-            pad.classList.add("fade-out");
+            const wrapper = document.getElementById("wrapper");
+            wrapper.classList.add("fade-out"); // ✅ 添加旋转渐隐动画
             setTimeout(() => {
               document.cookie = "access_granted=1; path=/;";
               window.location.href = "/";
-            }, 1200);
+            }, 1700); // 配合动画延时
           } else {
             alert("Wrong code. Try again.");
             inputCode = "";
