@@ -2,25 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Access Portal</title>
+  <title>Launch Access</title>
   <style>
     html, body {
       margin: 0;
       height: 100%;
-      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80');
+      background: url('./theecstasyofgold.png') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: "Segoe UI", sans-serif;
+      font-family: sans-serif;
       overflow: hidden;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 100px);
-      grid-gap: 20px;
+      grid-gap: 30px;
     }
 
     .btn {
@@ -30,26 +29,26 @@
       color: #fff;
       background: rgba(0, 0, 0, 0.4);
       border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
+      border-radius: 50%;
       cursor: pointer;
       transition: all 0.3s ease;
       backdrop-filter: blur(4px);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
     }
 
     .btn:hover {
-      background: rgba(0, 153, 255, 0.6);
-      transform: scale(1.05);
-      border-color: #00ccff;
+      background: rgba(255, 215, 0, 0.8);
+      border-color: #ffda44;
+      transform: scale(1.1);
     }
 
     .indicator {
       position: absolute;
       top: 5%;
       color: white;
-      font-size: 2em;
+      font-size: 2.2em;
       letter-spacing: 0.3em;
-      text-shadow: 0 0 10px #0ff;
+      text-shadow: 0 0 10px #ffd700;
     }
 
     .rocket {
@@ -69,64 +68,4 @@
 </head>
 <body>
 
-  <div class="indicator" id="display">____</div>
-  <div class="grid" id="numpad"></div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/SpaceX_Falcon_9.svg/120px-SpaceX_Falcon_9.svg.png" class="rocket" id="rocket" />
-
-  <script>
-    const correctCode = "4286";
-    let inputCode = "";
-
-    function shuffle(arr) {
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    function updateDisplay() {
-      const display = document.getElementById("display");
-      display.textContent = inputCode.padEnd(4, "_");
-    }
-
-    function handleClick(num) {
-      if (inputCode.length >= 4) return;
-      inputCode += num;
-      updateDisplay();
-      if (inputCode.length === 4) {
-        setTimeout(() => {
-          if (inputCode === correctCode) {
-            const rocket = document.getElementById("rocket");
-            rocket.classList.add("launch");
-            setTimeout(() => {
-              document.cookie = "access_granted=1; path=/;";
-              window.location.href = "/";
-            }, 1200);
-          } else {
-            alert("Wrong code. Try again.");
-            inputCode = "";
-            updateDisplay();
-          }
-        }, 300);
-      }
-    }
-
-    function initNumpad() {
-      const pad = document.getElementById("numpad");
-      pad.innerHTML = "";
-      let nums = shuffle([...Array(9)].map((_, i) => i + 1));
-      for (let n of nums) {
-        const btn = document.createElement("button");
-        btn.textContent = n;
-        btn.className = "btn";
-        btn.onclick = () => handleClick(n.toString());
-        pad.appendChild(btn);
-      }
-    }
-
-    initNumpad();
-    updateDisplay();
-  </script>
-</body>
-</html>
+  <div class="indicator" id
