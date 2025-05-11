@@ -68,4 +68,64 @@
 </head>
 <body>
 
-  <div class="indicator" id
+  <div class="indicator" id="display">____</div>
+  <div class="grid" id="numpad"></div>
+  <img src="./theecstasyofgold.png" class="rocket" id="rocket" />
+
+  <script>
+    const correctCode = "1453";
+    let inputCode = "";
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function updateDisplay() {
+      const display = document.getElementById("display");
+      display.textContent = inputCode.padEnd(4, "_");
+    }
+
+    function handleClick(num) {
+      if (inputCode.length >= 4) return;
+      inputCode += num;
+      updateDisplay();
+      if (inputCode.length === 4) {
+        setTimeout(() => {
+          if (inputCode === correctCode) {
+            const rocket = document.getElementById("rocket");
+            rocket.classList.add("launch");
+            setTimeout(() => {
+              document.cookie = "access_granted=1; path=/;";
+              window.location.href = "/";
+            }, 1200);
+          } else {
+            alert("Wrong code. Try again.");
+            inputCode = "";
+            updateDisplay();
+          }
+        }, 300);
+      }
+    }
+
+    function initNumpad() {
+      const pad = document.getElementById("numpad");
+      pad.innerHTML = "";
+      let nums = shuffle([...Array(9)].map((_, i) => i + 1));
+      for (let n of nums) {
+        const btn = document.createElement("button");
+        btn.textContent = n;
+        btn.className = "btn";
+        btn.onclick = () => handleClick(n.toString());
+        pad.appendChild(btn);
+      }
+    }
+
+    initNumpad();
+    updateDisplay();
+  </script>
+</body>
+</html>
