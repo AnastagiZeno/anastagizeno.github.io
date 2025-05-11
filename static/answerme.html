@@ -15,18 +15,19 @@
 
     .indicator {
       position: absolute;
-      top: 4%; /* ✅ 更靠上 */
+      top: 4%;
       left: 50%;
       transform: translateX(-50%);
       color: white;
       font-size: 2.2em;
       letter-spacing: 0.3em;
       text-shadow: 0 0 10px #ffd700;
+      opacity: 0;
     }
 
     .grid-wrapper {
       position: absolute;
-      top: 20%; /* ✅ 密码盘不变 */
+      top: 20%;
       left: 50%;
       transform: translateX(-50%);
       padding: 40px;
@@ -36,27 +37,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 1.6s ease-out, opacity 1.6s ease-out;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.92); }
-      100% { opacity: 1; transform: scale(1); }
+      opacity: 0;
+      pointer-events: none;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 35px;
-      opacity: 0;
-      animation: fadeIn 3.8s ease-out forwards;
-      animation-delay: 0.6s;
-    }
-
-    .grid-wrapper.fade-out {
-      opacity: 0;
-      transform: translateX(-50%) rotate(360deg) scale(0.5);
-      pointer-events: none;
     }
 
     .btn {
@@ -77,6 +65,64 @@
       background: rgba(255, 215, 0, 0.8);
       border-color: #ffda44;
       transform: scale(1.1);
+    }
+
+    @keyframes pressEffect {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 transparent;
+      }
+      50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 transparent;
+      }
+    }
+
+    .btn.pressed {
+      animation: pressEffect 0.25s ease;
+    }
+
+    .grid-wrapper.fade-out {
+      opacity: 0;
+      transform: translateX(-50%) rotate(360deg) scale(0.5);
+      pointer-events: none;
+      transition: transform 1.6s ease-out, opacity 1.6s ease-out;
+    }
+
+    body.bg-loaded .grid-wrapper {
+      animation: spinFadeIn 3.5s ease-out forwards;
+      pointer-events: auto;
+    }
+
+    body.bg-loaded .indicator {
+      animation: fadeInText 2.5s ease-out forwards;
+      animation-delay: 1.3s;
+    }
+
+    @keyframes spinFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.6) rotate(-180deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
     }
   </style>
 </head>
@@ -105,8 +151,13 @@
       display.textContent = inputCode.padEnd(4, "_");
     }
 
-    function handleClick(num) {
+    function handleClick(num, btn) {
       if (inputCode.length >= 4) return;
+
+      // 添加动画类名并延迟移除
+      btn.classList.add("pressed");
+      setTimeout(() => btn.classList.remove("pressed"), 250);
+
       inputCode += num;
       updateDisplay();
 
@@ -115,8 +166,13 @@
           if (inputCode === correctCode) {
             const wrapper = document.getElementById("wrapper");
             wrapper.classList.add("fade-out");
+
+            // 设置1天有效期 Cookie
+            const date = new Date();
+            date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
+            document.cookie = `access_granted=1; expires=${date.toUTCString()}; path=/;`;
+
             setTimeout(() => {
-              document.cookie = "access_granted=1; path=/;";
               window.location.href = "/";
             }, 1700);
           } else {
@@ -136,13 +192,22 @@
         const btn = document.createElement("button");
         btn.textContent = n;
         btn.className = "btn";
-        btn.onclick = () => handleClick(n.toString());
+        btn.onclick = () => handleClick(n.toString(), btn);
         pad.appendChild(btn);
       }
     }
 
-    initNumpad();
-    updateDisplay();
+    function preloadBackgroundAndStart() {
+      const img = new Image();
+      img.src = './theecstasyofgold.png';
+      img.onload = () => {
+        document.body.classList.add('bg-loaded');
+        initNumpad();
+        updateDisplay();
+      };
+    }
+
+    preloadBackgroundAndStart();
   </script>
 </body>
 </html>
