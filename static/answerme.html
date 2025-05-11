@@ -15,7 +15,7 @@
 
     .indicator {
       position: absolute;
-      top: 8%;
+      top: 4%; /* ✅ 更靠上 */
       left: 50%;
       transform: translateX(-50%);
       color: white;
@@ -26,7 +26,7 @@
 
     .grid-wrapper {
       position: absolute;
-      top: 20%; /* ✅ 向页面上方偏移 */
+      top: 20%; /* ✅ 密码盘不变 */
       left: 50%;
       transform: translateX(-50%);
       padding: 40px;
@@ -40,7 +40,7 @@
     }
 
     @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.98); }
+      0% { opacity: 0; transform: scale(0.92); }
       100% { opacity: 1; transform: scale(1); }
     }
 
@@ -49,13 +49,13 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 35px;
       opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-      animation-delay: 0.2s;
+      animation: fadeIn 2.8s ease-out forwards;
+      animation-delay: 0.4s; /* ✅ 延时+缓慢淡入，配合背景加载 */
     }
 
     .grid-wrapper.fade-out {
       opacity: 0;
-      transform: translateX(-50%) rotate(360deg) scale(0.5); /* ✅ 旋转 + 缩小 + 渐隐 */
+      transform: translateX(-50%) rotate(360deg) scale(0.5);
       pointer-events: none;
     }
 
@@ -114,11 +114,11 @@
         setTimeout(() => {
           if (inputCode === correctCode) {
             const wrapper = document.getElementById("wrapper");
-            wrapper.classList.add("fade-out"); // ✅ 添加旋转渐隐动画
+            wrapper.classList.add("fade-out");
             setTimeout(() => {
               document.cookie = "access_granted=1; path=/;";
               window.location.href = "/";
-            }, 1700); // 配合动画延时
+            }, 1700);
           } else {
             alert("Wrong code. Try again.");
             inputCode = "";
