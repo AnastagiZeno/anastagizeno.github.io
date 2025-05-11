@@ -20,11 +20,12 @@
       top: 4%;
       left: 50%;
       transform: translateX(-50%);
-      width: 260px; /* ✅ 居中匹配密码盘宽度 */
+      width: 260px;
       text-align: center;
-      color: white;
+      font-family: monospace, sans-serif; /* ✅ 等宽字体 */
+      font-variant-numeric: tabular-nums; /* ✅ 等宽数字 */
       font-size: 2.2em;
-      letter-spacing: 0.3em;
+      color: white;
       text-shadow: 0 0 10px #ffd700;
       opacity: 0;
     }
@@ -117,8 +118,7 @@
     @media (max-width: 600px) {
       .indicator {
         font-size: 1.8em;
-        letter-spacing: 0.2em;
-        width: 200px; /* ✅ 小屏缩小输入框宽度 */
+        width: 200px;
       }
 
       .grid-wrapper {
@@ -214,6 +214,13 @@
       img.src = './theecstasyofgold.png';
       img.onload = () => {
         document.body.classList.add('bg-loaded');
+
+        const wrapper = document.getElementById("wrapper");
+        // ✅ 在动画结束后，移除 inline animation 样式，避免覆盖 fade-out
+        wrapper.addEventListener("animationend", () => {
+          wrapper.style.removeProperty("animation");
+        });
+
         initNumpad();
         updateDisplay();
       };
