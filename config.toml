@@ -108,19 +108,19 @@ url = "/dogdoor/janus/cv/%E5%BA%B7%E7%82%B3%E6%98%9F-%E6%9C%8D%E5%8A%A1%E7%AB%AF
 
 [[params.azeroth]]
 name = "Iron Forge"
-url = "/dogdoor/ahau"
+url = "/dogdoor/katun/ahau"
 
 [[params.azeroth]]
 name = "Booty Bay"
-url = "/dogdoor/vuh"
+url = "/dogdoor/katun/vuh"
 
 [[params.azeroth]]
 name = "Epictetus"
-url = "/dogdoor/epictetus"
+url = "/dogdoor/katun/epictetus"
 
 [[params.azeroth]]
 name = "Seneca"
-url = "/dogdoor/seneca"
+url = "/dogdoor/katun/seneca"
 
 [[params.azeroth]]
 name = "Aurelius"
