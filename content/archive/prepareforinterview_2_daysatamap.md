@@ -1,6 +1,6 @@
 +++
 title = "Raḥimahu Allāh"
-date = 2025-05-04T12:38:52+08:00
+date = 2025-05-06T12:38:52+08:00
 draft = false
 description = ""
 subtitle = "愿真主怜悯他"

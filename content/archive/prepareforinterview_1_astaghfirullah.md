@@ -1,6 +1,6 @@
 +++
 title = "阿斯塔格菲鲁拉"
-date = 2025-05-04T08:06:35+08:00
+date = 2025-05-07T08:06:35+08:00
 draft = false
 description = ""
 subtitle = "我不是真的懂"
