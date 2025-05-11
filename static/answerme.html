@@ -15,16 +15,20 @@
       touch-action: manipulation;
     }
 
-    .indicator {
+    /* ✅ 新增一个用于相对于密码盘垂直居中的容器 */
+    .indicator-wrapper {
       position: absolute;
-      top: 4%;
+      top: calc(20% - 100px); /* 与 grid-wrapper 顶部对齐，稍向上移 */
       left: 50%;
       transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .indicator {
       display: flex;
-      gap: 0.6em;
+      gap: 0.8em;
       justify-content: center;
       align-items: center;
-      opacity: 0;
     }
 
     .digit {
@@ -35,6 +39,12 @@
       border-bottom: 2px solid #ffd700;
       min-width: 1em;
       text-align: center;
+      height: 1.4em;
+    }
+
+    .indicator-wrapper,
+    .grid-wrapper {
+      opacity: 0;
     }
 
     .grid-wrapper {
@@ -49,7 +59,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0;
       pointer-events: none;
     }
 
@@ -96,14 +105,12 @@
       transition: transform 1.6s ease-out, opacity 1.6s ease-out;
     }
 
-    body.bg-loaded .grid-wrapper {
+    .grid-wrapper.animate-in {
       animation: spinFadeIn 3.5s ease-out forwards;
-      pointer-events: auto;
     }
 
-    body.bg-loaded .indicator {
+    .indicator-wrapper.animate-in {
       animation: fadeInText 2.5s ease-out forwards;
-      animation-delay: 1.3s;
     }
 
     @keyframes spinFadeIn {
@@ -145,11 +152,13 @@
 </head>
 <body>
 
-  <div class="indicator" id="display">
-    <span class="digit">_</span>
-    <span class="digit">_</span>
-    <span class="digit">_</span>
-    <span class="digit">_</span>
+  <div class="indicator-wrapper" id="indicatorWrapper">
+    <div class="indicator" id="display">
+      <span class="digit"></span>
+      <span class="digit"></span>
+      <span class="digit"></span>
+      <span class="digit"></span>
+    </div>
   </div>
 
   <div class="grid-wrapper" id="wrapper">
@@ -171,7 +180,7 @@
     function updateDisplay() {
       const digits = document.querySelectorAll(".digit");
       for (let i = 0; i < 4; i++) {
-        digits[i].textContent = inputCode[i] || "_";
+        digits[i].textContent = inputCode[i] || "";
       }
     }
 
@@ -189,12 +198,11 @@
           if (inputCode === correctCode) {
             const wrapper = document.getElementById("wrapper");
 
-            // 💡 移除动画属性以防止 transform 被覆盖
-            wrapper.style.removeProperty("animation");
-
-            if (!wrapper.classList.contains("fade-out")) {
+            // ✅ 动画释放 + 强制 reflow 以触发 transition
+            wrapper.classList.remove("animate-in");
+            requestAnimationFrame(() => {
               wrapper.classList.add("fade-out");
-            }
+            });
 
             const date = new Date();
             date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
@@ -231,10 +239,12 @@
       img.onload = () => {
         document.body.classList.add('bg-loaded');
 
+        // ✅ 加入动画类
         const wrapper = document.getElementById("wrapper");
-        wrapper.addEventListener("animationend", () => {
-          wrapper.style.removeProperty("animation"); // ✅ 确保 fade-out 可执行
-        });
+        const indicator = document.getElementById("indicatorWrapper");
+
+        wrapper.classList.add("animate-in");
+        indicator.classList.add("animate-in");
 
         initNumpad();
         updateDisplay();
