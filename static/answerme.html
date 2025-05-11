@@ -13,15 +13,17 @@
       font-family: sans-serif;
       overflow: hidden;
       touch-action: manipulation;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* ✅ 新增一个用于相对于密码盘垂直居中的容器 */
-    .indicator-wrapper {
-      position: absolute;
-      top: calc(20% - 100px); /* 与 grid-wrapper 顶部对齐，稍向上移 */
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
+    /* ✅ 父容器：垂直排列 indicator + grid */
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
     }
 
     .indicator {
@@ -29,6 +31,7 @@
       gap: 0.8em;
       justify-content: center;
       align-items: center;
+      opacity: 0;
     }
 
     .digit {
@@ -42,16 +45,7 @@
       height: 1.4em;
     }
 
-    .indicator-wrapper,
     .grid-wrapper {
-      opacity: 0;
-    }
-
-    .grid-wrapper {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
       padding: 40px;
       background: rgba(0, 0, 0, 0.05);
       border-radius: 50%;
@@ -59,7 +53,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
+      opacity: 0;
     }
 
     .grid {
@@ -100,27 +94,27 @@
 
     .grid-wrapper.fade-out {
       opacity: 0 !important;
-      transform: translateX(-50%) rotate(360deg) scale(0.5) !important;
-      pointer-events: none;
+      transform: rotate(360deg) scale(0.5) !important;
       transition: transform 1.6s ease-out, opacity 1.6s ease-out;
+      pointer-events: none;
     }
 
     .grid-wrapper.animate-in {
       animation: spinFadeIn 3.5s ease-out forwards;
     }
 
-    .indicator-wrapper.animate-in {
+    .indicator.animate-in {
       animation: fadeInText 2.5s ease-out forwards;
     }
 
     @keyframes spinFadeIn {
       0% {
         opacity: 0;
-        transform: translateX(-50%) scale(0.6) rotate(-180deg);
+        transform: scale(0.6) rotate(-180deg);
       }
       100% {
         opacity: 1;
-        transform: translateX(-50%) scale(1) rotate(0deg);
+        transform: scale(1) rotate(0deg);
       }
     }
 
@@ -152,17 +146,17 @@
 </head>
 <body>
 
-  <div class="indicator-wrapper" id="indicatorWrapper">
+  <div class="login-container">
     <div class="indicator" id="display">
       <span class="digit"></span>
       <span class="digit"></span>
       <span class="digit"></span>
       <span class="digit"></span>
     </div>
-  </div>
 
-  <div class="grid-wrapper" id="wrapper">
-    <div class="grid" id="numpad"></div>
+    <div class="grid-wrapper" id="wrapper">
+      <div class="grid" id="numpad"></div>
+    </div>
   </div>
 
   <script>
@@ -198,7 +192,6 @@
           if (inputCode === correctCode) {
             const wrapper = document.getElementById("wrapper");
 
-            // ✅ 动画释放 + 强制 reflow 以触发 transition
             wrapper.classList.remove("animate-in");
             requestAnimationFrame(() => {
               wrapper.classList.add("fade-out");
@@ -239,12 +232,16 @@
       img.onload = () => {
         document.body.classList.add('bg-loaded');
 
-        // ✅ 加入动画类
         const wrapper = document.getElementById("wrapper");
-        const indicator = document.getElementById("indicatorWrapper");
+        const indicator = document.getElementById("display");
 
         wrapper.classList.add("animate-in");
         indicator.classList.add("animate-in");
+
+        // ✅ 解锁按钮点击
+        setTimeout(() => {
+          wrapper.style.pointerEvents = "auto";
+        }, 800);
 
         initNumpad();
         updateDisplay();
