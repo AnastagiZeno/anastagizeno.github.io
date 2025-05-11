@@ -45,7 +45,7 @@
       color: white;
       font-family: monospace;
       text-shadow: 0 0 10px #fff;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.6); /* ✅ 更柔和下划线 */
+      border-bottom: 2px solid rgba(255, 255, 255, 0.6);
       min-width: 1em;
       text-align: center;
       height: 1.4em;
@@ -187,14 +187,14 @@
             });
 
             const date = new Date();
-            date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
+            date.setTime(date.getTime() + 3 * 60 * 60 * 1000);
             document.cookie = `access_granted=1; expires=${date.toUTCString()}; path=/;`;
 
             setTimeout(() => {
               window.location.href = "/";
             }, 1700);
           } else {
-            alert("Wrong code. Try again.");
+            alert("الصبر مفتاح الفرج");
             inputCode = "";
             updateDisplay();
           }
@@ -231,8 +231,6 @@
         updateDisplay();
       };
     }
-
-    // ✅ 后退重置逻辑
     window.addEventListener("pageshow", (e) => {
       if (e.persisted) {
         inputCode = "";
