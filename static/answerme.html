@@ -20,7 +20,7 @@
       top: 4%;
       left: 50%;
       transform: translateX(-50%);
-      width: 100%;
+      width: 260px; /* ✅ 居中匹配密码盘宽度 */
       text-align: center;
       color: white;
       font-size: 2.2em;
@@ -118,6 +118,7 @@
       .indicator {
         font-size: 1.8em;
         letter-spacing: 0.2em;
+        width: 200px; /* ✅ 小屏缩小输入框宽度 */
       }
 
       .grid-wrapper {
@@ -175,7 +176,6 @@
           if (inputCode === correctCode) {
             const wrapper = document.getElementById("wrapper");
 
-            // ✅ 正确触发退出动画，不移除 animation 属性
             if (!wrapper.classList.contains("fade-out")) {
               wrapper.classList.add("fade-out");
             }
