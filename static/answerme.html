@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Launch Access</title>
+  <title>Launch Portal</title>
   <style>
     html, body {
       margin: 0;
@@ -16,10 +16,31 @@
       overflow: hidden;
     }
 
+    .container {
+      margin-top: -60px; /* 👈 向上偏移 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 100px);
       grid-gap: 30px;
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.2s;
+      transition: opacity 1s ease-out;
+    }
+
+    .grid.fade-out {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .btn {
@@ -33,7 +54,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       backdrop-filter: blur(4px);
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 0 0 10px rgba(0, 0, 0, 0.4);
     }
 
     .btn:hover {
@@ -43,34 +64,20 @@
     }
 
     .indicator {
-      position: absolute;
-      top: 5%;
+      margin-bottom: 30px;
       color: white;
       font-size: 2.2em;
       letter-spacing: 0.3em;
       text-shadow: 0 0 10px #ffd700;
     }
-
-    .rocket {
-      position: absolute;
-      bottom: -120px;
-      left: 50%;
-      width: 80px;
-      transform: translateX(-50%);
-      transition: transform 1.2s ease-out;
-    }
-
-    .launch {
-      transform: translate(-50%, -800px);
-      opacity: 0;
-    }
   </style>
 </head>
 <body>
 
-  <div class="indicator" id="display">____</div>
-  <div class="grid" id="numpad"></div>
-  <img src="./theecstasyofgold.png" class="rocket" id="rocket" />
+  <div class="container">
+    <div class="indicator" id="display">____</div>
+    <div class="grid" id="numpad"></div>
+  </div>
 
   <script>
     const correctCode = "1453";
@@ -93,11 +100,12 @@
       if (inputCode.length >= 4) return;
       inputCode += num;
       updateDisplay();
+
       if (inputCode.length === 4) {
         setTimeout(() => {
           if (inputCode === correctCode) {
-            const rocket = document.getElementById("rocket");
-            rocket.classList.add("launch");
+            const pad = document.getElementById("numpad");
+            pad.classList.add("fade-out");
             setTimeout(() => {
               document.cookie = "access_granted=1; path=/;";
               window.location.href = "/";
