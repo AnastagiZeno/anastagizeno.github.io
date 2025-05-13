@@ -388,3 +388,28 @@ redis.Del("ms:token:<sku_id>:<uid>") // 消费 token
 * 数据落库成功但缓存写失败 → 依赖定时任务补偿修复状态
 * 订单状态一致性问题 → 定期任务核对 Redis + DB 数据是否一致
 * 运维侧提供手动补单、回查工具（如基于 Kafka offset replay）
+
+# 二、Hadoop vs 阿里云 ODPS 功能对照表
+
+| **类别**   | **Hadoop/开源生态组件**                    | **阿里云/ODPS 平台对应组件**             | **说明 / 差异重点**                 |
+| -------- | ------------------------------------ | ------------------------------- | ----------------------------- |
+| 分布式存储    | HDFS（Hadoop Distributed File System） | MaxCompute 表底层存储 / OSS          | ODPS 底层采用专有高性能列存引擎，用户不直接操作路径  |
+| 离线计算     | MapReduce / Hive SQL                 | MaxCompute SQL / PyODPS         | ODPS 用优化后的执行引擎替代 MR，性能远超 Hive |
+| 资源调度     | YARN（资源分配）                           | 阿里云 MaxCompute Scheduler        | 用户无需管理资源，ODPS 是 Serverless 模型 |
+| 元数据管理    | Hive Metastore                       | ODPS Project/Table/Partition 管理 | ODPS 提供统一的项目级元数据权限控制          |
+| 流式计算     | Flink / Spark Streaming              | DataWorks 实时计算/Flink on EMR     | Flink 可以部署在阿里云上，与 ODPS 联动     |
+| 脚本调度     | Azkaban / Oozie / Airflow            | DataWorks（调度编排平台）               | 图形化任务依赖管理，支持 SQL/Python 等混合任务 |
+| 日志采集     | Flume / Kafka / Logstash             | SLS（日志服务）/ TT（日志总线）             | 更适合业务埋点、日志实时采集到数据平台           |
+| NoSQL 存储 | HBase（KV 数据库）                        | HBase on 云原生 EMR / Tablestore   | 需要低延迟读写时选用；ODPS 不适合频繁写        |
+| 可视化 BI   | Superset / Tableau / Redash          | FBI（QuickBI / 自助取数）             | BI 展示和运营自助查询分析平台              |
+
+| **你常做的事**              | **标准术语（大数据团队）**                                  |
+| ---------------------- | ------------------------------------------------ |
+| 埋点、日志打 TT / Kafka      | 数据采集（Data Ingestion）                             |
+| Flink 实时清洗打点数据         | 实时 ETL / 流式 ETL（Streaming ETL）                   |
+| MySQL 数据 T+1 导入 ODPS   | 离线采集 / 离线同步（Batch Ingestion）                     |
+| SQL 聚合、统计、Join 运算      | 离线计算 / 指标建模（Batch Computation / Metric Modeling） |
+| pyodps 调 SQL、脚本定时跑     | 任务调度（Scheduler，例如调度系统为 Zeus、Airflow 等）           |
+| Flink 计算写 TT 表或落回 ODPS | 实时入库（Real-time Sink）                             |
+| ODPS 表结果供 FBI 平台查看     | 自助 BI / 可视化查询平台（BI平台，如 FBI、QuickBI）              |
+| FBI 展示指标、用户留存、趋势等      | 数据服务（Data Service）                               |
