@@ -3,7 +3,7 @@ title = "刷题之回溯"
 date = 2025-05-02T10:02:12+08:00
 draft = false
 description = ""
-subtitle = "DFS、回溯等解题思路"
+subtitle = "DFS、回溯处理组合搜索问题"
 header_img = ""
 short = false
 toc = true
@@ -16,6 +16,8 @@ hidden = true
 +++
 
 # 回溯算法与 DFS 的系统总结
+
+> # 组合、排列、路径搜索
 
 ## 🧠 一、回溯和 DFS 的关系
 
@@ -40,9 +42,14 @@ def backtrack(path, choices):
     for choice in choices:
         if 剪枝条件:
             continue
-        做选择
+        path.append(choice) # 做选择
         backtrack(path, updated_choices)
-        撤销选择
+        path.pop() # 撤销选择
+
+几点常见情况的补充说明：
+1. python做回溯的时候，path变量可以在闭包外部定义，不用每次在递归中传递。因为有撤销选择时path的pop()操作和进入递归时path[:]深拷贝来保证没问题。
+2. 一般数组可以通过起点index来控制choices，所以经常的变体是backtrack(start_idx), backtrack(cur_idx + 1)就一个变量参与递归就够了。
+3. 一般剪枝条件可能需要累积计算判断，这样可以在递归时传递一个值，递归前计算，递归后反向计算。一般就是求和之类的。
 ```
 
 **变量说明**：
