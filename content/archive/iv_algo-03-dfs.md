@@ -3,7 +3,7 @@ title = "刷题之回溯"
 date = 2025-05-02T10:02:12+08:00
 draft = false
 description = ""
-subtitle = "使用DFS和回溯来处理排列组合问题"
+subtitle = "使用DFS和回溯来应对排列组合问题"
 header_img = ""
 short = false
 toc = true
@@ -17,7 +17,7 @@ hidden = true
 
 # 回溯算法与 DFS 的系统总结
 
-> # 应对：组合、排列、路径搜索
+> # 【题型快判】：组合、排列、路径搜索
 
 ## 🧠 一、回溯和 DFS 的关系
 
