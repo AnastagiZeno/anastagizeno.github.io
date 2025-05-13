@@ -1,9 +1,9 @@
 +++
-title = "服务端面试之GO（二）深度篇"
+title = "服务端面试之GO（二）"
 date = 2025-05-04T12:26:32+08:00
 draft = false
 description = ""
-subtitle = ""
+subtitle = "实战手撕代码之Channel、并发等"
 header_img = ""
 short = false
 toc = true
