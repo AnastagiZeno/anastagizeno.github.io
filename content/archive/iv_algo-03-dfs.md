@@ -46,10 +46,6 @@ def backtrack(path, choices):
         backtrack(path, updated_choices)
         path.pop() # 撤销选择
 
-几点常见情况的补充说明：
-1. python做回溯的时候，path变量可以在闭包外部定义，不用每次在递归中传递。因为有撤销选择时path的pop()操作和进入递归时path[:]深拷贝来保证没问题。
-2. 一般数组可以通过起点index来控制choices，所以经常的变体是backtrack(start_idx), backtrack(cur_idx + 1)就一个变量参与递归就够了。
-3. 一般剪枝条件可能需要累积计算判断，这样可以在递归时传递一个值，递归前计算，递归后反向计算。一般就是求和之类的。
 ```
 
 **变量说明**：
@@ -57,6 +53,11 @@ def backtrack(path, choices):
 * `path`: 当前构造的解（例如排列、子集等）
 * `choices`: 当前可选的元素（如剩余数字、起始下标等）
 * `res`: 最终结果集合
+
+**几种常见情况的补充说明**:
+1. python做回溯的时候，path变量可以在闭包外部定义，不用每次在递归中传递。因为有撤销选择时path的pop()操作和进入递归时path[:]深拷贝来保证没问题。
+2. 一般数组可以通过起点index来控制choices，所以经常的变体是backtrack(start_idx), backtrack(cur_idx + 1)就一个变量参与递归就够了。
+3. 一般剪枝条件可能需要累积计算判断，这样可以在递归时传递一个值，递归前计算，递归后反向计算。一般就是求和之类的。
 
 ## 🌟 三、题型分类与识别套路
 
