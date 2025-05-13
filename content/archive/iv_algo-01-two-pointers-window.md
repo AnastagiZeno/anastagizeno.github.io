@@ -1,8 +1,8 @@
 +++
-title = "刷题之双指针、滑动窗口"
+title = "刷题之双指针"
 date = 2025-05-01T16:02:12+08:00
 draft = false
-description = ""
+description = "双指针、滑动窗口相关题型"
 subtitle = ""
 header_img = ""
 short = false

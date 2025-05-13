@@ -1,8 +1,8 @@
 +++
-title = "刷题之动态规划"
+title = "刷题之DPS"
 date = 2025-05-02T10:02:12+08:00
 draft = false
-description = ""
+description = "深度搜索、回溯等解题思路"
 subtitle = ""
 header_img = ""
 short = false

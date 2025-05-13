@@ -1,5 +1,5 @@
 +++
-title = "服务端面试之缓存、消息篇"
+title = "服务端面试之缓存篇"
 date = 2025-05-03T20:23:03+08:00
 draft = false
 description = "Redis、MQ"

@@ -3,15 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://shahrazad.fun/archive/</loc>
-    <lastmod>2025-05-12T15:49:51+08:00</lastmod>
+    <lastmod>2025-05-12T18:05:31+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/archive/iv_sd-2-following-system/</loc>
+    <lastmod>2025-05-12T18:05:31+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/</loc>
+    <lastmod>2025-05-12T18:05:31+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/categories/</loc>
     <lastmod>2025-05-12T15:49:51+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/series/</loc>
-    <lastmod>2025-05-12T15:49:51+08:00</lastmod>
-  </url><url>
-    <loc>https://shahrazad.fun/</loc>
     <lastmod>2025-05-12T15:49:51+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/tags/</loc>
@@ -26,55 +29,55 @@
     <loc>https://shahrazad.fun/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2025-05-12T15:49:51+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_sysdesign_like-system/</loc>
+    <loc>https://shahrazad.fun/archive/iv_sd-1-like-system/</loc>
     <lastmod>2025-05-12T15:49:51+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</loc>
     <lastmod>2025-05-12T15:49:51+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_astaghfirullah/</loc>
+    <loc>https://shahrazad.fun/archive/iv_astaghfirullah/</loc>
     <lastmod>2025-05-07T08:06:35+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_amap_days/</loc>
+    <loc>https://shahrazad.fun/archive/iv_amap-project/</loc>
     <lastmod>2025-05-06T12:38:52+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_archi_distributed-transaction/</loc>
+    <loc>https://shahrazad.fun/archive/iv_engineering/</loc>
     <lastmod>2025-05-05T14:20:54+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_sysdesign/</loc>
+    <loc>https://shahrazad.fun/archive/iv_sd-0-roadmap/</loc>
     <lastmod>2025-05-05T12:23:42+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_os/</loc>
+    <loc>https://shahrazad.fun/archive/iv_cs-os/</loc>
     <lastmod>2025-05-05T10:03:45+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_go-2/</loc>
+    <loc>https://shahrazad.fun/archive/iv_cs-go-deep/</loc>
     <lastmod>2025-05-04T12:26:32+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_go-1/</loc>
+    <loc>https://shahrazad.fun/archive/iv_cs-go-base/</loc>
     <lastmod>2025-05-04T10:07:32+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_mid_redis-mq/</loc>
+    <loc>https://shahrazad.fun/archive/iv_mid-redis/</loc>
     <lastmod>2025-05-03T20:23:03+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_mid_mysql/</loc>
+    <loc>https://shahrazad.fun/archive/iv_mid-mysql/</loc>
     <lastmod>2025-05-03T16:57:36+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_al5_other/</loc>
+    <loc>https://shahrazad.fun/archive/iv_algo-05-other/</loc>
     <lastmod>2025-05-03T10:03:45+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/tags/%E7%AE%97%E6%B3%95%E9%A2%98/</loc>
     <lastmod>2025-05-03T10:03:45+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_al4_backtrack_dfs/</loc>
+    <loc>https://shahrazad.fun/archive/iv_algo-04-dp/</loc>
     <lastmod>2025-05-02T14:31:16+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_al3_dp/</loc>
+    <loc>https://shahrazad.fun/archive/iv_algo-03-dfs/</loc>
     <lastmod>2025-05-02T10:02:12+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_al2_two-pointers-window/</loc>
+    <loc>https://shahrazad.fun/archive/iv_algo-01-two-pointers-window/</loc>
     <lastmod>2025-05-01T16:02:12+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/archive/interview_al1_base-ds/</loc>
+    <loc>https://shahrazad.fun/archive/iv_algo-00-ds/</loc>
     <lastmod>2025-05-01T10:02:12+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/read/2025/</loc>

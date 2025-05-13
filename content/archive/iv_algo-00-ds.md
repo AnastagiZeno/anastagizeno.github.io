@@ -1,8 +1,8 @@
 +++
-title = "刷题之基础数据结构：树、链表、栈、堆"
+title = "刷题之基础数据结构"
 date = 2025-05-01T10:02:12+08:00
 draft = false
-description = ""
+description = "树、链表、栈、堆"
 subtitle = ""
 header_img = "/image/2025/valter-brani-sarajevo-ogimage.jpg"
 short = false
