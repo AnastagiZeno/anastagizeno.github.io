@@ -125,12 +125,12 @@
     </item>
     
     <item>
-      <title>刷题之DPS</title>
+      <title>刷题之回溯</title>
       <link>https://shahrazad.fun/archive/iv_algo-03-dfs/</link>
       <pubDate>Fri, 02 May 2025 10:02:12 +0800</pubDate>
       
       <guid>https://shahrazad.fun/archive/iv_algo-03-dfs/</guid>
-      <description>开始一、动态规划 vs 回溯的核心区别 项目 动态规划（DP） 回溯（Backtracking） 解决问题类型 最值、计数问题（如最短路径、最大和） 组合、排</description>
+      <description>回溯算法与 DFS 的系统总结🧠 一、回溯和 DFS 的关系 特性 DFS 回溯（Backtracking） 本质 一种遍历方式 一种用 DFS 实现的“解空间搜索+撤销”的策略 使用</description>
     </item>
     
     <item>
