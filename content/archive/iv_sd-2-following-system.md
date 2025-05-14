@@ -1,5 +1,5 @@
 +++
-title = "Interview_sysdesign_following System"
+title = "系统设计之关注/取关系统（微博）"
 date = 2025-05-12T18:05:31+08:00
 draft = false
 description = ""
@@ -7,9 +7,9 @@ subtitle = ""
 header_img = ""
 short = false
 toc = true
-tags = []
-categories = []
-series = []
+tags = ["服务端", "系统设计"]
+categories = ["计算机"]
+series = ["找工作系列"]
 comment = false
 summary = ""
 hidden = true

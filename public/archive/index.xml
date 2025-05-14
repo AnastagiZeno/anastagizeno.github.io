@@ -6,9 +6,18 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 May 2025 18:05:31 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 May 2025 18:47:03 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Interview_sysdesign_following System</title>
+      <title>系统设计之延时任务系统（scheduler）</title>
+      <link>https://shahrazad.fun/archive/iv_sd_3-schedule-task-system/</link>
+      <pubDate>Wed, 14 May 2025 18:47:03 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/iv_sd_3-schedule-task-system/</guid>
+      <description>延迟任务系统设计总结文档 本文总结了一套高可用、高并发、支持秒级~天级延迟任务的系统设计方案。内容来源为一次系统性设计讨论，包含用户的完整设想</description>
+    </item>
+    
+    <item>
+      <title>系统设计之关注/取关系统（微博）</title>
       <link>https://shahrazad.fun/archive/iv_sd-2-following-system/</link>
       <pubDate>Mon, 12 May 2025 18:05:31 +0800</pubDate>
       
@@ -17,7 +26,7 @@
     </item>
     
     <item>
-      <title>系统设计之点赞系统</title>
+      <title>系统设计之点赞系统（小视频）</title>
       <link>https://shahrazad.fun/archive/iv_sd-1-like-system/</link>
       <pubDate>Mon, 12 May 2025 15:49:51 +0800</pubDate>
       
