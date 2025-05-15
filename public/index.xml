@@ -117,10 +117,10 @@
     
     <item>
       <title>刷题之贪心</title>
-      <link>https://shahrazad.fun/archive/iv_algo-05-other/</link>
+      <link>https://shahrazad.fun/archive/iv_algo-05-greedy/</link>
       <pubDate>Sat, 03 May 2025 10:03:45 +0800</pubDate>
       
-      <guid>https://shahrazad.fun/archive/iv_algo-05-other/</guid>
+      <guid>https://shahrazad.fun/archive/iv_algo-05-greedy/</guid>
       <description>贪心算法🧠 一、贪心的核心定义 贪心算法是一种在每一步都做出局部最优选择，最终期望获得全局最优解的方法。 使用前提： 必须满足「局部最优 = 全局最优」</description>
     </item>
     
