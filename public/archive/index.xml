@@ -116,12 +116,12 @@
     </item>
     
     <item>
-      <title>刷题之额外记录</title>
+      <title>刷题之贪心</title>
       <link>https://shahrazad.fun/archive/iv_algo-05-other/</link>
       <pubDate>Sat, 03 May 2025 10:03:45 +0800</pubDate>
       
       <guid>https://shahrazad.fun/archive/iv_algo-05-other/</guid>
-      <description>线段张力Jerry.ai的面试题，leetcode上没这题，估计起码也得是个Medium，边界case多，调了老半天。 1线段是无限长的，初始</description>
+      <description>贪心算法🧠 一、贪心的核心定义 贪心算法是一种在每一步都做出局部最优选择，最终期望获得全局最优解的方法。 使用前提： 必须满足「局部最优 = 全局最优」</description>
     </item>
     
     <item>
