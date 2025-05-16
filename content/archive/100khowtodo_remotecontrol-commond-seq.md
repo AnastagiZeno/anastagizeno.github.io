@@ -12,7 +12,7 @@ categories = []
 series = ["十万个如何做到"]
 comment = false
 summary = ""
-hidden = false
+hidden = true
 +++
 
 # 空调遥控器如何保证指令顺序性？
