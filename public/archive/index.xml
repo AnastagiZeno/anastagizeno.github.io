@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 16 May 2025 10:41:11 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何做到空调遥控器连续指令的顺序接收</title>
-      <link>https://shahrazad.fun/archive/100khowtodo_remotecontrol-commond-seq/</link>
+      <link>https://shahrazad.fun/archive/htd100k_2025051610/</link>
       <pubDate>Fri, 16 May 2025 10:41:11 +0800</pubDate>
       
-      <guid>https://shahrazad.fun/archive/100khowtodo_remotecontrol-commond-seq/</guid>
+      <guid>https://shahrazad.fun/archive/htd100k_2025051610/</guid>
       <description>空调遥控器如何保证指令顺序性？📌 问题背景空调遥控器通常使用红外通信发送控制指令给空调主机，用户可能会连续点击“温度+”或“温度−”。那么主机</description>
     </item>
     
