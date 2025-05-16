@@ -2,8 +2,8 @@
 title = "马鲁布拉永远阳光灿烂"
 date = 2024-03-11T13:02:12+08:00
 draft = false
-description = ""
-subtitle = "冷静观察，沉着应付，稳住阵脚，埋头实干"
+description = "冷静观察，沉着应付，稳住阵脚，埋头实干"
+subtitle = ""
 header_img = ""
 short = false
 toc = true
