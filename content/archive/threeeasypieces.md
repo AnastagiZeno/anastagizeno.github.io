@@ -1,9 +1,9 @@
 +++
-title = "操作系统：三件事"
+title = "三件事"
 date = 2024-03-05T09:56:03+08:00
 draft = false
-description = "Operating Systems: Three Easy Pieces"
-subtitle = ""
+description = ""
+subtitle = "Operating Systems: Three Easy Pieces"
 header_img = "/image/2024/key.png"
 short = false
 toc = true
