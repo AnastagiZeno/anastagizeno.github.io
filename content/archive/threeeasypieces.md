@@ -15,7 +15,7 @@ summary = ""
 
 +++
 
-**[Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/)**
+**[传送门](https://pages.cs.wisc.edu/~remzi/OSTEP/)**
 
 
 ## I 虚拟化
