@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 16 May 2025 10:41:11 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 May 2025 20:02:10 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/archive/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>系统设计之短视频评论系统</title>
+      <link>https://shahrazad.fun/archive/iv_sd_4-vedio-comment-system/</link>
+      <pubDate>Sat, 17 May 2025 20:02:10 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/iv_sd_4-vedio-comment-system/</guid>
+      <description>高并发评论系统设计（短视频场景）本设计面向大厂系统设计面试，聚焦于高并发、热点控制、缓存机制、数据一致性、异步削峰、点赞与审核风控等核心能力</description>
+    </item>
+    
     <item>
       <title>如何做到空调遥控器连续指令的顺序接收</title>
       <link>https://shahrazad.fun/archive/htd100k_2025051610/</link>
