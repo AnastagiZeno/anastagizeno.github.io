@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Sat, 17 May 2025 20:02:10 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>系统设计之短视频评论系统</title>
+      <title>系统设计之短视频评论系统（抖音）</title>
       <link>https://shahrazad.fun/archive/iv_sd_4-vedio-comment-system/</link>
       <pubDate>Sat, 17 May 2025 20:02:10 +0800</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>系统设计之延时任务系统（scheduler）</title>
+      <title>系统设计之延时任务系统（schedulerX）</title>
       <link>https://shahrazad.fun/archive/iv_sd_3-schedule-task-system/</link>
       <pubDate>Wed, 14 May 2025 18:47:03 +0800</pubDate>
       
@@ -44,7 +44,7 @@
     </item>
     
     <item>
-      <title>系统设计之点赞系统（小视频）</title>
+      <title>系统设计之点赞系统（B站）</title>
       <link>https://shahrazad.fun/archive/iv_sd-1-like-system/</link>
       <pubDate>Mon, 12 May 2025 15:49:51 +0800</pubDate>
       

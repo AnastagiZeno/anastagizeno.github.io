@@ -1,5 +1,5 @@
 +++
-title = "系统设计之短视频评论系统"
+title = "系统设计之短视频评论系统（抖音）"
 date = 2025-05-17T20:02:10+08:00
 draft = false
 description = ""

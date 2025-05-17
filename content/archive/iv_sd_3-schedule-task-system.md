@@ -1,5 +1,5 @@
 +++
-title = "系统设计之延时任务系统（scheduler）"
+title = "系统设计之延时任务系统（schedulerX）"
 date = 2025-05-14T18:47:03+08:00
 draft = false
 description = ""

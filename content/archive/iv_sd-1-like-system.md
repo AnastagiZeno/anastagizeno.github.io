@@ -1,5 +1,5 @@
 +++
-title = "系统设计之点赞系统（小视频）"
+title = "系统设计之点赞系统（B站）"
 date = 2025-05-12T15:49:51+08:00
 draft = false
 description = ""
