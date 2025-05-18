@@ -1,5 +1,5 @@
 +++
-title = "刷题之并查集合并"
+title = "刷题之并查集"
 date = 2025-05-18T17:38:41+08:00
 draft = false
 description = ""
