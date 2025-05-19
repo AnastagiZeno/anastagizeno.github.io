@@ -115,16 +115,16 @@ name = "Booty Bay"
 url = "/dogdoor/katun/vuh"
 
 [[params.azeroth]]
+name = "Avalon"
+url = "/dogdoor/shambhala/vuh"
+
+[[params.azeroth]]
 name = "Epictetus"
 url = "/dogdoor/katun/epictetus"
 
 [[params.azeroth]]
 name = "Seneca"
 url = "/dogdoor/katun/seneca"
-
-[[params.azeroth]]
-name = "XXXXX"
-url = "/dogdoor/shambhala/vuh"
 
 [[params.azeroth]]
 name = "Aurelius"
