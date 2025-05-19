@@ -104,7 +104,7 @@ rss = true
 
 [[params.azeroth]]
 name = "Kharanos"
-url = "/dogdoor/janus/cv/%E5%BA%B7%E7%82%B3%E6%98%9F-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91-%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86.pdf"
+url = "/dogdoor/janus/resume/%E5%BA%B7%E7%82%B3%E6%98%9F-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91-%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86.pdf"
 
 [[params.azeroth]]
 name = "Iron Forge"
