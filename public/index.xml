@@ -44,6 +44,15 @@
     </item>
     
     <item>
+      <title>服务端面试之Network篇</title>
+      <link>https://shahrazad.fun/archive/iv_cs-network/</link>
+      <pubDate>Tue, 13 May 2025 11:07:47 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/iv_cs-network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>系统设计之关注/取关系统（微博）</title>
       <link>https://shahrazad.fun/archive/iv_sd-2-following-system/</link>
       <pubDate>Mon, 12 May 2025 18:05:31 +0800</pubDate>
@@ -98,12 +107,12 @@
     </item>
     
     <item>
-      <title>服务端面试之OS、Network篇</title>
+      <title>服务端面试之OS篇</title>
       <link>https://shahrazad.fun/archive/iv_cs-os/</link>
       <pubDate>Mon, 05 May 2025 10:03:45 +0800</pubDate>
       
       <guid>https://shahrazad.fun/archive/iv_cs-os/</guid>
-      <description>加锁保护的是什么？变量？线程？内存？1. 加锁本质是什么？锁保护的到底是啥？ ✅ 锁本质上是对某段内存操作行为的互斥访问保证， 它保护的不是“线程”</description>
+      <description>模块 关键知识点 高频考察内容 是否必备 1. 进程与线程 进程与线程的区别、PCB/TCB、线程上下文切换 goroutine 与系统线程、协程调度机制对比 ✅ 2. 进程调度 调度</description>
     </item>
     
     <item>
@@ -212,15 +221,6 @@
       
       <guid>https://shahrazad.fun/archive/threeeasypieces/</guid>
       <description>传送门 I 虚拟化 CPU虚拟化ch7我们介绍了调度的基本思想，并开发了两类方法。第一类是运行最短的工作，从而优化周转时间。第二类是交替运行所有工</description>
-    </item>
-    
-    <item>
-      <title>小径分岔的花园</title>
-      <link>https://shahrazad.fun/archive/thegardenofforkingpaths/</link>
-      <pubDate>Tue, 24 Oct 2023 09:43:27 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/thegardenofforkingpaths/</guid>
-      <description>献给维多利亚·奥坎波 [1] 利德尔·哈特写的《欧洲战争史》第二百四十二页有段记载，说是十三个英国师（有一千四百门大炮支援）对塞尔—蒙托邦防线的进攻</description>
     </item>
     
   </channel>
