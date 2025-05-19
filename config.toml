@@ -123,6 +123,10 @@ name = "Seneca"
 url = "/dogdoor/katun/seneca"
 
 [[params.azeroth]]
+name = "XXXXX"
+url = "/dogdoor/shambhala/vuh"
+
+[[params.azeroth]]
 name = "Aurelius"
 url = "/dogdoor/janus"
 
