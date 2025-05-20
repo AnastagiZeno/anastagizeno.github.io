@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 17 May 2025 20:02:10 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 May 2025 19:23:26 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>算法题</title>
+      <link>https://shahrazad.fun/tags/%E7%AE%97%E6%B3%95%E9%A2%98/</link>
+      <pubDate>Tue, 20 May 2025 19:23:26 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/tags/%E7%AE%97%E6%B3%95%E9%A2%98/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>系统设计</title>
       <link>https://shahrazad.fun/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
@@ -76,15 +85,6 @@
       <pubDate>Sun, 04 May 2025 12:26:32 +0800</pubDate>
       
       <guid>https://shahrazad.fun/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>数据结构</title>
-      <link>https://shahrazad.fun/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Thu, 01 May 2025 10:02:12 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       <description></description>
     </item>
     
