@@ -1,15 +1,15 @@
 +++
-title = "刷题之双指针"
+title = "双指针"
 date = 2025-05-01T16:02:12+08:00
 draft = false
 description = ""
-subtitle = "双指针、滑动窗口相关题型"
+subtitle = "刷题之双指针、滑动窗口相关题型"
 header_img = ""
 short = false
 toc = true
-tags = ["算法题"]
-categories = ["计算机"]
-series = ["找工作系列"]
+tags = []
+categories = ["Computer Science"]
+series = ["算法题系列"]
 comment = false
 summary = ""
 hidden = true

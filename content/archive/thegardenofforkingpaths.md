@@ -8,7 +8,7 @@ header_img = ""
 short = false
 toc = false
 tags = ["博尔赫斯"]
-categories = ["文化"]
+categories = ["Literature"]
 series = []
 comment = false
 

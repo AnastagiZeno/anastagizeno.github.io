@@ -1,15 +1,15 @@
 +++
-title = "刷题之动态规划"
+title = "动态规划"
 date = 2025-05-02T14:31:16+08:00
 draft = false
 description = ""
-subtitle = ""
+subtitle = "刷题之DP问题"
 header_img = ""
 short = false
 toc = true
-tags = ["算法题"]
-categories = ["计算机"]
-series = ["找工作系列"]
+tags = []
+categories = ["Computer Science"]
+series = ["算法题系列"]
 comment = false
 summary = ""
 hidden = true

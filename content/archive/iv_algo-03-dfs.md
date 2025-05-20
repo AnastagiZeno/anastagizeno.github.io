@@ -1,15 +1,15 @@
 +++
-title = "刷题之回溯"
+title = "回溯"
 date = 2025-05-02T10:02:12+08:00
 draft = false
 description = ""
-subtitle = "使用DFS和回溯来应对排列组合问题"
+subtitle = "刷题之使用DFS/回溯来应对排列组合问题"
 header_img = ""
 short = false
 toc = true
-tags = ["算法题"]
-categories = ["计算机"]
-series = ["找工作系列"]
+tags = []
+categories = ["Computer Science"]
+series = ["算法题系列"]
 comment = false
 summary = ""
 hidden = true

@@ -1,15 +1,15 @@
 +++
-title = "刷题之0/1背包问题"
+title = "0/1背包"
 date = 2025-05-18T18:19:41+08:00
-draft = true
+draft = false
 description = ""
-subtitle = ""
+subtitle = "刷题之背包问题"
 header_img = ""
 short = false
 toc = true
 tags = []
-categories = []
-series = []
+categories = ["Computer Science"]
+series = ["算法题系列"]
 comment = false
 summary = ""
 hidden = true

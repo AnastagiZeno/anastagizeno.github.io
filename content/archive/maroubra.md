@@ -8,7 +8,7 @@ header_img = ""
 short = false
 toc = true
 tags = ["没用的东西"]
-categories = ["没用的东西"]
+categories = ["Black Hole"]
 series = []
 comment = false
 

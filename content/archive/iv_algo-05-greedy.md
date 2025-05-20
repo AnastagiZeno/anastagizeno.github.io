@@ -1,15 +1,15 @@
 +++
-title = "刷题之贪心"
+title = "贪心"
 date = 2025-05-03T10:03:45+08:00
 draft = false
 description = ""
-subtitle = ""
+subtitle = "刷题之贪心算法"
 header_img = ""
 short = false
 toc = true
-tags = ["算法题"]
-categories = ["计算机"]
-series = ["找工作系列"]
+tags = []
+categories = ["Computer Science"]
+series = ["算法题系列"]
 comment = false
 summary = ""
 hidden = true

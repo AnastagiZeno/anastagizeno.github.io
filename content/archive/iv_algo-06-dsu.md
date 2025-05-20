@@ -1,15 +1,15 @@
 +++
-title = "刷题之并查集"
+title = "并查集"
 date = 2025-05-18T17:38:41+08:00
 draft = false
 description = ""
-subtitle = "Disjoint Set Union, DSU"
+subtitle = "刷题之DSU问题合集（Disjoint Set Union）"
 header_img = ""
 short = false
 toc = true
-tags = ["算法题"]
-categories = ["计算机"]
-series = ["找工作系列"]
+tags = []
+categories = ["Computer Science"]
+series = ["算法题系列"]
 comment = false
 summary = ""
 hidden = true
