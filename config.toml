@@ -132,7 +132,7 @@ url = "/dogdoor/janus"
 
 [[params.azeroth]]
 name = "Chelsea"
-url = "/static/stamfordbridge.html"
+url = "/stamfordbridge.html"
 
 [params.giscus]
 enable = false
