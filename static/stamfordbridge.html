@@ -1,0 +1,952 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><title>Stamford Bridge</title><style>body{margin:0;padding:0;background:url(image/pool/valter-brani-sarajevo-ogimage.jpg) no-repeat center center fixed;background-size:cover;font-family:"Segoe UI",sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;perspective:1000px;padding:20px}.card{width:180px;height:180px;position:relative;transform-style:preserve-3d;transition:transform .6s}.card.flipped{transform:rotateY(180deg)}.card .back,.card .front{position:absolute;width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:20px;backface-visibility:hidden;padding:10px;box-sizing:border-box}.card .front{background:linear-gradient(145deg,#034694,#0057b8);color:#fff;box-shadow:0 4px 8px rgba(0,0,0,.25);font-size:48px;font-weight:700;font-family:"Times New Roman",serif}.card .back{background:linear-gradient(135deg,#a8c7e3,#dceaf6);transform:rotateY(180deg);font-size:15px;text-align:center;box-shadow:0 4px 8px rgba(0,0,0,.2);display:flex;flex-direction:column;justify-content:center}.card .back .qid{font-size:16px;font-weight:700;color:#002d72;margin-bottom:5px}.card .back .title{font-size:14px;color:#034694;font-weight:400}.card .back a{color:inherit;text-decoration:none}.refresh-btn{margin-top:40px;padding:12px 24px;border:none;background-color:#034694;color:#fff;font-size:18px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.3);cursor:pointer;transition:background-color .3s ease,opacity .3s ease;visibility:hidden;opacity:0}.refresh-btn.visible{visibility:visible;opacity:1}.refresh-btn:hover{background-color:#002d72}</style></head><body><div class="grid" id="grid"></div><button class="refresh-btn" id="refreshBtn">AGAIN</button><script>const questions = [
+        {
+          source: "Leetcode",
+          id: 78,
+          name: "子集",
+          url: "https://leetcode.cn/problems/subsets/",
+        },
+        {
+          source: "Leetcode",
+          id: 46,
+          name: "全排列",
+          url: "https://leetcode.cn/problems/permutations/",
+        },
+        {
+          source: "Leetcode",
+          id: 22,
+          name: "括号生成",
+          url: "https://leetcode.cn/problems/generate-parentheses/",
+        },
+        {
+          source: "Leetcode",
+          id: 48,
+          name: "旋转图像",
+          url: "https://leetcode.cn/problems/rotate-image/",
+        },
+        {
+          source: "Leetcode",
+          id: 763,
+          name: "划分字母区间",
+          url: "https://leetcode.cn/problems/partition-labels/",
+        },
+        {
+          source: "Leetcode",
+          id: 238,
+          name: "除自身以外数组的乘积",
+          url: "https://leetcode.cn/problems/product-of-array-except-self/",
+        },
+        {
+          source: "Leetcode",
+          id: 289,
+          name: "生命游戏",
+          url: "https://leetcode.cn/problems/game-of-life/",
+        },
+        {
+          source: "Leetcode",
+          id: 1053,
+          name: "交换一次的先前排列",
+          url: "https://leetcode.cn/problems/previous-permutation-with-one-swap/",
+        },
+        {
+          source: "Leetcode",
+          id: 1630,
+          name: "等差子数组",
+          url: "https://leetcode.cn/problems/arithmetic-subarrays/",
+        },
+        {
+          source: "Leetcode",
+          id: 89,
+          name: "格雷编码",
+          url: "https://leetcode.cn/problems/gray-code/",
+        },
+        {
+          source: "Leetcode",
+          id: 122,
+          name: "买卖股票的最佳时机 II",
+          url: "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 131,
+          name: "分割回文串",
+          url: "https://leetcode.cn/problems/palindrome-partitioning/",
+        },
+        {
+          source: "Leetcode",
+          id: 24,
+          name: "两两交换链表中的节点",
+          url: "https://leetcode.cn/problems/swap-nodes-in-pairs/",
+        },
+        {
+          source: "Leetcode",
+          id: 116,
+          name: "填充每个节点的下一个右侧节点指针",
+          url: "https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/",
+        },
+        {
+          source: "Leetcode",
+          id: 39,
+          name: "组合总和",
+          url: "https://leetcode.cn/problems/combination-sum/",
+        },
+        {
+          source: "Leetcode",
+          id: 106,
+          name: "从中序与后序遍历序列构造二叉树",
+          url: "https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+        },
+        {
+          source: "Leetcode",
+          id: 236,
+          name: "二叉树的最近公共祖先",
+          url: "https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/",
+        },
+        {
+          source: "Leetcode",
+          id: 105,
+          name: "从前序与中序遍历序列构造二叉树",
+          url: "https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+        },
+        {
+          source: "Leetcode",
+          id: 451,
+          name: "根据字符出现频率排序",
+          url: "https://leetcode.cn/problems/sort-characters-by-frequency/",
+        },
+        {
+          source: "Leetcode",
+          id: 96,
+          name: "不同的二叉搜索树",
+          url: "https://leetcode.cn/problems/unique-binary-search-trees/",
+        },
+        {
+          source: "Leetcode",
+          id: 318,
+          name: "最大单词长度乘积",
+          url: "https://leetcode.cn/problems/maximum-product-of-word-lengths/",
+        },
+        {
+          source: "Leetcode",
+          id: 1049,
+          name: "最后一块石头的重量 II",
+          url: "https://leetcode.cn/problems/last-stone-weight-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 49,
+          name: "字母异位词分组",
+          url: "https://leetcode.cn/problems/group-anagrams/",
+        },
+        {
+          source: "Leetcode",
+          id: 59,
+          name: "螺旋矩阵 II",
+          url: "https://leetcode.cn/problems/spiral-matrix-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 199,
+          name: "二叉树的右视图",
+          url: "https://leetcode.cn/problems/binary-tree-right-side-view/",
+        },
+        {
+          source: "Leetcode",
+          id: 260,
+          name: "只出现一次的数字 III",
+          url: "https://leetcode.cn/problems/single-number-iii/",
+        },
+        {
+          source: "Leetcode",
+          id: 62,
+          name: "不同路径",
+          url: "https://leetcode.cn/problems/unique-paths/",
+        },
+        {
+          source: "Leetcode",
+          id: 102,
+          name: "二叉树的层序遍历",
+          url: "https://leetcode.cn/problems/binary-tree-level-order-traversal/",
+        },
+        {
+          source: "Leetcode",
+          id: 138,
+          name: "随机链表的复制",
+          url: "https://leetcode.cn/problems/copy-list-with-random-pointer/",
+        },
+        {
+          source: "LCR",
+          id: 60,
+          name: "前 K 个高频元素",
+          url: "https://leetcode.cn/problems/lcr-060/",
+        },
+        {
+          source: "Leetcode",
+          id: 279,
+          name: "完全平方数",
+          url: "https://leetcode.cn/problems/perfect-squares/",
+        },
+        {
+          source: "Leetcode",
+          id: 583,
+          name: "两个字符串的删除操作",
+          url: "https://leetcode.cn/problems/delete-operation-for-two-strings/",
+        },
+        {
+          source: "Leetcode",
+          id: 143,
+          name: "重排链表",
+          url: "https://leetcode.cn/problems/reorder-list/",
+        },
+        {
+          source: "Leetcode",
+          id: 148,
+          name: "排序链表",
+          url: "https://leetcode.cn/problems/sort-list/",
+        },
+        {
+          source: "Leetcode",
+          id: 47,
+          name: "全排列 II",
+          url: "https://leetcode.cn/problems/permutations-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 667,
+          name: "优美的排列 II",
+          url: "https://leetcode.cn/problems/beautiful-arrangement-ii/",
+        },
+        {
+          source: "LCR",
+          id: 82,
+          name: "组合总和 II",
+          url: "https://leetcode.cn/problems/lcr-082/",
+        },
+        {
+          source: "Leetcode",
+          id: 86,
+          name: "分隔链表",
+          url: "https://leetcode.cn/problems/partition-list/",
+        },
+        {
+          source: "Leetcode",
+          id: 309,
+          name: "买卖股票的最佳时机含冷冻期",
+          url: "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+        },
+        {
+          source: "Leetcode",
+          id: 454,
+          name: "四数相加 II",
+          url: "https://leetcode.cn/problems/4sum-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 2244,
+          name: "完成所有任务需要的最少轮数",
+          url: "https://leetcode.cn/problems/minimum-rounds-to-complete-all-tasks/",
+        },
+        {
+          source: "LCR",
+          id: 26,
+          name: "重排链表",
+          url: "https://leetcode.cn/problems/lcr-026/",
+        },
+        {
+          source: "Leetcode",
+          id: 90,
+          name: "子集 II",
+          url: "https://leetcode.cn/problems/subsets-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 343,
+          name: "整数拆分",
+          url: "https://leetcode.cn/problems/integer-break/",
+        },
+        {
+          source: "Leetcode",
+          id: 347,
+          name: "前 K 个高频元素",
+          url: "https://leetcode.cn/problems/top-k-frequent-elements/",
+        },
+        {
+          source: "Leetcode",
+          id: 378,
+          name: "有序矩阵中第 K 小的元素",
+          url: "https://leetcode.cn/problems/kth-smallest-element-in-a-sorted-matrix/",
+        },
+        {
+          source: "Leetcode",
+          id: 72,
+          name: "编辑距离",
+          url: "https://leetcode.cn/problems/edit-distance/",
+        },
+        {
+          source: "Leetcode",
+          id: 80,
+          name: "删除有序数组中的重复项 II",
+          url: "https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 481,
+          name: "神奇字符串",
+          url: "https://leetcode.cn/problems/magical-string/",
+        },
+        {
+          source: "Leetcode",
+          id: 17,
+          name: "电话号码的字母组合",
+          url: "https://leetcode.cn/problems/letter-combinations-of-a-phone-number/",
+        },
+        {
+          source: "Leetcode",
+          id: 75,
+          name: "颜色分类",
+          url: "https://leetcode.cn/problems/sort-colors/",
+        },
+        {
+          source: "Leetcode",
+          id: 200,
+          name: "岛屿数量",
+          url: "https://leetcode.cn/problems/number-of-islands/",
+        },
+        {
+          source: "Leetcode",
+          id: 11,
+          name: "盛最多水的容器",
+          url: "https://leetcode.cn/problems/container-with-most-water/",
+        },
+        {
+          source: "Leetcode",
+          id: 93,
+          name: "复原 IP 地址",
+          url: "https://leetcode.cn/problems/restore-ip-addresses/",
+        },
+        {
+          source: "Leetcode",
+          id: 142,
+          name: "环形链表 II",
+          url: "https://leetcode.cn/problems/linked-list-cycle-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 155,
+          name: "最小栈",
+          url: "https://leetcode.cn/problems/min-stack/",
+        },
+        {
+          source: "Leetcode",
+          id: 445,
+          name: "两数相加 II",
+          url: "https://leetcode.cn/problems/add-two-numbers-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 510,
+          name: "二叉搜索树中的中序后继 II",
+          url: "https://leetcode.cn/problems/inorder-successor-in-bst-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 40,
+          name: "组合总和 II",
+          url: "https://leetcode.cn/problems/combination-sum-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 215,
+          name: "数组中的第K个最大元素",
+          url: "https://leetcode.cn/problems/kth-largest-element-in-an-array/",
+        },
+        {
+          source: "Leetcode",
+          id: 1052,
+          name: "爱生气的书店老板",
+          url: "https://leetcode.cn/problems/grumpy-bookstore-owner/",
+        },
+        {
+          source: "Leetcode",
+          id: 299,
+          name: "猜数字游戏",
+          url: "https://leetcode.cn/problems/bulls-and-cows/",
+        },
+        {
+          source: "Leetcode",
+          id: 394,
+          name: "字符串解码",
+          url: "https://leetcode.cn/problems/decode-string/",
+        },
+        {
+          source: "Leetcode",
+          id: 399,
+          name: "除法求值",
+          url: "https://leetcode.cn/problems/evaluate-division/",
+        },
+        {
+          source: "Leetcode",
+          id: 729,
+          name: "我的日程安排表 I",
+          url: "https://leetcode.cn/problems/my-calendar-i/",
+        },
+        {
+          source: "Leetcode",
+          id: 769,
+          name: "最多能完成排序的块",
+          url: "https://leetcode.cn/problems/max-chunks-to-make-sorted/",
+        },
+        {
+          source: "Leetcode",
+          id: 802,
+          name: "找到最终的安全状态",
+          url: "https://leetcode.cn/problems/find-eventual-safe-states/",
+        },
+        {
+          source: "Leetcode",
+          id: 1376,
+          name: "通知所有员工所需的时间",
+          url: "https://leetcode.cn/problems/time-needed-to-inform-all-employees/",
+        },
+        {
+          source: "Leetcode",
+          id: 3163,
+          name: "压缩字符串 III",
+          url: "https://leetcode.cn/problems/string-compression-iii/",
+        },
+        {
+          source: "Leetcode",
+          id: 139,
+          name: "单词拆分",
+          url: "https://leetcode.cn/problems/word-break/",
+        },
+        {
+          source: "Leetcode",
+          id: 151,
+          name: "反转字符串中的单词",
+          url: "https://leetcode.cn/problems/reverse-words-in-a-string/",
+        },
+        {
+          source: "Leetcode",
+          id: 153,
+          name: "寻找旋转排序数组中的最小值",
+          url: "https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/",
+        },
+        {
+          source: "Leetcode",
+          id: 264,
+          name: "丑数 II",
+          url: "https://leetcode.cn/problems/ugly-number-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 92,
+          name: "反转链表 II",
+          url: "https://leetcode.cn/problems/reverse-linked-list-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 666,
+          name: "路径总和 IV",
+          url: "https://leetcode.cn/problems/path-sum-iv/",
+        },
+        {
+          source: "Leetcode",
+          id: 881,
+          name: "救生艇",
+          url: "https://leetcode.cn/problems/boats-to-save-people/",
+        },
+        {
+          source: "Leetcode",
+          id: 2789,
+          name: "合并后数组中的最大元素",
+          url: "https://leetcode.cn/problems/largest-element-in-an-array-after-merge-operations/",
+        },
+        {
+          source: "Leetcode",
+          id: 53,
+          name: "最大子数组和",
+          url: "https://leetcode.cn/problems/maximum-subarray/",
+        },
+        {
+          source: "Leetcode",
+          id: 718,
+          name: "最长重复子数组",
+          url: "https://leetcode.cn/problems/maximum-length-of-repeated-subarray/",
+        },
+        {
+          source: "Leetcode",
+          id: 198,
+          name: "打家劫舍",
+          url: "https://leetcode.cn/problems/house-robber/",
+        },
+        {
+          source: "Leetcode",
+          id: 207,
+          name: "课程表",
+          url: "https://leetcode.cn/problems/course-schedule/",
+        },
+        {
+          source: "Leetcode",
+          id: 240,
+          name: "搜索二维矩阵 II",
+          url: "https://leetcode.cn/problems/search-a-2d-matrix-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 424,
+          name: "替换后的最长重复字符",
+          url: "https://leetcode.cn/problems/longest-repeating-character-replacement/",
+        },
+        {
+          source: "Leetcode",
+          id: 146,
+          name: "LRU 缓存",
+          url: "https://leetcode.cn/problems/lru-cache/",
+        },
+        {
+          source: "Leetcode",
+          id: 438,
+          name: "找到字符串中所有字母异位词",
+          url: "https://leetcode.cn/problems/find-all-anagrams-in-a-string/",
+        },
+        {
+          source: "Leetcode",
+          id: 611,
+          name: "有效三角形的个数",
+          url: "https://leetcode.cn/problems/valid-triangle-number/",
+        },
+        {
+          source: "Leetcode",
+          id: 54,
+          name: "螺旋矩阵",
+          url: "https://leetcode.cn/problems/spiral-matrix/",
+        },
+        {
+          source: "Leetcode",
+          id: 416,
+          name: "分割等和子集",
+          url: "https://leetcode.cn/problems/partition-equal-subset-sum/",
+        },
+        {
+          source: "Leetcode",
+          id: 253,
+          name: "会议室 II",
+          url: "https://leetcode.cn/problems/meeting-rooms-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 554,
+          name: "砖墙",
+          url: "https://leetcode.cn/problems/brick-wall/",
+        },
+        {
+          source: "Leetcode",
+          id: 19,
+          name: "删除链表的倒数第 N 个结点",
+          url: "https://leetcode.cn/problems/remove-nth-node-from-end-of-list/",
+        },
+        {
+          source: "Leetcode",
+          id: 56,
+          name: "合并区间",
+          url: "https://leetcode.cn/problems/merge-intervals/",
+        },
+        {
+          source: "Leetcode",
+          id: 74,
+          name: "搜索二维矩阵",
+          url: "https://leetcode.cn/problems/search-a-2d-matrix/",
+        },
+        {
+          source: "Leetcode",
+          id: 221,
+          name: "最大正方形",
+          url: "https://leetcode.cn/problems/maximal-square/",
+        },
+        {
+          source: "Leetcode",
+          id: 522,
+          name: "最长特殊序列 II",
+          url: "https://leetcode.cn/problems/longest-uncommon-subsequence-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 738,
+          name: "单调递增的数字",
+          url: "https://leetcode.cn/problems/monotone-increasing-digits/",
+        },
+        {
+          source: "Leetcode",
+          id: 128,
+          name: "最长连续序列",
+          url: "https://leetcode.cn/problems/longest-consecutive-sequence/",
+        },
+        {
+          source: "Leetcode",
+          id: 322,
+          name: "零钱兑换",
+          url: "https://leetcode.cn/problems/coin-change/",
+        },
+        {
+          source: "Leetcode",
+          id: 792,
+          name: "匹配子序列的单词数",
+          url: "https://leetcode.cn/problems/number-of-matching-subsequences/",
+        },
+        {
+          source: "Leetcode",
+          id: 875,
+          name: "爱吃香蕉的珂珂",
+          url: "https://leetcode.cn/problems/koko-eating-bananas/",
+        },
+        {
+          source: "Leetcode",
+          id: 1673,
+          name: "找出最具竞争力的子序列",
+          url: "https://leetcode.cn/problems/find-the-most-competitive-subsequence/",
+        },
+        {
+          source: "Leetcode",
+          id: 79,
+          name: "单词搜索",
+          url: "https://leetcode.cn/problems/word-search/",
+        },
+        {
+          source: "Leetcode",
+          id: 670,
+          name: "最大交换",
+          url: "https://leetcode.cn/problems/maximum-swap/",
+        },
+        {
+          source: "Leetcode",
+          id: 1218,
+          name: "最长定差子序列",
+          url: "https://leetcode.cn/problems/longest-arithmetic-subsequence-of-given-difference/",
+        },
+        {
+          source: "Leetcode",
+          id: 912,
+          name: "排序数组",
+          url: "https://leetcode.cn/problems/sort-an-array/",
+        },
+        {
+          source: "Leetcode",
+          id: 1536,
+          name: "排布二进制网格的最少交换次数",
+          url: "https://leetcode.cn/problems/minimum-swaps-to-arrange-a-binary-grid/",
+        },
+        {
+          source: "Leetcode",
+          id: 134,
+          name: "加油站",
+          url: "https://leetcode.cn/problems/gas-station/",
+        },
+        {
+          source: "Leetcode",
+          id: 209,
+          name: "长度最小的子数组",
+          url: "https://leetcode.cn/problems/minimum-size-subarray-sum/",
+        },
+        {
+          source: "Leetcode",
+          id: 1705,
+          name: "吃苹果的最大数目",
+          url: "https://leetcode.cn/problems/maximum-number-of-eaten-apples/",
+        },
+        {
+          source: "Leetcode",
+          id: 274,
+          name: "H 指数",
+          url: "https://leetcode.cn/problems/h-index/",
+        },
+        {
+          source: "Leetcode",
+          id: 904,
+          name: "水果成篮",
+          url: "https://leetcode.cn/problems/fruit-into-baskets/",
+        },
+        {
+          source: "Leetcode",
+          id: 2,
+          name: "两数相加",
+          url: "https://leetcode.cn/problems/add-two-numbers/",
+        },
+        {
+          source: "Leetcode",
+          id: 33,
+          name: "搜索旋转排序数组",
+          url: "https://leetcode.cn/problems/search-in-rotated-sorted-array/",
+        },
+        {
+          source: "Leetcode",
+          id: 34,
+          name: "在排序数组中查找元素的第一个和最后一个位置",
+          url: "https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/",
+        },
+        {
+          source: "Leetcode",
+          id: 97,
+          name: "交错字符串",
+          url: "https://leetcode.cn/problems/interleaving-string/",
+        },
+        {
+          source: "Leetcode",
+          id: 227,
+          name: "基本计算器 II",
+          url: "https://leetcode.cn/problems/basic-calculator-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 560,
+          name: "和为 K 的子数组",
+          url: "https://leetcode.cn/problems/subarray-sum-equals-k/",
+        },
+        {
+          source: "Leetcode",
+          id: 16,
+          name: "最接近的三数之和",
+          url: "https://leetcode.cn/problems/3sum-closest/",
+        },
+        {
+          source: "Leetcode",
+          id: 43,
+          name: "字符串相乘",
+          url: "https://leetcode.cn/problems/multiply-strings/",
+        },
+        {
+          source: "Leetcode",
+          id: 45,
+          name: "跳跃游戏 II",
+          url: "https://leetcode.cn/problems/jump-game-ii/",
+        },
+        {
+          source: "Leetcode",
+          id: 662,
+          name: "二叉树最大宽度",
+          url: "https://leetcode.cn/problems/maximum-width-of-binary-tree/",
+        },
+        {
+          source: "Leetcode",
+          id: 918,
+          name: "环形子数组的最大和",
+          url: "https://leetcode.cn/problems/maximum-sum-circular-subarray/",
+        },
+        {
+          source: "Leetcode",
+          id: 55,
+          name: "跳跃游戏",
+          url: "https://leetcode.cn/problems/jump-game/",
+        },
+        {
+          source: "Leetcode",
+          id: 393,
+          name: "UTF-8 编码验证",
+          url: "https://leetcode.cn/problems/utf-8-validation/",
+        },
+        {
+          source: "Leetcode",
+          id: 1339,
+          name: "分裂二叉树的最大乘积",
+          url: "https://leetcode.cn/problems/maximum-product-of-splitted-binary-tree/",
+        },
+        {
+          source: "Leetcode",
+          id: 57,
+          name: "插入区间",
+          url: "https://leetcode.cn/problems/insert-interval/",
+        },
+        {
+          source: "Leetcode",
+          id: 152,
+          name: "乘积最大子数组",
+          url: "https://leetcode.cn/problems/maximum-product-subarray/",
+        },
+        {
+          source: "Leetcode",
+          id: 722,
+          name: "删除注释",
+          url: "https://leetcode.cn/problems/remove-comments/",
+        },
+        {
+          source: "Leetcode",
+          id: 3,
+          name: "无重复字符的最长子串",
+          url: "https://leetcode.cn/problems/longest-substring-without-repeating-characters/",
+        },
+        {
+          source: "Leetcode",
+          id: 31,
+          name: "下一个排列",
+          url: "https://leetcode.cn/problems/next-permutation/",
+        },
+        {
+          source: "Leetcode",
+          id: 61,
+          name: "旋转链表",
+          url: "https://leetcode.cn/problems/rotate-list/",
+        },
+        {
+          source: "Leetcode",
+          id: 179,
+          name: "最大数",
+          url: "https://leetcode.cn/problems/largest-number/",
+        },
+        {
+          source: "Leetcode",
+          id: 1197,
+          name: "进击的骑士",
+          url: "https://leetcode.cn/problems/minimum-knight-moves/",
+        },
+        {
+          source: "Leetcode",
+          id: 5,
+          name: "最长回文子串",
+          url: "https://leetcode.cn/problems/longest-palindromic-substring/",
+        },
+        {
+          source: "Leetcode",
+          id: 15,
+          name: "三数之和",
+          url: "https://leetcode.cn/problems/3sum/",
+        },
+        {
+          source: "Leetcode",
+          id: 98,
+          name: "验证二叉搜索树",
+          url: "https://leetcode.cn/problems/validate-binary-search-tree/",
+        },
+        {
+          source: "Leetcode",
+          id: 678,
+          name: "有效的括号字符串",
+          url: "https://leetcode.cn/problems/valid-parenthesis-string/",
+        },
+        {
+          source: "Leetcode",
+          id: 686,
+          name: "重复叠加字符串匹配",
+          url: "https://leetcode.cn/problems/repeated-string-match/",
+        },
+        {
+          source: "Leetcode",
+          id: 2226,
+          name: "每个小孩最多能分到多少糖果",
+          url: "https://leetcode.cn/problems/maximum-candies-allocated-to-k-children/",
+        },
+        {
+          source: "Leetcode",
+          id: 555,
+          name: "分割连接字符串",
+          url: "https://leetcode.cn/problems/split-concatenated-strings/",
+        },
+        {
+          source: "Leetcode",
+          id: 18,
+          name: "四数之和",
+          url: "https://leetcode.cn/problems/4sum/",
+        },
+        {
+          source: "Leetcode",
+          id: 7,
+          name: "整数反转",
+          url: "https://leetcode.cn/problems/reverse-integer/",
+        },
+        {
+          source: "Leetcode",
+          id: 91,
+          name: "解码方法",
+          url: "https://leetcode.cn/problems/decode-ways/",
+        },
+        {
+          source: "Leetcode",
+          id: 707,
+          name: "设计链表",
+          url: "https://leetcode.cn/problems/design-linked-list/",
+        },
+        {
+          source: "Leetcode",
+          id: 166,
+          name: "分数到小数",
+          url: "https://leetcode.cn/problems/fraction-to-recurring-decimal/",
+        },
+        {
+          source: "Leetcode",
+          id: 2384,
+          name: "最大回文数字",
+          url: "https://leetcode.cn/problems/largest-palindromic-number/",
+        },
+        {
+          source: "Leetcode",
+          id: 402,
+          name: "移掉 K 位数字",
+          url: "https://leetcode.cn/problems/remove-k-digits/",
+        },
+      ];
+
+      const romanNumerals = ["Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ"];
+      const grid = document.getElementById("grid");
+      const refreshBtn = document.getElementById("refreshBtn");
+
+      function shuffle(arr) {
+        const copy = arr.slice();
+        while (copy.length < 9) {
+          copy.push(...arr);
+        }
+        return copy.sort(() => Math.random() - 0.5).slice(0, 9);
+      }
+
+      function createCard(q, index) {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const front = document.createElement("div");
+        front.className = "front";
+        front.textContent = romanNumerals[index];
+
+        const back = document.createElement("div");
+        back.className = "back";
+        const a = document.createElement("a");
+        a.href = q.url;
+        a.target = "_blank";
+
+        const idLine = document.createElement("div");
+        idLine.className = "qid";
+        idLine.textContent = `${q.id}.`;
+
+        const titleLine = document.createElement("div");
+        titleLine.className = "title";
+        titleLine.textContent = q.name;
+
+        a.appendChild(idLine);
+        a.appendChild(titleLine);
+        back.appendChild(a);
+
+        card.appendChild(front);
+        card.appendChild(back);
+
+        card.addEventListener("click", () => {
+          card.classList.add("flipped");
+          card.removeEventListener("click", arguments.callee);
+          flippedCount++;
+          if (flippedCount === 9) {
+            refreshBtn.classList.add("visible");
+          }
+        });
+
+        return card;
+      }
+
+      let flippedCount = 0;
+
+      function generateGrid() {
+        flippedCount = 0;
+        refreshBtn.classList.remove("visible");
+        grid.innerHTML = "";
+        const randomQuestions = shuffle(questions);
+        randomQuestions.forEach((q, i) => {
+          grid.appendChild(createCard(q, i));
+        });
+      }
+
+      refreshBtn.addEventListener("click", generateGrid);
+      generateGrid();</script></body></html>
