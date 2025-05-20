@@ -7,9 +7,9 @@ subtitle = "我不是真的懂"
 header_img = "/image/2025/astaghfirullah.png"
 short = false
 toc = true
-tags = []
+tags = ["算法题"]
 categories = ["Computer Science"]
-series = ["面试复习"]
+series = ["算法题系列"]
 comment = false
 summary = ""
 hidden = true
@@ -17,110 +17,152 @@ hidden = true
 
 > الصبر مفتاح الفرج
 
-> 3,15,27,42,72,146,1,2,23,59,131,718,206,707,11,19,20,21,2850,
-> 24,25,30,32,33,39,40,560,74,92,106,1049,125,128,662,155,167,
-> 189,200,209,721,569,84
-
-| 转变前           | 转变后                    |
-| ------------- | ---------------------- |
-| 面试是一场“评估”     | 面试是一场“同行交流”            |
-| 我怕说错被嘲笑       | 我可以大胆尝试，展示思路           |
-| 我得证明我很厉害      | 我只需要展示我如何解决问题          |
-| 面试官是“高高在上”的角色 | 他/她只是和我一样的工程师，坐在不同的椅子上 |
-
-
-# 🚀 高强度一周冲刺计划（资深后端工程师）
-
-## 🎯 总体目标
-
-- 消除算法面试短板，一面稳过
-- 快速复盘关键技术栈，查漏补缺
-- 聚焦系统设计表达与落地细节
-- 梳理项目经历，形成结构化答题模式
-
-
-## 🗓️ 每日节奏建议（7~8小时可投入）
-
-| 时间段 | 内容 |
-|--------|------|
-| 09:00 - 10:30 | 高频算法题训练（1~2题）+ 复杂度分析 + 口述思路 |
-| 10:30 - 12:00 | 技术模块精修（每日1~2块）+ 高频问答整理 |
-| 13:30 - 15:00 | 系统设计题模拟（横向拓展 + 深挖关键） |
-| 15:00 - 16:30 | 项目经历打磨 + STAR 答题结构训练 |
-| 17:00 - 18:00 | 复盘 & 模拟答题（算法、设计、项目3选1） |
-| 晚间（可选） | 面经分析 / 错题重做 / 模拟复述 |
-
-
-## ✅ 每日任务细化
-
-### 📅 Day 1（算法 + 缓存 + 短链系统）
-
-- Leetcode 高频题：76、239（滑窗/哈希）
-- Redis 核心策略串讲（穿透/击穿/雪崩）
-- 系统设计题：短链服务（唯一ID、过期、跳转）
-- 项目模块 1：流量接入层 & 网关策略
-
-
-### 📅 Day 2（算法 + 索引/锁 + Feed流系统）
-
-- 算法题：560、42（前缀和、单调栈）
-- MySQL 核心机制：MVCC、索引选择、行锁&gap锁
-- 系统设计题：Feed流（分页、缓存层、时序更新）
-- 项目模块 2：接口性能优化、慢查询处理
-
-
-### 📅 Day 3（算法 + MQ + 弹幕系统）
-
-- 算法题：23、200（堆+并查集/DFS）
-- 消息队列机制：Kafka / RocketMQ 消费语义、顺序性
-- 系统设计题：弹幕系统（WebSocket、消息投递、用户通道）
-- 项目模块 3：异步架构改造、消息可靠性设计
-
-
-### 📅 Day 4（算法 + Go 并发 + 推送系统）
-
-- 算法题：25、92（链表处理）
-- Go 并发面试题：channel/select/goroutine 泄漏分析
-- 系统设计题：推送系统（定时+实时、任务下发、状态维护）
-- 项目模块 4：调度系统、任务分发与重试机制
-
-
-### 📅 Day 5（算法 + 分布式 + 日志系统）
-
-- 算法题：33、1530（二分+DFS）
-- 分布式设计关键点：幂等、限流、服务注册与发现
-- 系统设计题：日志平台（采集、分析、索引、归档）
-- 项目模块 5：压测与容量规划、服务降级
-
-
-### 📅 Day 6（算法回顾 + 项目复盘 + 模拟表达）
-
-- 回顾10题算法：讲清套路、复杂度、思路表达
-- 项目总结：形成2~3套 STAR 答案模板
-- 模拟系统设计面试：限时15分钟表达 + 自我复盘
-- 构建技术栈答题地图（Go、缓存、MQ、DB、分布式）
-
-
-### 📅 Day 7（查缺补漏 + 心态准备 + Offer决策）
-
-- 查缺题型 + 技术盲点
-- 面经回顾（哪些问题答得不顺）
-- Offer比较维度分析（薪资、技术成长、业务视角）
-- 准备下周反复迭代计划（进入强化阶段）
-
-## 📌 核心任务补充（可灵活调整）
-
-| 模块 | 目标 |
-|------|------|
-| 算法 | 做熟 Leetcode 高频清单题（每题能讲+写） |
-| 技术 | 整理答题模板：缓存、锁、索引、分库分表、消息语义 |
-| 系统设计 | 输出6套题目要点 + 2套完整可讲解场景 |
-| 项目 | 输出3~4个模块级别的结构化答案（可打标签） |
-
-## 🔚 输出物建议（最终形成）
-
-- ✅ 题型套路总结表 + 错题集
-- ✅ 系统设计结构模板清单
-- ✅ 技术点问答整理文档（Notion或Markdown）
-- ✅ STAR 项目答题框架（文档 or 背诵卡）
-
+| 来源 | 题号   | 题目名称                         | 出题概率 | 链接                                                                                            |
+| ---- | ------ | -------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+| LC   | 78     | 子集                             | 82       | https://leetcode.cn/problems/subsets/                                                           |
+| LC   | 46     | 全排列                           | 80       | https://leetcode.cn/problems/permutations/                                                      |
+| LC   | 22     | 括号生成                         | 78       | https://leetcode.cn/problems/generate-parentheses/                                              |
+| LC   | 48     | 旋转图像                         | 78       | https://leetcode.cn/problems/rotate-image/                                                      |
+| LC   | 763    | 划分字母区间                     | 78       | https://leetcode.cn/problems/partition-labels/                                                 |
+| LC   | 238    | 除自身以外数组的乘积             | 77       | https://leetcode.cn/problems/product-of-array-except-self/                                      |
+| LC   | 289    | 生命游戏                         | 77       | https://leetcode.cn/problems/game-of-life/                                                      |
+| LC   | 1053   | 交换一次的先前排列               | 77       | https://leetcode.cn/problems/previous-permutation-with-one-swap/                                |
+| LC   | 1630   | 等差子数组                       | 76       | https://leetcode.cn/problems/arithmetic-subarrays/                                              |
+| LC   | 89     | 格雷编码                         | 75       | https://leetcode.cn/problems/gray-code/                                                        |
+| LC   | 122    | 买卖股票的最佳时机 II            | 75       | https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/                                |
+| LC   | 131    | 分割回文串                       | 75       | https://leetcode.cn/problems/palindrome-partitioning/                                          |
+| LC   | 24     | 两两交换链表中的节点             | 74       | https://leetcode.cn/problems/swap-nodes-in-pairs/                                              |
+| LC   | 116    | 填充每个节点的下一个右侧节点指针 | 74       | https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/                       |
+| LC   | 39     | 组合总和                         | 73       | https://leetcode.cn/problems/combination-sum/                                                  |
+| LC   | 106    | 从中序与后序遍历序列构造二叉树   | 73       | https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/       |
+| LC   | 236    | 二叉树的最近公共祖先             | 73       | https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/                          |
+| LC   | 105    | 从前序与中序遍历序列构造二叉树   | 72       | https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/        |
+| LC   | 451    | 根据字符出现频率排序             | 72       | https://leetcode.cn/problems/sort-characters-by-frequency/                                     |
+| LC   | 96     | 不同的二叉搜索树                 | 71       | https://leetcode.cn/problems/unique-binary-search-trees/                                       |
+| LC   | 318    | 最大单词长度乘积                 | 71       | https://leetcode.cn/problems/maximum-product-of-word-lengths/                                  |
+| LC   | 1049   | 最后一块石头的重量 II            | 71       | https://leetcode.cn/problems/last-stone-weight-ii/                                             |
+| LC   | 49     | 字母异位词分组                   | 70       | https://leetcode.cn/problems/group-anagrams/                                                   |
+| LC   | 59     | 螺旋矩阵 II                      | 70       | https://leetcode.cn/problems/spiral-matrix-ii/                                                 |
+| LC   | 199    | 二叉树的右视图                   | 70       | https://leetcode.cn/problems/binary-tree-right-side-view/                                      |
+| LC   | 260    | 只出现一次的数字 III             | 70       | https://leetcode.cn/problems/single-number-iii/                                               |
+| LC   | 62     | 不同路径                         | 69       | https://leetcode.cn/problems/unique-paths/                                                     |
+| LC   | 102    | 二叉树的层序遍历                 | 69       | https://leetcode.cn/problems/binary-tree-level-order-traversal/                                |
+| LC   | 138    | 随机链表的复制                   | 69       | https://leetcode.cn/problems/copy-list-with-random-pointer/                                    |
+| LCR  | 60     | 前 K 个高频元素                  | 68       | https://leetcode.cn/problems/lcr-060/                                                          |
+| LC   | 279    | 完全平方数                       | 68       | https://leetcode.cn/problems/perfect-squares/                                                  |
+| LC   | 583    | 两个字符串的删除操作             | 68       | https://leetcode.cn/problems/delete-operation-for-two-strings/                                 |
+| LC   | 143    | 重排链表                         | 67       | https://leetcode.cn/problems/reorder-list/                                                     |
+| LC   | 148    | 排序链表                         | 67       | https://leetcode.cn/problems/sort-list/                                                        |
+| LC   | 47     | 全排列 II                        | 66       | https://leetcode.cn/problems/permutations-ii/                                                 |
+| LC   | 667    | 优美的排列 II                    | 66       | https://leetcode.cn/problems/beautiful-arrangement-ii/                                        |
+| LCR  | 82     | 组合总和 II                      | 65       | https://leetcode.cn/problems/lcr-082/                                                          |
+| LC   | 86     | 分隔链表                         | 65       | https://leetcode.cn/problems/partition-list/                                                   |
+| LC   | 309    | 买卖股票的最佳时机含冷冻期       | 65       | https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/                    |
+| LC   | 454    | 四数相加 II                      | 65       | https://leetcode.cn/problems/4sum-ii/                                                          |
+| LC   | 2244   | 完成所有任务需要的最少轮数       | 65       | https://leetcode.cn/problems/minimum-rounds-to-complete-all-tasks/                             |
+| LCR  | 26     | 重排链表                         | 64       | https://leetcode.cn/problems/lcr-026/                                                          |
+| LC   | 90     | 子集 II                          | 64       | https://leetcode.cn/problems/subsets-ii/                                                       |
+| LC   | 343    | 整数拆分                         | 64       | https://leetcode.cn/problems/integer-break/                                                    |
+| LC   | 347    | 前 K 个高频元素                  | 64       | https://leetcode.cn/problems/top-k-frequent-elements/                                          |
+| LC   | 378    | 有序矩阵中第 K 小的元素         | 64       | https://leetcode.cn/problems/kth-smallest-element-in-a-sorted-matrix/                          |
+| LC   | 72     | 编辑距离                         | 63       | https://leetcode.cn/problems/edit-distance/                                                    |
+| LC   | 80     | 删除有序数组中的重复项 II        | 63       | https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/                           |
+| LC   | 481    | 神奇字符串                       | 63       | https://leetcode.cn/problems/magical-string/                                                   |
+| LC   | 17     | 电话号码的字母组合               | 62       | https://leetcode.cn/problems/letter-combinations-of-a-phone-number/                            |
+| LC   | 75     | 颜色分类                         | 62       | https://leetcode.cn/problems/sort-colors/                                                      |
+| LC   | 200    | 岛屿数量                         | 62       | https://leetcode.cn/problems/number-of-islands/                                                |
+| LC   | 11     | 盛最多水的容器                   | 61       | https://leetcode.cn/problems/container-with-most-water/                                        |
+| LC   | 93     | 复原 IP 地址                     | 61       | https://leetcode.cn/problems/restore-ip-addresses/                                             |
+| LC   | 142    | 环形链表 II                      | 61       | https://leetcode.cn/problems/linked-list-cycle-ii/                                             |
+| LC   | 155    | 最小栈                           | 61       | https://leetcode.cn/problems/min-stack/                                                        |
+| LC   | 445    | 两数相加 II                      | 61       | https://leetcode.cn/problems/add-two-numbers-ii/                                               |
+| LC   | 510    | 二叉搜索树中的中序后继 II        | 61       | https://leetcode.cn/problems/inorder-successor-in-bst-ii/                                      |
+| LC   | 40     | 组合总和 II                      | 60       | https://leetcode.cn/problems/combination-sum-ii/                                              |
+| LC   | 215    | 数组中的第K个最大元素           | 60       | https://leetcode.cn/problems/kth-largest-element-in-an-array/                                  |
+| LC   | 1052   | 爱生气的书店老板                 | 60       | https://leetcode.cn/problems/grumpy-bookstore-owner/                                          |
+| LC   | 299    | 猜数字游戏                       | 59       | https://leetcode.cn/problems/bulls-and-cows/                                                  |
+| LC   | 394    | 字符串解码                       | 59       | https://leetcode.cn/problems/decode-string/                                                   |
+| LC   | 399    | 除法求值                         | 59       | https://leetcode.cn/problems/evaluate-division/                                               |
+| LC   | 729    | 我的日程安排表 I                 | 59       | https://leetcode.cn/problems/my-calendar-i/                                                   |
+| LC   | 769    | 最多能完成排序的块               | 59       | https://leetcode.cn/problems/max-chunks-to-make-sorted/                                       |
+| LC   | 802    | 找到最终的安全状态               | 59       | https://leetcode.cn/problems/find-eventual-safe-states/                                       |
+| LC   | 1376   | 通知所有员工所需的时间           | 59       | https://leetcode.cn/problems/time-needed-to-inform-all-employees/                             |
+| LC   | 3163   | 压缩字符串 III                   | 59       | https://leetcode.cn/problems/string-compression-iii/                                          |
+| LC   | 139    | 单词拆分                         | 58       | https://leetcode.cn/problems/word-break/                                                      |
+| LC   | 151    | 反转字符串中的单词               | 58       | https://leetcode.cn/problems/reverse-words-in-a-string/                                       |
+| LC   | 153    | 寻找旋转排序数组中的最小值       | 58       | https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/                            |
+| LC   | 264    | 丑数 II                          | 58       | https://leetcode.cn/problems/ugly-number-ii/                                                  |
+| LC   | 92     | 反转链表 II                      | 57       | https://leetcode.cn/problems/reverse-linked-list-ii/                                          |
+| LC   | 666    | 路径总和 IV                      | 57       | https://leetcode.cn/problems/path-sum-iv/                                                     |
+| LC   | 881    | 救生艇                           | 57       | https://leetcode.cn/problems/boats-to-save-people/                                            |
+| LC   | 2789   | 合并后数组中的最大元素           | 57       | https://leetcode.cn/problems/largest-element-in-an-array-after-merge-operations/              |
+| LC   | 53     | 最大子数组和                     | 56       | https://leetcode.cn/problems/maximum-subarray/                                                |
+| LC   | 718    | 最长重复子数组                   | 56       | https://leetcode.cn/problems/maximum-length-of-repeated-subarray/                              |
+| LC   | 198    | 打家劫舍                         | 55       | https://leetcode.cn/problems/house-robber/                                                   |
+| LC   | 207    | 课程表                           | 55       | https://leetcode.cn/problems/course-schedule/                                                |
+| LC   | 240    | 搜索二维矩阵 II                  | 55       | https://leetcode.cn/problems/search-a-2d-matrix-ii/                                           |
+| LC   | 424    | 替换后的最长重复字符             | 55       | https://leetcode.cn/problems/longest-repeating-character-replacement/                          |
+| LC   | 146    | LRU 缓存                         | 54       | https://leetcode.cn/problems/lru-cache/                                                       |
+| LC   | 438    | 找到字符串中所有字母异位词       | 54       | https://leetcode.cn/problems/find-all-anagrams-in-a-string/                                   |
+| LC   | 611    | 有效三角形的个数                 | 54       | https://leetcode.cn/problems/valid-triangle-number/                                          |
+| LC   | 54     | 螺旋矩阵                         | 53       | https://leetcode.cn/problems/spiral-matrix/                                                   |
+| LC   | 416    | 分割等和子集                     | 53       | https://leetcode.cn/problems/partition-equal-subset-sum/                                     |
+| LC   | 253    | 会议室 II                        | 52       | https://leetcode.cn/problems/meeting-rooms-ii/                                               |
+| LC   | 554    | 砖墙                             | 52       | https://leetcode.cn/problems/brick-wall/                                                      |
+| LC   | 19     | 删除链表的倒数第 N 个结点        | 51       | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/                                |
+| LC   | 56     | 合并区间                         | 51       | https://leetcode.cn/problems/merge-intervals/                                                |
+| LC   | 74     | 搜索二维矩阵                     | 51       | https://leetcode.cn/problems/search-a-2d-matrix/                                              |
+| LC   | 221    | 最大正方形                       | 51       | https://leetcode.cn/problems/maximal-square/                                                 |
+| LC   | 522    | 最长特殊序列 II                  | 51       | https://leetcode.cn/problems/longest-uncommon-subsequence-ii/                                 |
+| LC   | 738    | 单调递增的数字                   | 51       | https://leetcode.cn/problems/monotone-increasing-digits/                                      |
+| LC   | 128    | 最长连续序列                     | 50       | https://leetcode.cn/problems/longest-consecutive-sequence/                                    |
+| LC   | 322    | 零钱兑换                         | 50       | https://leetcode.cn/problems/coin-change/                                                    |
+| LC   | 792    | 匹配子序列的单词数               | 50       | https://leetcode.cn/problems/number-of-matching-subsequences/                                 |
+| LC   | 875    | 爱吃香蕉的珂珂                   | 50       | https://leetcode.cn/problems/koko-eating-bananas/                                            |
+| LC   | 1673   | 找出最具竞争力的子序列           | 50       | https://leetcode.cn/problems/find-the-most-competitive-subsequence-of-given-difference/      |
+| LC   | 79     | 单词搜索                         | 49       | https://leetcode.cn/problems/word-search/                                                    |
+| LC   | 670    | 最大交换                         | 49       | https://leetcode.cn/problems/maximum-swap/                                                   |
+| LC   | 1218   | 最长定差子序列                   | 49       | https://leetcode.cn/problems/longest-arithmetic-subsequence-of-given-difference/             |
+| LC   | 912    | 排序数组                         | 48       | https://leetcode.cn/problems/sort-an-array/                                                  |
+| LC   | 1536   | 排布二进制网格的最少交换次数     | 48       | https://leetcode.cn/problems/minimum-swaps-to-arrange-a-binary-grid/                          |
+| LC   | 134    | 加油站                           | 47       | https://leetcode.cn/problems/gas-station/                                                    |
+| LC   | 209    | 长度最小的子数组                 | 47       | https://leetcode.cn/problems/minimum-size-subarray-sum/                                      |
+| LC   | 1705   | 吃苹果的最大数目                 | 47       | https://leetcode.cn/problems/maximum-number-of-eaten-apples/                                 |
+| LC   | 274    | H 指数                           | 46       | https://leetcode.cn/problems/h-index/                                                        |
+| LC   | 904    | 水果成篮                         | 46       | https://leetcode.cn/problems/fruit-into-baskets/                                             |
+| LC   | 2      | 两数相加                         | 45       | https://leetcode.cn/problems/add-two-numbers/                                                |
+| LC   | 33     | 搜索旋转排序数组                 | 45       | https://leetcode.cn/problems/search-in-rotated-sorted-array/                                 |
+| LC   | 34     | 在排序数组中查找元素的第一个和最后一个位置 | 45 | https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/        |
+| LC   | 97     | 交错字符串                       | 45       | https://leetcode.cn/problems/interleaving-string/                                            |
+| LC   | 227    | 基本计算器 II                   | 45       | https://leetcode.cn/problems/basic-calculator-ii/                                           |
+| LC   | 560    | 和为 K 的子数组                  | 45       | https://leetcode.cn/problems/subarray-sum-equals-k/                                         |
+| LC   | 16     | 最接近的三数之和                 | 44       | https://leetcode.cn/problems/3sum-closest/                                                  |
+| LC   | 43     | 字符串相乘                       | 44       | https://leetcode.cn/problems/multiply-strings/                                              |
+| LC   | 45     | 跳跃游戏 II                      | 44       | https://leetcode.cn/problems/jump-game-ii/                                                  |
+| LC   | 662    | 二叉树最大宽度                   | 44       | https://leetcode.cn/problems/maximum-width-of-binary-tree/                                  |
+| LC   | 918    | 环形子数组的最大和               | 44       | https://leetcode.cn/problems/maximum-sum-circular-subarray/                                  |
+| LC   | 55     | 跳跃游戏                         | 43       | https://leetcode.cn/problems/jump-game/                                                     |
+| LC   | 393    | UTF-8 编码验证                  | 43       | https://leetcode.cn/problems/utf-8-validation/                                              |
+| LC   | 1339   | 分裂二叉树的最大乘积             | 43       | https://leetcode.cn/problems/maximum-product-of-splitted-binary-tree/                       |
+| LC   | 57     | 插入区间                         | 42       | https://leetcode.cn/problems/insert-interval/                                               |
+| LC   | 152    | 乘积最大子数组                   | 42       | https://leetcode.cn/problems/maximum-product-subarray/                                       |
+| LC   | 722    | 删除注释                         | 42       | https://leetcode.cn/problems/remove-comments/                                              |
+| LC   | 3      | 无重复字符的最长子串             | 41       | https://leetcode.cn/problems/longest-substring-without-repeating-characters/                |
+| LC   | 31     | 下一个排列                       | 41       | https://leetcode.cn/problems/next-permutation/                                              |
+| LC   | 61     | 旋转链表                         | 41       | https://leetcode.cn/problems/rotate-list/                                                   |
+| LC   | 179    | 最大数                           | 41       | https://leetcode.cn/problems/largest-number/                                               |
+| LC   | 1197   | 进击的骑士                       | 41       | https://leetcode.cn/problems/minimum-knight-moves/                                         |
+| LC   | 5      | 最长回文子串                     | 39       | https://leetcode.cn/problems/longest-palindromic-substring/                                |
+| LC   | 15     | 三数之和                         | 39       | https://leetcode.cn/problems/3sum/                                                         |
+| LC   | 98     | 验证二叉搜索树                   | 39       | https://leetcode.cn/problems/validate-binary-search-tree/                                  |
+| LC   | 678    | 有效的括号字符串                 | 39       | https://leetcode.cn/problems/valid-parenthesis-string/                                      |
+| LC   | 686    | 重复叠加字符串匹配               | 39       | https://leetcode.cn/problems/repeated-string-match/                                        |
+| LC   | 2226   | 每个小孩最多能分到多少糖果       | 39       | https://leetcode.cn/problems/maximum-candies-allocated-to-k-children/                      |
+| LC   | 555    | 分割连接字符串                   | 37       | https://leetcode.cn/problems/split-concatenated-strings/                                   |
+| LC   | 18     | 四数之和                         | 36       | https://leetcode.cn/problems/4sum/                                                         |
+| LC   | 7      | 整数反转                         | 35       | https://leetcode.cn/problems/reverse-integer/                                             |
+| LC   | 91     | 解码方法                         | 34       | https://leetcode.cn/problems/decode-ways/                                                  |
+| LC   | 707    | 设计链表                         | 34       | https://leetcode.cn/problems/design-linked-list/                                          |
+| LC   | 166    | 分数到小数                       | 33       | https://leetcode.cn/problems/fraction-to-recurring-decimal/                                |
+| LC   | 2384   | 最大回文数字                     | 33       | https://leetcode.cn/problems/largest-palindromic-number/                                   |
+| LC   | 402    | 移掉 K 位数字                    | 32       | https://leetcode.cn/problems/remove-k-digits/                                             |
