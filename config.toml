@@ -131,8 +131,12 @@ name = "Dephi"
 url = "/dogdoor/delphi/index.html"
 
 [[params.azeroth]]
-name = "Chelsea"
-url = "/html/stamfordbridge.html"
+name = "Stamford Bridge"
+url = "/chelsea/stamford-bridge/problems"
+
+[[params.azeroth]]
+name = "Hazard"
+url = "/chelsea/hazard"
 
 [params.giscus]
 enable = false
