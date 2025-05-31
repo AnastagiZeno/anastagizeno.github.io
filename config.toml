@@ -138,5 +138,9 @@ url = "/chelsea/stamford-bridge/problems"
 name = "Hazard"
 url = "/chelsea/hazard"
 
+[[params.azeroth]]
+name = "Mourinho"
+url = "/chelsea/mourinho"
+
 [params.giscus]
 enable = false
