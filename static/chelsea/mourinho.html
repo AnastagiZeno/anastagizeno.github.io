@@ -477,12 +477,15 @@
       const modal = document.getElementById('goal-modal');
       const iframe = document.getElementById('goal-frame');
       const targetSrc = `./mourinho-timeline.html?gid=${item.id}`;
-      if(!iframe.src.includes(targetSrc)) {
-        iframe.src = targetSrc;
-      }
+
+      iframe.src = ''; 
       modal.style.display = 'flex';
-      requestAnimationFrame(() => modal.classList.add('show'));
+      setTimeout(() => {
+        iframe.src = targetSrc;
+        modal.classList.add('show');
+      }, 50);
     });
+
     return card;
   }
 
@@ -506,12 +509,14 @@
       modal.classList.add('show');
     });
   }
-
+  
   function closeGoalModal() {
     const modal = document.getElementById('goal-modal');
+    const iframe = document.getElementById('goal-frame');
     modal.classList.remove('show');
     setTimeout(() => {
       modal.style.display = 'none';
+      iframe.src = '';  // 💥 关闭时也清空 iframe
     }, 300);
   }
 
