@@ -107,28 +107,28 @@ name = "Kharanos"
 url = "/dogdoor/janus/resume/%E5%BA%B7%E7%82%B3%E6%98%9F-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91-%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86.pdf"
 
 [[params.azeroth]]
-name = "Ahau"
-url = "/dogdoor/katun/ahau"
-
-[[params.azeroth]]
-name = "Popol Vuh"
-url = "/dogdoor/katun/vuh"
-
-[[params.azeroth]]
-name = "Epictetus"
-url = "/dogdoor/katun/epictetus"
-
-[[params.azeroth]]
-name = "Seneca"
-url = "/dogdoor/katun/seneca"
-
-[[params.azeroth]]
 name = "Janus"
 url = "/dogdoor/janus"
 
 [[params.azeroth]]
+name = "Ahau"
+url = "/dogdoor/log/ahau"
+
+[[params.azeroth]]
+name = "Popol Vuh"
+url = "/dogdoor/log/vuh"
+
+[[params.azeroth]]
+name = "Epictetus"
+url = "/dogdoor/log/epictetus"
+
+[[params.azeroth]]
+name = "Seneca"
+url = "/dogdoor/log/seneca"
+
+[[params.azeroth]]
 name = "Dephi"
-url = "/dogdoor/delphi/index.html"
+url = "/dogdoor/page/delphi.html"
 
 [[params.azeroth]]
 name = "Stamford Bridge"
