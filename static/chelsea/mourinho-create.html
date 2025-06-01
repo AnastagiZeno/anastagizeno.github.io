@@ -267,12 +267,12 @@
       const name = document.getElementById('name').value.trim();
       const desc = document.getElementById('description').value.trim();
 
-      if (name.length < 4) {
-        alert('标题最少 4 个字');
+      if (name.length < 3) {
+        alert('标题最少 3 个字');
         return;
       }
-      if (desc.length < 12) {
-        alert('描述最少 12 个字');
+      if (desc.length < 6) {
+        alert('描述最少 6 个字');
         return;
       }
       if (!startDate || !endDate) {
