@@ -497,28 +497,36 @@
     return container;
   }
 
+  let iframeLoaded = false;
+
   function openGoalModal() {
     const modal = document.getElementById('goal-modal');
     const iframe = document.getElementById('goal-frame');
-    modal.style.display = 'flex';
-    requestAnimationFrame(() => modal.classList.add('show'));
-    if(!iframe.src.includes('mourinho-create.html')) {
+
+    if (!iframeLoaded) {
       iframe.src = './mourinho-create.html';
+      iframeLoaded = true;
     }
-    iframe.focus();
+
+    modal.style.display = 'flex';
+    setTimeout(() => {
+      modal.classList.add('show');
+      iframe.focus();
+    }, 10);
   }
 
   function closeGoalModal() {
     const modal = document.getElementById('goal-modal');
+    const iframe = document.getElementById('goal-frame');
+
     modal.classList.remove('show');
-    setTimeout(() => modal.style.display = 'none', 300);
+    setTimeout(() => {
+      modal.style.display = 'none';
+      iframe.src = '';        // 清空 iframe，避免历史状态残留
+      iframeLoaded = false;   // 重置标志位，下次重新加载
+    }, 300);
   }
-  window.addEventListener('message', (e) => {
-    if(e.data === 'close-goal-modal') {
-      closeGoalModal();
-    }
-  });
-  // 根据类型筛选
+  
   function filterByType(type) {
     const popup = document.getElementById('type-popup');
     popup.style.display = 'none';
