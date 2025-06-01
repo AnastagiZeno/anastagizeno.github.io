@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Eden Hazard</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <style>
+  body {
+    margin: 0;
+    padding: 2rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    background: url("./hazard.webp") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+  }
+
+  .controls {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .controls button {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: background 0.3s ease;
+  }
+
+  .controls button.active,
+  .controls button:hover {
+    background: rgba(51, 144, 255, 0.25);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .hour-block {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    min-height: 160px;
+    transition: min-height 0.2s ease;
+    user-select: none;
+  }
+
+  .hour-block.drag-over {
+    outline: 2px dashed #00ffcc;
+  }
+
+  .hour-block.compact {
+    min-height: 120px;
+  }
+
+  .hour-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1.4;
+  }
+
+  .hour-title span {
+    font-weight: 400;
+    color: #ccc;
+  }
+
+  .text-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .text-inputs textarea {
+    box-sizing: border-box;
+    width: calc(100% - 2px);
+    height: 5rem;
+    border-radius: 10px;
+    padding: 0.75rem;
+    background: transparent;
+    color: #fff;
+    border: 1px dashed transparent;
+    resize: none;
+    text-align: left;
+    margin: 0 auto;
+    pointer-events: none;
+    transition: background 0.3s;
+  }
+
+  .text-inputs textarea.editable {
+    pointer-events: auto;
+    border-color: #00ffcc;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .text-inputs textarea:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .action-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    display: none;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .hour-block.editing .action-btn {
+    display: inline;
+  }
+
+  .edit-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .hour-block.editing .edit-btn {
+    display: none;
+  }
+
+  .no-data {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .home-link {
+    display: inline-block;
+    margin: 0 0.8rem;
+    vertical-align: middle;
+  }
+
+  .chelsea-icon {
+    height: 42px;
+    width: 42px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px;
+  }
+
+  .chelsea-icon:hover {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  </style>
+</head>
+
+<body>
+  <h1 id="date-header">
+    <span id="date-clicker" onclick="triggerDatePicker()">点击选择日期</span>
+  </h1>
+  <input type="date" id="day-selector" style="position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
+              opacity: 0; visibility: hidden; pointer-events: auto; width: 0; height: 0;" onchange="onDateChange()" />
+  <div class="controls">
+    <button id="today-btn" onclick="switchToToday()">今日进度</button>
+    <a href="https://shahrazad.fun" class="home-link" title="Go Blue">
+      <img src="./chelsea.svg" alt="Chelsea" class="chelsea-icon" />
+    </a>
+    <button id="tomorrow-btn" onclick="switchToTomorrow()">明日计划</button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="no-data" id="no-data" style="display:none"> 该日期暂无记录。 </div>
+  <script>
+  const API_BASE = "https://shahrazad.fun/chelsea/api/hazard";
+  let readonly = false;
+  const state = {
+    blocks: [],
+    editingKey: null
+  };
+  let saveTimer = null;
+  let selectedDate = new Date();
+  let mode = 'today';
+
+  function getDkey(date) {
+    return date.toISOString().slice(0, 10).replace(/-/g, '');
+  }
+
+  function formatDateInput(date) {
+    return date.toISOString().split('T')[0];
+  }
+
+  function updateHeaderDate(date) {
+    const week = ['日', '一', '二', '三', '四', '五', '六'];
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    const w = week[date.getDay()];
+    document.getElementById('date-clicker').innerText = `${y}/${m}/${d} 周${w}`;
+  }
+
+  function setDateInputLimit() {
+    const today = new Date();
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(today.getFullYear() - 1);
+    const input = document.getElementById("day-selector");
+    input.setAttribute("max", formatDateInput(today));
+    input.setAttribute("min", formatDateInput(oneYearAgo));
+  }
+
+  function triggerDatePicker() {
+    const input = document.getElementById('day-selector');
+    if(input.showPicker) {
+      input.showPicker();
+    } else {
+      input.focus(); // fallback
+      input.click();
+    }
+  }
+
+  function isFuture(date) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return date > today;
+  }
+
+  function initDefaultBlocks() {
+    state.blocks = Array.from({
+      length: 12
+    }, (_, i) => {
+      const h = 8 + i;
+      return {
+        start: h,
+        end: h + 1,
+        content: [""],
+        deepWork: false,
+        key: `${String(h).padStart(2, '0')}00,${String(h + 1).padStart(2, '0')}00`
+      };
+    });
+  }
+
+  function hydrateFromData(data) {
+    state.blocks = data.blocks.map(b => ({
+      start: parseInt(b.time.split(',')[0]),
+      end: parseInt(b.time.split(',')[1]),
+      content: b.info,
+      deepWork: b.deepwork,
+      key: `${b.time.replace(',', '00,')}00`
+    }));
+  }
+  async function loadData(dateObj) {
+    readonly = (dateObj < new Date().setHours(0, 0, 0, 0));
+    const dkey = getDkey(dateObj);
+    const res = await fetch(`${API_BASE}/${dkey}`);
+    const json = await res.json();
+    if(json.ok && json.exist) {
+      hydrateFromData(json.content);
+      document.getElementById('no-data').style.display = 'none';
+      renderHourBlocks();
+    } else if(mode === 'today' || mode === 'tomorrow') {
+      initDefaultBlocks();
+      document.getElementById('no-data').style.display = 'none';
+      renderHourBlocks();
+    } else {
+      state.blocks = []; // 清空数据
+      document.getElementById('grid').innerHTML = '';
+      document.getElementById('no-data').style.display = 'block';
+    }
+    updateHeaderDate(dateObj);
+  }
+
+  function saveDataToServer() {
+    const dkey = getDkey(selectedDate);
+    const payload = {
+      dkey,
+      content: {
+        dkey,
+        blocks: state.blocks.map(b => ({
+          time: `${b.start},${b.end}`,
+          hour: b.end - b.start,
+          info: b.content,
+          deepwork: b.deepWork
+        }))
+      },
+      score: 0
+    };
+    fetch(`${API_BASE}/save`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    }).then(() => {
+      makeAllTextareasReadonly();
+    });
+  }
+
+  function triggerAutoSave() {
+    if(readonly) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDataToServer, 2000);
+  }
+
+  function handleMergeBlocks(sourceKey, targetKey) {
+    if(sourceKey === targetKey) return;
+    const src = state.blocks.find(b => b.key === sourceKey);
+    const tgt = state.blocks.find(b => b.key === targetKey);
+    if(!src || !tgt) return;
+    // 检查是否相邻
+    const sorted = [src, tgt].sort((a, b) => a.start - b.start);
+    if(sorted[0].end !== sorted[1].start) return;
+    const mergedStart = sorted[0].start;
+    const mergedEnd = sorted[1].end;
+    const span = mergedEnd - mergedStart;
+    // 限制最多合并 3 小时
+    if(span > 3) return;
+    // 替换为合并后的 block
+    const newKey = `${String(mergedStart).padStart(2, '0')}00,${String(mergedEnd).padStart(2, '0')}00`;
+    const newBlock = {
+      start: mergedStart,
+      end: mergedEnd,
+      content: [""], // 内容抹掉
+      deepWork: false,
+      key: newKey
+    };
+    state.blocks = state.blocks.filter(b => b.key !== sourceKey && b.key !== targetKey);
+    state.blocks.push(newBlock);
+    renderHourBlocks();
+    editBlock(newKey);
+  }
+
+  function mergeHalfHourBack(key) {
+    const block = state.blocks.find(b => b.key === key);
+    if(!block || block.end - block.start !== 1 || block.content.length !== 2) return;
+    block.content = [""]; // 合并回一个整小时块
+    renderHourBlocks();
+    editBlock(key);
+  }
+
+  function makeAllTextareasReadonly() {
+    document.querySelectorAll('textarea').forEach(t => {
+      t.classList.remove('editable');
+    });
+  }
+
+  function formatHourText(start, end) {
+    const fmt = h => h % 12 === 0 ? 12 : h % 12;
+    const getSuffix = h => h < 12 ? 'AM' : 'PM';
+    const startSuffix = getSuffix(start);
+    const endSuffix = getSuffix(end);
+    if(startSuffix === endSuffix) {
+      return `${fmt(start)} - ${fmt(end)}${endSuffix}`;
+    } else {
+      return `${fmt(start)}${startSuffix} - ${fmt(end)}${endSuffix}`;
+    }
+  }
+
+  function splitToHalfHour(key) {
+    const block = state.blocks.find(b => b.key === key);
+    if(!block || block.end - block.start !== 1) return;
+    // 只在当前是 [""] 时，才拆成两个半小时
+    if(block.content.length === 1) {
+      block.content = ["", ""];
+      renderHourBlocks();
+      editBlock(key);
+    }
+  }
+
+  function renderHourBlocks() {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    state.blocks.sort((a, b) => a.start - b.start);
+    const now = new Date();
+    for(const block of state.blocks) {
+      const isEditing = state.editingKey === block.key;
+      const div = document.createElement("div");
+      div.className = ["hour-block",
+        block.content.length === 1 ? "compact" : "",
+        isEditing ? "editing" : ""
+      ].filter(Boolean).join(" ");
+      div.style.gridColumn = `span ${block.end - block.start}`;
+      div.id = `block-${block.key}`;
+      // 时间判断
+      const blockStart = new Date(selectedDate);
+      const blockEnd = new Date(selectedDate);
+      blockStart.setHours(block.start, 0, 0, 0);
+      blockEnd.setHours(block.end, 0, 0, 0);
+      const isNowInside = now >= blockStart && now < blockEnd;
+      let color;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const blockDay = new Date(selectedDate);
+      blockDay.setHours(0, 0, 0, 0);
+      if(isNowInside) {
+        color = '#ff69b4'; // 当前时间 粉色
+      } else if(blockDay < today) {
+        color = '#228be6'; // 过去日期 蓝色（归档）
+      } else if(blockEnd <= now) {
+        color = '#aaa'; // 今天已过 灰色
+      } else {
+        color = '#ffd43b'; // 今天未来 黄色
+      }
+      // 按钮逻辑
+      let btns = '';
+      if(!readonly) {
+        if(isEditing) {
+          const span = block.end - block.start;
+          if(span === 1 && block.content.length === 1) {
+            btns = `<button class="action-btn" onclick="splitToHalfHour('${block.key}')">＋</button>`;
+          } else if(span === 1 && block.content.length === 2) {
+            btns = `<button class="action-btn" onclick="mergeHalfHourBack('${block.key}')">－</button>`;
+          } else if(span > 1) {
+            btns = `<button class="action-btn" onclick="splitBlock('${block.key}')">－</button>`;
+          }
+        } else {
+          btns = `<button class="edit-btn" onclick="editBlock('${block.key}')">✎</button>`;
+        }
+      }
+      // HTML 构造
+      div.innerHTML = `
+      ${btns}
+      <div class="hour-title">
+        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:10px;background:${color};"></span>
+        ${formatHourText(block.start, block.end)} · ${block.end - block.start}H
+      </div>
+      <div class="text-inputs">
+        ${block.content.map((text, idx) =>
+          `<textarea data-index="${idx}" oninput="updateContent('${block.key}', ${idx}, this.value)">${text}</textarea>`
+        ).join('')}
+      </div>
+          <div class="deepwork-toggle"
+     ${readonly ? '' : `onclick="toggleDeepWork('${block.key}')"`}
+     style="position:absolute;bottom:10px;right:14px;font-size:18px;cursor:${readonly ? 'default' : 'pointer'};opacity:${block.deepWork ? 1 : 0.3};">
+  ${block.deepWork ? '★' : '☆'}
+</div>
+    `;
+      // 多小时块样式增强
+      const hourTitle = div.querySelector('.hour-title');
+      const span = block.end - block.start;
+      if(span === 2) {
+        hourTitle.style.fontSize = '1.3rem';
+        hourTitle.style.paddingLeft = '0.3rem';
+        hourTitle.style.fontWeight = '600';
+      } else if(span === 3) {
+        hourTitle.style.fontSize = '1.5rem';
+        hourTitle.style.paddingLeft = '0.5rem';
+        hourTitle.style.fontWeight = '700';
+        hourTitle.style.textShadow = '0 1px 4px rgba(0,0,0,0.5)';
+      }
+      // 编辑态 textarea 可编辑
+      if(isEditing && !readonly) {
+        div.querySelectorAll('textarea').forEach(t => t.classList.add('editable'));
+      }
+      // 拖拽绑定
+      setupDragHandlers(div, block);
+      grid.appendChild(div);
+    }
+    // 保持编辑状态
+    makeAllTextareasReadonly();
+    if(state.editingKey) {
+      const el = document.getElementById(`block-${state.editingKey}`);
+      if(el && !readonly) {
+        el.querySelectorAll('textarea').forEach(t => t.classList.add('editable'));
+      }
+    }
+  }
+
+  function removeEditingState() {
+    state.editingKey = null;
+    renderHourBlocks();
+  }
+
+  function editBlock(key) {
+    if(readonly) return;
+    state.editingKey = key;
+    renderHourBlocks();
+  }
+
+  function updateContent(key, idx, val) {
+    if(readonly) return;
+    const block = state.blocks.find(b => b.key === key);
+    if(block) {
+      block.content[idx] = val;
+      triggerAutoSave();
+    }
+  }
+
+  function setupDragHandlers(div, block) {
+    if(readonly) return;
+    div.setAttribute("draggable", "true");
+    div.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/plain", block.key);
+      setTimeout(() => {
+        div.style.visibility = "hidden";
+      }, 0);
+    });
+    div.addEventListener("dragend", () => {
+      div.style.visibility = "visible";
+      document.querySelectorAll('.hour-block').forEach(d => d.classList.remove('drag-over'));
+    });
+    div.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      div.classList.add("drag-over");
+    });
+    div.addEventListener("dragleave", () => {
+      div.classList.remove("drag-over");
+    });
+    div.addEventListener("drop", (e) => {
+      e.preventDefault();
+      const sourceKey = e.dataTransfer.getData("text/plain");
+      const targetKey = block.key;
+      div.classList.remove("drag-over");
+      handleMergeBlocks(sourceKey, targetKey);
+    });
+  }
+
+  function splitBlock(key) {
+    if(readonly) return;
+    const block = state.blocks.find(b => b.key === key);
+    if(!block) return;
+    const span = block.end - block.start;
+    const originalStart = block.start;
+    const originalEnd = block.end;
+    if(span > 1) {
+      const newBlocks = [];
+      for(let h = originalStart; h < originalEnd; h++) {
+        newBlocks.push({
+          start: h,
+          end: h + 1,
+          content: [""],
+          deepWork: false,
+          key: `${String(h).padStart(2, '0')}00,${String(h + 1).padStart(2, '0')}00`
+        });
+      }
+      state.blocks = state.blocks.filter(b => b.key !== key).concat(newBlocks);
+      renderHourBlocks();
+      const relatedKeys = state.blocks.filter(b => b.start >= originalStart && b.end <= originalEnd).map(b => b.key);
+      for(const key of relatedKeys) editBlock(key);
+    }
+  }
+
+  function toggleDeepWork(key) {
+    if(readonly) return; // 强力保护
+    const block = state.blocks.find(b => b.key === key);
+    if(block) {
+      block.deepWork = !block.deepWork;
+      renderHourBlocks();
+      if(!readonly) triggerAutoSave();
+    }
+  }
+
+  function switchToToday() {
+    mode = 'today';
+    selectedDate = new Date();
+    document.getElementById("day-selector").value = formatDateInput(selectedDate);
+    updateControlStyles();
+    loadData(selectedDate);
+  }
+
+  function switchToTomorrow() {
+    mode = 'tomorrow';
+    selectedDate = new Date();
+    selectedDate.setDate(selectedDate.getDate() + 1);
+    document.getElementById("day-selector").value = formatDateInput(selectedDate);
+    updateControlStyles();
+    loadData(selectedDate);
+  }
+
+  function onDateChange() {
+    const val = document.getElementById("day-selector").value;
+    if(val) {
+      selectedDate = new Date(val);
+      mode = 'custom';
+      updateControlStyles();
+      loadData(selectedDate);
+    }
+  }
+
+  function updateControlStyles() {
+    document.getElementById("today-btn").classList.toggle('active', mode === 'today');
+    document.getElementById("tomorrow-btn").classList.toggle('active', mode === 'tomorrow');
+  }
+  window.onload = () => {
+    setDateInputLimit();
+    switchToToday();
+    const footerYear = document.getElementById("footer-year");
+    if(footerYear) {
+      footerYear.innerText = new Date().getFullYear();
+    }
+  };
+
+  function handleClickOutside(e) {
+    const t = e.target;
+    if(!document.querySelector('.hour-block.editing')) return;
+    const isInside = t.closest('.hour-block.editing') || ['TEXTAREA', 'BUTTON'].includes(t.tagName);
+    if(!isInside) {
+      triggerAutoSave();
+      removeEditingState();
+      makeAllTextareasReadonly();
+    }
+  }
+  document.addEventListener('click', handleClickOutside);
+  </script>
+  <footer style="text-align:center; margin-top:4rem; font-size:0.85rem; color:rgba(255,255,255,0.4);"> Copyright © Hazard <span id="footer-year"></span> By Bingxing.Kang </footer>
+</body>
+
+</html>

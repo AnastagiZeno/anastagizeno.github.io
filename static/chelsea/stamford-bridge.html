@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Stamford Bridge</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("./stamford-bridge.webp") no-repeat center center fixed;
+      background-size: cover;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      perspective: 1000px;
+      padding: 20px;
+    }
+
+    .card {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card .front,
+    .card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      box-sizing: border-box;
+    }
+
+    .card .front {
+      background: linear-gradient(145deg, #034694, #0057b8);
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+      font-size: 48px;
+      font-weight: 700;
+      font-family: "Times New Roman", serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card .back {
+      background: linear-gradient(135deg, #a8c7e3, #dceaf6);
+      transform: rotateY(180deg);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px;
+      gap: 6px;
+      text-align: center;
+      font-size: 13px;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .card .qid {
+      font-weight: bold;
+      color: #002d72;
+    }
+
+    .card .title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #034694;
+      margin: 2px 0 6px;
+    }
+
+    .card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .tag {
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-weight: 500;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tag-difficulty.Easy {
+      background-color: #e6f9e6;
+      color: #2a7c2a;
+    }
+    .tag-difficulty.Medium {
+      background-color: #ffa940;
+      color: #663300;
+    }
+    .tag-difficulty.Hard {
+      background-color: #ffe6e6;
+      color: #a30000;
+    }
+
+    .tag-freq {
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tag-freq.f1 {
+      background-color: #e8d5c4;
+      color: #5c4430;
+    }
+    .tag-freq.f2,
+    .tag-freq.f3,
+    .tag-freq.f4 {
+      background-color: #add8e6;
+      color: #004a70;
+    }
+    .tag-freq.f5 {
+      background-color: #034694;
+      color: #fff;
+    }
+
+    .tag-company {
+      background-color: #e1effc;
+      color: #034694;
+    }
+
+    .refresh-btn {
+      margin-top: 40px;
+      padding: 12px 24px;
+      border: none;
+      background-color: #034694;
+      color: #fff;
+      font-size: 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: background-color 0.3s ease, opacity 0.3s ease;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .refresh-btn.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .refresh-btn:hover {
+      background-color: #002d72;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" id="grid"></div>
+  <button class="refresh-btn" id="refreshBtn">GO BLUE</button>
+<script>
+  const API_BASE = "https://shahrazad.fun/chelsea/api/stamford-bridge"
+  const romanNumerals = ["Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ"];
+  const grid = document.getElementById("grid");
+  const refreshBtn = document.getElementById("refreshBtn");
+
+  let flippedCount = 0;
+  let allQuestions = [];
+
+  function shuffle(arr) {
+    const weighted = [];
+    arr.forEach((q) => {
+      const weight = Math.max(1, Math.round(Math.pow(q.freq || 1, 1.8)));
+      for (let i = 0; i < weight; i++) {
+        weighted.push(q);
+      }
+    });
+
+    const sample = [];
+    const used = new Set();
+    while (sample.length < 9 && weighted.length > 0) {
+      const idx = Math.floor(Math.random() * weighted.length);
+      const q = weighted[idx];
+      if (!used.has(q.code)) {
+        sample.push(q);
+        used.add(q.code);
+      }
+    }
+    return sample;
+  }
+
+  function createCard(q, index) {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const front = document.createElement("div");
+    front.className = "front";
+    front.textContent = romanNumerals[index];
+
+    const back = document.createElement("div");
+    back.className = "back";
+
+    const tagsTop = document.createElement("div");
+    tagsTop.className = "tags";
+
+    const diffTag = document.createElement("div");
+    diffTag.className = `tag tag-difficulty ${q.difficulty}`;
+    diffTag.textContent = q.difficulty;
+    tagsTop.appendChild(diffTag);
+
+    const freqTag = document.createElement("div");
+    const freqClass = q.freq >= 5 ? 'f5' : `f${q.freq}`;
+    freqTag.className = `tag tag-freq ${freqClass}`;
+    freqTag.textContent = `${q.freq}次`;
+    tagsTop.appendChild(freqTag);
+
+    const qid = document.createElement("div");
+    qid.className = "qid";
+    qid.textContent = q.code;
+
+    const titleLink = document.createElement("a");
+    titleLink.href = q.url;
+    titleLink.target = "_blank";
+    titleLink.style.textDecoration = "none";
+
+    const title = document.createElement("div");
+    title.className = "title";
+    title.textContent = q.name;
+    titleLink.appendChild(title);
+
+    const tagCompanies = document.createElement("div");
+    tagCompanies.className = "tags";
+    q.company.forEach(c => {
+      const tag = document.createElement("div");
+      tag.className = "tag tag-company";
+      tag.textContent = c;
+      tagCompanies.appendChild(tag);
+    });
+
+    back.appendChild(tagsTop);
+    back.appendChild(qid);
+    back.appendChild(titleLink);
+    back.appendChild(tagCompanies);
+
+    card.appendChild(front);
+    card.appendChild(back);
+
+    card.addEventListener("click", () => {
+      card.classList.add("flipped");
+      card.removeEventListener("click", arguments.callee);
+      flippedCount++;
+      if (flippedCount === 9) {
+        refreshBtn.classList.add("visible");
+      }
+    });
+
+    return card;
+  }
+
+  async function generateGrid() {
+    flippedCount = 0;
+    refreshBtn.classList.remove("visible");
+    grid.innerHTML = "";
+
+    if (!allQuestions.length) {
+      try {
+        const res = await fetch(`${API_BASE}/problems`);
+        const json = await res.json();
+        if (json.ok && Array.isArray(json.data)) {
+          allQuestions = json.data;
+        } else {
+          throw new Error("接口返回格式错误");
+        }
+      } catch (err) {
+        console.error("获取题目失败：", err);
+        return;
+      }
+    }
+
+    const randomQuestions = shuffle(allQuestions);
+    randomQuestions.forEach((q, i) => {
+      grid.appendChild(createCard(q, i));
+    });
+  }
+
+  refreshBtn.addEventListener("click", generateGrid);
+  window.onload = generateGrid;
+</script>
+
+</body>
+<footer style="text-align:center; margin-top:4rem; font-size:0.85rem; color:rgba(255,255,255,0.4);"> Copyright © Stamford Bridge <span id="footer-year"></span> By Bingxing.Kang </footer>
+</html>

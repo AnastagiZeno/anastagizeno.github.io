@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>José Mourinho</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: transparent;
+      color: #fff;
+    }
+
+    .modal-wrapper {
+      max-width: 960px;
+      margin: 5vh auto;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 24px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+      padding: 3rem 3.5rem 3.5rem;
+      box-sizing: border-box;
+    }
+
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+
+    .form-group {
+      flex: 1 1 calc(50% - 1rem);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full {
+      flex: 1 1 100%;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    .star-group {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .stars {
+      display: flex;
+      gap: 10px;
+      font-size: 2rem;
+    }
+
+    .star {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.3);
+      transition: transform 0.2s ease, color 0.2s ease;
+      padding: 0.2rem;
+    }
+
+    .star.active {
+      color: #c0c0c0;
+      transform: scale(1.2);
+    }
+
+    .date-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .date-option {
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .date-option:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .date-option.selected {
+      background: #00ff88;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .date-hint-container {
+      height: 2rem;
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .date-hint {
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid rgba(255,255,255,0.3);
+      width: 0;
+      opacity: 0;
+      text-align: center;
+    }
+
+    .date-hint.typing {
+      animation: typing 2s steps(40, end) forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0; opacity: 1; }
+      to   { width: 15.5rem; opacity: 1; }
+    }
+
+    .btn-row {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .btn {
+      padding: 0.8rem 2.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cancel-btn {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .cancel-btn:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .submit-btn {
+      background: #ff4d4d;
+      color: #fff;
+    }
+
+    .submit-btn:hover {
+      background: #e60000;
+    }
+  </style>
+</head>
+<body>
+  <div class="modal-wrapper">
+    <div class="form-grid">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="标题" maxlength="14" />
+      </div>
+
+      <div class="form-group star-group">
+        <div class="stars" id="starBox">
+          <span class="star" data-val="1">★</span>
+          <span class="star" data-val="2">★</span>
+          <span class="star" data-val="3">★</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="date-selector" id="startSelector"></div>
+      </div>
+      <div class="form-group">
+        <div class="date-selector" id="endSelector"></div>
+      </div>
+
+      <div class="form-group full">
+        <textarea id="description" placeholder="描述" maxlength="256"></textarea>
+      </div>
+      <div class="form-group full">
+        <input type="text" id="blueprint" placeholder="Blueprint（可选）" maxlength="256" />
+      </div>
+    </div>
+
+    <div class="date-hint-container">
+      <div class="date-hint" id="dateHint">&nbsp;</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn cancel-btn" onclick="cancel()">BYE</button>
+      <button class="btn submit-btn" onclick="submit()">OK</button>
+    </div>
+  </div>
+
+  <script>
+    const API = '/chelsea/api/mourinho/g';
+    let selectedStar = 0;
+    let startDate = '', endDate = '';
+
+    document.querySelectorAll('.star').forEach(star => {
+      star.addEventListener('click', () => {
+        const val = parseInt(star.dataset.val);
+        if (selectedStar === val) {
+          selectedStar = 0; // 取消选中
+        } else {
+          selectedStar = val;
+        }
+        document.querySelectorAll('.star').forEach(s => {
+          s.classList.toggle('active', parseInt(s.dataset.val) <= selectedStar);
+        });
+      });
+    });
+
+    function cancel() {
+      window.parent.postMessage('close-goal-modal', '*');
+    }
+
+    function submit() {
+      const name = document.getElementById('name').value.trim();
+      const desc = document.getElementById('description').value.trim();
+
+      if (name.length < 4) {
+        alert('标题最少 4 个字');
+        return;
+      }
+      if (desc.length < 12) {
+        alert('描述最少 12 个字');
+        return;
+      }
+      if (!startDate || !endDate) {
+        alert('请选择开始与结束日期');
+        return;
+      }
+
+      const payload = {
+        name,
+        description: desc,
+        start_from: startDate,
+        end_before: endDate,
+        star: selectedStar,
+        blueprint: document.getElementById('blueprint').value.trim()
+      };
+
+      fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(res => {
+        if (res.ok && res.id) {
+          window.parent.postMessage('close-goal-modal', '*');
+        } else {
+          alert('创建失败：' + (res.error || res.msg || '未知错误'));
+        }
+      });
+    }
+
+    function dateAddDays(base, days) {
+      const d = new Date(base);
+      d.setDate(d.getDate() + days);
+      return d.toISOString().slice(0, 10);
+    }
+
+    function thisSunday(base) {
+      const d = new Date(base);
+      d.setDate(d.getDate() + (7 - d.getDay()) % 7);
+      return d.toISOString().slice(0, 10);
+    }
+
+    function nextMonday(base) {
+      const d = new Date(base);
+      d.setDate(d.getDate() + (8 - d.getDay()) % 7);
+      return d.toISOString().slice(0, 10);
+    }
+
+    function nextSunday(base) {
+      const d = new Date(base);
+      d.setDate(d.getDate() + (14 - d.getDay()) % 7);
+      return d.toISOString().slice(0, 10);
+    }
+
+    function renderDateOptions(container, options, type) {
+      options.forEach(([label, val]) => {
+        const el = document.createElement('div');
+        el.className = 'date-option';
+        el.textContent = label;
+        el.addEventListener('click', () => {
+          document.querySelectorAll(`#${container} .date-option`).forEach(e => e.classList.remove('selected'));
+          el.classList.add('selected');
+          if (type === 'start') startDate = val;
+          else endDate = val;
+          updateDateHint();
+        });
+        document.getElementById(container).appendChild(el);
+      });
+    }
+
+    function updateDateHint() {
+      const hint = document.getElementById('dateHint');
+      if (startDate && endDate) {
+        const str = `${startDate.replace(/-/g, '/')}   到    ${endDate.replace(/-/g, '/')}`;
+        hint.textContent = str;
+        hint.classList.remove('typing');
+        void hint.offsetWidth;
+        hint.classList.add('typing');
+      }
+    }
+
+    const today = new Date();
+    const startOptions = [
+      ['今天', dateAddDays(today, 0)],
+      ['明天', dateAddDays(today, 1)],
+      ['后天', dateAddDays(today, 2)],
+      ['本周日', thisSunday(today)],
+      ['下周一', nextMonday(today)],
+      ['下周日', nextSunday(today)]
+    ];
+    const endOptions = [
+      ['明天', dateAddDays(today, 1)],
+      ['后天', dateAddDays(today, 2)],
+      ['大后天', dateAddDays(today, 3)],
+      ['本周日', thisSunday(today)],
+      ['一周后', dateAddDays(today, 7)],
+      ['两周后', dateAddDays(today, 14)],
+      ['一月后', dateAddDays(today, 30)],
+      ['两月后', dateAddDays(today, 60)],
+      ['三月后', dateAddDays(today, 90)],
+      ['半年后', dateAddDays(today, 180)],
+      ['明年', dateAddDays(today, 365)]
+    ];
+
+    renderDateOptions('startSelector', startOptions, 'start');
+    renderDateOptions('endSelector', endOptions, 'end');
+  </script>
+</body>
+</html>

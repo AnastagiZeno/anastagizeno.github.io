@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>José Mourinho</title>
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+	body {
+		margin: 0;
+		padding: 1rem;
+		font-family: 'Helvetica Neue', sans-serif;
+		background: url("./red-dragonfly.png") no-repeat center center fixed;
+		background-size: cover;
+		color: #fff;
+	}
+
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.5rem 1rem;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: 1.8rem;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+	}
+
+	.icon-buttons {
+		display: flex;
+		gap: 0.75rem;
+	}
+
+	.icon-buttons a {
+		color: #fff;
+		font-size: 1.2rem;
+		opacity: 0.8;
+		transition: opacity 0.2s ease;
+	}
+
+	.icon-buttons a:hover {
+		opacity: 1;
+	}
+
+	.goal-group {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		justify-content: flex-start;
+		margin-bottom: 1.2rem;
+	}
+
+	.goal-group.minor {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+	}
+
+	.goal-card {
+		background: rgba(255, 255, 255, 0.08);
+		border-radius: 16px;
+		box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-bottom: 1rem;
+	}
+
+	.epic-card {
+		width: 100%;
+		height: 140px;
+		padding: 1rem 1.2rem 0;
+	}
+
+	.crusade-card {
+		width: calc(50% - 0.5rem);
+		height: 180px;
+		padding: 1rem 1.2rem 0;
+	}
+
+	.operation-card {
+		width: calc(33.333% - 0.7rem);
+		height: 200px;
+		padding: 1rem 1.2rem 0;
+	}
+
+	.goal-card.minor-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 220px;
+		width: 220px;
+		padding: 1rem 1.2rem;
+	}
+
+	.content-top {
+		flex: 1;
+		overflow: hidden;
+	}
+
+	.content-top .name {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.content-top .desc {
+		font-size: 0.88rem;
+		line-height: 1.6;
+		max-height: 3.5em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin-top: 0.4rem;
+	}
+
+	.content-bottom {
+		margin-top: 0.5rem;
+	}
+
+	.progress-bar {
+		position: relative;
+		height: 6px;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 8px;
+		overflow: visible;
+		margin-top: auto;
+		margin-bottom: 1rem;
+	}
+
+	.progress-fill {
+		background: #00ff88;
+		height: 100%;
+		transition: width 0.3s ease;
+		border-radius: 8px;
+	}
+
+	.time-line {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 4px;
+		background: #FF6B3A;
+		transform: translateX(-50%);
+		animation: pulse 1.5s infinite ease-in-out;
+	}
+
+	@keyframes pulse {
+
+		0%,
+		100% {
+			opacity: 0.7;
+		}
+
+		50% {
+			opacity: 1;
+		}
+	}
+
+	.title-line {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.6rem;
+	}
+
+	.title-line .name {
+		font-size: 1.1rem;
+		font-weight: bold;
+		line-height: 1.4;
+	}
+
+	.meta-desc-line {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.meta-desc-line .info-line {
+		display: flex;
+		gap: 0.5rem;
+		flex-shrink: 0;
+	}
+
+	.meta-desc-line .desc {
+		flex: 1;
+		text-align: right;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 0.88rem;
+		line-height: 1.6;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.info-line {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		margin-bottom: 0.6rem;
+	}
+
+	.info-line .label {
+		background: rgba(255, 255, 255, 0.1);
+		padding: 0.2rem 0.5rem;
+		border-radius: 6px;
+		white-space: nowrap;
+		font-size: 0.85rem;
+	}
+
+	.info-line .type {
+		color: #ffcc66;
+		font-weight: bold;
+	}
+
+	.info-line .status {
+		color: #00ff88;
+	}
+
+	.desc.two-line {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		font-size: 0.88rem;
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.9);
+		margin-bottom: 0.6rem;
+	}
+
+	.stars {
+		display: flex;
+		gap: 2px;
+		font-size: 18px;
+	}
+
+	.stars span {
+		color: rgba(255, 255, 255, 0.4);
+	}
+
+	.deadline {
+		font-size: 0.85rem;
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	.progress-dots {
+		display: flex;
+		gap: 4px;
+		margin-top: 0.3rem;
+	}
+
+	.dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.3);
+	}
+
+	.dot.done {
+		background: #00ff88;
+	}
+
+	.dot.current {
+		background: #ffd700;
+	}
+
+	footer {
+		margin-top: 2rem;
+		text-align: center;
+		font-size: 0.9rem;
+		color: rgba(255, 255, 255, 0.2);
+	}
+	</style>
+	<style>
+	#goal-modal {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		z-index: 9999;
+		justify-content: center;
+		align-items: center;
+		transition: opacity 0.3s ease;
+		opacity: 0;
+		align-items: flex-start;
+	}
+
+	#goal-modal.show {
+		display: flex;
+		opacity: 1;
+	}
+
+	.modal-wrapper {
+		width: 1000px;
+		max-width: 96vw;
+		margin: 4vh auto;
+		border-radius: 24px;
+		overflow: hidden;
+		box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+		background: rgba(255, 255, 255, 0.05);
+		backdrop-filter: blur(25px);
+		-webkit-backdrop-filter: blur(25px);
+	}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>目标看板</h1>
+		<div class="icon-buttons">
+			<a href="#"><i class="fas fa-calendar-days"></i></a>
+			<a href="javascript:void(0);" onclick="openGoalModal()"><i class="fas fa-pen-nib"></i></a>
+			<a href="#"><i class="fas fa-compass"></i></a>
+			<a href="#"><i class="fas fa-magic"></i></a>
+			<a href="#"><i class="fas fa-hourglass-half"></i></a>
+			<a href="#"><i class="fas fa-cube"></i></a>
+			<a href="#"><i class="fas fa-cogs"></i></a>
+			<a href="#"><i class="fas fa-brain"></i></a>
+		</div>
+	</header>
+	<div class="goal-group epic"></div>
+	<div class="goal-group crusade"></div>
+	<div class="goal-group operation"></div>
+	<div class="goal-group minor"></div>
+	<footer>Copyright © Hazard <span id="year"></span> By Bingxing.Kang</footer>
+	<script>
+	const API_BASE = "https://shahrazad.fun/chelsea/api/mourinho";
+	document.getElementById("year").textContent = new Date().getFullYear();
+
+	function formatDate(str) {
+		return str.slice(0, 10).replace(/-/g, "/");
+	}
+
+	function getStatusIconHtml(status) {
+		if(!status) return "";
+		const name = status.toLowerCase().replace(/ /g, "_"); // e.g. "Battle Shout" → "battle_shout"
+		const url = `../image/icons/${name}.jpg`;
+		return `<img src="${url}" alt="${status}" title="${status}" width="18" style="vertical-align:middle;" />`;
+	}
+
+	function calcDeadline(item) {
+		const start = new Date(item.start_from);
+		const end = new Date(item.end_before);
+		const now = new Date();
+		const total = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+		if(item.progress >= 100) return `${total}天 • 已完成`;
+		const remainMs = Math.max(0, end - now);
+		const remainD = Math.floor(remainMs / (1000 * 60 * 60 * 24));
+		const remainH = Math.floor((remainMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		return `${total}天 • 剩余${remainD}天${remainH}小时`;
+	}
+
+	function renderDots(progress, total) {
+		const filled = Math.floor(progress / (100 / total));
+		return Array.from({
+			length: total
+		}, (_, i) => `<div class="dot ${i < filled ? 'done' : (i === filled ? 'current' : '')}"></div>`).join('');
+	}
+
+	function renderGoalCard(item) {
+		const card = document.createElement("div");
+		card.className = `goal-card ${item.gtype}-card`;
+		if(item.gtype === 'skirmish' || item.gtype === 'campaign') {
+			const dotCount = item.gtype === 'skirmish' ? 3 : 4;
+			card.classList.add('minor-card');
+			card.innerHTML = `
+          <div class="content-top">
+            <div class="name">${item.name}</div>
+            <div class="desc">${item.description}</div>
+          </div>
+          <div class="content-bottom">
+            <div class="deadline">${calcDeadline(item)}</div>
+            <div class="progress-dots">${renderDots(item.progress, dotCount)}</div>
+          </div>
+        `;
+		} else if(item.gtype === 'epic') {
+			card.innerHTML = `
+          <div class="title-line">
+            <span class="name">${item.name}</span>
+          </div>
+          <div class="meta-desc-line">
+            <div class="info-line">
+              <span class="label type">${item.gtype.toUpperCase()}</span>
+              <span class="label time">${formatDate(item.start_from)} → ${formatDate(item.end_before)}</span>
+              <span class="label status">${getStatusIconHtml(item.gstatus)} ${item.gstatuscn}</span>
+            </div>
+            <div class="desc">${item.description}</div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${item.progress}%"></div>
+            <div class="time-line" style="left: ${item.time_passed}%"></div>
+          </div>
+        `;
+		} else {
+			card.innerHTML = `
+          <div class="title-line">
+            <span class="name">${item.name}</span>
+          </div>
+          <div class="info-line">
+            <span class="label type">${item.gtype.toUpperCase()}</span>
+            <span class="label time">${formatDate(item.start_from)} → ${formatDate(item.end_before)}</span>
+            <span class="label status">${getStatusIconHtml(item.gstatus)} ${item.gstatuscn}</span>
+          </div>
+          <div class="desc two-line">${item.description}</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${item.progress}%"></div>
+            <div class="time-line" style="left: ${item.time_passed}%"></div>
+          </div>
+        `;
+		}
+		return card;
+	}
+
+	function ensureGroupExists(gtype) {
+		let mappedType = (gtype === 'campaign' || gtype === 'skirmish') ? 'minor' : gtype;
+		let container = document.querySelector(`.goal-group.${mappedType}`);
+		if(!container) {
+			container = document.createElement("div");
+			container.className = `goal-group ${mappedType}`;
+			document.body.insertBefore(container, document.querySelector("footer"));
+		}
+		return container;
+	}
+	fetch(`${API_BASE}/g`).then(res => res.json()).then(res => {
+		if(!res.ok || !res.data) return;
+		res.data.forEach(item => {
+			const group = ensureGroupExists(item.gtype);
+			group.appendChild(renderGoalCard(item));
+		});
+	});
+
+	function openGoalModal() {
+		const modal = document.getElementById('goal-modal');
+		const iframe = document.getElementById('goal-frame');
+		modal.style.display = 'flex';
+		requestAnimationFrame(() => {
+			modal.classList.add('show');
+		});
+		if(!iframe.src.includes('mourinho-create.html')) {
+			iframe.src = './mourinho-create.html';
+		}
+		iframe.focus();
+	}
+
+	function closeGoalModal() {
+		const modal = document.getElementById('goal-modal');
+		// 移除渐显 class
+		modal.classList.remove('show');
+		// 等待动画结束再隐藏
+		setTimeout(() => {
+			modal.style.display = 'none';
+		}, 300); // 对应 CSS 中 transition 的时间
+	}
+	// 支持 iframe 发送消息关闭
+	window.addEventListener('message', (e) => {
+		if(e.data === 'close-goal-modal') {
+			closeGoalModal();
+		}
+	});
+	</script>
+	<div id="goal-modal">
+		<div class="modal-wrapper">
+			<iframe id="goal-frame" src="./mourinho-create.html" style="
+     width: 100%;
+	  height: 740px;
+	  border: none;
+	  display: block;
+	  background: transparent;
+	  background-color: transparent;
+    "></iframe>
+		</div>
+	</div>
+</body>
+
+</html>
