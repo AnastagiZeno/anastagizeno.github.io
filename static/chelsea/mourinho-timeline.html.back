@@ -38,12 +38,12 @@
   .header-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 1.5rem;
   }
 
   .title-text {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
@@ -57,13 +57,13 @@
   }
 
   .button-placeholders div {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    width: 28px;
+    height: 28px;
     background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
     color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,20 +137,6 @@
     border-radius: 50%;
     vertical-align: middle;
     margin-right: 6px;
-  }
-
-  .goal-description {
-    font-size: 0.9rem;
-    color: #ccc;
-    margin-top: 0.8rem;
-    max-width: 420px; /* 推荐固定值，保持一致换行行为 */
-    line-height: 1.6;
-    word-break: break-word;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;  /* 控制最多3行 */
-    -webkit-box-orient: vertical;
-    opacity: 0.7;
   }
   </style>
 </head>
@@ -244,10 +230,7 @@
   </div>
   <div class="timelineContainer">
     <div class="header-row">
-      <div>
-        <div class="title-text" id="goal-title">加载中...</div>
-        <div class="goal-description" id="goal-description" style="display: none;"></div>
-      </div>
+      <div class="title-text" id="goal-title">加载中...</div>
       <div class="button-placeholders">
         <div data-action="E">E</div>
         <div data-action="N">N</div>
@@ -550,15 +533,6 @@
     const remainDays = remainMs > 24 * 3600 * 1000 ? Math.ceil(remainMs / (1000 * 60 * 60 * 24)) + ' 天' : remainMs > 0 ? Math.floor(remainMs / (1000 * 60 * 60)) + ' 小时' : '已结束';
     const titleEl = document.getElementById('goal-title');
     titleEl.textContent = g.name;
-
-    const descEl = document.getElementById('goal-description');
-    if (gtype !== 'epic') {
-      descEl.textContent = g.description || '这是什么？';
-      descEl.style.display = 'block';
-    } else {
-      descEl.style.display = 'none';
-    }
-
     titleEl.addEventListener('mouseenter', evt => {
       const tooltipText = `
   <strong>🎯 ${g.name}</strong>
