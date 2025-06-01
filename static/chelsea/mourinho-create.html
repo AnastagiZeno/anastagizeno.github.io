@@ -185,10 +185,24 @@
     .submit-btn:hover {
       background: #e60000;
     }
+    .close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  z-index: 1000;
+  transition: color 0.2s ease;
+}
+.close-icon:hover {
+  color: #fff;
+}
   </style>
 </head>
 <body>
   <div class="modal-container">
+    <div class="close-icon" onclick="cancel()">×</div>
     <div class="form-grid">
       <div class="form-group">
         <input type="text" id="name" placeholder="标题" maxlength="14" />
@@ -222,7 +236,6 @@
     </div>
 
     <div class="btn-row">
-      <button class="btn cancel-btn" onclick="cancel()">BYE</button>
       <button class="btn submit-btn" onclick="submit()">OK</button>
     </div>
   </div>

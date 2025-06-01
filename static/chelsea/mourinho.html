@@ -7,321 +7,362 @@
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    body {
-      margin: 0;
-      padding: 1rem;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: url("./red-dragonfly.png") no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
+  body {
+    margin: 0;
+    padding: 1rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    background: url("./red-dragonfly.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+  }
+
+  header {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+
+  .home-icon {
+    position: fixed;
+    top: 8px;
+    left: 14px;
+    z-index: 99999;
+    display: inline-block;
+    padding: 4px;
+    border-radius: 6px;
+  }
+
+  .home-icon img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.85;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .home-icon:hover img {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  .icon-buttons {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .icon-buttons a {
+    color: #fff;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .icon-buttons a:hover {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+
+  .goal-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    margin-bottom: 1.2rem;
+  }
+
+  .goal-group.minor {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .goal-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    transition: transform 1s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  .goal-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  .epic-card {
+    width: 100%;
+    height: 140px;
+    padding: 1rem 1.2rem 0;
+  }
+
+  .crusade-card {
+    width: calc(50% - 0.5rem);
+    height: 180px;
+    padding: 1rem 1.2rem 0;
+  }
+
+  .operation-card {
+    width: calc(33.333% - 0.7rem);
+    height: 200px;
+    padding: 1rem 1.2rem 0;
+  }
+
+  .goal-card.minor-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+    width: 220px;
+    padding: 1rem 1.2rem;
+  }
+
+  .content-top .name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .content-top .desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    max-height: 3.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 0.4rem;
+  }
+
+  .content-bottom {
+    margin-top: 0.5rem;
+  }
+
+  .progress-bar {
+    position: relative;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: visible;
+    margin-top: auto;
+    margin-bottom: 1rem;
+  }
+
+  .progress-fill {
+    background: #00ff88;
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .time-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #FF6B3A;
+    transform: translateX(-50%);
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+  @keyframes pulse {
+
+    0%,
+    100% {
+      opacity: 0.7;
     }
 
-    header {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0.5rem 1rem;
-    }
-
-    .home-icon {
-      position: fixed;
-      top: 8px;
-      left: 14px;
-      z-index: 99999;
-      display: inline-block;
-      padding: 4px;
-      border-radius: 6px;
-    }
-
-    .home-icon img {
-      width: 32px;
-      height: 32px;
-      opacity: 0.85;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    .home-icon:hover img {
-      transform: scale(1.2);
+    50% {
       opacity: 1;
     }
+  }
 
-    .icon-buttons {
-      display: flex;
-      gap: 0.75rem;
-    }
+  .title-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
 
-    .icon-buttons a {
-      color: #fff;
-      font-size: 1.2rem;
-      opacity: 0.8;
-      transition: opacity 0.2s ease;
-    }
+  .meta-desc-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+  }
 
-    .icon-buttons a:hover {
-      transform: scale(1.5);
-      opacity: 1;
-    }
+  .meta-desc-line .info-line {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
 
-    .goal-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: flex-start;
-      margin-bottom: 1.2rem;
-    }
+  .meta-desc-line .desc {
+    flex: 1;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-    .goal-group.minor {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-    }
+  .info-line .label {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
 
-    .goal-card {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-bottom: 1rem;
-      transition: transform 1s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-    .goal-card:hover {
-      transform: translateY(-2px) scale(1.01);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    }
+  .info-line .type {
+    color: #ffcc66;
+    font-weight: bold;
+  }
 
-    .epic-card {
-      width: 100%;
-      height: 140px;
-      padding: 1rem 1.2rem 0;
-    }
+  .info-line .status {
+    color: #00ff88;
+  }
 
-    .crusade-card {
-      width: calc(50% - 0.5rem);
-      height: 180px;
-      padding: 1rem 1.2rem 0;
-    }
+  .desc.two-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.6rem;
+    margin-top: 0.6rem;
+  }
 
-    .operation-card {
-      width: calc(33.333% - 0.7rem);
-      height: 200px;
-      padding: 1rem 1.2rem 0;
-    }
+  .stars {
+    display: flex;
+    gap: 2px;
+    font-size: 18px;
+  }
 
-    .goal-card.minor-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 220px;
-      width: 220px;
-      padding: 1rem 1.2rem;
-    }
+  .stars span {
+    color: rgba(255, 255, 255, 0.4);
+  }
 
-    .content-top .name {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  .deadline {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
 
-    .content-top .desc {
-      font-size: 0.88rem;
-      line-height: 1.6;
-      max-height: 3.5em;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-top: 0.4rem;
-    }
+  .progress-dots {
+    display: flex;
+    gap: 4px;
+    margin-top: 0.3rem;
+  }
 
-    .content-bottom {
-      margin-top: 0.5rem;
-    }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
 
-    .progress-bar {
-      position: relative;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      overflow: visible;
-      margin-top: auto;
-      margin-bottom: 1rem;
-    }
+  .dot.done {
+    background: #00ff88;
+  }
 
-    .progress-fill {
-      background: #00ff88;
-      height: 100%;
-      transition: width 0.3s ease;
-      border-radius: 8px;
-    }
+  .dot.current {
+    background: #ffd700;
+  }
 
-    .time-line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: #FF6B3A;
-      transform: translateX(-50%);
-      animation: pulse 1.5s infinite ease-in-out;
-    }
+  footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.2);
+  }
 
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 0.7;
-      }
-      50% {
-        opacity: 1;
-      }
-    }
+  #goal-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
-    .title-line {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.6rem;
-    }
+  #goal-modal.show {
+    display: flex;
+    opacity: 1;
+  }
 
-    .meta-desc-line {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.6rem;
-    }
+  .modal-wrapper {
+    width: 1000px;
+    max-width: 96vw;
+    margin: 10vh auto;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+  }
 
-    .meta-desc-line .info-line {
-      display: flex;
-      gap: 0.5rem;
-      flex-shrink: 0;
-    }
+  .goal-card .name {
+    font-weight: 700;
+    /* 保留加粗 */
+    letter-spacing: 0.3px;
+    /* 字距舒适 */
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
+  }
 
-    .meta-desc-line .desc {
-      flex: 1;
-      text-align: right;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.88rem;
-      line-height: 1.6;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+  #type-popup button,
+  #stage-popup button {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+  }
 
-    .info-line .label {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-      white-space: nowrap;
-      font-size: 0.85rem;
-    }
-
-    .info-line .type {
-      color: #ffcc66;
-      font-weight: bold;
-    }
-
-    .info-line .status {
-      color: #00ff88;
-    }
-
-    .desc.two-line {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 0.6rem;
-      margin-top: 0.6rem;
-    }
-
-    .stars {
-      display: flex;
-      gap: 2px;
-      font-size: 18px;
-    }
-
-    .stars span {
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    .deadline {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .progress-dots {
-      display: flex;
-      gap: 4px;
-      margin-top: 0.3rem;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .dot.done {
-      background: #00ff88;
-    }
-
-    .dot.current {
-      background: #ffd700;
-    }
-
-    footer {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.2);
-    }
-
-    #goal-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-      z-index: 9999;
-      justify-content: center;
-      align-items: flex-start;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    #goal-modal.show {
-      display: flex;
-      opacity: 1;
-    }
-
-    .modal-wrapper {
-      width: 1000px;
-      max-width: 96vw;
-      margin: 10vh auto;
-      border-radius: 24px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(25px);
-    }
-
-    .goal-card .name {
-  font-weight: 700;                        /* 保留加粗 */
-  letter-spacing: 0.3px;                   /* 字距舒适 */
-  color: rgba(255, 255, 255, 0.75);  
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.1); 
-}
+  #type-popup button:hover,
+  #stage-popup button:hover {
+    background: rgba(0, 255, 136, 0.3);
+  }
   </style>
 </head>
 
 <body>
+  <div id="type-popup" style="display: none; position: fixed; top: 50px; right: 20px; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 12px; z-index: 99999; backdrop-filter: blur(8px);">
+    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">筛选任务类型：</div>
+    <div id="type-list" style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <button onclick="filterByType('epic')">EPIC</button>
+      <button onclick="filterByType('crusade')">CRUSADE</button>
+      <button onclick="filterByType('operation')">OPERATION</button>
+      <button onclick="filterByType('campaign')">CAMPAIGN</button>
+      <button onclick="filterByType('skirmish')">SKIRMISH</button>
+    </div>
+  </div>
+  <div id="stage-popup" style="display: none; position: fixed; top: 50px; right: 100px; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 12px; z-index: 99999; backdrop-filter: blur(8px);">
+    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">筛选任务阶段：</div>
+    <div id="stage-list" style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <button onclick="filterByStage('begin')">新目标</button>
+      <button onclick="filterByStage('ongoing')">进行中</button>
+      <button onclick="filterByStage('end')">已完成</button>
+    </div>
+  </div>
   <a href="https://shahrazad.fun" class="home-icon" title="回到主页">
-      <img src="./chelsea.svg" alt="Home" />
+    <img src="./chelsea.svg" alt="Home" />
   </a>
   <header>
     <div class="icon-buttons">
@@ -335,65 +376,59 @@
       <a href="#"><i class="fas fa-brain"></i></a>
     </div>
   </header>
-
   <main>
     <div class="goal-group epic"></div>
     <div class="goal-group crusade"></div>
     <div class="goal-group operation"></div>
     <div class="goal-group minor"></div>
   </main>
-
-  <footer>
-    Copyright © Hazard <span id="year"></span> By Bingxing.Kang
-  </footer>
-
+  <footer> Copyright © Hazard <span id="year"></span> By Bingxing.Kang </footer>
   <div id="goal-modal">
     <div class="modal-wrapper">
       <iframe id="goal-frame" src="./mourinho-create.html" style="width:100%;height:740px;border:none;background:transparent;"></iframe>
     </div>
   </div>
-
   <script>
-    const API_BASE = "https://shahrazad.fun/chelsea/api/mourinho";
-    document.getElementById("year").textContent = new Date().getFullYear();
+  const API_BASE = "https://shahrazad.fun/chelsea/api/mourinho";
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    function formatDate(str) {
-      return str.slice(0, 10).replace(/-/g, "/");
-    }
+  function formatDate(str) {
+    return str.slice(0, 10).replace(/-/g, "/");
+  }
 
-    function getStatusIconHtml(status) {
-      if (!status) return "";
-      const name = status.toLowerCase().replace(/ /g, "_");
-      const url = `../image/icons/${name}.jpg`;
-      return `<img src="${url}" alt="${status}" title="${status}" width="18" style="vertical-align:middle;" />`;
-    }
+  function getStatusIconHtml(status) {
+    if(!status) return "";
+    const name = status.toLowerCase().replace(/ /g, "_");
+    const url = `../image/icons/${name}.jpg`;
+    return `<img src="${url}" alt="${status}" title="${status}" width="18" style="vertical-align:middle;" />`;
+  }
 
-    function calcDeadline(item) {
-      const start = new Date(item.start_from);
-      const end = new Date(item.end_before);
-      const now = new Date();
-      const total = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
-      if (item.progress >= 100) return `${total}天 • 已完成`;
-      const remainMs = Math.max(0, end - now);
-      const remainD = Math.floor(remainMs / (1000 * 60 * 60 * 24));
-      const remainH = Math.floor((remainMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      return `${total}天 • 剩余${remainD}天${remainH}小时`;
-    }
+  function calcDeadline(item) {
+    const start = new Date(item.start_from);
+    const end = new Date(item.end_before);
+    const now = new Date();
+    const total = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+    if(item.progress >= 100) return `${total}天 • 已完成`;
+    const remainMs = Math.max(0, end - now);
+    const remainD = Math.floor(remainMs / (1000 * 60 * 60 * 24));
+    const remainH = Math.floor((remainMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    return `${total}天 • 剩余${remainD}天${remainH}小时`;
+  }
 
-    function renderDots(progress, total) {
-      const filled = Math.floor(progress / (100 / total));
-      return Array.from({ length: total }, (_, i) =>
-        `<div class="dot ${i < filled ? 'done' : (i === filled ? 'current' : '')}"></div>`
-      ).join('');
-    }
+  function renderDots(progress, total) {
+    const filled = Math.floor(progress / (100 / total));
+    return Array.from({
+      length: total
+    }, (_, i) => `<div class="dot ${i < filled ? 'done' : (i === filled ? 'current' : '')}"></div>`).join('');
+  }
 
-    function renderGoalCard(item) {
-      const card = document.createElement("div");
-      card.className = `goal-card ${item.gtype}-card`;
-      if (item.gtype === 'skirmish' || item.gtype === 'campaign') {
-        const dotCount = item.gtype === 'skirmish' ? 3 : 4;
-        card.classList.add('minor-card');
-        card.innerHTML = `
+  function renderGoalCard(item) {
+    const card = document.createElement("div");
+    card.className = `goal-card ${item.gtype}-card`;
+    if(item.gtype === 'skirmish' || item.gtype === 'campaign') {
+      const dotCount = item.gtype === 'skirmish' ? 3 : 4;
+      card.classList.add('minor-card');
+      card.innerHTML = `
           <div class="content-top">
             <div class="name">${item.name}</div>
             <div class="desc">${item.description}</div>
@@ -403,8 +438,8 @@
             <div class="progress-dots">${renderDots(item.progress, dotCount)}</div>
           </div>
         `;
-      } else if (item.gtype === 'epic') {
-        card.innerHTML = `
+    } else if(item.gtype === 'epic') {
+      card.innerHTML = `
           <div class="title-line">
             <span class="name">${item.name}</span>
           </div>
@@ -421,8 +456,8 @@
             <div class="time-line" style="left: ${item.time_passed}%"></div>
           </div>
         `;
-      } else {
-        card.innerHTML = `
+    } else {
+      card.innerHTML = `
           <div class="title-line">
             <span class="name">${item.name}</span>
           </div>
@@ -437,63 +472,133 @@
             <div class="time-line" style="left: ${item.time_passed}%"></div>
           </div>
         `;
-      }
-
-      card.addEventListener("click", () => {
-        const modal = document.getElementById('goal-modal');
-        const iframe = document.getElementById('goal-frame');
-        const targetSrc = `./mourinho-timeline.html?gid=${item.id}`;
-        if (!iframe.src.includes(targetSrc)) {
-          iframe.src = targetSrc;
-        }
-        modal.style.display = 'flex';
-        requestAnimationFrame(() => modal.classList.add('show'));
-      });
-
-      return card;
     }
-
-    function ensureGroupExists(gtype) {
-      let mappedType = (gtype === 'campaign' || gtype === 'skirmish') ? 'minor' : gtype;
-      let container = document.querySelector(`.goal-group.${mappedType}`);
-      if (!container) {
-        container = document.createElement("div");
-        container.className = `goal-group ${mappedType}`;
-        document.body.insertBefore(container, document.querySelector("footer"));
+    card.addEventListener("click", () => {
+      const modal = document.getElementById('goal-modal');
+      const iframe = document.getElementById('goal-frame');
+      const targetSrc = `./mourinho-timeline.html?gid=${item.id}`;
+      if(!iframe.src.includes(targetSrc)) {
+        iframe.src = targetSrc;
       }
-      return container;
-    }
+      modal.style.display = 'flex';
+      requestAnimationFrame(() => modal.classList.add('show'));
+    });
+    return card;
+  }
 
-    fetch(`${API_BASE}/g`).then(res => res.json()).then(res => {
-      if (!res.ok || !res.data) return;
+  function ensureGroupExists(gtype) {
+    let mappedType = (gtype === 'campaign' || gtype === 'skirmish') ? 'minor' : gtype;
+    let container = document.querySelector(`.goal-group.${mappedType}`);
+    if(!container) {
+      container = document.createElement("div");
+      container.className = `goal-group ${mappedType}`;
+      document.body.insertBefore(container, document.querySelector("footer"));
+    }
+    return container;
+  }
+
+  function openGoalModal() {
+    const modal = document.getElementById('goal-modal');
+    const iframe = document.getElementById('goal-frame');
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => modal.classList.add('show'));
+    if(!iframe.src.includes('mourinho-create.html')) {
+      iframe.src = './mourinho-create.html';
+    }
+    iframe.focus();
+  }
+
+  function closeGoalModal() {
+    const modal = document.getElementById('goal-modal');
+    modal.classList.remove('show');
+    setTimeout(() => modal.style.display = 'none', 300);
+  }
+  window.addEventListener('message', (e) => {
+    if(e.data === 'close-goal-modal') {
+      closeGoalModal();
+    }
+  });
+  // 根据类型筛选
+  function filterByType(type) {
+    const popup = document.getElementById('type-popup');
+    popup.style.display = 'none';
+    fetch(`${API_BASE}/g/search?gtype=${type}`).then(res => res.json()).then(res => {
+      if(!res.ok || !res.data) return;
+      // 清空所有现有卡片
+      document.querySelectorAll('.goal-group').forEach(g => g.innerHTML = '');
       res.data.forEach(item => {
         const group = ensureGroupExists(item.gtype);
         group.appendChild(renderGoalCard(item));
       });
     });
+  }
 
-    function openGoalModal() {
-      const modal = document.getElementById('goal-modal');
-      const iframe = document.getElementById('goal-frame');
-      modal.style.display = 'flex';
-      requestAnimationFrame(() => modal.classList.add('show'));
-      if (!iframe.src.includes('mourinho-create.html')) {
-        iframe.src = './mourinho-create.html';
-      }
-      iframe.focus();
-    }
+  function filterByStage(stage) {
+    const popup = document.getElementById('stage-popup');
+    popup.style.display = 'none';
+    fetch(`${API_BASE}/g/search?gstage=${stage}`).then(res => res.json()).then(res => {
+      if(!res.ok || !res.data) return;
+      // 清空所有现有卡片
+      document.querySelectorAll('.goal-group').forEach(g => g.innerHTML = '');
+      res.data.forEach(item => {
+        const group = ensureGroupExists(item.gtype);
+        group.appendChild(renderGoalCard(item));
+      });
+    });
+  }
+  const popupMap = {
+    '.fa-compass': 'type-popup',
+    '.fa-hourglass-half': 'stage-popup',
+  };
 
-    function closeGoalModal() {
-      const modal = document.getElementById('goal-modal');
-      modal.classList.remove('show');
-      setTimeout(() => modal.style.display = 'none', 300);
-    }
-
-    window.addEventListener('message', (e) => {
-      if (e.data === 'close-goal-modal') {
-        closeGoalModal();
+  function bindPopupToggle(iconSelector, popupId) {
+    const icon = document.querySelector(iconSelector);
+    if(!icon) return;
+    icon.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const targetPopup = document.getElementById(popupId);
+      // 先关闭其他所有弹窗
+      Object.values(popupMap).forEach(pid => {
+        const popup = document.getElementById(pid);
+        if(popup && popup !== targetPopup) popup.style.display = 'none';
+      });
+      // toggle 当前弹窗
+      targetPopup.style.display = targetPopup.style.display === 'block' ? 'none' : 'block';
+    });
+  }
+  // 一次性绑定所有图标
+  Object.entries(popupMap).forEach(([iconSelector, popupId]) => {
+    bindPopupToggle(iconSelector, popupId);
+  });
+  // 点击空白处关闭所有弹窗
+  window.addEventListener('click', (e) => {
+    Object.entries(popupMap).forEach(([iconSelector, popupId]) => {
+      const popup = document.getElementById(popupId);
+      if(popup && !popup.contains(e.target) && !e.target.closest(iconSelector)) {
+        popup.style.display = 'none';
       }
     });
+  });
+
+  function loadAllGoals() {
+    fetch(`${API_BASE}/g`).then(res => res.json()).then(res => {
+      if(!res.ok || !res.data) return;
+      // 清空所有现有卡片
+      document.querySelectorAll('.goal-group').forEach(g => g.innerHTML = '');
+      // 渲染全部目标
+      res.data.forEach(item => {
+        const group = ensureGroupExists(item.gtype);
+        group.appendChild(renderGoalCard(item));
+      });
+    });
+  }
+  // 初始化加载一次
+  loadAllGoals();
+  document.querySelector('.fa-brain')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    loadAllGoals();
+  });
   </script>
 </body>
 

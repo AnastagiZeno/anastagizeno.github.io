@@ -142,6 +142,92 @@
 </head>
 
 <body>
+  <div id="action-modal" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 1rem;
+">
+    <div style="
+    width: 100%;
+    max-width: 460px;
+    box-sizing: border-box;
+  ">
+      <div style="
+      background: rgba(30,30,30,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', sans-serif;
+      width: 100%;
+    ">
+        <div id="action-modal-title" style="
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 1.2rem;
+        text-align: center;
+      "></div>
+        <label style="display:block; color:#ccc; font-size:0.9rem; margin-bottom:0.3rem;"> 简短描述 <span id="desc-counter" style="font-size:0.8rem; color:#888;">0/24</span>
+        </label>
+        <input id="action-modal-desc" maxlength="24" style="
+        width: 100%;
+        padding: 0.45rem 0.6rem;
+        font-size: 0.95rem;
+        background: #111;
+        color: #eee;
+        border: 1px solid #444;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        outline: none;
+        box-sizing: border-box;
+      " />
+        <label id="extra-label" style="display:block; color:#aaa; font-size:0.9rem; margin-bottom:0.3rem;"></label>
+        <textarea id="action-modal-extra" maxlength="256" rows="4" style="
+        width: 100%;
+        resize: vertical;
+        background: #111;
+        color: #ccc;
+        border: 1px solid #444;
+        border-radius: 6px;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.9rem;
+        outline: none;
+        box-sizing: border-box;
+      "></textarea>
+        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 1rem;">
+          <button id="action-modal-cancel" style="
+          background: none;
+          border: none;
+          color: #aaa;
+          font-size: 0.9rem;
+          cursor: pointer;
+          padding: 0.4rem 0.8rem;
+          border-radius: 6px;
+        ">取消</button>
+          <button id="action-modal-confirm" disabled style="
+          background: #2b7fff;
+          border: none;
+          padding: 0.45rem 1.2rem;
+          border-radius: 6px;
+          color: #fff;
+          font-weight: bold;
+          font-size: 0.9rem;
+          cursor: not-allowed;
+          opacity: 0.5;
+        ">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="timelineContainer">
     <div class="header-row">
       <div class="title-text" id="goal-title">加载中...</div>
@@ -166,65 +252,103 @@
   const svg = document.getElementById('timeline-svg');
   const tooltip = document.getElementById('tooltip');
 
-  function handleButtonAction(actionType) {
-    if(!gid) {
-      alert('缺少 gid 参数');
-      return;
-    }
+  function openModal(title, actionType, callback) {
+    const modal = document.getElementById('action-modal');
+    const titleEl = document.getElementById('action-modal-title');
+    const descInput = document.getElementById('action-modal-desc');
+    const extraInput = document.getElementById('action-modal-extra');
+    const confirmBtn = document.getElementById('action-modal-confirm');
+    const cancelBtn = document.getElementById('action-modal-cancel');
+    const counter = document.getElementById('desc-counter');
+    const extraLabel = document.getElementById('extra-label');
+    titleEl.textContent = title;
+    descInput.value = '';
+    extraInput.value = '';
+    counter.textContent = '0/24';
+    confirmBtn.disabled = true;
+    modal.style.display = 'flex';
+    descInput.addEventListener('input', () => {
+      const len = descInput.value.trim().length;
+      counter.textContent = `${len}/24`;
+      confirmBtn.disabled = len < 2;
+      confirmBtn.style.opacity = confirmBtn.disabled ? 0.5 : 1;
+      confirmBtn.style.cursor = confirmBtn.disabled ? 'not-allowed' : 'pointer';
+    });
     if(actionType === 'E') {
-      const desc = prompt("请输入你的努力内容");
-      if(!desc) return;
-      fetch(effortURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          gid,
-          description: desc
-        })
-      }).then(res => res.json()).then(data => {
-        if(data.ok) location.reload();
-        else alert(data.error || data.msg || "努力记录失败");
-      });
+      extraLabel.textContent = '详细说明（可选）';
     } else if(actionType === 'A') {
-      const desc = prompt("请输入你的阶段成就（非系统生成）");
-      if(!desc) return;
-      fetch(attainmentURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          gid,
-          description: desc,
-          systemd: false
-        })
-      }).then(res => res.json()).then(data => {
-        if(data.ok) location.reload();
-        else alert(data.error || data.msg || "成就录入失败");
-      });
-    } else if(actionType === 'N') {
-      // 需要带上当前状态
-      fetch(timelineURL).then(res => res.json()).then(data => {
-        if(!data.ok) {
-          alert("无法获取当前状态");
-          return;
-        }
-        const g = data.data.goal;
-        const status = g.gstatus;
-        fetch(gnextURL, {
+      extraLabel.textContent = '证明材料（可选）';
+    } else {
+      extraLabel.textContent = '补充说明（可选）';
+    }
+    const closeModal = () => {
+      modal.style.display = 'none';
+    };
+    cancelBtn.onclick = closeModal;
+    confirmBtn.onclick = () => {
+      const desc = descInput.value.trim();
+      const extra = extraInput.value.trim();
+      closeModal();
+      callback(desc, extra);
+    };
+  }
+
+  function handleButtonAction(actionType) {
+    if(!gid) return alert('缺少 gid 参数');
+    if(actionType === 'E') {
+      openModal('一次行动', 'E', (desc, detail) => {
+        fetch(effortURL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            id: gid,
-            status
+            gid,
+            description: desc,
+            detail
           })
         }).then(res => res.json()).then(data => {
           if(data.ok) location.reload();
-          else alert(data.error || data.msg || "当前尚不满足流转条件");
+          else alert(data.error || data.msg || "行动记录失败");
+        });
+      });
+    } else if(actionType === 'A') {
+      openModal('阶段成就', 'A', (desc, proof) => {
+        fetch(attainmentURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            gid,
+            description: desc,
+            proof,
+            systemd: false
+          })
+        }).then(res => res.json()).then(data => {
+          if(data.ok) location.reload();
+          else alert(data.error || data.msg || "成就录入失败");
+        });
+      });
+    } else if(actionType === 'N') {
+      openModal('说明你准备好进入下个阶段了吗？', 'N', (desc, _) => {
+        fetch(timelineURL).then(res => res.json()).then(data => {
+          if(!data.ok) return alert("无法获取当前状态");
+          const g = data.data.goal;
+          fetch(gnextURL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id: gid,
+              status: g.gstatus,
+              description: desc
+            })
+          }).then(res => res.json()).then(data => {
+            if(data.ok) location.reload();
+            else alert(data.error || data.msg || "当前尚不满足流转条件");
+          });
         });
       });
     }
