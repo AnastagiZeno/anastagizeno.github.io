@@ -500,32 +500,27 @@
   function openGoalModal() {
     const modal = document.getElementById('goal-modal');
     const iframe = document.getElementById('goal-frame');
-    const targetSrc = new URL('./mourinho-create.html', window.location.href).href;
-
-    // 避免重复加载（解决闪烁）
-    if (!iframe.src || iframe.src !== targetSrc) {
-      iframe.src = targetSrc;
-    }
-
-    // 显示弹窗并渐入
+    iframe.src = './mourinho-create.html';  // 每次都重新加载，避免 stale 内容
     modal.style.display = 'flex';
     requestAnimationFrame(() => {
       modal.classList.add('show');
-      iframe.focus();
     });
   }
 
   function closeGoalModal() {
     const modal = document.getElementById('goal-modal');
     modal.classList.remove('show');
-
-    // 等待动画结束再隐藏
     setTimeout(() => {
       modal.style.display = 'none';
-    }, 300); // 保持与 CSS 中 transition: 0.3s 一致
+    }, 300);
   }
 
-  
+  window.addEventListener('message', (e) => {
+    if (e.data === 'close-goal-modal') {
+      closeGoalModal();
+    }
+  });
+
   function filterByType(type) {
     const popup = document.getElementById('type-popup');
     popup.style.display = 'none';
