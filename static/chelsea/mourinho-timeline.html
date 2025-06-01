@@ -490,22 +490,15 @@
         const t = (j + 1) / (arr.length + 1);
         const x = lerp(from.x, to.x, t) + (Math.random() - 0.5) * 20;
         const y = lerp(from.y, to.y, t);
-        const el = document.createElementNS("http://www.w3.org/2000/svg", group.type === 'e' ? 'circle' : 'rect');
-        if(group.type === 'e') {
-          el.setAttribute('cx', x);
-          el.setAttribute('cy', y);
-          el.setAttribute('r', 4);
-          el.setAttribute('fill', '#f87c00');
-        } else {
-          el.setAttribute('x', x - 4);
-          el.setAttribute('y', y - 4);
-          el.setAttribute('width', 8);
-          el.setAttribute('height', 8);
-          el.setAttribute('fill', '#fc9');
-        }
+        const el = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+        el.setAttribute('cx', x);
+        el.setAttribute('cy', y);
+        el.setAttribute('r', 4);
+        el.setAttribute('fill', group.type === 'e' ? '#f87c00' : '#e74c3c');
         el.setAttribute("stroke", "#fff");
         el.setAttribute("stroke-width", "0.8");
         el.setAttribute("class", "event-dot");
+
         const tooltipText = group.group.map(e => {
           let txt = `<strong>${e.created_at || ''}</strong><br>${e.description || ''}`;
           if(e.type === 'a') {
