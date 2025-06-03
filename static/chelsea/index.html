@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stamford Bridge <2025-2026></title>
+  <link rel="icon" href="./favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet">
+  <style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  background: url('./stamford-bridge.webp') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #fff;
+}
+
+
+    .home-icon {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      display: inline-block;
+      padding: 4px;
+      border-radius: 8px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .home-icon img {
+      width: 48px;
+      height: 48px;
+      opacity: 0.85;
+    }
+
+    .home-icon:hover img {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+.grid-wrapper {
+  flex: 1;
+  padding: 2rem;  /* 原来放 body 的 padding 放这里 */
+  padding-bottom: 80px;
+  position: relative;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 6px;
+  margin-top: 80px;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  min-height: 600px;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+    .card {
+      will-change: transform;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 220px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1.2rem;
+      box-sizing: border-box;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: #001489;
+      position: relative;
+      backdrop-filter: blur(6px);
+      animation: breathe 4s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .card:nth-child(even) {
+      background: rgba(0, 20, 137, 0.35);
+      color: white;
+    }
+
+    .card:hover {
+      transform: scale(1.005);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .left { flex: 1; z-index: 1; }
+
+    .number {
+      font-size: 2.8rem;
+      font-weight: bold;
+      opacity: 0.2;
+      position: absolute;
+      top: 1rem;
+      left: 1.2rem;
+      z-index: 0;
+    }
+
+    .firstname { font-size: 0.8rem; opacity: 0.8; }
+    .lastname { font-size: 1.4rem; font-weight: 700; margin: 0.2rem 0; }
+    .position { font-size: 0.9rem; opacity: 0.8; }
+
+    .photo {
+      flex-shrink: 0;
+      height: 100%;
+    }
+
+    .photo img {
+      height: 100%;
+      object-fit: contain;
+      object-position: right;
+    }
+
+    .badge {
+      font-family: 'Teko', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      position: absolute;
+      bottom: 2px;
+      left: 12px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+      letter-spacing: 0.05em;
+      transform: scale(1.05);
+    }
+
+    .captain-c { color: #FFD700; }
+    .coach-c { color: #4FC3F7; font-size: 2rem; }
+
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    .toggle-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2000;
+      transition: transform 0.4s ease;
+    }
+
+    .toggle-btn img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.6s ease;
+    }
+
+    .toggle-btn.rotate img {
+      transform: rotate(360deg);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <a href="https://shahrazad.fun" class="home-icon" title="返回主页">
+    <img src="./chelsea.svg" alt="Home" />
+  </a>
+
+  <div class="grid-wrapper">
+    <div id="mainGrid" class="grid"></div>
+  </div>
+
+  <div class="toggle-btn" id="switchBtn" title="切换现役/功勋">
+    <img src="./chelsea.svg" alt="切换">
+  </div>
+
+  <footer>Copyright © Stamford Bridge By Bingxing.Kang</footer>
+
+  <script>  
+  let data = null;
+  let showingCurrent = true;
+
+  const grid = document.getElementById('mainGrid');
+  const btn = document.getElementById('switchBtn');
+
+  function renderPlayers(list) {
+    grid.innerHTML = list.map(player => {
+      const badgeClass =
+        player.badge === 'C' ? 'captain-c' :
+        player.badge === 'H' ? 'coach-c' :
+        player.badge === 'L' ? 'captain-c' : '';
+
+      return `
+        <a class="card" href="/players/${player.id}">
+          <div class="number">${player.number || ''}</div>
+          <div class="left">
+            <div class="firstname">${player.firstname}</div>
+            <div class="lastname">${player.lastname}</div>
+            <div class="position">${player.position}</div>
+            ${player.badge ? `<div class="badge ${badgeClass}">${player.badge}</div>` : ''}
+          </div>
+          <div class="photo">
+            <img src="${player.img}" alt="${player.lastname}">
+          </div>
+        </a>
+      `;
+    }).join('');
+  }
+
+  btn.onclick = () => {
+    btn.classList.add('rotate');
+    grid.classList.add('fade-out');
+
+    // ⭐ 修复关键：记录当前高度，避免footer跳动
+    const prevHeight = grid.offsetHeight;
+    grid.style.minHeight = prevHeight + 'px';
+
+    setTimeout(() => {
+      showingCurrent = !showingCurrent;
+      const list = showingCurrent ? data.current : data.legend;
+      renderPlayers(list);
+      grid.classList.remove('fade-out');
+      btn.classList.remove('rotate');
+
+      // 清除 min-height 让其自然回归
+      setTimeout(() => {
+        grid.style.minHeight = '';
+      }, 500);
+    }, 400);
+  };
+
+  // ⭐ 初始加载接口（你已部署的接口）
+  fetch('https://shahrazad.fun/chelsea/api/stamford-bridge/players')
+    .then(res => res.json())
+    .then(json => {
+      data = json.data;
+      renderPlayers(data.current);
+    })
+    .catch(err => {
+      console.error('加载失败:', err);
+      grid.innerHTML = `<p>加载失败，请稍后再试。</p>`;
+    });
+</script>
+
+</script>
+
+  </script>
+</body>
+</html>
