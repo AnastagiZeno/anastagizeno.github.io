@@ -256,3 +256,4 @@ fabric.properties
 venv
 
 # launch.sh
+.DS_Store
