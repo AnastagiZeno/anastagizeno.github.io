@@ -1,9 +1,9 @@
 +++
-title = "Raḥimahu Allāh"
+title = "项目总结"
 date = 2025-05-06T12:38:52+08:00
 draft = false
-description = ""
-subtitle = "愿真主怜悯他"
+description = "会员项目相关总结"
+subtitle = "Raḥimahu Allāh"
 header_img = ""
 short = false
 toc = true
