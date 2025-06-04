@@ -342,7 +342,6 @@
 
 <body>
   <div id="type-popup" style="display: none; position: fixed; top: 50px; right: 20px; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 12px; z-index: 99999; backdrop-filter: blur(8px);">
-    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">筛选任务类型：</div>
     <div id="type-list" style="display: flex; flex-direction: column; gap: 0.5rem;">
       <button onclick="filterByType('epic')">EPIC</button>
       <button onclick="filterByType('crusade')">CRUSADE</button>
@@ -352,13 +351,15 @@
     </div>
   </div>
   <div id="stage-popup" style="display: none; position: fixed; top: 50px; right: 100px; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 12px; z-index: 99999; backdrop-filter: blur(8px);">
-    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">筛选任务阶段：</div>
     <div id="stage-list" style="display: flex; flex-direction: column; gap: 0.5rem;">
       <button onclick="filterByStage('begin')">新目标</button>
       <button onclick="filterByStage('ongoing')">进行中</button>
       <button onclick="filterByStage('end')">已完成</button>
     </div>
   </div>
+  <div id="tag-popup" style="display: none; position: fixed; top: 50px; right: 180px; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 12px; z-index: 99999; backdrop-filter: blur(8px);">
+  <div id="tag-list" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+</div>
   <a href="https://shahrazad.fun/chelsea" class="home-icon" title="回到主页">
     <img src="./chelsea.svg" alt="Home" />
   </a>
@@ -389,6 +390,19 @@
   <script>
   const API_BASE = "https://shahrazad.fun/chelsea/api/palmer";
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  fetch(`${API_BASE}/metadata`)
+  .then(res => res.json())
+  .then(res => {
+    if (!res.ok || !res.data || !Array.isArray(res.data.tags)) return;
+    const tagList = document.getElementById('tag-list');
+    res.data.tags.forEach(tag => {
+      const btn = document.createElement('button');
+      btn.textContent = tag;
+      btn.onclick = () => filterByTag(tag);
+      tagList.appendChild(btn);
+    });
+  });
 
   function formatDate(str) {
     return str.slice(0, 10).replace(/-/g, "/");
@@ -554,6 +568,7 @@
   const popupMap = {
     '.fa-compass': 'type-popup',
     '.fa-hourglass-half': 'stage-popup',
+    '.fa-cube': 'tag-popup',
   };
 
   function bindPopupToggle(iconSelector, popupId) {
@@ -598,7 +613,24 @@
       });
     });
   }
-  // 初始化加载一次
+
+function filterByTag(tag) {
+  const popup = document.getElementById('tag-popup');
+  popup.style.display = 'none';
+  const todayStr = new Date().toISOString().slice(0, 10); // yyyy-mm-dd
+
+  fetch(`${API_BASE}/g/search?tag=${encodeURIComponent(tag)}&date=${todayStr}`)
+    .then(res => res.json())
+    .then(res => {
+      if (!res.ok || !res.data) return;
+      document.querySelectorAll('.goal-group').forEach(g => g.innerHTML = '');
+      res.data.forEach(item => {
+        const group = ensureGroupExists(item.gtype);
+        group.appendChild(renderGoalCard(item));
+      });
+    });
+  }
+
   loadAllGoals();
   document.querySelector('.fa-brain')?.addEventListener('click', (e) => {
     e.preventDefault();
