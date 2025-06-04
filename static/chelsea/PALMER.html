@@ -11,7 +11,7 @@
     margin: 0;
     padding: 1rem;
     font-family: 'Helvetica Neue', sans-serif;
-    background: url("./bg.png") no-repeat center center fixed;
+    background: url("./trees.jpg") no-repeat center center fixed;
     background-size: cover;
     color: #fff;
   }
@@ -77,7 +77,9 @@
   }
 
   .goal-card {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.35); /* 更深的黑色半透明 */
+    backdrop-filter: blur(6px); /* 增强毛玻璃模糊感 */
+    -webkit-backdrop-filter: blur(6px); /* 兼容 Safari */
     border-radius: 16px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
