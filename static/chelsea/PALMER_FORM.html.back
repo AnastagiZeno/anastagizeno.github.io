@@ -94,33 +94,6 @@
       transform: scale(1.2);
     }
 
-    .tag-selector {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .tag {
-      padding: 0.4rem 1rem;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 999px;
-      font-size: 0.9rem;
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .tag:hover {
-      background: rgba(255,255,255,0.2);
-    }
-
-    .tag.selected {
-      background: #00ccff;
-      color: #000;
-      font-weight: bold;
-    }
-
     .date-selector {
       display: flex;
       flex-wrap: wrap;
@@ -212,18 +185,18 @@
       background: #e60000;
     }
     .close-icon {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 2rem;
-      color: rgba(255, 255, 255, 0.7);
-      cursor: pointer;
-      z-index: 1000;
-      transition: color 0.2s ease;
-    }
-    .close-icon:hover {
-      color: #fff;
-    }
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  z-index: 1000;
+  transition: color 0.2s ease;
+}
+.close-icon:hover {
+  color: #fff;
+}
   </style>
 </head>
 <body>
@@ -250,9 +223,6 @@
       </div>
 
       <div class="form-group full">
-        <div id="tagSelector" class="tag-selector"></div>
-      </div>
-      <div class="form-group full">
         <textarea id="description" placeholder="描述" maxlength="256"></textarea>
       </div>
       <div class="form-group full">
@@ -273,8 +243,6 @@
     const API = '/chelsea/api/palmer/g';
     let selectedStar = 0;
     let startDate = '', endDate = '';
-    let selectedTags = [];
-
 
     document.querySelectorAll('.star').forEach(star => {
       star.addEventListener('click', () => {
@@ -292,34 +260,6 @@
 
     function cancel() {
       window.parent.postMessage('close-goal-modal', '*');
-    }
-
-    function loadTags() {
-      fetch('/chelsea/api/palmer/metadata')
-        .then(res => res.json())
-        .then(data => {
-          const tagContainer = document.getElementById('tagSelector');
-          const tags = data.tags || [];
-          tags.forEach(tag => {
-            const el = document.createElement('div');
-            el.className = 'tag';
-            el.textContent = tag;
-            el.addEventListener('click', () => {
-              if (el.classList.contains('selected')) {
-                el.classList.remove('selected');
-                selectedTags = selectedTags.filter(t => t !== tag);
-              } else {
-                if (selectedTags.length >= 3) {
-                  alert('最多选择 3 个标签');
-                  return;
-                }
-                el.classList.add('selected');
-                selectedTags.push(tag);
-              }
-            });
-            tagContainer.appendChild(el);
-          });
-        });
     }
 
     function submit() {
@@ -345,8 +285,7 @@
         start_from: startDate,
         end_before: endDate,
         star: selectedStar,
-        blueprint: document.getElementById('blueprint').value.trim(),
-        tags: selectedTags
+        blueprint: document.getElementById('blueprint').value.trim()
       };
 
       fetch(API, {
@@ -440,7 +379,6 @@
 
     renderDateOptions('startSelector', startOptions, 'start');
     renderDateOptions('endSelector', endOptions, 'end');
-    loadTags();
   </script>
 </body>
 </html>
