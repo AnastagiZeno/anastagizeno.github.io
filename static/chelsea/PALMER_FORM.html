@@ -101,18 +101,19 @@
     }
 
     .tag {
-      padding: 0.4rem 1rem;
-      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.2rem 0.8rem;
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 999px;
-      font-size: 0.9rem;
-      background: rgba(255,255,255,0.1);
-      color: #fff;
+      font-size: 0.75rem;
+      background: rgba(255,255,255,0.08);
+      color: #ddd;
       cursor: pointer;
+      line-height: 1.2;
       transition: all 0.2s ease;
     }
-
     .tag:hover {
       background: rgba(255,255,255,0.2);
+      color: #fff;
     }
 
     .tag.selected {
@@ -250,6 +251,7 @@
       </div>
 
       <div class="form-group full">
+        <label style="margin-bottom: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">标签（最多3个）</label>
         <div id="tagSelector" class="tag-selector"></div>
       </div>
       <div class="form-group full">
