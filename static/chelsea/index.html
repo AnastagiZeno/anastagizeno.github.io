@@ -133,8 +133,10 @@ html, body {
       transform: scale(1.05);
     }
 
-    .captain-c { color: #FFD700; }
-    .coach-c { color: #4FC3F7; font-size: 2rem; }
+    .captain { color: #FFD700; }
+    .coach { color: #4FC3F7; font-size: 2rem; }
+    .legend { color:#D0D0D0; }
+
 
     @keyframes breathe {
       0% { transform: scale(1); }
@@ -188,7 +190,7 @@ html, body {
     <div id="mainGrid" class="grid"></div>
   </div>
 
-  <div class="toggle-btn" id="switchBtn" title="切换现役/功勋">
+  <div class="toggle-btn" id="switchBtn" title="Current/Legend">
     <img src="./chelsea.svg" alt="切换">
   </div>
 
@@ -204,9 +206,9 @@ html, body {
   function renderPlayers(list) {
     grid.innerHTML = list.map(player => {
       const badgeClass =
-        player.badge === 'C' ? 'captain-c' :
-        player.badge === 'H' ? 'coach-c' :
-        player.badge === 'L' ? 'captain-c' : '';
+        player.badge === 'C' ? 'captain' :
+        player.badge === 'H' ? 'coach' :
+        player.badge === 'L' ? 'legend' : '';
 
       return `
         <a class="card" href="/players/${player.id}">
@@ -228,8 +230,6 @@ html, body {
   btn.onclick = () => {
     btn.classList.add('rotate');
     grid.classList.add('fade-out');
-
-    // ⭐ 修复关键：记录当前高度，避免footer跳动
     const prevHeight = grid.offsetHeight;
     grid.style.minHeight = prevHeight + 'px';
 
@@ -239,15 +239,11 @@ html, body {
       renderPlayers(list);
       grid.classList.remove('fade-out');
       btn.classList.remove('rotate');
-
-      // 清除 min-height 让其自然回归
       setTimeout(() => {
         grid.style.minHeight = '';
       }, 500);
     }, 400);
   };
-
-  // ⭐ 初始加载接口（你已部署的接口）
   fetch('https://shahrazad.fun/chelsea/api/stamford-bridge/players')
     .then(res => res.json())
     .then(json => {
@@ -255,8 +251,8 @@ html, body {
       renderPlayers(data.current);
     })
     .catch(err => {
-      console.error('加载失败:', err);
-      grid.innerHTML = `<p>加载失败，请稍后再试。</p>`;
+      console.error('load error:', err);
+      grid.innerHTML = `<p>加载失败，请稍后再试</p>`;
     });
 </script>
 
