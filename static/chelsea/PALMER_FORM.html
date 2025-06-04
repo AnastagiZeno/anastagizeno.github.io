@@ -299,7 +299,7 @@
         .then(res => res.json())
         .then(data => {
           const tagContainer = document.getElementById('tagSelector');
-          const tags = data.tags || [];
+          const tags = data.data.tags || [];
           tags.forEach(tag => {
             const el = document.createElement('div');
             el.className = 'tag';
