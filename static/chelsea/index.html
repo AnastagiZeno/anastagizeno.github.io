@@ -52,7 +52,7 @@ html, body {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 6px;
+  gap: 8px;
   margin-top: 80px;
   opacity: 1;
   transition: opacity 0.4s ease;
@@ -65,22 +65,20 @@ html, body {
 }
 
     .card {
-      will-change: transform;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 220px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 1.2rem;
-      box-sizing: border-box;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-decoration: none;
-      color: #001489;
-      position: relative;
-      backdrop-filter: blur(6px);
-      animation: breathe 4s ease-in-out infinite;
-      transform-origin: center;
+  will-change: transform;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 220px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.2rem;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #001489;
+  position: relative;
+  backdrop-filter: blur(2px);
     }
 
     .card:nth-child(even) {
@@ -89,7 +87,7 @@ html, body {
     }
 
     .card:hover {
-      transform: scale(1.005);
+      transform: scale(1.02);
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
       z-index: 2;
     }
@@ -136,13 +134,6 @@ html, body {
     .captain { color: #FFD700; }
     .coach { color: #4FC3F7; font-size: 2rem; }
     .legend { color:#D0D0D0; }
-
-
-    @keyframes breathe {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-      100% { transform: scale(1); }
-    }
 
     .toggle-btn {
       position: fixed;
@@ -211,7 +202,7 @@ html, body {
         player.badge === 'L' ? 'legend' : '';
 
       return `
-        <a class="card" href="/players/${player.id}">
+        <a class="card" href="/chelsea/hazard.html">
           <div class="number">${player.number || ''}</div>
           <div class="left">
             <div class="firstname">${player.firstname}</div>
