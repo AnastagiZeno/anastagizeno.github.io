@@ -8,7 +8,6 @@
   <style>
   body {
     margin: 0;
-    padding: 2rem;
     font-family: 'Helvetica Neue', sans-serif;
     background: url("./stamfordbridge.webp") no-repeat center center fixed;
     background-size: cover;
@@ -21,6 +20,26 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     cursor: pointer;
   }
+
+      .home-icon {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      display: inline-block;
+      padding: 4px;
+      border-radius: 8px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .home-icon img {
+      width: 32px;
+      height: 32px;
+      opacity: 0.85;
+    }
+    .home-icon:hover img {
+      transform: scale(1.2);
+      opacity: 1;
+    }
 
   .controls {
     text-align: center;
@@ -180,6 +199,9 @@
 </head>
 
 <body>
+    <a href="https://shahrazad.fun" class="home-icon" title="返回主页">
+  <img src="./chelsea.svg" alt="Home" />
+  </a>
   <h1 id="date-header">
     <span id="date-clicker" onclick="triggerDatePicker()">点击选择日期</span>
   </h1>
