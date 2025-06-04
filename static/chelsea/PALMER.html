@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>José Mourinho</title>
+  <title>COLE PALMER</title>
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
@@ -385,11 +385,11 @@
   <footer> Copyright © Hazard <span id="year"></span> By Bingxing.Kang </footer>
   <div id="goal-modal">
     <div class="modal-wrapper">
-      <iframe id="goal-frame" src="./mourinho-create.html" style="width:100%;height:740px;border:none;background:transparent;"></iframe>
+      <iframe id="goal-frame" src="./PALMER_FORM.html" style="width:100%;height:740px;border:none;background:transparent;"></iframe>
     </div>
   </div>
   <script>
-  const API_BASE = "https://shahrazad.fun/chelsea/api/mourinho";
+  const API_BASE = "https://shahrazad.fun/chelsea/api/palmer";
   document.getElementById("year").textContent = new Date().getFullYear();
 
   function formatDate(str) {
@@ -476,7 +476,7 @@
     card.addEventListener("click", () => {
       const modal = document.getElementById('goal-modal');
       const iframe = document.getElementById('goal-frame');
-      const targetSrc = `./mourinho-timeline.html?gid=${item.id}`;
+      const targetSrc = `./PALMER_TIMELINE.html?gid=${item.id}`;
 
       iframe.src = ''; 
       modal.style.display = 'flex';
@@ -503,7 +503,7 @@
   function openGoalModal() {
     const modal = document.getElementById('goal-modal');
     const iframe = document.getElementById('goal-frame');
-    iframe.src = './mourinho-create.html';  // 每次都重新加载，避免 stale 内容
+    iframe.src = './PALMER_FORM.html';  // 每次都重新加载，避免 stale 内容
     modal.style.display = 'flex';
     requestAnimationFrame(() => {
       modal.classList.add('show');
