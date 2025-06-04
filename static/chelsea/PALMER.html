@@ -237,6 +237,14 @@
     white-space: nowrap;
     font-size: 0.85rem;
   }
+  .label.time {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.3px;
+  }
 
   .info-line .type {
     color: #ffcc66;
@@ -342,6 +350,7 @@
     text-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
   }
 
+  #tag-popup button,
   #type-popup button,
   #stage-popup button {
     background: rgba(255, 255, 255, 0.1);
@@ -354,6 +363,7 @@
     transition: background 0.2s ease;
   }
 
+  #tag-popup button:hover,
   #type-popup button:hover,
   #stage-popup button:hover {
     background: rgba(0, 255, 136, 0.3);
@@ -391,9 +401,10 @@
       <a href="#"><i class="fas fa-compass"></i></a>
       <a href="#"><i class="fas fa-magic"></i></a>
       <a href="#"><i class="fas fa-hourglass-half"></i></a>
+      <a href="#"><i class="fas fa-shield-alt"></i></a>
+      <a href="#"><i class="fas fa-dna"></i></a>
       <a href="#"><i class="fas fa-cube"></i></a>
       <a href="#"><i class="fas fa-cogs"></i></a>
-      <a href="#"><i class="fas fa-brain"></i></a>
     </div>
   </header>
   <main>
@@ -422,10 +433,6 @@
     });
   });
 
-  function formatDate(str) {
-    return str.slice(0, 10).replace(/-/g, "/");
-  }
-
   function getStatusIconHtml(status) {
     if(!status) return "";
     const name = status.toLowerCase().replace(/ /g, "_");
@@ -452,6 +459,33 @@
     }, (_, i) => `<div class="dot ${i < filled ? 'done' : (i === filled ? 'current' : '')}"></div>`).join('');
   }
 
+  function formatDateRange(startStr, endStr) {
+    const start = new Date(startStr);
+    const end = new Date(endStr);
+
+    const startY = start.getFullYear();
+    const endY = end.getFullYear();
+
+    const formatShort = (d) => {
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      return `${mm}/${dd}`;
+    };
+
+    const formatFull = (d) => {
+      const yy = String(d.getFullYear()).slice(2);
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      return `${yy}/${mm}/${dd}`;
+    };
+
+    if (startY === endY) {
+      return `${formatShort(start)} - ${formatShort(end)}`;
+    } else {
+      return `${formatFull(start)} - ${formatFull(end)}`;
+    }
+  }
+
   function renderGoalCard(item) {
     const card = document.createElement("div");
     card.className = `goal-card ${item.gtype}-card`;
@@ -476,7 +510,7 @@
           <div class="meta-desc-line">
             <div class="info-line">
               <span class="label type">${item.gtype.toUpperCase()}</span>
-              <span class="label time">${formatDate(item.start_from)} → ${formatDate(item.end_before)}</span>
+              <span class="label time">${formatDateRange(item.start_from, item.end_before)}</span>
               <span class="label status">${getStatusIconHtml(item.gstatus)} ${item.gstatuscn}</span>
             </div>
             <div class="desc">${item.description}</div>
@@ -493,7 +527,7 @@
           </div>
           <div class="info-line">
             <span class="label type">${item.gtype.toUpperCase()}</span>
-            <span class="label time">${formatDate(item.start_from)} → ${formatDate(item.end_before)}</span>
+            <span class="label time">${formatDateRange(item.start_from, item.end_before)}</span>
             <span class="label status">${getStatusIconHtml(item.gstatus)} ${item.gstatuscn}</span>
           </div>
           <div class="desc two-line">${item.description}</div>
@@ -653,7 +687,7 @@
     });
   }
   loadAllGoals();
-  document.querySelector('.fa-brain')?.addEventListener('click', (e) => {
+  document.querySelector('.fa-cogs')?.addEventListener('click', (e) => {
     e.preventDefault();
     loadAllGoals();
   });
