@@ -9,7 +9,7 @@
     padding: 0;
     height: 100%;
     background: #000;
-    background-image: url("./red-dragonfly-compressed.png");
+    background-image: url("./bg-compressed.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -295,7 +295,7 @@
       .then(res => res.json())
       .then(res => {
         if (res.ok && res.id) {
-          window.parent.postMessage('close-goal-modal', '*');
+          window.parent.postMessage('close-and-refresh', '*');
         } else {
           alert('创建失败：' + (res.error || res.msg || '未知错误'));
         }

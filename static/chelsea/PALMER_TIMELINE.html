@@ -12,7 +12,7 @@
     height: 100%;
     background: #000;
     /* fallback 避免穿透 */
-    background-image: url("./red-dragonfly-compressed.png");
+    background-image: url("./bg-compressed.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -143,12 +143,14 @@
     font-size: 0.9rem;
     color: #ccc;
     margin-top: 0.8rem;
-    max-width: 420px; /* 推荐固定值，保持一致换行行为 */
+    max-width: 420px;
+    /* 推荐固定值，保持一致换行行为 */
     line-height: 1.6;
     word-break: break-word;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;  /* 控制最多3行 */
+    -webkit-line-clamp: 3;
+    /* 控制最多3行 */
     -webkit-box-orient: vertical;
     opacity: 0.7;
   }
@@ -363,8 +365,7 @@
               description: desc
             })
           }).then(res => res.json()).then(data => {
-            if(data.ok) location.reload();
-            else alert(data.error || data.msg || "当前尚不满足流转条件");
+            window.parent.postMessage('close-and-refresh', '*');
           });
         });
       });
@@ -466,16 +467,25 @@
       image.setAttribute("clip-path", `circle(${iconSize / 2}px at ${iconSize / 2}px ${iconSize / 2}px)`);
       image.setAttribute("style", `cursor:pointer; filter: ${completed ? 'none' : 'grayscale(100%) brightness(60%)'};`);
       image.addEventListener('mouseenter', evt => {
-        const icon = `<img src="${iconHref}" class="icon-img">`;
-        const title = `<strong>${gstatusMap[state] || state}</strong><br>`;
-        const details = completed ? `<small>
-              ${a?.created_at || ''}<br>
-              ${a?.description || ''}<br>
-              ${a?.proof ? `证明：${a.proof}<br>` : ''}
-              ${a?.score !== undefined ? `评分：${a.score}<br>` : ''}
-              ${a?.atype ? `类型：${a.atype}` : ''}
-           </small>` : `<small>尚未完成</small>`;
-        showTooltip(evt, icon + title + details);
+        const dateStr = a?.date?new Date(a.date).toLocaleString('zh-CN', {
+          year: '2-digit',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit'
+        }) : '';
+        const titleBlock = `
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+            <img src="${iconHref}" class="icon-img">
+            <span style="font-size: 1.05rem; color: #ccc; font-weight: 600;">${gstatusMap[state] || state}</span>
+          </div>
+        `;
+        const details = completed ? `
+          <div class="field"><span class="label">📅 </span><span class="value">${dateStr}</span></div>
+          <div class="field"><span class="label">🔖 </span><span class="value">${a?.description || '(无)'}</span></div>
+          ${a?.proof ? `<div class="field"><span class="label">⭐ </span><span class="value">${a.proof}</span></div>` : ''}
+        ` : `<div class="field"><span class="label">尚未完成</span></div>`;
+        showTooltip(evt, titleBlock + details);
       });
       image.addEventListener('mouseleave', hideTooltip);
       svg.appendChild(image);
@@ -515,14 +525,17 @@
         el.setAttribute("stroke", "#fff");
         el.setAttribute("stroke-width", "0.8");
         el.setAttribute("class", "event-dot");
-
         const tooltipText = group.group.map(e => {
-          let txt = `<strong>${e.created_at || ''}</strong><br>${e.description || ''}`;
-          if(e.type === 'a') {
-            if(e.proof) txt += `<br>证明：${e.proof}`;
-            if(e.score !== undefined) txt += `<br>评分：${e.score}`;
-            if(e.atype) txt += `<br>类型：${e.atype}`;
-          }
+          const dt = new Date(e.date);
+          const dateStr = isNaN(dt) ? '' : dt.toLocaleString('zh-CN', {
+            year: '2-digit',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+          let txt = `<div class="field"><span class="label">📅 </span><span class="value">${dateStr}</span></div>`;
+          txt += `<div class="field"><span class="label">🔖 </span><span class="value">${e.description || '(无描述)'}</span></div>`;
           return txt;
         }).join('<hr>');
         el.addEventListener('mouseenter', ev => showTooltip(ev, tooltipText));
@@ -550,15 +563,13 @@
     const remainDays = remainMs > 24 * 3600 * 1000 ? Math.ceil(remainMs / (1000 * 60 * 60 * 24)) + ' 天' : remainMs > 0 ? Math.floor(remainMs / (1000 * 60 * 60)) + ' 小时' : '已结束';
     const titleEl = document.getElementById('goal-title');
     titleEl.textContent = g.name;
-
     const descEl = document.getElementById('goal-description');
-    if (gtype !== 'epic') {
+    if(gtype !== 'epic') {
       descEl.textContent = g.description || '这是什么？';
       descEl.style.display = 'block';
     } else {
       descEl.style.display = 'none';
     }
-
     titleEl.addEventListener('mouseenter', evt => {
       const tooltipText = `
   <strong>🎯 ${g.name}</strong>
@@ -567,7 +578,7 @@
   <div class="field"><span class="label">⏳ 截止时间：</span><span class="value">${g.end_before?.slice(0, 10)}</span></div>
   <div class="field"><span class="label">📐 计划时长：</span><span class="value">${daysTotal} 天</span></div>
   <div class="field"><span class="label">📍 当前状态：</span><span class="value">${gstatusMap[gstatus] || gstatus}</span></div>
-  <div class="field"><span class="label">🔥 完成努力：</span><span class="value">${effortCount} 次</span></div>
+  <div class="field"><span class="label">🔥 特殊记录：</span><span class="value">${effortCount} 次</span></div>
   <div class="field"><span class="label">🔄 剩余流转：</span><span class="value">${remain} 次</span></div>
   <div class="field"><span class="label">🧭 剩余时间：</span><span class="value">${remainDays}</span></div>
 `;

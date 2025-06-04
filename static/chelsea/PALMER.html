@@ -11,7 +11,7 @@
     margin: 0;
     padding: 1rem;
     font-family: 'Helvetica Neue', sans-serif;
-    background: url("./red-dragonfly.png") no-repeat center center fixed;
+    background: url("./bg.png") no-repeat center center fixed;
     background-size: cover;
     color: #fff;
   }
@@ -34,11 +34,13 @@
     border-radius: 8px;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
+
   .home-icon img {
     width: 32px;
     height: 32px;
     opacity: 0.85;
   }
+
   .home-icon:hover img {
     transform: scale(1.2);
     opacity: 1;
@@ -356,8 +358,6 @@
   #stage-popup button:hover {
     background: rgba(0, 255, 136, 0.3);
   }
-
-
   </style>
 </head>
 
@@ -379,8 +379,8 @@
     </div>
   </div>
   <div id="tag-popup" style="display: none; position: fixed; top: 50px; right: 180px; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 12px; z-index: 99999; backdrop-filter: blur(8px);">
-  <div id="tag-list" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
-</div>
+    <div id="tag-list" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+  </div>
   <a href="https://shahrazad.fun/chelsea" class="home-icon" title="回到主页">
     <img src="./chelsea.svg" alt="Home" />
   </a>
@@ -411,11 +411,8 @@
   <script>
   const API_BASE = "https://shahrazad.fun/chelsea/api/palmer";
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  fetch(`${API_BASE}/metadata`)
-  .then(res => res.json())
-  .then(res => {
-    if (!res.ok || !res.data || !Array.isArray(res.data.tags)) return;
+  fetch(`${API_BASE}/metadata`).then(res => res.json()).then(res => {
+    if(!res.ok || !res.data || !Array.isArray(res.data.tags)) return;
     const tagList = document.getElementById('tag-list');
     res.data.tags.forEach(tag => {
       const btn = document.createElement('button');
@@ -506,7 +503,7 @@
           </div>
         `;
     }
-    if (item.progress >= 100) {
+    if(item.progress >= 100) {
       const badge = document.createElement("div");
       badge.className = "complete-badge";
       badge.innerHTML = '<i class="fas fa-check"></i>';
@@ -517,15 +514,13 @@
       const modal = document.getElementById('goal-modal');
       const iframe = document.getElementById('goal-frame');
       const targetSrc = `./PALMER_TIMELINE.html?gid=${item.id}`;
-
-      iframe.src = ''; 
+      iframe.src = '';
       modal.style.display = 'flex';
       setTimeout(() => {
         iframe.src = targetSrc;
         modal.classList.add('show');
       }, 50);
     });
-
     return card;
   }
 
@@ -543,26 +538,28 @@
   function openGoalModal() {
     const modal = document.getElementById('goal-modal');
     const iframe = document.getElementById('goal-frame');
-    iframe.src = './PALMER_FORM.html';  // 每次都重新加载，避免 stale 内容
+    iframe.src = './PALMER_FORM.html'; // 每次都重新加载，避免 stale 内容
     modal.style.display = 'flex';
     requestAnimationFrame(() => {
       modal.classList.add('show');
     });
   }
-  
+
   function closeGoalModal() {
     const modal = document.getElementById('goal-modal');
     const iframe = document.getElementById('goal-frame');
     modal.classList.remove('show');
     setTimeout(() => {
       modal.style.display = 'none';
-      iframe.src = '';  // 💥 关闭时也清空 iframe
+      iframe.src = ''; // 💥 关闭时也清空 iframe
     }, 300);
   }
-
   window.addEventListener('message', (e) => {
     if (e.data === 'close-goal-modal') {
       closeGoalModal();
+    } else if (e.data === 'close-and-refresh') {
+      closeGoalModal();
+      setTimeout(() => loadAllGoals(), 300);
     }
   });
 
@@ -642,15 +639,12 @@
     });
   }
 
-function filterByTag(tag) {
-  const popup = document.getElementById('tag-popup');
-  popup.style.display = 'none';
-  const todayStr = new Date().toISOString().slice(0, 10); // yyyy-mm-dd
-
-  fetch(`${API_BASE}/g/search?tag=${encodeURIComponent(tag)}&date=${todayStr}`)
-    .then(res => res.json())
-    .then(res => {
-      if (!res.ok || !res.data) return;
+  function filterByTag(tag) {
+    const popup = document.getElementById('tag-popup');
+    popup.style.display = 'none';
+    const todayStr = new Date().toISOString().slice(0, 10); // yyyy-mm-dd
+    fetch(`${API_BASE}/g/search?tag=${encodeURIComponent(tag)}&date=${todayStr}`).then(res => res.json()).then(res => {
+      if(!res.ok || !res.data) return;
       document.querySelectorAll('.goal-group').forEach(g => g.innerHTML = '');
       res.data.forEach(item => {
         const group = ensureGroupExists(item.gtype);
@@ -658,7 +652,6 @@ function filterByTag(tag) {
       });
     });
   }
-
   loadAllGoals();
   document.querySelector('.fa-brain')?.addEventListener('click', (e) => {
     e.preventDefault();
