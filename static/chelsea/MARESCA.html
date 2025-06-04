@@ -41,10 +41,14 @@
       opacity: 1;
     }
 
-  .controls {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 1.8rem;
+  margin-bottom: 3.5rem;
+}
 
   .controls button {
     margin: 0 0.5rem;
@@ -199,21 +203,23 @@
 </head>
 
 <body>
-    <a href="https://shahrazad.fun" class="home-icon" title="返回主页">
+    <a href="https://shahrazad.fun/chelsea" class="home-icon" title="返回主页">
   <img src="./chelsea.svg" alt="Home" />
   </a>
-  <h1 id="date-header">
-    <span id="date-clicker" onclick="triggerDatePicker()">点击选择日期</span>
-  </h1>
-  <input type="date" id="day-selector" style="position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
-              opacity: 0; visibility: hidden; pointer-events: auto; width: 0; height: 0;" onchange="onDateChange()" />
   <div class="controls">
-    <button id="today-btn" onclick="switchToToday()">今日进度</button>
-    <a href="https://shahrazad.fun" class="home-link" title="Go Blue">
-      <img src="./chelsea.svg" alt="Chelsea" class="chelsea-icon" />
-    </a>
-    <button id="tomorrow-btn" onclick="switchToTomorrow()">明日计划</button>
+  <button id="today-btn" onclick="switchToToday()">今日进度</button>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <h1 id="date-header" style="margin: 0;">
+      <span id="date-clicker" onclick="triggerDatePicker()">点击选择日期</span>
+    </h1>
+    <input type="date" id="day-selector"
+      style="margin-top: 0.5rem; position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
+      opacity: 0; visibility: hidden; pointer-events: auto; width: 0; height: 0;"
+      onchange="onDateChange()" />
   </div>
+  <button id="tomorrow-btn" onclick="switchToTomorrow()">明日计划</button>
+</div>
+
   <div class="grid" id="grid"></div>
   <div class="no-data" id="no-data" style="display:none"> 该日期暂无记录。 </div>
   <script>
@@ -646,7 +652,7 @@
   }
   document.addEventListener('click', handleClickOutside);
   </script>
-  <footer style="text-align:center; margin-top:4rem; font-size:0.85rem; color:rgba(255,255,255,0.4);"> Copyright © maresca <span id="footer-year"></span> By Bingxing.Kang </footer>
+  <footer style="text-align:center; margin-top:3rem; font-size:0.85rem; color:rgba(255,255,255,0.4);"> Copyright © maresca <span id="footer-year"></span> By Bingxing.Kang </footer>
 </body>
 
 </html>
