@@ -87,6 +87,25 @@
     cursor: pointer;
   }
 
+  .goal-card .complete-badge {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: rgba(0, 255, 136, 0.15);
+    border: 2px solid rgba(0, 255, 136, 0.4);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #00ff88;
+    box-shadow: 0 0 6px rgba(0, 255, 136, 0.2);
+    z-index: 2;
+    pointer-events: none;
+  }
+
   .goal-card:hover {
     transform: translateY(-2px) scale(1.01);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -337,6 +356,8 @@
   #stage-popup button:hover {
     background: rgba(0, 255, 136, 0.3);
   }
+
+
   </style>
 </head>
 
@@ -484,6 +505,13 @@
             <div class="time-line" style="left: ${item.time_passed}%"></div>
           </div>
         `;
+    }
+    if (item.progress >= 100) {
+      const badge = document.createElement("div");
+      badge.className = "complete-badge";
+      badge.innerHTML = '<i class="fas fa-check"></i>';
+      card.style.position = 'relative';
+      card.appendChild(badge);
     }
     card.addEventListener("click", () => {
       const modal = document.getElementById('goal-modal');
