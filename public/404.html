@@ -264,11 +264,13 @@ code.has-jax {
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
-        <div class="site-heading">
+          <div class="site-heading">
         
-          
-          <h1>WE LOST</h1>
-          
+          <h1>
+            
+              404 Page not found
+            
+          </h1>
           
           
           <span class="subheading"></span>
@@ -281,7 +283,19 @@ code.has-jax {
 
 
   
-<script>document.body.classList.add('page-fullscreen');</script>
+<script>
+    document.body.classList.add('page-fullscreen');
+
+    window.addEventListener('DOMContentLoaded', function () {
+        const h1 = document.querySelector('.site-heading h1');
+        if (h1) {
+          h1.textContent = 'LOST';
+          h1.style.fontSize = '32rem';
+          h1.style.textAlign = 'center';
+          h1.style.display = 'block';
+        }
+      });
+</script>
 
 
   

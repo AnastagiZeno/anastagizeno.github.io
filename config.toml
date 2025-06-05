@@ -89,6 +89,7 @@ notFoundPageTitle = "WE LOST"
 img_home = "default/home.jpg"
 img_404 = "default/404.webp"
 useFaviconGenerator = true
+quickLink = "https://chatgpt.com/"
 
 [params.sidebar]
 enable = true

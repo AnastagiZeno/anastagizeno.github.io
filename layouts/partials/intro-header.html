@@ -43,15 +43,21 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         {{ if eq (.Param "short") true }}
-        <div class="site-heading" id="tag-heading">
+          <div class="site-heading" id="tag-heading">
         {{ else }}
-        <div class="site-heading">
+          <div class="site-heading">
         {{ end }}
-          {{ if eq .Title "404 Page not found" }}
-          <h1>{{ .Site.Params.notFoundPageTitle }}</h1>
-          {{ else }}
-          <h1>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</h1>
-          {{ end }}
+          <h1>
+            {{ with .Title }}
+              {{ . }}
+            {{ else }}
+              {{ with .Site.Params.quickLink }}
+                <a href="{{ . }}" style="text-decoration: none; color: inherit;">{{ $.Site.Title }}</a>
+              {{ else }}
+                {{ $.Site.Title }}
+              {{ end }}
+            {{ end }}
+          </h1>
           {{ $description := .Description }}
           {{ if .IsHome }}
           {{ $description = .Site.Params.description }}

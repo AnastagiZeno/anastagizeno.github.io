@@ -1,3 +1,15 @@
 {{ define "main" }}
-<script>document.body.classList.add('page-fullscreen');</script>
+<script>
+    document.body.classList.add('page-fullscreen');
+
+    window.addEventListener('DOMContentLoaded', function () {
+        const h1 = document.querySelector('.site-heading h1');
+        if (h1) {
+          h1.textContent = 'LOST';
+          h1.style.fontSize = '32rem';
+          h1.style.textAlign = 'center';
+          h1.style.display = 'block';
+        }
+      });
+</script>
 {{ end }}
