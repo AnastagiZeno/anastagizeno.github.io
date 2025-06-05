@@ -21,34 +21,36 @@
     cursor: pointer;
   }
 
-      .home-icon {
-      position: fixed;
-      top: 12px;
-      left: 12px;
-      z-index: 1000;
-      display: inline-block;
-      padding: 4px;
-      border-radius: 8px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .home-icon img {
-      width: 32px;
-      height: 32px;
-      opacity: 0.85;
-    }
-    .home-icon:hover img {
-      transform: scale(1.2);
-      opacity: 1;
-    }
+  .home-icon {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1000;
+    display: inline-block;
+    padding: 4px;
+    border-radius: 8px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  margin-top: 1.8rem;
-  margin-bottom: 3.5rem;
-}
+  .home-icon img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.85;
+  }
+
+  .home-icon:hover img {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 1.8rem;
+    margin-bottom: 3.5rem;
+  }
 
   .controls button {
     margin: 0 0.5rem;
@@ -203,23 +205,20 @@
 </head>
 
 <body>
-    <a href="https://shahrazad.fun/chelsea" class="home-icon" title="返回主页">
-  <img src="./chelsea.svg" alt="Home" />
+  <a href="https://shahrazad.fun/chelsea" class="home-icon" title="返回主页">
+    <img src="./chelsea.svg" alt="Home" />
   </a>
   <div class="controls">
-  <button id="today-btn" onclick="switchToToday()">今日进度</button>
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <h1 id="date-header" style="margin: 0;">
-      <span id="date-clicker" onclick="triggerDatePicker()">点击选择日期</span>
-    </h1>
-    <input type="date" id="day-selector"
-      style="margin-top: 0.5rem; position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
-      opacity: 0; visibility: hidden; pointer-events: auto; width: 0; height: 0;"
-      onchange="onDateChange()" />
+    <button id="today-btn" onclick="switchToToday()">今天要干啥</button>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <h1 id="date-header" style="margin: 0;">
+        <span id="date-clicker" onclick="triggerDatePicker()">点击选择日期</span>
+      </h1>
+      <input type="date" id="day-selector" style="margin-top: 0.5rem; position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
+      opacity: 0; visibility: hidden; pointer-events: auto; width: 0; height: 0;" onchange="onDateChange()" />
+    </div>
+    <button id="tomorrow-btn" onclick="switchToTomorrow()">明天要干啥</button>
   </div>
-  <button id="tomorrow-btn" onclick="switchToTomorrow()">明日计划</button>
-</div>
-
   <div class="grid" id="grid"></div>
   <div class="no-data" id="no-data" style="display:none"> 该日期暂无记录。 </div>
   <script>
