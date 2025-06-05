@@ -280,37 +280,76 @@
     const cancelBtn = document.getElementById('action-modal-cancel');
     const counter = document.getElementById('desc-counter');
     const extraLabel = document.getElementById('extra-label');
+
     titleEl.textContent = title;
-    descInput.value = '';
-    extraInput.value = '';
-    counter.textContent = '0/24';
-    confirmBtn.disabled = true;
-    modal.style.display = 'flex';
-    descInput.addEventListener('input', () => {
-      const len = descInput.value.trim().length;
-      counter.textContent = `${len}/24`;
-      confirmBtn.disabled = len < 2;
-      confirmBtn.style.opacity = confirmBtn.disabled ? 0.5 : 1;
-      confirmBtn.style.cursor = confirmBtn.disabled ? 'not-allowed' : 'pointer';
-    });
-    if(actionType === 'E') {
-      extraLabel.textContent = '详细说明（可选）';
-    } else if(actionType === 'A') {
-      extraLabel.textContent = '证明材料（可选）';
+
+    if (actionType === 'N') {
+      // 只显示 extraInput，当作 description 输入使用
+      descInput.style.display = 'none';
+      counter.style.display = 'none';
+      extraInput.style.display = 'block';
+      extraLabel.textContent = '说明';
+      extraLabel.style.display = 'block';
+      extraInput.value = '';
+      extraInput.maxLength = 256;
+      extraInput.rows = 5;
+      extraInput.focus();
+      confirmBtn.disabled = true;
+      confirmBtn.style.opacity = 0.5;
+      confirmBtn.style.cursor = 'not-allowed';
+
+      extraInput.addEventListener('input', () => {
+        const len = extraInput.value.trim().length;
+        confirmBtn.disabled = len < 2;
+        confirmBtn.style.opacity = confirmBtn.disabled ? 0.5 : 1;
+        confirmBtn.style.cursor = confirmBtn.disabled ? 'not-allowed' : 'pointer';
+      });
     } else {
-      extraLabel.textContent = '补充说明（可选）';
+      // 正常模式：desc + extra
+      descInput.style.display = 'block';
+      counter.style.display = 'inline';
+      extraInput.style.display = 'block';
+      extraLabel.style.display = 'block';
+      descInput.value = '';
+      extraInput.value = '';
+      counter.textContent = '0/24';
+      descInput.focus();
+      confirmBtn.disabled = true;
+      confirmBtn.style.opacity = 0.5;
+      confirmBtn.style.cursor = 'not-allowed';
+
+      descInput.addEventListener('input', () => {
+        const len = descInput.value.trim().length;
+        counter.textContent = `${len}/24`;
+        confirmBtn.disabled = len < 2;
+        confirmBtn.style.opacity = confirmBtn.disabled ? 0.5 : 1;
+        confirmBtn.style.cursor = confirmBtn.disabled ? 'not-allowed' : 'pointer';
+      });
+
+      if (actionType === 'E') {
+        extraLabel.textContent = '详细说明（可选）';
+      } else if (actionType === 'A') {
+        extraLabel.textContent = '证明材料（可选）';
+      } else {
+        extraLabel.textContent = '补充说明（可选）';
+      }
     }
+
+    modal.style.display = 'flex';
+
     const closeModal = () => {
       modal.style.display = 'none';
     };
     cancelBtn.onclick = closeModal;
+
     confirmBtn.onclick = () => {
-      const desc = descInput.value.trim();
-      const extra = extraInput.value.trim();
+      const desc = actionType === 'N' ? extraInput.value.trim() : descInput.value.trim();
+      const extra = actionType === 'N' ? '' : extraInput.value.trim();
       closeModal();
       callback(desc, extra);
     };
   }
+
 
   function handleButtonAction(actionType) {
     if(!gid) return alert('缺少 gid 参数');
@@ -350,7 +389,7 @@
         });
       });
     } else if(actionType === 'N') {
-      openModal('说明你准备好进入下个阶段了吗？', 'N', (desc, _) => {
+      openModal('准备好进入下个阶段了吗？', 'N', (desc, _) => {
         fetch(timelineURL).then(res => res.json()).then(data => {
           if(!data.ok) return alert("无法获取当前状态");
           const g = data.data.goal;
