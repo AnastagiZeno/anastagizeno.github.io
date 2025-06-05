@@ -72,8 +72,24 @@
   }
 
   .goal-group.minor {
-    flex-wrap: nowrap;
+    max-height: 480px; /*2排无限滚动*/
     overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .goal-group.operation {
+    max-height: 440px; /*2排6个*/
+    overflow: hidden;
+  }
+
+  .goal-group.crusade {
+    max-height: 400px; /*2排4个*/
+    overflow: hidden;
+  }
+
+  .goal-group.epic {
+    max-height: 480px; /*3排3个*/
+    overflow: hidden;
   }
 
   .goal-card {
@@ -207,7 +223,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.6rem;
+    margin-bottom: 1rem;
   }
 
   .meta-desc-line {
@@ -215,12 +231,11 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 1rem;
   }
 
   .meta-desc-line .info-line {
     display: flex;
-    gap: 0.5rem;
     flex-shrink: 0;
   }
 
@@ -238,17 +253,35 @@
   .info-line .label {
     background: rgba(255, 255, 255, 0.1);
     padding: 0.2rem 0.5rem;
+    margin-left: -0.2rem;
+    margin-right: 0.7rem; /*左右间隔0.7 - 0.2 = 0.5rem*/
     border-radius: 6px;
     white-space: nowrap;
     font-size: 0.85rem;
   }
+
   .label.time {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 239, 213, 0.65);
     font-size: 0.85rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     letter-spacing: 0.3px;
+  }
+
+  .status-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+    object-fit: cover;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 5px;
+    clip-path: none;
+    background: transparent;
+    box-shadow: none;
+    transform: translateY(-1px);
   }
 
   .info-line .type {
@@ -257,7 +290,7 @@
   }
 
   .info-line .status {
-    color: #bfa300;
+    color: rgb(255, 128, 0, 0.9);
   }
 
   .desc.two-line {
@@ -268,8 +301,8 @@
     font-size: 0.88rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 0.6rem;
-    margin-top: 0.6rem;
+    margin-bottom: 0.8rem;
+    margin-top: 1rem;
   }
 
   .stars {
@@ -441,7 +474,7 @@
     if(!status) return "";
     const name = status.toLowerCase().replace(/ /g, "_");
     const url = `../image/icons/${name}.jpg`;
-    return `<img src="${url}" alt="${status}" title="${status}" width="18" style="vertical-align:middle;" />`;
+    return `<img class="status-icon" src="${url}" alt="${status}" title="${status}"/>`;
   }
 
   function calcDeadline(item) {
@@ -515,7 +548,8 @@
             <div class="info-line">
               <span class="label type">${item.gtype.toUpperCase()}</span>
               <span class="label time">${formatDateRange(item.start_from, item.end_before)}</span>
-              <span class="label status">${getStatusIconHtml(item.gstatus)} ${item.gstatuscn}</span>
+              ${getStatusIconHtml(item.gstatus)} 
+              <span class="label status">${item.gstatuscn}</span>
             </div>
             <div class="desc">${item.description}</div>
           </div>
@@ -532,7 +566,8 @@
           <div class="info-line">
             <span class="label type">${item.gtype.toUpperCase()}</span>
             <span class="label time">${formatDateRange(item.start_from, item.end_before)}</span>
-            <span class="label status">${getStatusIconHtml(item.gstatus)} ${item.gstatuscn}</span>
+            ${getStatusIconHtml(item.gstatus)} 
+            <span class="label status">${item.gstatuscn}</span>
           </div>
           <div class="desc two-line">${item.description}</div>
           <div class="progress-bar">
