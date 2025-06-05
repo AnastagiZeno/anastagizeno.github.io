@@ -458,17 +458,17 @@
 
         const diffMs = end - start;
         const hours = Math.round(diffMs / (1000 * 60 * 60));
-        const hourText = ` ${Math.max(1, hours)}小时`;
+        const hourText = ` 共${Math.max(1, hours)}小时`;
 
         str = `${start.getMonth() + 1}月${start.getDate()}号 ${sh}:${sm} - ${eh}:${em} ${hourText}`;
       } else {
         const dayCount = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)));
         if (sameYear && sameMonth) {
-          str = `${start.getDate()}号/周${weekdays[start.getDay()]} - ${end.getDate()}号/周${weekdays[end.getDay()]}  ${dayCount}天`;
+          str = `${start.getDate()}号/周${weekdays[start.getDay()]} - ${end.getDate()}号/周${weekdays[end.getDay()]}  共${dayCount}天`;
         } else if (sameYear) {
-          str = `${start.getMonth() + 1}月${start.getDate()}号/周${weekdays[start.getDay()]} - ${end.getMonth() + 1}月${end.getDate()}号/周${weekdays[end.getDay()]}  ${dayCount}天`;
+          str = `${start.getMonth() + 1}月${start.getDate()}号/周${weekdays[start.getDay()]} - ${end.getMonth() + 1}月${end.getDate()}号/周${weekdays[end.getDay()]}  共${dayCount}天`;
         } else {
-          str = `${pad(start.getFullYear() % 100)}/${pad(start.getMonth() + 1)}/${pad(start.getDate())} - ${pad(end.getFullYear() % 100)}/${pad(end.getMonth() + 1)}/${pad(end.getDate())}  ${dayCount}天`;
+          str = `${pad(start.getFullYear() % 100)}/${pad(start.getMonth() + 1)}/${pad(start.getDate())} - ${pad(end.getFullYear() % 100)}/${pad(end.getMonth() + 1)}/${pad(end.getDate())}  共${dayCount}天`;
         }
       }
 
