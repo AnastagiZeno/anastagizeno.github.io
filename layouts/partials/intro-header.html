@@ -47,17 +47,7 @@
         {{ else }}
           <div class="site-heading">
         {{ end }}
-          <h1>
-            {{ with .Title }}
-              {{ . }}
-            {{ else }}
-              {{ with .Site.Params.quickLink }}
-                <a href="{{ . }}" style="text-decoration: none; color: inherit;">{{ $.Site.Title }}</a>
-              {{ else }}
-                {{ $.Site.Title }}
-              {{ end }}
-            {{ end }}
-          </h1>
+          <h1>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</h1>
           {{ $description := .Description }}
           {{ if .IsHome }}
           {{ $description = .Site.Params.description }}
