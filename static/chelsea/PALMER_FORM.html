@@ -117,7 +117,7 @@
     }
 
     .tag.selected {
-      background: #00ccff;
+      background: rgba(0,255,136,0.3);
       color: #000;
       font-weight: bold;
     }
@@ -144,7 +144,7 @@
     }
 
     .date-option.selected {
-      background: #00ff88;
+      background: rgba(0,255,136,0.3);;
       color: #000;
       font-weight: bold;
     }
@@ -251,14 +251,14 @@
       </div>
 
       <div class="form-group full">
-        <label style="margin-bottom: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">标签（最多3个）</label>
+        <label style="margin-bottom: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">标签（最多2个）</label>
         <div id="tagSelector" class="tag-selector"></div>
       </div>
       <div class="form-group full">
         <textarea id="description" placeholder="描述" maxlength="256"></textarea>
       </div>
       <div class="form-group full">
-        <input type="text" id="blueprint" placeholder="Blueprint（可选）" maxlength="256" />
+        <input type="text" id="blueprint" placeholder="蓝图（可选）" maxlength="256" />
       </div>
     </div>
 
@@ -311,8 +311,8 @@
                 el.classList.remove('selected');
                 selectedTags = selectedTags.filter(t => t !== tag);
               } else {
-                if (selectedTags.length >= 3) {
-                  alert('最多选择 3 个标签');
+                if (selectedTags.length > 2) {
+                  alert('最多选择 2 个标签');
                   return;
                 }
                 el.classList.add('selected');
@@ -371,6 +371,11 @@
       d.setDate(d.getDate() + days);
       return d.toISOString().slice(0, 10);
     }
+    function dayEnd(base) {
+      const d = new Date(base);
+      d.setHours(23, 59, 0, 0);
+      return d.toISOString();
+    }
 
     function thisSunday(base) {
       const d = new Date(base);
@@ -396,12 +401,36 @@
         el.className = 'date-option';
         el.textContent = label;
         el.addEventListener('click', () => {
+          if (type === 'end' && !startDate) {
+            alert('请先选择开始时间');
+            return;
+          }
+
+          if (type === 'end') {
+            const start = new Date(startDate);
+            const end = new Date(val);
+            const diffHours = (end - start) / (1000 * 60 * 60);
+
+            if (diffHours < 4) {
+              alert('结束时间必须比开始时间晚至少 4 小时');
+              return;
+            }
+          }
+
           document.querySelectorAll(`#${container} .date-option`).forEach(e => e.classList.remove('selected'));
           el.classList.add('selected');
-          if (type === 'start') startDate = val;
-          else endDate = val;
+
+          if (type === 'start') {
+            startDate = val;
+            endDate = '';
+            document.querySelectorAll('#endSelector .date-option').forEach(e => e.classList.remove('selected'));
+          } else {
+            endDate = val;
+          }
+
           updateDateHint();
         });
+
         document.getElementById(container).appendChild(el);
       });
     }
@@ -419,7 +448,7 @@
 
     const today = new Date();
     const startOptions = [
-      ['今天', dateAddDays(today, 0)],
+      ['今天', today],
       ['明天', dateAddDays(today, 1)],
       ['后天', dateAddDays(today, 2)],
       ['本周日', thisSunday(today)],
@@ -427,6 +456,7 @@
       ['下周日', nextSunday(today)]
     ];
     const endOptions = [
+      ['明天前', dayEnd(today)],
       ['明天', dateAddDays(today, 1)],
       ['后天', dateAddDays(today, 2)],
       ['大后天', dateAddDays(today, 3)],
