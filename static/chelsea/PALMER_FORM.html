@@ -159,23 +159,22 @@
 
     .date-hint {
       font-size: 1rem;
-      font-style: italic;
       color: rgba(255,255,255,0.5);
       white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid rgba(255,255,255,0.3);
-      width: 0;
       opacity: 0;
       text-align: center;
+      width: 0;
     }
 
-    .date-hint.typing {
-      animation: typing 2s steps(40, end) forwards;
+    .date-hint.typing-animate {
+      animation: typing-animate 2s steps(40, end) forwards;
     }
 
-    @keyframes typing {
+    @keyframes typing-animate {
       from { width: 0; opacity: 1; }
-      to   { width: 15.5rem; opacity: 1; }
+      to   { opacity: 1; }
     }
 
     .btn-row {
@@ -452,33 +451,32 @@
       const sameDate = start.getDate() === end.getDate();
 
       if (sameYear && sameMonth && sameDate) {
-        // 同一天（加小时）
         const sh = pad(start.getHours());
         const sm = pad(start.getMinutes());
         const eh = pad(end.getHours());
         const em = pad(end.getMinutes());
 
         const diffMs = end - start;
-        const hours = Math.round(diffMs / (1000 * 60 * 60)); // 四舍五入小时数，最少 1 小时
-        const hourText = `（${Math.max(1, hours)}小时）`;
+        const hours = Math.round(diffMs / (1000 * 60 * 60));
+        const hourText = ` ${Math.max(1, hours)}小时`;
 
         str = `${start.getMonth() + 1}月${start.getDate()}号 ${sh}:${sm} - ${eh}:${em} ${hourText}`;
       } else {
-        const dayCount = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24))); // 至少 1 天
-
+        const dayCount = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)));
         if (sameYear && sameMonth) {
-          str = `${start.getDate()}号/周${weekdays[start.getDay()]} - ${end.getDate()}号/周${weekdays[end.getDay()]} （${dayCount}天）`;
+          str = `${start.getDate()}号/周${weekdays[start.getDay()]} - ${end.getDate()}号/周${weekdays[end.getDay()]}  ${dayCount}天`;
         } else if (sameYear) {
-          str = `${start.getMonth() + 1}月${start.getDate()}号/周${weekdays[start.getDay()]} - ${end.getMonth() + 1}月${end.getDate()}号/周${weekdays[end.getDay()]} （${dayCount}天）`;
+          str = `${start.getMonth() + 1}月${start.getDate()}号/周${weekdays[start.getDay()]} - ${end.getMonth() + 1}月${end.getDate()}号/周${weekdays[end.getDay()]}  ${dayCount}天`;
         } else {
-          str = `${pad(start.getFullYear() % 100)}/${pad(start.getMonth() + 1)}/${pad(start.getDate())} - ${pad(end.getFullYear() % 100)}/${pad(end.getMonth() + 1)}/${pad(end.getDate())} （${dayCount}天）`;
+          str = `${pad(start.getFullYear() % 100)}/${pad(start.getMonth() + 1)}/${pad(start.getDate())} - ${pad(end.getFullYear() % 100)}/${pad(end.getMonth() + 1)}/${pad(end.getDate())}  ${dayCount}天`;
         }
       }
 
       hint.textContent = str;
-      hint.classList.remove('typing');
+      hint.classList.remove('typing-animate');
       void hint.offsetWidth;
-      hint.classList.add('typing');
+      hint.style.width = `${str.length + 2}ch`;
+      hint.classList.add('typing-animate');
     }
 
     const today = new Date();
