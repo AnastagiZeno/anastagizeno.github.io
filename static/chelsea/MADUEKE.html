@@ -311,7 +311,7 @@
         const res = await fetch(`${API_BASE}/problems`);
         const json = await res.json();
         if (json.ok && Array.isArray(json.data)) {
-          questions = json.data;
+          const questions = json.data;
           questions.forEach((q, i) => {
             const card = createCard(q, i);
             card.classList.add("fade-in");
