@@ -107,12 +107,10 @@
     cursor: pointer;
   }
 
-  .goal-card .complete-badge {
+  .goal-card .goal-badge {
     position: absolute;
     top: 8px;
     right: 10px;
-    background: rgba(0, 255, 136, 0.15);
-    border: 2px solid rgba(0, 255, 136, 0.4);
     border-radius: 50%;
     width: 22px;
     height: 22px;
@@ -120,11 +118,22 @@
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: #00ff88;
-    box-shadow: 0 0 6px rgba(0, 255, 136, 0.2);
     z-index: 2;
     pointer-events: none;
   }
+  .goal-card .complete-badge {
+    background: rgba(0, 255, 136, 0.15);
+    border: 2px solid rgba(0, 255, 136, 0.4);
+    color: #00ff88;
+    box-shadow: 0 0 6px rgba(0, 255, 136, 0.2);
+  }
+  .goal-card .error-badge {
+    background: rgba(255, 0, 64, 0.15);
+    border: 2px solid rgba(255, 0, 64, 0.4);
+    color: #ff0040;
+    box-shadow: 0 0 6px rgba(255, 0, 64, 0.2);
+  }
+
 
   .goal-card:hover {
     transform: translateY(-2px) scale(1.01);
@@ -424,6 +433,7 @@
       <button onclick="filterByStage('begin')">新目标</button>
       <button onclick="filterByStage('ongoing')">进行中</button>
       <button onclick="filterByStage('end')">已完成</button>
+      <button onclick="filterByStage('expire')">放弃</button>
     </div>
   </div>
   <div id="tag-popup" style="display: none; position: fixed; top: 50px; right: 180px; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 12px; z-index: 99999; backdrop-filter: blur(8px);">
@@ -439,9 +449,9 @@
       <a href="#"><i class="fas fa-compass"></i></a>
       <a href="#"><i class="fas fa-magic"></i></a>
       <a href="#"><i class="fas fa-hourglass-half"></i></a>
+      <a href="#"><i class="fas fa-shield-alt"></i></a>
       <a href="#"><i class="fas fa-cube"></i></a>
       <a href="#"><i class="fas fa-cogs"></i></a>
-      <a href="#"><i class="fas fa-shield-alt"></i></a>
     </div>
   </header>
   <main>
@@ -576,10 +586,16 @@
           </div>
         `;
     }
-    if(item.progress >= 100) {
+    if (item.progress >= 100) {
       const badge = document.createElement("div");
-      badge.className = "complete-badge";
+      badge.className = "goal-badge complete-badge";
       badge.innerHTML = '<i class="fas fa-check"></i>';
+      card.style.position = 'relative';
+      card.appendChild(badge);
+    } else if (item.progress < 0) {
+      const badge = document.createElement("div");
+      badge.className = "goal-badge error-badge";
+      badge.innerHTML = '<i class="fas fa-xmark"></i>';
       card.style.position = 'relative';
       card.appendChild(badge);
     }
@@ -664,9 +680,9 @@
     });
   }
   const popupMap = {
-    '.fa-compass': 'type-popup',
+    '.fa-shield-alt': 'type-popup',
     '.fa-hourglass-half': 'stage-popup',
-    '.fa-cube': 'tag-popup',
+    '.fa-compass': 'tag-popup',
   };
 
   function bindPopupToggle(iconSelector, popupId) {
@@ -726,7 +742,7 @@
     });
   }
   loadAllGoals();
-  document.querySelector('.fa-shield-alt')?.addEventListener('click', (e) => {
+  document.querySelector('.fa-cogs')?.addEventListener('click', (e) => {
     e.preventDefault();
     loadAllGoals();
   });

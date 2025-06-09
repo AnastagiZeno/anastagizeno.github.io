@@ -9,6 +9,7 @@ enableInlineShortcodes = true
 enableEmoji = true
 ignoreErrors = ["error-remote-getjson"]
 disableHugoGeneratorInject = true
+version = "hugo_extended_0.114.0_darwin-universal"
 
 [outputs]
 home = ["HTML", "JSON", "RSS"]
