@@ -350,6 +350,20 @@
     };
   }
 
+  function formatIsoToBeijing(str) {
+    if (!str) return '';
+    const date = new Date(str);  // 自动识别 ISO 格式
+    const options = {
+      year: '2-digit',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: 'Asia/Shanghai'
+    };
+    return new Intl.DateTimeFormat('zh-CN', options).format(date).replace(/\//g, '/');
+  }
 
   function handleButtonAction(actionType) {
     if(!gid) return alert('缺少 gid 参数');
@@ -613,8 +627,8 @@
       const tooltipText = `
   <strong>🎯 ${g.name}</strong>
   <div class="field"><span class="label">🧩 目标类型：</span><span class="value">${gtype}</span></div>
-  <div class="field"><span class="label">📅 开始时间：</span><span class="value">${g.start_from?.slice(0, 10)}</span></div>
-  <div class="field"><span class="label">⏳ 截止时间：</span><span class="value">${g.end_before?.slice(0, 10)}</span></div>
+  <div class="field"><span class="label">📅 开始时间：</span><span class="value">${formatIsoToBeijing(g.start_from)}</span></div>
+  <div class="field"><span class="label">⏳ 截止时间：</span><span class="value">${formatIsoToBeijing(g.end_before)}</span></div>
   <div class="field"><span class="label">📐 计划时长：</span><span class="value">${daysTotal} 天</span></div>
   <div class="field"><span class="label">📍 当前状态：</span><span class="value">${gstatusMap[gstatus] || gstatus}</span></div>
   <div class="field"><span class="label">🔥 特殊记录：</span><span class="value">${effortCount} 次</span></div>
