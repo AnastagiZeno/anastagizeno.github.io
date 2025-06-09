@@ -230,29 +230,6 @@
     const refreshBtn = document.getElementById("refreshBtn");
 
     let flippedCount = 0;
-    let allQuestions = [];
-
-    function shuffle(arr) {
-      const weighted = [];
-      arr.forEach((q) => {
-        const weight = Math.max(1, Math.round(Math.pow(q.freq || 1, 1.8)));
-        for (let i = 0; i < weight; i++) {
-          weighted.push(q);
-        }
-      });
-
-      const sample = [];
-      const used = new Set();
-      while (sample.length < 9 && weighted.length > 0) {
-        const idx = Math.floor(Math.random() * weighted.length);
-        const q = weighted[idx];
-        if (!used.has(q.code)) {
-          sample.push(q);
-          used.add(q.code);
-        }
-      }
-      return sample;
-    }
 
     function createCard(q, index) {
       const card = document.createElement("div");
@@ -330,27 +307,23 @@
       flippedCount = 0;
       grid.innerHTML = "";
 
-      if (!allQuestions.length) {
-        try {
-          const res = await fetch(`${API_BASE}/problems`);
-          const json = await res.json();
-          if (json.ok && Array.isArray(json.data)) {
-            allQuestions = json.data;
-          } else {
-            throw new Error("接口返回格式错误");
-          }
-        } catch (err) {
-          console.error("获取题目失败：", err);
-          return;
+      try {
+        const res = await fetch(`${API_BASE}/problems`);
+        const json = await res.json();
+        if (json.ok && Array.isArray(json.data)) {
+          questions = json.data;
+          questions.forEach((q, i) => {
+            const card = createCard(q, i);
+            card.classList.add("fade-in");
+            grid.appendChild(card);
+        });
+        } else {
+          throw new Error("接口返回格式错误");
         }
+      } catch (err) {
+        console.error("获取题目失败：", err);
+        return;
       }
-
-      const randomQuestions = shuffle(allQuestions);
-      randomQuestions.forEach((q, i) => {
-        const card = createCard(q, i);
-        card.classList.add("fade-in");
-        grid.appendChild(card);
-      });
     }
 
     refreshBtn.addEventListener("click", () => {
