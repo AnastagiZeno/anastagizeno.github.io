@@ -214,6 +214,62 @@
     .refresh-btn:hover {
       background-color: #002d72;
     }
+
+    .dropdown {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background-color: rgba(3, 70, 148, 0.75); /* 切尔西蓝 + 半透明 */
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(4px); /* 💡 模糊背景 */
+      transition: background-color 0.3s ease;
+    }
+
+    .icon-btn:hover {
+      background-color: rgba(0, 45, 114, 0.85);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 48px;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.85);  /* 半透明白 */
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      padding: 6px;
+      flex-direction: column;
+      gap: 4px;
+      backdrop-filter: blur(6px); /* 💡 轻微模糊玻璃感 */
+    }
+
+    .menu-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #034694;
+      transition: background-color 0.2s ease;
+    }
+
+    .menu-icon:hover {
+      background-color: rgba(3, 70, 148, 0.1);
+    }
   </style>
 </head>
 <body>
@@ -221,6 +277,16 @@
   <img src="./chelsea.svg" alt="Home" />
   </a>
   <div class="grid" id="grid"></div>
+  <div class="dropdown">
+    <button class="icon-btn" id="dropdownBtn" title="选择题库">🏛️</button>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <div class="menu-icon" data-set="default" title="公司">🏛️</div>
+      <div class="menu-icon" data-set="tree" title="树">🌲</div>
+      <div class="menu-icon" data-set="linkedlist" title="链表">🧬</div>
+      <div class="menu-icon" data-set="stack" title="堆栈">🪜</div>
+    </div>
+  </div>
+
   <button class="refresh-btn" id="refreshBtn">GO BLUE</button>
 
   <script>
@@ -308,7 +374,7 @@
       grid.innerHTML = "";
 
       try {
-        const res = await fetch(`${API_BASE}/problems`);
+        const res = await fetch(`${API_BASE}/problems?set=${selectedSet}`);
         const json = await res.json();
         if (json.ok && Array.isArray(json.data)) {
           const questions = json.data;
@@ -331,8 +397,6 @@
         alert("请先翻开至少一张卡片再刷新！");
         return;
       }
-
-      // 💡 快速反馈动画
       refreshBtn.style.transform = "scale(0.92)";
       setTimeout(() => {
         refreshBtn.style.transform = "scale(1)";
@@ -340,6 +404,30 @@
 
       generateGrid();
     });
+
+    let selectedSet = "default";
+    const dropdownBtn = document.getElementById("dropdownBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    dropdownBtn.addEventListener("click", () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    document.querySelectorAll(".menu-icon").forEach(item => {
+      item.addEventListener("click", (e) => {
+        selectedSet = e.target.dataset.set;
+        dropdownBtn.textContent = e.target.textContent;
+        dropdownMenu.style.display = "none";
+        generateGrid();
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
 
     window.onload = generateGrid;
   </script>
