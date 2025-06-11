@@ -1,16 +1,22 @@
 {{ $title := .Get 0 | default "书名未提供" }}
 {{ $author := .Get 1 | default "作者未提供" }}
 {{ $image := .Get 2 | default "default.jpg" }}
-{{ $scale := .Get 3 | default "16" }}
+{{ $link := .Get 3 | default "" }}
 
 {{ $imagePath := printf "%s" $image | relURL }}
 
 <div style="display: flex; align-items: flex-start; margin-bottom: 30px;">
-    <div style="flex: 0 0 {{ $scale }}%; max-width: {{ $scale }}%; text-align: center; margin-right: 40px;">
-        <div style="position: relative; width: 100%; padding-top: 150%; background-color: #ffffff; overflow: hidden;">
-            <img src="{{ $imagePath }}" alt="Book Cover" style="max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: contain; margin: 0;" />
+    <div style="flex: 0 0 20%; max-width: 20%; text-align: center; margin-right: 40px;">
+        <div style="position: relative; width: 100%; padding-top: 110%; background-color: #ffffff; overflow: hidden;">
+            {{ if $link }}
+                <a href="{{ $link }}" target="_blank" rel="noopener noreferrer" style="cursor: pointer;">
+                    <img src="{{ $imagePath }}" alt="Book Cover" style="width: 65%; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: contain; margin: 0;" />
+                </a>
+            {{ else }}
+                <img src="{{ $imagePath }}" alt="Book Cover" style="width: 65%; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: contain; margin: 0;" />
+            {{ end }}
         </div>
-        <div style="margin-top: 10px; padding: 5px;">
+        <div style="padding: 5px;">
             <strong>《{{ $title }}》</strong><br>
             <em>{{ $author }}</em>
         </div>
