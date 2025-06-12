@@ -25,12 +25,13 @@ series = ["年度读书"]
 ## APR
 ---------------------------------
 {{< book "操作系统导论" "【美】 Remzi H. Arpaci-Dusseau / Andrea C. Arpaci-Dusseau" "/image/book/s32332106.jpg" "" >}}
-*2024/03/04 - 2024/04/11* **《Operating Systems: Three Easy Pieces》** :1st_place_medal:
+> **《Operating Systems: Three Easy Pieces》** :1st_place_medal:
+>
 > 如果十年前就看了这本书该多好，期间我多次想起马鲁布拉的娴静时光，阳光明媚，雨水充沛，还不热，还有我的两个室友。
 {{< /book >}}
 
 {{< book "计算机系统设计原理 : 计算机系统设计原理" "【美】Jerome H. Saltzer / M. Frans Kaashoek / Morgan Kaufmann" "/image/book/s4764383.jpg" "" >}}
-*2024/04/23 -* **《Principles of Computer System Design： An Introduction》** :2nd_place_medal:
+> **《Principles of Computer System Design： An Introduction》** :2nd_place_medal:
 > Chapter 7 - 2024/06/22
 > 漫漫长路
 {{< /book >}}

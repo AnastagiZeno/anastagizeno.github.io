@@ -7,10 +7,8 @@ from datetime import datetime
 清理未被文章引用的静态图片（支持任意层级、按路径匹配）
 '''
 
-# 匹配形如 /image/xxx/yyy.jpg 的图片路径（捕获完整路径）
 image_pattern = re.compile(r'(/image/[a-zA-Z0-9_\-/]+?\.(?:png|jpg|jpeg))')
 
-# 提取文章中引用的所有图片路径
 def find_images_in_file(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -20,7 +18,6 @@ def find_images_in_file(file_path):
         print(f'Error reading file {file_path}: {e}')
         return []
 
-# 遍历文章目录，提取所有引用图片路径
 def traverse_directory(root_folder):
     images = []
     for root, dirs, files in os.walk(root_folder):
@@ -31,7 +28,6 @@ def traverse_directory(root_folder):
                 images.extend(find_images_in_file(file_path))
     return set(images)
 
-# 获取所有实际存在的图片路径（转换为以 `/image/...` 开头）
 def find_all_images_with_relative_path(image_root, static_root='../static'):
     image_extensions = {'.png', '.jpg', '.jpeg'}
     image_paths = set()
@@ -45,7 +41,6 @@ def find_all_images_with_relative_path(image_root, static_root='../static'):
                 image_paths.add('/' + rel_path)
     return image_paths
 
-# 删除未被引用的图片文件
 def delete_images_by_relative_path(static_root, all_image_paths):
     for rel_path in all_image_paths:
         abs_path = os.path.join(static_root, rel_path.lstrip('/'))
@@ -56,7 +51,6 @@ def delete_images_by_relative_path(static_root, all_image_paths):
             except Exception as e:
                 print(f'Failed to delete {abs_path}: {e}')
 
-# 备份整个图片目录
 def backup_folder(folder_path):
     backup_path = f"{folder_path}_backup_{datetime.now().strftime('%Y%m%d%H%M%S')}"
     try:
@@ -65,21 +59,18 @@ def backup_folder(folder_path):
     except Exception as e:
         print(f"Error creating backup: {e}")
 
-# --- 主流程 ---
+
 if __name__ == '__main__':
     root_folder = '../content'
     static_root = '../static'
     image_root = os.path.join(static_root, 'image')
 
-    # 引用图片路径（以 /image/... 格式保存）
     referenced_images = traverse_directory(root_folder)
     print('\nReferenced image paths:')
     print('\n'.join(sorted(referenced_images)))
 
-    # 实际存在的图片路径（以 /image/... 格式保存）
     all_actual_images = find_all_images_with_relative_path(image_root, static_root)
 
-    # 找出未被引用的图片路径
     unreferenced_images = all_actual_images - referenced_images
     print('\nUnreferenced image paths:')
     print('\n'.join(sorted(unreferenced_images)))
