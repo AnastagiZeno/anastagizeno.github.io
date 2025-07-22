@@ -3,24 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://shahrazad.fun/archive/</loc>
-    <lastmod>2025-05-23T14:06:42+08:00</lastmod>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/categories/</loc>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/categories/engineering/</loc>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/tags/k8s/</loc>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/archive/k8s/</loc>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/series/</loc>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/</loc>
-    <lastmod>2025-05-23T14:06:42+08:00</lastmod>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/tags/</loc>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
+  </url><url>
+    <loc>https://shahrazad.fun/series/%E5%88%86%E5%B8%83%E5%BC%8F/</loc>
+    <lastmod>2025-07-22T10:55:16+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/archive/red_dragonfly/</loc>
     <lastmod>2025-05-23T14:06:42+08:00</lastmod>
   </url><url>
-    <loc>https://shahrazad.fun/categories/</loc>
-    <lastmod>2025-05-20T19:23:26+08:00</lastmod>
-  </url><url>
     <loc>https://shahrazad.fun/categories/computer-science/</loc>
-    <lastmod>2025-05-20T19:23:26+08:00</lastmod>
-  </url><url>
-    <loc>https://shahrazad.fun/series/</loc>
-    <lastmod>2025-05-20T19:23:26+08:00</lastmod>
-  </url><url>
-    <loc>https://shahrazad.fun/tags/</loc>
     <lastmod>2025-05-20T19:23:26+08:00</lastmod>
   </url><url>
     <loc>https://shahrazad.fun/archive/iv_algo-09-binary-search/</loc>

@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 23 May 2025 14:06:42 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Jul 2025 10:55:16 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K8s</title>
+      <link>https://shahrazad.fun/archive/k8s/</link>
+      <pubDate>Tue, 22 Jul 2025 10:55:16 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/k8s/</guid>
+      <description>Kubernetes Web 服务部署架构总结一、Kubernetes 基本概念对比 概念 类型 作用 是否运行实体 属于控制面/数据面 Pod 最小运行单元 封装容器，提供统一网络/存储</description>
+    </item>
+    
     <item>
       <title>赤とんぼ</title>
       <link>https://shahrazad.fun/archive/red_dragonfly/</link>
@@ -212,15 +221,6 @@
       
       <guid>https://shahrazad.fun/archive/iv_algo-01-two-pointers-window/</guid>
       <description>双指针与滑动窗口技巧指南刷题记录-简单-双指针和滑动窗口 刷题记录-中级-双指针和滑动窗口 刷题记录-高级-双指针和滑动窗口 1. 特点与识别 对撞/配</description>
-    </item>
-    
-    <item>
-      <title>基础数据结构</title>
-      <link>https://shahrazad.fun/archive/iv_algo-00-ds/</link>
-      <pubDate>Thu, 01 May 2025 10:02:12 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/iv_algo-00-ds/</guid>
-      <description>RoadMap 题型分类与专属模版 数据结构题（链表、树、栈、队列、图） 双指针与滑动窗口 二分查找 动态规划 BFS/DFS 回溯／状态压缩 * 贪心算法 * 数学与位运算 堆与优先队列</description>
     </item>
     
   </channel>
