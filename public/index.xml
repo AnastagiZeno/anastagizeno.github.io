@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 22 Jul 2025 10:55:16 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Jul 2025 19:59:03 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tagproductsdesign</title>
+      <link>https://shahrazad.fun/archive/tagproductsdesign/</link>
+      <pubDate>Wed, 23 Jul 2025 19:59:03 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/tagproductsdesign/</guid>
+      <description>商品多标签筛选 + 游标分页设计方案（MySQL / PostgreSQL）✅ 问题背景 有 1000w 商品，每个商品 0~20 个标签。 希望实现一个橱窗接口：支持标签筛选</description>
+    </item>
+    
     <item>
       <title>k8s</title>
       <link>https://shahrazad.fun/archive/k8s/</link>
@@ -212,15 +221,6 @@
       
       <guid>https://shahrazad.fun/archive/iv_algo-03-dfs/</guid>
       <description>回溯算法与 DFS 的系统总结 组合、排列、路径搜索 🧠 一、回溯和 DFS 的关系 特性 DFS 回溯（Backtracking） 本质 一种遍历方式 一种用 DFS 实现的“解空间搜</description>
-    </item>
-    
-    <item>
-      <title>双指针</title>
-      <link>https://shahrazad.fun/archive/iv_algo-01-two-pointers-window/</link>
-      <pubDate>Thu, 01 May 2025 16:02:12 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/iv_algo-01-two-pointers-window/</guid>
-      <description>双指针与滑动窗口技巧指南刷题记录-简单-双指针和滑动窗口 刷题记录-中级-双指针和滑动窗口 刷题记录-高级-双指针和滑动窗口 1. 特点与识别 对撞/配</description>
     </item>
     
   </channel>
