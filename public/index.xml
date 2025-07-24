@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 23 Jul 2025 19:59:03 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Jul 2025 11:52:20 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pgtxrecover</title>
+      <link>https://shahrazad.fun/archive/pgtxrecover/</link>
+      <pubDate>Thu, 24 Jul 2025 11:52:20 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/pgtxrecover/</guid>
+      <description>PostgreSQL + Golang 客户端事务处理最佳实践适用于使用 pgxpool 作为连接池的 Golang 项目，防止连接泄露、锁悬挂和事务未关闭等问题。 🢨 三种典型事务异常场景场景 1：忘记 Commit() 或 Rollback()1tx,</description>
+    </item>
+    
     <item>
       <title>Tagproductsdesign</title>
       <link>https://shahrazad.fun/archive/tagproductsdesign/</link>
@@ -212,15 +221,6 @@
       
       <guid>https://shahrazad.fun/archive/iv_algo-04-dp/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>回溯</title>
-      <link>https://shahrazad.fun/archive/iv_algo-03-dfs/</link>
-      <pubDate>Fri, 02 May 2025 10:02:12 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/iv_algo-03-dfs/</guid>
-      <description>回溯算法与 DFS 的系统总结 组合、排列、路径搜索 🧠 一、回溯和 DFS 的关系 特性 DFS 回溯（Backtracking） 本质 一种遍历方式 一种用 DFS 实现的“解空间搜</description>
     </item>
     
   </channel>
