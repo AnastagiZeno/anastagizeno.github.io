@@ -6,7 +6,16 @@
     <description>Recent content on Shahrazad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 24 Jul 2025 11:52:20 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Aug 2025 10:32:44 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Twitterbot</title>
+      <link>https://shahrazad.fun/archive/twitterbot/</link>
+      <pubDate>Fri, 15 Aug 2025 10:32:44 +0800</pubDate>
+      
+      <guid>https://shahrazad.fun/archive/twitterbot/</guid>
+      <description>Twitter（X）Bot 开发与运营指南本文档汇总了 Twitter Bot（现 X Bot）在业务设计、API 选择、权限计划、架构实现等方面的关键知识点，结合</description>
+    </item>
+    
     <item>
       <title>Pgtxrecover</title>
       <link>https://shahrazad.fun/archive/pgtxrecover/</link>
@@ -212,15 +221,6 @@
       
       <guid>https://shahrazad.fun/archive/iv_algo-05-greedy/</guid>
       <description>贪心算法🧠 一、贪心的核心定义 贪心算法是一种在每一步都做出局部最优选择，最终期望获得全局最优解的方法。 使用前提： 必须满足「局部最优 = 全局最优」</description>
-    </item>
-    
-    <item>
-      <title>动态规划</title>
-      <link>https://shahrazad.fun/archive/iv_algo-04-dp/</link>
-      <pubDate>Fri, 02 May 2025 14:31:16 +0800</pubDate>
-      
-      <guid>https://shahrazad.fun/archive/iv_algo-04-dp/</guid>
-      <description></description>
     </item>
     
   </channel>

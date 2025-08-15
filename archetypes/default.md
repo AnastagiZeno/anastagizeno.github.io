@@ -12,5 +12,5 @@ categories = []
 series = []
 comment = false
 summary = ""
-hidden = true
+hidden = false
 +++
