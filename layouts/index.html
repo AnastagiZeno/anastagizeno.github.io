@@ -9,12 +9,12 @@
 <ul class="pager">
   {{ if $paginator.HasPrev }}
   <li class="previous">
-      <a href="{{ .Paginator.Prev.URL }}">⇦ Prev</a>
+      <a href="{{ .Paginator.Prev.URL }}">← Prev</a>
   </li>
   {{ end }}
   {{ if $paginator.HasNext }}
   <li class="next">
-      <a href="{{ .Paginator.Next.URL }}">Next ⇨</a>
+      <a href="{{ .Paginator.Next.URL }}">Next →</a>
   </li>
   {{ end }}
 </ul>
