@@ -75,9 +75,7 @@ function deploy() {
     has hugo || die "未检测到 hugo，请先安装： https://gohugo.io/getting-started/installing/"
     echo "[hugo] building..."
     # 一次构建足够；如需三连可保留
-    hugo --gc
-    hugo --cleanDestinationDir
-    hugo -d public
+    hugo --gc --cleanDestinationDir --minify -d public
     echo "[hugo] build done -> public/"
 }
 

@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Shahrazad</title>
-    <link>https://shahrazad.fun/read/</link>
-    <description>Recent content on Shahrazad</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 14 Nov 1988 18:00:00 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/read/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shahrazad</title><link>https://shahrazad.fun/read/</link><description>Recent content on Shahrazad</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 14 Nov 1988 18:00:00 +0800</lastBuildDate><atom:link href="https://shahrazad.fun/read/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
