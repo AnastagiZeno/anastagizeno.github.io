@@ -1175,23 +1175,15 @@ img::-moz-selection {
   overflow-y: hidden;
 }
 
-/* ==== Fix dropdown to match original navbar exactly ==== */
+/* ==== Navbar / Dropdown 最终精简版 ==== */
 
-/* 1) 触发按钮：回归 block，不动 padding/line-height，让它走 .navbar-nav > li > a 的规则 */
+/* 触发按钮：与普通链接完全一致（交给主题配色，不自定义行高/内边距） */
 #huxblog_navbar .navbar-nav > li > .dropdown-toggle {
-  display: block !important;       /* 关键：和普通链接一致 */
+  display: block !important;
   background: transparent !important;
   border: 0 !important;
-  color: inherit !important;        /* 先交给主题配色 */
+  color: inherit !important;
   text-decoration: none !important;
-}
-
-/* 2) 主题色联动（首页白字 vs 内页深色）。用 navbar-custom / .invert 精准覆盖历史黑色 */
-.navbar.navbar-custom:not(.invert) #huxblog_navbar .navbar-nav > li > .dropdown-toggle {
-  color: #fff !important;
-}
-.navbar.navbar-custom.invert #huxblog_navbar .navbar-nav > li > .dropdown-toggle {
-  color: #333 !important;          /* 你的内页深色 */
 }
 
 /* caret 跟随当前文字色 */
@@ -1201,12 +1193,13 @@ img::-moz-selection {
   border-bottom-color: currentColor !important;
 }
 
-/* 3) 桌面端：恢复 Bootstrap v3 下拉的默认位置与外观 */
+/* 桌面端：原生样式与定位 */
 @media (min-width: 768px) {
+  /* 下拉面板（覆盖式） */
   #huxblog_navbar .navbar-nav > li > .dropdown-menu {
     position: absolute !important;
-    top: 100% !important;           /* 紧贴下边缘 */
-    margin-top: 2px !important;     /* Bootstrap 默认 2px */
+    top: 100% !important;
+    margin-top: 2px !important;          /* Bootstrap 默认 2px */
     left: 0 !important;
     float: left !important;
     display: none;
@@ -1220,9 +1213,20 @@ img::-moz-selection {
   }
   #huxblog_navbar .navbar-right > li > .dropdown-menu { right: 0 !important; left: auto !important; }
   #huxblog_navbar .navbar-nav > li.open > .dropdown-menu { display: block !important; }
+
+  /* 修复 container-fluid 带来的右移问题（仅桌面端需要） */
+  #huxblog_navbar .navbar-right { margin-right: 0 !important; }
+  #huxblog_navbar .navbar-nav { margin: 0 !important; }
+
+  /* 首页（非 invert）白字；内页（invert）深色 —— 仅桌面端生效 */
+  .navbar.navbar-custom:not(.invert) #huxblog_navbar .navbar-nav > li > .dropdown-toggle { color: #fff !important; }
+  .navbar.navbar-custom:not(.invert) #huxblog_navbar .dropdown-toggle .caret {
+    border-top-color: #fff !important; border-bottom-color: #fff !important;
+  }
+  .navbar.navbar-custom.invert #huxblog_navbar .navbar-nav > li > .dropdown-toggle { color: #333 !important; }
 }
 
-/* 4) 菜单项维持 Bootstrap 风格 */
+/* 下拉项：保持 Bootstrap 风格 */
 #huxblog_navbar .dropdown-menu > li > a {
   display: block;
   padding: 8px 20px;
@@ -1236,7 +1240,7 @@ img::-moz-selection {
   background-color: #f5f5f5;
 }
 
-/* 5) 移动端：进入文档流不飘位 */
+/* 移动端：折叠态进入文档流，不悬浮；统一深色，修复 Year 白色不可见 */
 @media (max-width: 767px) {
   #huxblog_navbar .navbar-nav .open .dropdown-menu {
     position: static !important;
@@ -1247,14 +1251,16 @@ img::-moz-selection {
     border: 0 !important;
     box-shadow: none !important;
   }
-  #huxblog_navbar .dropdown-menu > li > a { padding: 10px 15px; line-height: 20px; }
-}
+  /* 触控尺寸与子项缩进 */
+  #huxblog_navbar .navbar-nav > li > a { padding: 10px 15px; line-height: 20px; }
+  #huxblog_navbar .navbar-nav .open .dropdown-menu > li > a { padding: 10px 30px; line-height: 20px; }
 
-/* 6) 修复右侧导航整体偏移（container-fluid 下的常见 15px 问题） */
-@media (min-width: 768px) {
-  #huxblog_navbar .navbar-right { margin-right: 0 !important; }
-  #huxblog_navbar .navbar-nav { margin: 0 !important; }
+  /* 移动端颜色统一为深色（包含 Year 的 dropdown-toggle 与 caret） */
+  .navbar.navbar-custom #huxblog_navbar .navbar-nav > li > a,
+  .navbar.navbar-custom #huxblog_navbar .navbar-nav > li > .dropdown-toggle { color: #333 !important; }
+  .navbar.navbar-custom #huxblog_navbar .dropdown-toggle .caret {
+    border-top-color: #333 !important; border-bottom-color: #333 !important;
+  }
 }
-
 
 
