@@ -80,6 +80,13 @@ name = "2024"
 url = "/read/2024/"
 weight = 2
 
+[[menu.main]]
+parent = "year"
+identifier = "2007"
+name = "伟大重走计划"
+url = "/read/2007/"
+weight = 2007
+
 
 [params]
 author = "BX"
