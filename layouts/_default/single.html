@@ -17,7 +17,7 @@
           {{ with .Prev }}
           <li class="previous">
             <a href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
-              ⇦<br>
+              ←<br>
               <span>{{ .Title }}</span>
             </a>
           </li>
@@ -25,7 +25,7 @@
           {{ with .Next }}
           <li class="next">
             <a href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
-              ⇨<br>
+              →<br>
               <span>{{ .Title }}</span>
             </a>
           </li>
