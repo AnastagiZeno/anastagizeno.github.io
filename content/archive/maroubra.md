@@ -103,3 +103,18 @@ comment = false
 >
 > 关于客户端应如何调整，以感知网络拥塞的开创性论文。绝对是互联网背后的关键技术之一，所有认真对待系统的人必读。
 
+
+#### `git` 分支常用前缀 
+| 前缀         | 含义                       | 示例                         |
+| ---------- | ------------------------ | -------------------------- |
+| `feat`     | 新功能开发（feature）           | `feat/user-login`          |
+| `fix`      | 一般 bug 修复                | `fix/memory-leak`          |
+| `hotfix`   | 紧急线上修复（快速上线）             | `hotfix/prod-crash`        |
+| `chore`    | 日常维护（无业务逻辑变更，如依赖更新、脚本调整） | `chore/upgrade-go-version` |
+| `style`    | 代码风格、格式、排版的调整（无逻辑改动） | `style/fix-typo` |
+| `refactor` | 重构代码，不涉及功能变更             | `refactor/project-service` |
+| `perf`     | 性能优化相关                   | `perf/search-query`        |
+| `test`     | 单元测试 / 集成测试              | `test/add-api-tests`       |
+| `docs`     | 文档相关更新                   | `docs/api-readme`          |
+
+
