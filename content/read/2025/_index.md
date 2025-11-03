@@ -75,5 +75,13 @@ series = ["年度读书"]
 > 总之阿德勒心理学和斯多葛学派确实有很多相似之处，感觉上是同宗同源，很好，鉴于我最近对斯多葛学派的部分皈依，强忍着对日本人过度矫情的风格的排斥硬是看完了，其实后半部分看着还是可以的。
 {{< /book >}}
 
+## NOV
+-------------------
+{{< book "智能体设计模式：构建智能系统的实践指南" "【意】Antonio Gulli" "/image/book/agentic-design-patterns-zh-cover.webp" "" >}}
+> https://github.com/ginobefun/agentic-design-patterns-cn/blob/main
+
+{{< /book >}}
+
+-------------------
 
 {{< bookpagi "2024" "2024" "" "" >}}
