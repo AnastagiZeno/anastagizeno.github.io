@@ -79,6 +79,7 @@ series = ["年度读书"]
 -------------------
 {{< book "智能体设计模式：构建智能系统的实践指南" "【意】Antonio Gulli" "/image/book/agentic-design-patterns-zh-cover.webp" "" >}}
 > https://github.com/ginobefun/agentic-design-patterns-cn/blob/main
+> 这段旅程并非要取代人类的智慧，而是要增强它。它要求我们所有人掌握一套新的技能：清晰解释任务的能力，明智授权的智慧，以及验证产出质量的勤勉。它要求我们保持谦逊，承认自己的未知，并永不停止学习
 
 {{< /book >}}
 
