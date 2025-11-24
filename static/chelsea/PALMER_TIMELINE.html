@@ -509,7 +509,7 @@
       } = coords[i];
       const completed = completedSet.has(state);
       const iconName = state.toLowerCase().replace(/ /g, '_');
-      const iconHref = `../image/icons/${iconName}.jpg`;
+      const iconHref = `./icons/${iconName}.jpg`;
       const a = aMap[state];
       const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
       image.setAttribute("href", iconHref);
