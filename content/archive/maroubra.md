@@ -17,6 +17,8 @@ comment = false
 > 冷静观察，沉着应付，稳住阵脚，埋头实干。
 > <p align="right">- 邓小平</p>
 
+# Και στην Καντόνα χιλιάδες βάζουν, προλεταρίους ηρωικούς.
+
 [emoji](https://gohugo.io/quick-reference/emojis/)
 
 [latex语法表](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)
