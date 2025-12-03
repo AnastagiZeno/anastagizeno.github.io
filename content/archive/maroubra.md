@@ -17,7 +17,109 @@ comment = false
 > 冷静观察，沉着应付，稳住阵脚，埋头实干。
 > <p align="right">- 邓小平</p>
 
-# Και στην Καντόνα χιλιάδες βάζουν, προλεταρίους ηρωικούς.
+### Και στην Καντόνα χιλιάδες βάζουν, προλεταρίους ηρωικούς.
+
+```
+Μαρία Δημητριάδη & Afroditi Manou - Mavra Korakia (Chorus) - original lyrics
+
+Μαύρα κοράκια με νύχτια γαμψά
+Πέσανε πάνω στην εργατιά
+Άγρια κράζουν για αίμα διψούν
+Τον Δημητρόφ στην κρεμάλα να δουν
+
+Τον Ντανεφ και Ποπόφ, τον Τέλμαν κι άλλους
+Αντιφασίστες αρχχηγούς
+Και στην Καντόνα χιλιάδες βάζουν
+Προλεταρίους ηρωικούς
+
+Τον Ντανεφ και Ποπόφ, τον Τέλμον κι άλλους
+Αντιφασίστες αρχηγούς
+Και στην Καντόνα χιλιάδες βάζουν
+Προλεταρίους ηρωικούς
+
+Γίνας στους γίγαντες ο Δημητρόφ
+Βράχος γραντίτης στέκει ορθός
+Τους δικαστές του χτυπάει σκληρά
+Τους ξεσκεπάζει τους ποδοπατά
+
+Και μπρος στο θάνατο και στην κρεμάλα
+Έδειξες σ' όλους Δημητρόφ
+Τους προλετάριους της οικουμένης
+Τον δρόμο για τον λυτρωμό
+
+Και μπρος στο θάνατο και στην κρεμάλα
+Έδειξες σ' όλους Δημητρόφ
+Τους προλετάριους της οικουμένης
+Τον δρόμο για τον λυτρωμό
+
+Ήρωες τέτοιοι μπορούν μοναχά
+Να βγούνε μέσα απ' την εργατιά
+Δοκιμασμένος στην μάχη σκληρά
+Κρατάς εσύ την σημαία ψηλά
+
+Της 3ης Διεθνούς του Λένιν Στάλιν
+Κι έδειξες σ' όλους τους λαούς
+Πως να παλεύουν, πως να νικάνε
+Τους ταξικούς τους τους εχθρούς
+
+Της 3ης Διεθνούς του Λένιν Στάλιν
+Κι έδειξες σ' όλους τους λαούς
+Πως να παλεύουν, πως να νικάνε
+Τους ταξικούς τους τους εχθρούς
+```
+
+```
+Μαρία Δημητριάδη & Afroditi Manou - Mavra Korakia (Chorus) - translation in English
+
+Mavra Korakia (Chorus)
+
+Black ravens with their sharp claws
+Have descended upon the working class
+Screeching for blood
+They hunger to see Dimitrov hanging from a noose
+
+Daneff and Popov, Telman and the others
+Leading the anti-fascist cause
+And in Canton thousands are being imprisoned
+Proletarian heroes
+
+Daneff and Popov, Telman and the others
+Leading the anti-fascist cause
+And in Canton thousands are being imprisoned
+Proletarian heroes
+
+Dimitrov, you have become like the ancient giants
+Standing firm like a granite rock
+You hit the judges hard
+You unmask them and trample them underfoot
+
+And in the face of death and hanging
+You have shown us all, Dimitrov
+To the proletarians of the world
+The path to liberation
+
+And in the face of death and hanging
+You have shown us all, Dimitrov
+To the proletarians of the world
+The path to liberation
+
+Only heroes like you
+Could have risen from the ranks of the working class
+Tested and proven in the heat of battle
+You hold the banner high
+
+Of the Third International of Lenin and Stalin
+And you have shown all peoples
+How to fight and how to win
+Against their class enemies
+
+Of the Third International of Lenin and Stalin
+And you have shown all peoples
+How to fight and how to win
+Against their class enemies
+
+```
+
 
 [emoji](https://gohugo.io/quick-reference/emojis/)
 
