@@ -93,7 +93,7 @@ author = "BX"
 description = "过度社会化是人类对彼此施加的最残忍之暴行"
 keywords = "oversocialization"
 img_home = "default/home.jpg"
-img_404 = "default/404.webp"
+img_404 = "default/404.jpg"
 useFaviconGenerator = true
 
 [params.sidebar]
