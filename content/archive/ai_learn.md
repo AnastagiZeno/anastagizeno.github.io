@@ -15,6 +15,12 @@ summary = ""
 hidden = false
 +++
 
+#
+
+https://harness-books.agentway.dev/index.html
+https://harness-books.agentway.dev/book1-claude-code/
+https://harness-books.agentway.dev/book2-comparing/
+
 # 学习计划
 
 围绕 PPT 中的素材，我把学习顺序拆成三个阶段：先补齐认知与阅读，再熟悉模型与评测方法，最后搭建工具链与自动化体系。下面的列表按这个节奏组织，你可以按章节逐步推进。
