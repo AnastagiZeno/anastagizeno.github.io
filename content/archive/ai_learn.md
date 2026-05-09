@@ -17,9 +17,29 @@ hidden = false
 
 #
 
+奥,给你推荐个 blog: https://blog.pdjjq.org/
+
+把 api 格式看一遍, 了解下现在的 llm 的能力边界
+1. openai reponse : https://developers.openai.com/api/reference/responses/overview
+2. claude api: https://platform.claude.com/docs/en/intro
+
+其中要特别注意 tools 调用的一些技巧:
+https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool
+https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling
+https://platform.claude.com/docs/en/agents-and-tools/tool-use/fine-grained-tool-streaming
+
+然后就可以找 github 项目, 扒源码, 复刻核心逻辑
+推荐我 star 的列表:
+https://github.com/stars/Disdjj/lists/ai
+https://github.com/stars/Disdjj/lists/ai-coding
+https://github.com/stars/Disdjj/lists/ai-memory
+
+#
+
 https://harness-books.agentway.dev/index.html
 https://harness-books.agentway.dev/book1-claude-code/
 https://harness-books.agentway.dev/book2-comparing/
+
 
 # 学习计划
 
